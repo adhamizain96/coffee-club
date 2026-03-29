@@ -1,6 +1,6 @@
 # Coffee Club
 
-A curated cafe discovery site for Chicago and the surrounding suburbs. Users can browse cafes, filter by amenities and vibes, read curator-written reviews, and leave anonymous community notes. Cafes are hand-picked and managed by the site owner — there is no user authentication or user-submitted cafe listings.
+A curated cafe discovery site for Chicago and the surrounding suburbs. Browse cafes, filter by amenities and vibes, read curator-written reviews, and leave anonymous community notes. Cafes are hand-picked and managed by the site owner — there is no user authentication or user-submitted listings.
 
 ## Tech Stack
 
@@ -18,38 +18,31 @@ A curated cafe discovery site for Chicago and the surrounding suburbs. Users can
 
 ## Local Setup
 
-### Step 1 — Clone the repo
+### 1. Clone and install
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/adhamizain96/coffee-club.git
 cd coffee-club
-```
-
-### Step 2 — Install dependencies
-
-```bash
 npm install
 ```
 
-This also runs `prisma generate` automatically via the `postinstall` script.
+`prisma generate` runs automatically via the `postinstall` script.
 
-### Step 3 — Set up environment variables
+### 2. Set up environment variables
 
 ```bash
 cp .env.example .env
 ```
 
-The `.env.example` file contains a placeholder `DATABASE_URL`. For local development using Prisma's built-in dev server (Step 4), this will be overwritten automatically — no manual edits needed.
+The `.env.example` contains a placeholder `DATABASE_URL`. For local development using Prisma's built-in dev server (next step), this will be overwritten automatically.
 
-### Step 4 — Start the Prisma dev server
+### 3. Start the Prisma dev server
 
 ```bash
 npx prisma dev
 ```
 
-This starts a local PostgreSQL instance managed by Prisma. Leave this running in its own terminal. It will print a connection URL — the `.env` file will need `DATABASE_URL` set to the **raw PostgreSQL URL** (the `postgres://...` line), not the proxy URL.
-
-After starting, update your `.env`:
+This starts a local PostgreSQL instance managed by Prisma. Leave it running in its own terminal. It prints a connection URL — update your `.env` with the **raw PostgreSQL URL** (`postgres://...`), not the proxy URL:
 
 ```
 DATABASE_URL="postgres://postgres:postgres@localhost:51214/template1?sslmode=disable"
@@ -57,43 +50,34 @@ DATABASE_URL="postgres://postgres:postgres@localhost:51214/template1?sslmode=dis
 
 The port may vary — use the one printed by `npx prisma dev`.
 
-### Step 5 — Push the database schema
+### 4. Push schema and seed
 
 In a new terminal:
 
 ```bash
 npx prisma db push
-```
-
-This creates all tables in your local PostgreSQL instance.
-
-### Step 6 — Seed the database
-
-```bash
 npm run db:seed
 ```
 
-This populates the database with 10 curated Chicago-area cafes, predefined tags, and sample community notes.
+This creates all tables and populates the database with 10 curated Chicago-area cafes, predefined tags, and sample community notes.
 
-### Step 7 — Start the dev server
+### 5. Start the dev server
 
 ```bash
 npm run dev
 ```
 
-### Step 8 — Open the app
-
-Visit [http://localhost:3000](http://localhost:3000) in your browser.
+Visit [http://localhost:3000](http://localhost:3000).
 
 ### Terminal Layout
 
-You'll need three terminal windows running simultaneously:
+You need two terminals running simultaneously, plus one for ad hoc commands:
 
 | Terminal | Command | Purpose |
 |----------|---------|---------|
 | 1 | `npx prisma dev` | Local PostgreSQL server |
 | 2 | `npm run dev` | Next.js dev server |
-| 3 | (ad hoc) | Running commands like `db push`, `db:seed`, etc. |
+| 3 | (ad hoc) | `db push`, `db:seed`, etc. |
 
 ## Project Structure
 
@@ -140,16 +124,16 @@ coffee-club/
 
 ## Deployment (Vercel)
 
-The app is configured for Vercel deployment. Key requirements:
-
-- Set `DATABASE_URL` in Vercel environment variables, pointing to a production PostgreSQL instance (e.g., Neon, Supabase, or Railway). This must be a raw `postgres://` connection string.
-- The `postinstall` script runs `prisma generate` automatically during the build.
-- Run `npx prisma db push` against your production database before the first deployment to create tables.
-- Seed the production database with `npm run db:seed` if you want the sample data.
+- Set `DATABASE_URL` in Vercel environment variables pointing to a production PostgreSQL instance (e.g., Neon, Supabase, or Railway). Must be a raw `postgres://` connection string.
+- `prisma generate` runs automatically during the build via the `postinstall` script.
+- Run `npx prisma db push` against your production database before the first deployment.
+- Optionally seed production with `npm run db:seed`.
 
 ## Adding Cafes
 
-Cafes are curated and not user-submitted. To add or modify cafes, update the seed data in `prisma/seed.ts` and re-run `npm run db:seed`, or insert records directly into the database. The predefined tags are:
+Cafes are curated, not user-submitted. To add or modify cafes, update the seed data in `prisma/seed.ts` and re-run `npm run db:seed`, or insert records directly into the database.
+
+Predefined tags:
 
 - **Amenities**: wifi, outlets, outdoor_seating, pet_friendly, parking
 - **Vibes**: cozy, study-friendly, quiet, lively, bright, date-spot
