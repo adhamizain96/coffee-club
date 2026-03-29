@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum TagType {
+  AMENITY
+  VIBE
+}
+
+model Cafe {
+  id            String    @id @default(cuid())
+  name          String
+  description   String
+  address       String
+  neighborhood  String
+  latitude      Float
+  longitude     Float
+  imageUrl      String    @map("image_url")
+  ownerReview   String    @map("owner_review")
+  createdAt     DateTime  @default(now()) @map("created_at")
+
+  tags  CafeTag[]
+  notes Note[]
+
+  @@map("cafes")
+}
+
+model Tag {
+  id   String  @id @default(cuid())
+  name String  @unique
+  type TagType
+
+  cafes CafeTag[]
+
+  @@map("tags")
+}
+
+model CafeTag {
+  id     String @id @default(cuid())
+  cafeId String @map("cafe_id")
+  tagId  String @map("tag_id")
+
+  cafe Cafe @relation(fields: [cafeId], references: [id], onDelete: Cascade)
+  tag  Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@unique([cafeId, tagId])
+  @@map("cafe_tags")
+}
+
+model Note {
+  id         String   @id @default(cuid())
+  cafeId     String   @map("cafe_id")
+  content    String   @db.VarChar(500)
+  authorName String?  @map("author_name")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  cafe Cafe @relation(fields: [cafeId], references: [id], onDelete: Cascade)
+
+  @@map("notes")
+}
