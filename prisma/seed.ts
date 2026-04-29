@@ -9,7 +9,10 @@ const connectionString = process.env.SEED_DATABASE_URL ?? process.env.DATABASE_U
 const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 
-// Real cafe images
+// Real cafe images. The first 10 are cafe-specific (matching the original 10 cafes by index).
+// Cafes beyond index 9 reuse these 10 URLs in rotation via modulo — real URLs we know are
+// stable, but not matched to the cafe. Per-cafe images for the new entries should be sourced
+// as a follow-up.
 const CAFE_IMAGES = [
   "https://sprudge.com/wp-content/uploads/2017/03/Sprudge-Metric_Coffee_Exterior_Michael_Light_05.jpg", // Metric
   "https://images.squarespace-cdn.com/content/v1/668bf6b529c84b0af3f577c5/dc0053c3-e872-41de-8bde-1aeb92506092/Sawada-Coffee-10DEC2015-006.jpg", // Sawada
@@ -328,6 +331,457 @@ const cafes: CafeSeed[] = [
       },
     ],
   },
+  // ---------------------------------------------------------------------------
+  // Suburban additions (verified via web search; addresses confirmed open in 2026).
+  // Coordinates are best-knowledge estimates from street addresses — accurate to
+  // the block but should be re-geocoded against Google Maps as a follow-up.
+  // ---------------------------------------------------------------------------
+  {
+    name: "Backlot Coffee",
+    description:
+      "An independent neighborhood coffeehouse and roastery on Central Street in north Evanston, serving locally roasted beans, pastries, breakfast, and lunch.",
+    address: "2006 Central St, Evanston, IL 60201",
+    neighborhood: "Evanston",
+    latitude: 42.0658,
+    longitude: -87.7090,
+    ownerReview:
+      "Backlot is the model for what a neighborhood roaster should be. They roast in-house, the staff knows regulars by name, and the Central Street strip around them has a small-town feel. Solid pour-overs and a tight breakfast/lunch menu that rotates seasonally.",
+    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "laptop_friendly", "full_menu", "moderate_noise", "early_bird"],
+    vibes: ["cozy", "bright", "study-friendly"],
+    notes: [
+      {
+        content: "Their house roast is consistently great. Worth the trip up to Central Street.",
+        authorName: "Sasha",
+      },
+      {
+        content: "Gets busy on weekends but seating turnover is decent. Free street parking nearby.",
+        authorName: null,
+      },
+    ],
+  },
+  {
+    name: "Brothers K Coffeehouse",
+    description:
+      "A south Evanston staple on Main Street with a deep-rooted community feel, named for the Dostoevsky novel and beloved by NU students and locals alike.",
+    address: "500 Main St, Evanston, IL 60202",
+    neighborhood: "Evanston",
+    latitude: 42.0277,
+    longitude: -87.6830,
+    ownerReview:
+      "Brothers K has the lived-in soul of a true neighborhood coffeehouse. Wood-paneled walls, mismatched tables, and a steady mix of students hammering on laptops alongside retirees reading the paper. Coffee is reliable, atmosphere is the draw.",
+    amenities: ["wifi", "outlets", "communal_tables", "couch_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird", "weekend_brunch"],
+    vibes: ["cozy", "study-friendly", "lively"],
+    notes: [
+      {
+        content: "Studied for the bar exam here for three months. Outlets everywhere, and they don't kick you out.",
+        authorName: "Daniel",
+      },
+      {
+        content: "New ownership since late 2024 has kept the vibe intact. Glad they didn't change anything.",
+        authorName: null,
+      },
+    ],
+  },
+  {
+    name: "Newport Coffee House",
+    description:
+      "A downtown Evanston classic on Davis Street, serving Chicago's North Shore since 1992 with single-origin coffees from around the world.",
+    address: "622 Davis St, Evanston, IL 60201",
+    neighborhood: "Evanston",
+    latitude: 42.0461,
+    longitude: -87.6803,
+    ownerReview:
+      "Newport has been on Davis since 1992 and earns it. The bean selection runs deep — they'll grind for whatever brew method you mention — and the room itself feels like a piece of pre-Starbucks coffee history. Easy walking distance from the Davis CTA stop.",
+    amenities: ["wifi", "outlets", "bar_seating", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    vibes: ["cozy", "quiet", "bright"],
+    notes: [
+      {
+        content: "The fact that this place has been here since '92 says everything. Coffee is excellent.",
+        authorName: "Margaret",
+      },
+    ],
+  },
+  {
+    name: "Reprise Coffee Roasters",
+    description:
+      "A specialty roaster's flagship cafe on Main Street in south Evanston, with carefully sourced single-origins and a clean, modern aesthetic.",
+    address: "710 Main St, Evanston, IL 60202",
+    neighborhood: "Evanston",
+    latitude: 42.0277,
+    longitude: -87.6794,
+    ownerReview:
+      "Reprise takes the technical side of coffee seriously without making customers feel like they need a wiki tab open to order. Espresso is dialed in daily, the pour-over menu rotates often, and the room is calm enough to actually focus.",
+    amenities: ["wifi", "outlets", "bar_seating", "laptop_friendly", "pastries_only", "whisper_quiet", "early_bird"],
+    vibes: ["quiet", "bright", "study-friendly"],
+    notes: [
+      {
+        content: "Best espresso in Evanston, full stop. Their decaf is also unusually good.",
+        authorName: "Iris",
+      },
+      {
+        content: "Limited seating but the coffee bar is a great place to chat with the baristas.",
+        authorName: null,
+      },
+    ],
+  },
+  {
+    name: "Central Station Coffee & Tea",
+    description:
+      "A downtown Wilmette cafe on Central Avenue offering espresso, tea, made-from-scratch sandwiches, salads, and quiches near the Metra station.",
+    address: "1150 Central Ave, Wilmette, IL 60091",
+    neighborhood: "Wilmette",
+    latitude: 42.0727,
+    longitude: -87.7233,
+    ownerReview:
+      "Central Station is the village square cafe Wilmette deserves. Coffee, tea, and a real lunch menu — quiches and sandwiches that go beyond the usual pastry case. Steps from the Metra, so it doubles as a commuter pit stop.",
+    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "moderate_noise", "early_bird", "weekend_brunch"],
+    vibes: ["bright", "cozy", "study-friendly"],
+    notes: [
+      {
+        content: "Their quiche is the move. Excellent lunch spot, not just coffee.",
+        authorName: "Patrick",
+      },
+    ],
+  },
+  {
+    name: "Glenview Grind",
+    description:
+      "An independent downtown Glenview shop with a drive-thru, private-label roasted coffee, smoothies, and pastries. Family-owned, not a chain.",
+    address: "1837 Glenview Rd, Glenview, IL 60025",
+    neighborhood: "Glenview",
+    latitude: 42.0795,
+    longitude: -87.8260,
+    ownerReview:
+      "The drive-thru alone makes Glenview Grind a Glenview essential, but the coffee holds up if you stop in. Private-label roasts, gourmet teas, and a bench out front that's the unofficial neighborhood meeting spot on weekend mornings.",
+    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    vibes: ["cozy", "bright"],
+    notes: [
+      {
+        content: "The drive-thru saves my mornings. Coffee is genuinely good, not just convenient.",
+        authorName: "Rachel",
+      },
+    ],
+  },
+  {
+    name: "Bean Bar",
+    description:
+      "A Northbrook coffee bar on Cherry Lane with a warm interior and a focused menu of espresso drinks and pastries.",
+    address: "1901 Cherry Ln, Northbrook, IL 60062",
+    neighborhood: "Northbrook",
+    latitude: 42.1226,
+    longitude: -87.8270,
+    ownerReview:
+      "Bean Bar is the kind of small, well-run shop you wish every suburb had. Espresso is dialed, the room is bright, and the staff treats every drink like it matters. A welcome alternative to the chains that dominate the Edens corridor.",
+    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    vibes: ["bright", "cozy", "study-friendly"],
+    notes: [
+      {
+        content: "Finally, a real coffee shop near me. The cortado is excellent.",
+        authorName: "Eli",
+      },
+    ],
+  },
+  {
+    name: "Complimentary Cafe & Co",
+    description:
+      "A Highland Park spot on St Johns Avenue serving thoughtfully prepared coffee and matcha lattes alongside fresh pastries and savory empanadas.",
+    address: "1700 St Johns Ave, Highland Park, IL 60035",
+    neighborhood: "Highland Park",
+    latitude: 42.1849,
+    longitude: -87.8023,
+    ownerReview:
+      "Complimentary nails the Highland Park brief — polished, generous service, and a menu that goes well past coffee. The empanadas are legitimately a meal, and the matcha is among the better ones on the North Shore.",
+    amenities: ["wifi", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "vegan_options", "moderate_noise", "early_bird", "weekend_brunch"],
+    vibes: ["bright", "date-spot", "cozy"],
+    notes: [
+      {
+        content: "The empanadas are the surprise hit here. Coffee is great too.",
+        authorName: "Noor",
+      },
+    ],
+  },
+  {
+    name: "Harmony Coffee Bar",
+    description:
+      "A modern Highland Park coffee bar on Central Avenue with a clean, minimal aesthetic and carefully sourced espresso drinks.",
+    address: "610 Central Ave Ste 155, Highland Park, IL 60035",
+    neighborhood: "Highland Park",
+    latitude: 42.1867,
+    longitude: -87.8019,
+    ownerReview:
+      "Harmony is the polished, design-forward end of the Highland Park coffee scene. Bright space, attentive baristas, drinks that reward slowing down. Closed Sundays, which is a quirk you learn fast.",
+    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "whisper_quiet", "early_bird"],
+    vibes: ["bright", "quiet", "date-spot"],
+    notes: [
+      {
+        content: "Heads up: closed Sundays. Otherwise a perfect weekday morning stop.",
+        authorName: null,
+      },
+    ],
+  },
+  {
+    name: "Hometown Coffee & Juice",
+    description:
+      "A Lake Forest favorite on Wisconsin Avenue blending a coffee bar with a juice and smoothie program, in the heart of the downtown shopping district.",
+    address: "231 E Wisconsin Ave, Lake Forest, IL 60045",
+    neighborhood: "Lake Forest",
+    latitude: 42.2569,
+    longitude: -87.8398,
+    ownerReview:
+      "Hometown is what makes downtown Lake Forest feel alive on weekday mornings. Half coffee bar, half juice and smoothie counter — the dual menu means it works for whoever you bring with you, and the room is a constant low buzz of regulars.",
+    amenities: ["wifi", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "vegan_options", "full_menu", "moderate_noise", "early_bird"],
+    vibes: ["bright", "lively", "cozy"],
+    notes: [
+      {
+        content: "The acai bowls are fantastic. Coffee is solid too. Best part of downtown LF.",
+        authorName: "Whitney",
+      },
+    ],
+  },
+  {
+    name: "Gerry's Café",
+    description:
+      "A mission-driven Arlington Heights coffee shop staffed by adults with intellectual and developmental disabilities. Excellent coffee with real social impact.",
+    address: "1802 N Arlington Heights Rd, Arlington Heights, IL 60004",
+    neighborhood: "Arlington Heights",
+    latitude: 42.1153,
+    longitude: -87.9803,
+    ownerReview:
+      "Gerry's is special. The staff is built around employing people with intellectual and developmental disabilities, and it shows in every interaction — the place runs on genuine care. The coffee program is no afterthought either: real espresso drinks, real attention to detail.",
+    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "full_menu", "moderate_noise", "early_bird", "weekend_brunch"],
+    vibes: ["bright", "lively", "cozy"],
+    notes: [
+      {
+        content: "The mission alone would bring me back. The coffee is genuinely great too.",
+        authorName: "Theo",
+      },
+      {
+        content: "One of the warmest cafes I've been in. Bring friends.",
+        authorName: null,
+      },
+    ],
+  },
+  {
+    name: "Two Libras Cafe",
+    description:
+      "A small family-owned 'Euro-ish' cafe tucked in a downtown Palatine alleyway, with hot and cold drinks, smoothies, pastries, and French-style sandwiches.",
+    address: "10 N Bothwell St, Palatine, IL 60067",
+    neighborhood: "Palatine",
+    latitude: 42.1110,
+    longitude: -88.0339,
+    ownerReview:
+      "Two Libras feels like stumbling into a hidden cafe in a small European town — except it's a downtown Palatine alley. The 'French-ish' sandwiches are the move at lunch, and the space punches well above its size. Closed Mondays.",
+    amenities: ["wifi", "outdoor_seating", "communal_tables", "laptop_friendly", "full_menu", "moderate_noise", "early_bird", "weekend_brunch"],
+    vibes: ["cozy", "date-spot", "bright"],
+    notes: [
+      {
+        content: "The alley location is a feature, not a bug. Loved finding this place.",
+        authorName: "Mira",
+      },
+      {
+        content: "Closed Mondays — learned the hard way. Otherwise outstanding.",
+        authorName: null,
+      },
+    ],
+  },
+  {
+    name: "Sayfani Coffee House",
+    description:
+      "A community-centered Schaumburg coffee house on Golf Road offering exceptional coffee and tea in a warm, locally-rooted setting.",
+    address: "157 W Golf Rd, Schaumburg, IL 60195",
+    neighborhood: "Schaumburg",
+    latitude: 42.0566,
+    longitude: -88.0828,
+    ownerReview:
+      "Sayfani is the Schaumburg coffee shop that proves you don't have to go to the city to find a real one. Warm room, attentive service, drinks that go beyond the usual suburban-strip-mall coffee. A genuine community spot in a part of the suburbs that doesn't have many.",
+    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    vibes: ["cozy", "bright", "study-friendly"],
+    notes: [
+      {
+        content: "Easy parking and good coffee in Schaumburg is rare. This is my new go-to.",
+        authorName: "Karim",
+      },
+    ],
+  },
+  {
+    name: "Conscious Cup Coffee Roasters",
+    description:
+      "A family-owned Barrington roaster operating since 2006, with a focus on ethically sourced beans and a strong community-roaster identity.",
+    address: "100 E Station St, Barrington, IL 60010",
+    neighborhood: "Barrington",
+    latitude: 42.1531,
+    longitude: -88.1380,
+    ownerReview:
+      "Conscious Cup has been roasting in Barrington since 2006 and the depth shows. The sourcing story is real — they actually talk about the farms — and the Cook Street location is a comfortable place to spend an hour. The retail beans are worth taking home.",
+    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    vibes: ["cozy", "quiet", "bright"],
+    notes: [
+      {
+        content: "Bag of their Ethiopia natural beans is a permanent fixture in my kitchen.",
+        authorName: "Helena",
+      },
+    ],
+  },
+  {
+    name: "Kribi Coffee",
+    description:
+      "An Oak Park roaster sourcing green beans directly from farmers in Cameroon, where the owner is from. Air-roasted, single-origin, with a clear point of view.",
+    address: "1033 South Blvd, Oak Park, IL 60302",
+    neighborhood: "Oak Park",
+    latitude: 41.8745,
+    longitude: -87.7953,
+    ownerReview:
+      "Kribi has one of the clearest origin stories in the Chicago area — owner Jacques Shalo sources green beans directly from Cameroon, and the air-roasting setup gives the cups a distinct profile. Worth a trip even if you're not in Oak Park.",
+    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    vibes: ["bright", "quiet", "study-friendly"],
+    notes: [
+      {
+        content: "The Cameroon single-origin is something you won't find at most shops. Distinct in the best way.",
+        authorName: "Claire",
+      },
+    ],
+  },
+  {
+    name: "Five & Hoek Coffee",
+    description:
+      "A focused take-away coffee bar on Wheaton's Main Street (formerly River City Roasters), serving carefully prepared espresso and brew without any indoor seating distractions.",
+    address: "112 N Main St Unit B, Wheaton, IL 60187",
+    neighborhood: "Wheaton",
+    latitude: 41.8689,
+    longitude: -88.1064,
+    ownerReview:
+      "Five & Hoek (the rebranded River City Roasters) leans hard into the take-away coffee bar concept — no indoor seating, just a clean menu and very dialed-in drinks. If you're a 'order, walk, drink' person, this is the platonic ideal of that experience.",
+    amenities: ["parking", "no_laptops", "pastries_only", "early_bird"],
+    vibes: ["bright"],
+    notes: [
+      {
+        content: "Take-away only, but that's the point. Espresso is consistently dialed.",
+        authorName: null,
+      },
+    ],
+  },
+  {
+    name: "Sparrow Coffee",
+    description:
+      "Sparrow's flagship cafe on the Naperville Riverwalk, a serious roaster's space with seasonal menus and a downtown-Naperville magnetism.",
+    address: "120 Water St Ste 110, Naperville, IL 60540",
+    neighborhood: "Naperville",
+    latitude: 41.7711,
+    longitude: -88.1530,
+    ownerReview:
+      "Sparrow is the cafe that put Naperville on the specialty coffee map. Riverwalk location, design-forward space, and a roasting program that holds up against anything in the city. Get a window seat and a pour-over and stay a while.",
+    amenities: ["wifi", "outdoor_seating", "parking", "bar_seating", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird", "weekend_brunch"],
+    vibes: ["bright", "lively", "date-spot"],
+    notes: [
+      {
+        content: "The Riverwalk location alone is worth the trip. Coffee program is genuinely top-tier.",
+        authorName: "Audrey",
+      },
+      {
+        content: "Crowded on weekend afternoons. Mornings are calmer and the light is great.",
+        authorName: null,
+      },
+    ],
+  },
+  {
+    name: "Café La Fortuna",
+    description:
+      "A Hinsdale coffee shop on Village Place, house-roasting since 2012 and serving as the village's de facto living room.",
+    address: "46 Village Pl, Hinsdale, IL 60521",
+    neighborhood: "Hinsdale",
+    latitude: 41.8014,
+    longitude: -87.9382,
+    ownerReview:
+      "La Fortuna has anchored Hinsdale's coffee scene since 2012 and earned its reputation as the village's living room. House-roasted, community-first, and the kind of place where the regulars greet each other by first name. Comfortable to settle in for an hour or three.",
+    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "couch_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird", "weekend_brunch"],
+    vibes: ["cozy", "study-friendly", "bright"],
+    notes: [
+      {
+        content: "House-roasted and it shows. My favorite stop in Hinsdale by a wide margin.",
+        authorName: "Beatrice",
+      },
+    ],
+  },
+  {
+    name: "Owl & Lark",
+    description:
+      "A La Grange juice and coffee bar with specialty espresso, fresh-squeezed juices, smoothie bowls, and gluten-free baked goods in a cozy downtown setting.",
+    address: "41 S La Grange Rd, La Grange, IL 60525",
+    neighborhood: "La Grange",
+    latitude: 41.8106,
+    longitude: -87.8703,
+    ownerReview:
+      "Owl & Lark hits the wellness-cafe sweet spot without losing the plot on coffee. Smoothie bowls, fresh juices, and a real espresso program — the kind of place where you can grab breakfast with someone who hates coffee and not feel like you compromised.",
+    amenities: ["wifi", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "vegan_options", "moderate_noise", "early_bird", "weekend_brunch"],
+    vibes: ["bright", "cozy", "study-friendly"],
+    notes: [
+      {
+        content: "Gluten-free options that aren't an afterthought. Coffee is a real bonus.",
+        authorName: "Reece",
+      },
+    ],
+  },
+  {
+    name: "Pekoe & Bean",
+    description:
+      "A Tinley Park cafe on Oak Park Avenue offering a strong tea program alongside coffee, in a comfortable south-suburban setting.",
+    address: "17028 Oak Park Ave, Tinley Park, IL 60477",
+    neighborhood: "Tinley Park",
+    latitude: 41.5707,
+    longitude: -87.7895,
+    ownerReview:
+      "Pekoe & Bean leans harder on tea than most cafes around, which makes it a destination for anyone tired of an afterthought tea menu. Coffee is solid too, the room is comfortable, and the south-suburban location fills a gap on the map.",
+    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    vibes: ["cozy", "quiet", "study-friendly"],
+    notes: [
+      {
+        content: "The loose-leaf tea selection is unusually good. Worth the drive if you're a tea person.",
+        authorName: "Janelle",
+      },
+    ],
+  },
+  {
+    name: "Two Mile Coffee Bar",
+    description:
+      "A Beverly community coffee shop on Walden Parkway partnered with Intelligentsia, anchoring the south side coffee scene.",
+    address: "9907 S Walden Pkwy, Chicago, IL 60643",
+    neighborhood: "Beverly",
+    latitude: 41.7115,
+    longitude: -87.6779,
+    ownerReview:
+      "Two Mile is the south-side coffee bar Beverly deserves. Intelligentsia partnership means the espresso is sharp, but the soul of the place is the regulars — kids on the way to school, neighbors meeting up before work, the steady rhythm of a community shop.",
+    amenities: ["wifi", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    vibes: ["cozy", "lively", "bright"],
+    notes: [
+      {
+        content: "Best coffee on the south side. The Walden Parkway location has so much character.",
+        authorName: "Keisha",
+      },
+      {
+        content: "Closed Sundays, but worth working around. The Intelligentsia partnership shows in every cup.",
+        authorName: null,
+      },
+    ],
+  },
+  {
+    name: "Beverly Bakery & Cafe",
+    description:
+      "A family-owned Beverly bakery and roaster on Western Avenue, billed as the only Chicago coffee roaster south of Bridgeport, with 22 coffees by the cup or pound.",
+    address: "10528 S Western Ave, Chicago, IL 60643",
+    neighborhood: "Beverly",
+    latitude: 41.7038,
+    longitude: -87.6829,
+    ownerReview:
+      "Beverly Bakery is two beloved south-side institutions in one — a from-scratch bakery and a small roaster that fills a real gap on the map. They say they're the only Chicago coffee roaster south of Bridgeport and that's not just marketing; the bag selection is genuinely deep.",
+    amenities: ["parking", "communal_tables", "full_menu", "moderate_noise", "early_bird"],
+    vibes: ["cozy", "lively"],
+    notes: [
+      {
+        content: "Coffee AND donuts. They're a roaster too. South side gem.",
+        authorName: "Dominic",
+      },
+    ],
+  },
 ];
 
 async function main() {
@@ -369,7 +823,7 @@ async function main() {
         neighborhood: cafe.neighborhood,
         latitude: cafe.latitude,
         longitude: cafe.longitude,
-        imageUrl: CAFE_IMAGES[i] ?? CAFE_IMAGES[0],
+        imageUrl: CAFE_IMAGES[i % CAFE_IMAGES.length],
         ownerReview: cafe.ownerReview,
         tags: {
           create: [...cafe.amenities, ...cafe.vibes].map((tagName) => ({
