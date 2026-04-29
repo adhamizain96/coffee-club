@@ -170,11 +170,27 @@ coffee-club/
 
 ## Deployment (Vercel)
 
-- Set `DATABASE_URL` in Vercel environment variables pointing to a production PostgreSQL instance (e.g., Neon, Supabase, or Railway). Must be a raw `postgres://` connection string.
-- Set `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` in Vercel — without it the map view won't render. Restrict the production key by HTTP referrer to your Vercel domain(s).
-- `prisma generate` runs automatically during the build via the `postinstall` script.
-- Run `npx prisma db push` against your production database before the first deployment.
-- Optionally seed production with `npm run db:seed`.
+### Environment variables
+
+Set on **Production + Preview + Development** before the first build:
+
+- `DATABASE_URL` — raw `postgres://` connection string with `?sslmode=require`. For providers that expose both a pooled and a direct URL (Neon, Supabase): use the **pooled** URL here. Vercel functions are serverless and will exhaust direct connections under load. The PrismaPg + node-pg combo is safe with PgBouncer transaction-mode pooling because it doesn't use server-side prepared statements.
+- `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` — must be set **before** the first build. `NEXT_PUBLIC_*` vars are inlined into the JS bundle at build time, not read at runtime; adding it after deploy requires a rebuild. The same key is also used **server-side** by `/api/ratings` and the cafe detail page (Place Details lookups), so the key must have **Places API** enabled in addition to Maps JavaScript API. Referrer restrictions don't block server-side calls — set them to `https://*.vercel.app/*` plus any custom domain.
+
+### Initial database setup
+
+Use the **direct** (non-pooled) connection URL for these — `prisma db push` and the seed script need a session-mode connection, not transaction-mode pooling:
+
+```bash
+DATABASE_URL='postgres://...direct-url...?sslmode=require' npx prisma db push
+DATABASE_URL='postgres://...direct-url...?sslmode=require' npm run db:seed
+```
+
+`prisma generate` runs automatically during the Vercel build via the `postinstall` script — no build command override needed.
+
+### Deployment Protection
+
+Vercel enables **Deployment Protection** by default on Hobby projects, gating every deployment behind a Vercel SSO challenge. For a public site, disable it: **Project Settings → Deployment Protection → Vercel Authentication: Disabled**. This is a runtime setting — no redeploy needed.
 
 ## Adding Cafes
 
