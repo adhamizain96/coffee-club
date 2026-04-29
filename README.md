@@ -175,7 +175,7 @@ coffee-club/
 Set on **Production + Preview + Development** before the first build:
 
 - `DATABASE_URL` — raw `postgres://` connection string with `?sslmode=require`. For providers that expose both a pooled and a direct URL (Neon, Supabase): use the **pooled** URL here. Vercel functions are serverless and will exhaust direct connections under load. The PrismaPg + node-pg combo is safe with PgBouncer transaction-mode pooling because it doesn't use server-side prepared statements.
-- `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` — must be set **before** the first build. `NEXT_PUBLIC_*` vars are inlined into the JS bundle at build time, not read at runtime; adding it after deploy requires a rebuild. The same key is also used **server-side** by `/api/ratings` and the cafe detail page (Place Details lookups), so the key must have **Places API** enabled in addition to Maps JavaScript API. Referrer restrictions don't block server-side calls — set them to `https://*.vercel.app/*` plus any custom domain.
+- `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` — must be set **before** the first build. `NEXT_PUBLIC_*` vars are inlined into the JS bundle at build time, not read at runtime; adding it after deploy requires a rebuild. The same key is also used **server-side** by `/api/ratings` and the cafe detail page (Place Details lookups), so the key must have **Places API** enabled in addition to Maps JavaScript API. Referrer restrictions don't block server-side calls — set the primary referrer to `https://coffee-club.dev/*` and add `https://*.vercel.app/*` as a preview/fallback referrer.
 
 ### Initial database setup
 
