@@ -72,19 +72,51 @@ Priorities, in order:
 - **Filtering logic**: Amenities use AND (cafe must have all selected), vibes use OR (cafe must have at least one selected).
 - **No auth**: No authentication system. Notes are anonymous (optional name field only). Cafes are curated/owner-controlled.
 
+## Seed File Conventions (`prisma/seed.ts`)
+
+- 32 cafes total: indexes 0–9 are the original Chicago entries, 10–31 are Chicagoland suburban additions.
+- `imageUrl` is matched to the cafe **by position** in `CAFE_IMAGES`. Adding a cafe to `cafes` means adding its image URL to `CAFE_IMAGES` at the same index.
+- Photos must be real images of the actual cafe — official site, official Instagram, or a reputable publication. Verify HTTP 200 + image content-type before commit. No stock images, no Yelp/Google user uploads, no AI-generated images.
+- Cafes must be real, currently operating businesses. Verify before adding. Do not fabricate names, addresses, or coordinates.
+- Coordinates: do not estimate by eye. Run `npx tsx scripts/geocode-cafes.ts` after adding entries — it overwrites lat/lng in place using the Google Maps Geocoding API and prints a delta table.
+
+## Local Dev Workflow
+
+Three terminals:
+
+| # | Command | Notes |
+|---|---|---|
+| 1 | `npx prisma dev` | Local PostgreSQL — long-running. Print connection URL goes into `.env`. |
+| 2 | `npx prisma db push` then `npm run db:seed` | One-time per setup, plus whenever the schema or seed changes. |
+| 3 | `npm run dev` | Next.js dev server — long-running. |
+
+**Shutdown order**: stop Terminal 3 first, then Terminal 1. Always Ctrl+C — never close the window. Wrong order causes EBUSY on the next `npx prisma dev` because the durable-streams SQLite handle isn't released cleanly.
+
+**EBUSY recovery on Windows**: run `.\scripts\dev-reset.ps1`. It surgically stops project-tied node processes (filters by command-line match — never blanket-kills `node.exe`) and removes the stale `durable-streams\default` folder. The main `.pglite` data is preserved.
+
+**Defender exclusion** (recommended, requires admin): adding the Prisma data dir to Defender exclusions reduces transient EBUSY caused by real-time scanning during file unlinks.
+
+```powershell
+Add-MpPreference -ExclusionPath "$env:LOCALAPPDATA\prisma-dev-nodejs"
+```
+
 ## Commands
 
 ```bash
-npx prisma dev          # Start local PostgreSQL (must be running before dev server)
-npm run dev             # Start Next.js dev server
-npm run db:push         # Push schema to database
-npm run db:seed         # Seed database with sample data
-npx prisma generate     # Regenerate Prisma client
-npm run build           # Production build
-npm run lint            # Run ESLint
+npx prisma dev                       # Start local PostgreSQL (Terminal 1, must run before dev server)
+npm run dev                          # Start Next.js dev server (Terminal 3)
+npm run db:push                      # Push schema to database
+npm run db:seed                      # Seed 32 cafes, tags, notes (wipes existing rows first)
+npx prisma generate                  # Regenerate Prisma client
+npm run build                        # Production build
+npm run lint                         # Run ESLint
+npx tsx scripts/geocode-cafes.ts     # Re-geocode all cafes; rewrites lat/lng in seed.ts in place
+.\scripts\dev-reset.ps1              # (Windows) recover from prisma dev EBUSY
 ```
 
 ## Environment Variables
 
-- `DATABASE_URL` — Raw PostgreSQL connection string (used by the app and seed script)
-- `PRISMA_PROXY_URL` — Prisma dev proxy URL (used by `prisma.config.ts` for CLI operations)
+- `DATABASE_URL` — Raw `postgres://` connection string. Used by the app (PrismaPg adapter) and the seed script.
+- `PRISMA_PROXY_URL` — `prisma+postgres://` proxy URL printed by `npx prisma dev`. Used by `prisma.config.ts` for `db push` and migrations.
+- `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` — Maps JavaScript API key for the map view, and the Geocoding API for `scripts/geocode-cafes.ts`. The geocode script needs an unrestricted or IP-restricted key; referrer-only browser keys fail server-side with `REQUEST_DENIED`.
+- `SEED_DATABASE_URL` *(optional)* — Override for the seed script when `DATABASE_URL` doesn't point at a direct PG connection. Falls back to `DATABASE_URL`.
