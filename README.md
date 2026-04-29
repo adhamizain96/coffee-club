@@ -79,6 +79,27 @@ You need two terminals running simultaneously, plus one for ad hoc commands:
 | 2 | `npm run dev` | Next.js dev server |
 | 3 | (ad hoc) | `db push`, `db:seed`, etc. |
 
+### Troubleshooting: `EBUSY` on `npx prisma dev`
+
+If `npx prisma dev` fails with:
+
+```
+ERROR  EBUSY: resource busy or locked, unlink
+  '...\prisma-dev-nodejs\Data\durable-streams\default\durable-streams.sqlite-shm'
+```
+
+A previous Prisma dev process did not release its handle on the durable-streams SQLite files. This is most likely after a hard kill (Ctrl+C during a write, closing the terminal, sleep/wake) and is occasionally amplified by Defender briefly opening the file for real-time scanning during the unlink.
+
+**Shutdown order to prevent it**: stop `npm run dev` first (Terminal 3), then `npx prisma dev` (Terminal 1). Always Ctrl+C — never just close the window.
+
+**One-step recovery**:
+
+```powershell
+.\scripts\dev-reset.ps1
+```
+
+The script surgically stops project-tied node processes (it never blanket-kills `node.exe`), removes the stale `durable-streams\default` folder, and prints the restart sequence. The main PostgreSQL data in `...\prisma-dev-nodejs\Data\default\.pglite` is left alone, so re-seeding is optional.
+
 ## Project Structure
 
 ```
