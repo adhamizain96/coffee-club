@@ -20,6 +20,8 @@ interface CafeMapLoaderProps {
   panTarget: { lat: number; lng: number; zoom: number } | null;
   controlBarSlot?: React.ReactNode;
   ratings?: RatingsMap;
+  onMapClick?: () => void;
+  mobileSheetSnap?: number | string | null;
 }
 
 export default function CafeMapLoader({
@@ -29,6 +31,8 @@ export default function CafeMapLoader({
   panTarget,
   controlBarSlot,
   ratings,
+  onMapClick,
+  mobileSheetSnap,
 }: CafeMapLoaderProps) {
   return (
     <CafeMapInner
@@ -38,6 +42,8 @@ export default function CafeMapLoader({
       panTarget={panTarget}
       controlBarSlot={controlBarSlot}
       ratings={ratings}
+      onMapClick={onMapClick}
+      mobileSheetSnap={mobileSheetSnap}
     />
   );
 }

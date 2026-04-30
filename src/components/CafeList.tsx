@@ -8,19 +8,28 @@ import type { RatingsMap } from "@/app/HomeContent";
 interface CafeListProps {
   cafes: CafeListItem[];
   selectedCafeId?: string | null;
+  mode?: "pan" | "navigate";
   onCardClick?: (cafeId: string) => void;
+  onPinClick?: (cafeId: string) => void;
   ratings?: RatingsMap;
 }
 
-export default function CafeList({ cafes, selectedCafeId, onCardClick, ratings }: CafeListProps) {
-  const cardRefs = useRef<Map<string, React.RefObject<HTMLAnchorElement | null>>>(
+export default function CafeList({
+  cafes,
+  selectedCafeId,
+  mode,
+  onCardClick,
+  onPinClick,
+  ratings,
+}: CafeListProps) {
+  const cardRefs = useRef<Map<string, React.RefObject<HTMLDivElement | null>>>(
     new Map()
   );
 
   // Ensure refs exist for all current cafes
   for (const cafe of cafes) {
     if (!cardRefs.current.has(cafe.id)) {
-      cardRefs.current.set(cafe.id, createRef<HTMLAnchorElement>());
+      cardRefs.current.set(cafe.id, createRef<HTMLDivElement>());
     }
   }
 
@@ -28,7 +37,7 @@ export default function CafeList({ cafes, selectedCafeId, onCardClick, ratings }
     if (selectedCafeId) {
       const ref = cardRefs.current.get(selectedCafeId);
       if (ref?.current) {
-        ref.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
   }, [selectedCafeId]);
@@ -60,7 +69,9 @@ export default function CafeList({ cafes, selectedCafeId, onCardClick, ratings }
           description={cafe.description}
           tags={cafe.tags}
           isHighlighted={cafe.id === selectedCafeId}
+          mode={mode}
           onCardClick={onCardClick}
+          onPinClick={onPinClick}
           rating={ratings?.[cafe.id]?.rating ?? null}
         />
       ))}

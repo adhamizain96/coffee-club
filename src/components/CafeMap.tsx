@@ -12,6 +12,17 @@ import type { RatingsMap } from "@/app/HomeContent";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 
 // ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+/** Convert a vaul snap value to a CSS length for use in `calc(...)`. */
+function snapToCss(snap: number | string | null | undefined): string {
+  if (typeof snap === "number") return `${snap * 100}svh`;
+  if (typeof snap === "string") return snap;
+  return "15svh"; // fallback to peek
+}
+
+// ---------------------------------------------------------------------------
 // Sub-components
 // ---------------------------------------------------------------------------
 
@@ -41,19 +52,27 @@ function ZoomControls() {
   );
 }
 
-/** Custom map type toggle */
-function MapTypeToggle() {
+/** Applies the current map type id to the Google map instance. */
+function MapTypeSync({ isSatellite }: { isSatellite: boolean }) {
   const map = useMap();
-  const [isSatellite, setIsSatellite] = useState(false);
+  useEffect(() => {
+    map?.setMapTypeId(isSatellite ? "satellite" : "roadmap");
+  }, [map, isSatellite]);
+  return null;
+}
 
+/** Desktop map type toggle — labelled pill */
+function MapTypeToggle({
+  isSatellite,
+  onToggle,
+}: {
+  isSatellite: boolean;
+  onToggle: () => void;
+}) {
   return (
     <button
       type="button"
-      onClick={() => {
-        const next = !isSatellite;
-        setIsSatellite(next);
-        map?.setMapTypeId(next ? "satellite" : "roadmap");
-      }}
+      onClick={onToggle}
       className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-sm font-medium shadow-lg transition-all duration-200 ${
         isSatellite
           ? "bg-stone-900 text-white hover:bg-stone-800"
@@ -101,7 +120,7 @@ function CafePin({ highlighted }: { highlighted?: boolean }) {
 
   return (
     <div
-      className={`transition-transform duration-200 ${
+      className={`transition-transform duration-200 motion-reduce:transition-none ${
         highlighted ? "scale-110 -translate-y-1" : ""
       }`}
       style={{ filter: highlighted ? "drop-shadow(0 4px 8px rgba(180,83,9,0.35))" : "drop-shadow(0 2px 4px rgba(0,0,0,0.2))" }}
@@ -226,7 +245,7 @@ function ClusteredMarkers({
           style={{ transform: "translate(0, -60px)" }}
         >
           <div
-            className="w-[280px] rounded-2xl bg-white shadow-2xl border border-stone-200/60 overflow-hidden"
+            className="hidden lg:block w-[280px] rounded-2xl bg-white shadow-2xl border border-stone-200/60 overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Close button */}
@@ -307,9 +326,17 @@ export interface CafeMapProps {
   selectedCafeId: string | null;
   onMarkerClick: (cafeId: string) => void;
   panTarget: { lat: number; lng: number; zoom: number } | null;
-  /** Slot for the filter panel — rendered in the top control bar alongside zoom/map-type */
+  /** Slot for the filter panel — rendered in the desktop top control bar alongside zoom/map-type */
   controlBarSlot?: React.ReactNode;
   ratings?: RatingsMap;
+  /** Fired when the user taps the map background (no marker hit). */
+  onMapClick?: () => void;
+  /**
+   * Active vaul sheet snap point on mobile (number 0–1 = svh fraction, string = px).
+   * Drives the bottom offset of the mobile control cluster so it sits just above
+   * the sheet's top edge at every snap.
+   */
+  mobileSheetSnap?: number | string | null;
 }
 
 export default function CafeMapInner({
@@ -319,11 +346,18 @@ export default function CafeMapInner({
   panTarget,
   controlBarSlot,
   ratings,
+  onMapClick,
+  mobileSheetSnap,
 }: CafeMapProps) {
   const [infoCafe, setInfoCafe] = useState<CafeListItem | null>(null);
   const [userLocation, setUserLocation] = useState<google.maps.LatLngLiteral | null>(null);
   const [geoError, setGeoError] = useState<string | null>(null);
   const [locating, setLocating] = useState(false);
+  const [isSatellite, setIsSatellite] = useState(false);
+
+  const handleToggleSatellite = useCallback(() => {
+    setIsSatellite((prev) => !prev);
+  }, []);
 
   const handleMarkerClick = useCallback(
     (cafe: CafeListItem) => {
@@ -386,8 +420,10 @@ export default function CafeMapInner({
           gestureHandling="greedy"
           disableDefaultUI
           className="h-full w-full"
+          onClick={onMapClick}
         >
           <MapController target={effectivePanTarget} />
+          <MapTypeSync isSatellite={isSatellite} />
           <ClusteredMarkers
             cafes={cafes}
             selectedCafeId={selectedCafeId}
@@ -399,19 +435,19 @@ export default function CafeMapInner({
           {userLocation && <UserLocationMarker position={userLocation} />}
         </Map>
 
-        {/* Top control bar — filters, zoom, map type all in one row */}
-        <div className="absolute top-3 left-3 z-10 flex items-start gap-2">
+        {/* Desktop top control bar — filters, zoom, map type. Hidden below lg. */}
+        <div className="absolute top-3 left-3 z-10 hidden lg:flex items-start gap-2">
           {controlBarSlot}
           <ZoomControls />
-          <MapTypeToggle />
+          <MapTypeToggle isSatellite={isSatellite} onToggle={handleToggleSatellite} />
         </div>
 
-        {/* Near Me button — bottom center, styled to match */}
+        {/* Desktop Near Me button — bottom center. Hidden below lg. */}
         <button
           type="button"
           onClick={handleNearMe}
           disabled={locating}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 inline-flex items-center gap-2 rounded-xl bg-white/95 backdrop-blur-md border border-stone-200/60 px-4 py-2.5 text-sm font-medium text-stone-700 shadow-lg hover:bg-white hover:shadow-xl transition-all duration-200 disabled:opacity-50"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 hidden lg:inline-flex items-center gap-2 rounded-xl bg-white/95 backdrop-blur-md border border-stone-200/60 px-4 py-2.5 text-sm font-medium text-stone-700 shadow-lg hover:bg-white hover:shadow-xl transition-all duration-200 disabled:opacity-50"
         >
           <svg
             className={`h-4 w-4 ${locating ? "animate-pulse text-blue-500" : "text-stone-500"}`}
@@ -425,6 +461,47 @@ export default function CafeMapInner({
           </svg>
           {locating ? "Locating..." : "Near Me"}
         </button>
+
+        {/* Mobile floating control cluster — bottom-right, slides with the sheet edge. */}
+        <div
+          className="lg:hidden absolute right-3 z-10 flex flex-col gap-2 transition-[bottom] duration-300 ease-out motion-reduce:transition-none"
+          style={{ bottom: `calc(${snapToCss(mobileSheetSnap)} + 12px)` }}
+        >
+          <button
+            type="button"
+            onClick={handleToggleSatellite}
+            aria-pressed={isSatellite}
+            aria-label={isSatellite ? "Show map view" : "Show satellite view"}
+            className={`h-11 w-11 flex items-center justify-center rounded-xl shadow-lg transition-all duration-200 ${
+              isSatellite
+                ? "bg-stone-900 text-white hover:bg-stone-800"
+                : "bg-white/95 backdrop-blur-md text-stone-700 border border-stone-200/60 hover:bg-white"
+            }`}
+          >
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleNearMe}
+            disabled={locating}
+            aria-label={locating ? "Locating" : "Show my location"}
+            className="h-11 w-11 flex items-center justify-center rounded-xl bg-white/95 backdrop-blur-md border border-stone-200/60 text-stone-700 shadow-lg hover:bg-white hover:shadow-xl transition-all duration-200 disabled:opacity-50"
+          >
+            <svg
+              className={`h-5 w-5 ${locating ? "animate-pulse text-blue-500" : "text-stone-600"}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+            >
+              <circle cx="12" cy="12" r="3" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v3m0 14v3m10-10h-3M5 12H2" />
+            </svg>
+          </button>
+        </div>
 
         {/* Geo error toast */}
         {geoError && (

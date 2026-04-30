@@ -54,6 +54,12 @@ interface FilterPanelProps {
   selectedVibes: string[];
   onAmenitiesChange: (amenities: string[]) => void;
   onVibesChange: (vibes: string[]) => void;
+  /**
+   * Where to anchor the dropdown panel relative to the trigger button.
+   * - undefined (default): renders in normal flow under the button (desktop legacy behavior)
+   * - "right": absolute, right-aligned to the trigger (mobile floating header)
+   */
+  dropdownAlign?: "right";
 }
 
 function ToggleChip({
@@ -115,6 +121,7 @@ export default function FilterPanel({
   selectedVibes,
   onAmenitiesChange,
   onVibesChange,
+  dropdownAlign,
 }: FilterPanelProps) {
   const [open, setOpen] = useState(false);
 
@@ -142,7 +149,7 @@ export default function FilterPanel({
   }
 
   return (
-    <div>
+    <div className={dropdownAlign === "right" ? "relative" : undefined}>
       {/* Toggle button */}
       <button
         type="button"
@@ -180,7 +187,11 @@ export default function FilterPanel({
 
       {/* Expandable filter dropdown */}
       {open && (
-        <div className="mt-2 rounded-2xl bg-white/95 backdrop-blur-md border border-stone-200/60 p-4 shadow-2xl w-72 max-h-[65vh] overflow-y-auto">
+        <div
+          className={`mt-2 rounded-2xl bg-white/95 backdrop-blur-md border border-stone-200/60 p-4 shadow-2xl w-72 max-h-[65vh] overflow-y-auto ${
+            dropdownAlign === "right" ? "absolute right-0 top-full" : ""
+          }`}
+        >
           <div className="space-y-3.5">
             <div className="flex items-center justify-between">
               <span className="text-sm font-semibold text-stone-900">
