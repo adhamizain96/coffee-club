@@ -12,6 +12,12 @@ enum TagType {
   VIBE
 }
 
+enum SubmissionStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
 model Cafe {
   id            String    @id @default(cuid())
   name          String
@@ -23,9 +29,12 @@ model Cafe {
   imageUrl      String    @map("image_url")
   ownerReview   String    @map("owner_review")
   createdAt     DateTime  @default(now()) @map("created_at")
+  submitterName String?   @map("submitter_name")
+  addedAt       DateTime? @map("added_at")
 
-  tags  CafeTag[]
-  notes Note[]
+  tags        CafeTag[]
+  notes       Note[]
+  submissions CafeSubmission[]
 
   @@map("cafes")
 }
@@ -62,4 +71,26 @@ model Note {
   cafe Cafe @relation(fields: [cafeId], references: [id], onDelete: Cascade)
 
   @@map("notes")
+}
+
+model CafeSubmission {
+  id                String           @id @default(cuid())
+  cafeName          String           @map("cafe_name")
+  address           String
+  normalizedAddress String           @map("normalized_address")
+  website           String
+  whyYouLikeIt      String?          @map("why_you_like_it") @db.VarChar(280)
+  suggestedTagIds   String[]         @map("suggested_tag_ids")
+  submitterName     String           @map("submitter_name")
+  status            SubmissionStatus @default(PENDING)
+  createdAt         DateTime         @default(now()) @map("created_at")
+  reviewedAt        DateTime?        @map("reviewed_at")
+  rejectionReason   String?          @map("rejection_reason")
+  approvedCafeId    String?          @map("approved_cafe_id")
+
+  approvedCafe Cafe? @relation(fields: [approvedCafeId], references: [id], onDelete: SetNull)
+
+  @@index([status, createdAt])
+  @@index([normalizedAddress])
+  @@map("cafe_submissions")
 }

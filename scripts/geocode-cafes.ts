@@ -15,12 +15,12 @@ import "dotenv/config";
 import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import { fileURLToPath } from "node:url";
+import { geocodeAddress } from "../src/lib/geocode";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
-if (!apiKey) {
+if (!process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY) {
   console.error("NEXT_PUBLIC_GOOGLE_MAPS_API_KEY missing in .env");
   process.exit(1);
 }
@@ -71,41 +71,6 @@ function parseCafes(src: string): ParsedCafe[] {
   return out;
 }
 
-async function geocode(address: string): Promise<{
-  lat: number;
-  lng: number;
-  locationType: string;
-  formattedAddress: string;
-}> {
-  const url =
-    "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-    encodeURIComponent(address) +
-    "&key=" +
-    apiKey;
-  const res = await fetch(url);
-  const data = (await res.json()) as {
-    status: string;
-    error_message?: string;
-    results?: Array<{
-      formatted_address: string;
-      geometry: {
-        location: { lat: number; lng: number };
-        location_type: string;
-      };
-    }>;
-  };
-  if (data.status !== "OK" || !data.results?.length) {
-    throw new Error(`${data.status}${data.error_message ? ": " + data.error_message : ""}`);
-  }
-  const r = data.results[0];
-  return {
-    lat: r.geometry.location.lat,
-    lng: r.geometry.location.lng,
-    locationType: r.geometry.location_type,
-    formattedAddress: r.formatted_address,
-  };
-}
-
 function escapeRegex(s: string): string {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
@@ -138,7 +103,8 @@ async function main() {
   for (const cafe of cafes) {
     process.stdout.write(`  ${cafe.name.padEnd(36)} ... `);
     try {
-      const g = await geocode(cafe.address);
+      const g = await geocodeAddress(cafe.address);
+      if (!g) throw new Error("ZERO_RESULTS");
       const deltaMeters = haversineMeters(cafe.oldLat, cafe.oldLng, g.lat, g.lng);
       results.push({
         ...cafe,
