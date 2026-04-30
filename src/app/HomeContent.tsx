@@ -113,24 +113,24 @@ export default function HomeContent({ cafes }: HomeContentProps) {
       </div>
 
       {/* ===== Mobile (below lg): floating header + bottom sheet ===== */}
-      <div className="lg:hidden absolute top-3 left-3 right-3 z-30 flex items-start gap-2">
-        <div className="flex items-center gap-2.5 min-w-0 flex-1 rounded-xl bg-white/95 backdrop-blur-md border border-stone-200/60 shadow-lg px-3 py-2">
-          <div className="flex items-center justify-center h-7 w-7 rounded-lg bg-amber-100 shrink-0">
-            <svg className="h-3.5 w-3.5 text-amber-700" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M2 21V17H4V10C4 7.83 4.87 5.93 6.26 4.57L7.67 5.98C6.63 7 6 8.42 6 10V17H11V3H13V7H18C19.1 7 20 7.9 20 9V12C20 13.1 19.1 14 18 14H13V17H18V21H2ZM13 12H18V9H13V12Z" />
-            </svg>
-          </div>
-          <h1 className="text-sm font-semibold tracking-tight text-stone-900 truncate">
+      <div className="lg:hidden absolute top-3 left-3 right-3 z-30">
+        <div className="max-w-md mx-auto flex items-center justify-between gap-2">
+          <h1 className="inline-flex items-center gap-2 rounded-xl bg-white/95 backdrop-blur-md border border-stone-200/60 shadow-lg px-3.5 py-2 text-sm font-semibold tracking-tight text-stone-900">
+            <span className="flex items-center justify-center h-5 w-5 rounded-md bg-amber-100 shrink-0">
+              <svg className="h-3 w-3 text-amber-700" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M2 21V17H4V10C4 7.83 4.87 5.93 6.26 4.57L7.67 5.98C6.63 7 6 8.42 6 10V17H11V3H13V7H18C19.1 7 20 7.9 20 9V12C20 13.1 19.1 14 18 14H13V17H18V21H2ZM13 12H18V9H13V12Z" />
+              </svg>
+            </span>
             Coffee Club
           </h1>
+          <FilterPanel
+            selectedAmenities={selectedAmenities}
+            selectedVibes={selectedVibes}
+            onAmenitiesChange={setSelectedAmenities}
+            onVibesChange={setSelectedVibes}
+            dropdownAlign="right"
+          />
         </div>
-        <FilterPanel
-          selectedAmenities={selectedAmenities}
-          selectedVibes={selectedVibes}
-          onAmenitiesChange={setSelectedAmenities}
-          onVibesChange={setSelectedVibes}
-          dropdownAlign="right"
-        />
       </div>
 
       <div className="lg:hidden">
