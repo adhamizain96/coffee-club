@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import { IosInstallHint } from "@/components/IosInstallHint";
 
 const geistSans = Geist({
@@ -51,6 +52,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <main className="flex-1">{children}</main>
         <IosInstallHint />
+        <Analytics />
       </body>
     </html>
   );
