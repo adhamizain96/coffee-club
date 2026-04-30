@@ -104,6 +104,12 @@ export default async function CafeDetailPage({
         </Link>
         <span className="text-sm text-gray-300">|</span>
         <span className="text-sm font-bold tracking-tight text-amber-700">Coffee Club</span>
+        <Link
+          href="/submit"
+          className="ml-auto text-sm font-medium text-amber-700 hover:text-amber-800 transition-colors"
+        >
+          Suggest a cafe →
+        </Link>
       </div>
 
       {/* Hero image */}
@@ -132,6 +138,22 @@ export default async function CafeDetailPage({
           )}
         </div>
         <p className="mt-0.5 text-sm text-gray-400">{cafe.address}</p>
+
+        {(cafe.submitterName || cafe.addedAt) && (
+          <p className="mt-1 text-xs text-gray-400">
+            {cafe.submitterName && <>Suggested by {cafe.submitterName}</>}
+            {cafe.submitterName && cafe.addedAt && <span className="mx-1.5">·</span>}
+            {cafe.addedAt && (
+              <>
+                Added{" "}
+                {new Intl.DateTimeFormat("en-US", {
+                  month: "long",
+                  year: "numeric",
+                }).format(cafe.addedAt)}
+              </>
+            )}
+          </p>
+        )}
 
         {/* Tags */}
         {tags.length > 0 && (

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+import Link from "next/link";
 import { Drawer } from "vaul";
 import type { CafeListItem } from "@/lib/types";
 import { useCafes } from "@/hooks/useCafes";
@@ -123,6 +124,16 @@ export default function HomeContent({ cafes }: HomeContentProps) {
             </span>
             Coffee Club
           </h1>
+          <Link
+            href="/submit"
+            className="inline-flex items-center gap-1 rounded-xl bg-amber-600 hover:bg-amber-700 text-white shadow-lg px-3 py-2 text-sm font-medium transition-colors"
+            aria-label="Suggest a cafe"
+          >
+            <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            Suggest
+          </Link>
           <FilterPanel
             selectedAmenities={selectedAmenities}
             selectedVibes={selectedVibes}
@@ -191,8 +202,14 @@ export default function HomeContent({ cafes }: HomeContentProps) {
                   Coffee Club
                 </h1>
                 <p className="text-xs text-stone-400 leading-tight">
-                  Chicagoland cafe discovery
+                  Curated by Zain. Suggested by you.
                 </p>
+                <Link
+                  href="/submit"
+                  className="inline-block mt-1 text-xs font-medium text-amber-700 hover:text-amber-800 transition-colors"
+                >
+                  Suggest a cafe →
+                </Link>
               </div>
             </div>
             <div className="flex items-center justify-between mt-3 pt-3 border-t border-stone-100">
