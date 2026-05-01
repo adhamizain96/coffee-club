@@ -1,53 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const CORE_AMENITY_TAGS = [
-  { value: "wifi", label: "WiFi" },
-  { value: "outlets", label: "Outlets" },
-  { value: "outdoor_seating", label: "Outdoor" },
-  { value: "pet_friendly", label: "Pets OK" },
-  { value: "parking", label: "Parking" },
-] as const;
-
-const SEATING_TAGS = [
-  { value: "bar_seating", label: "Bar" },
-  { value: "communal_tables", label: "Communal" },
-  { value: "couch_seating", label: "Couches" },
-] as const;
-
-const WORK_TAGS = [
-  { value: "laptop_friendly", label: "Laptops" },
-  { value: "meeting_space", label: "Meetings" },
-  { value: "no_laptops", label: "No Laptops" },
-] as const;
-
-const FOOD_TAGS = [
-  { value: "full_menu", label: "Full Menu" },
-  { value: "pastries_only", label: "Pastries" },
-  { value: "vegan_options", label: "Vegan" },
-] as const;
-
-const NOISE_TAGS = [
-  { value: "whisper_quiet", label: "Quiet" },
-  { value: "moderate_noise", label: "Moderate" },
-  { value: "bustling", label: "Bustling" },
-] as const;
-
-const HOURS_TAGS = [
-  { value: "early_bird", label: "Early Bird" },
-  { value: "late_night", label: "Late Night" },
-  { value: "weekend_brunch", label: "Brunch" },
-] as const;
-
-const VIBE_TAGS = [
-  { value: "cozy", label: "Cozy" },
-  { value: "study-friendly", label: "Study" },
-  { value: "quiet", label: "Quiet" },
-  { value: "lively", label: "Lively" },
-  { value: "bright", label: "Bright" },
-  { value: "date-spot", label: "Date Spot" },
-] as const;
+import { TAG_CATEGORIES } from "@/lib/tag-display";
 
 interface FilterPanelProps {
   selectedAmenities: string[];
@@ -93,7 +47,7 @@ function FilterGroup({
   onToggle,
 }: {
   title: string;
-  tags: ReadonlyArray<{ value: string; label: string }>;
+  tags: ReadonlyArray<{ name: string; label: string }>;
   selected: string[];
   onToggle: (value: string) => void;
 }) {
@@ -105,10 +59,10 @@ function FilterGroup({
       <div className="flex flex-wrap gap-1.5">
         {tags.map((tag) => (
           <ToggleChip
-            key={tag.value}
+            key={tag.name}
             label={tag.label}
-            selected={selected.includes(tag.value)}
-            onClick={() => onToggle(tag.value)}
+            selected={selected.includes(tag.name)}
+            onClick={() => onToggle(tag.name)}
           />
         ))}
       </div>
@@ -210,51 +164,22 @@ export default function FilterPanel({
 
             <div className="h-px bg-stone-100" />
 
-            <FilterGroup
-              title="Amenities"
-              tags={CORE_AMENITY_TAGS}
-              selected={selectedAmenities}
-              onToggle={toggleAmenity}
-            />
-            <FilterGroup
-              title="Seating"
-              tags={SEATING_TAGS}
-              selected={selectedAmenities}
-              onToggle={toggleAmenity}
-            />
-            <FilterGroup
-              title="Work"
-              tags={WORK_TAGS}
-              selected={selectedAmenities}
-              onToggle={toggleAmenity}
-            />
-            <FilterGroup
-              title="Food"
-              tags={FOOD_TAGS}
-              selected={selectedAmenities}
-              onToggle={toggleAmenity}
-            />
-            <FilterGroup
-              title="Noise"
-              tags={NOISE_TAGS}
-              selected={selectedAmenities}
-              onToggle={toggleAmenity}
-            />
-            <FilterGroup
-              title="Hours"
-              tags={HOURS_TAGS}
-              selected={selectedAmenities}
-              onToggle={toggleAmenity}
-            />
-
-            <div className="h-px bg-stone-100" />
-
-            <FilterGroup
-              title="Vibes"
-              tags={VIBE_TAGS}
-              selected={selectedVibes}
-              onToggle={toggleVibe}
-            />
+            {TAG_CATEGORIES.map((cat, i) => {
+              const prev = TAG_CATEGORIES[i - 1];
+              const needsDivider = prev && prev.kind === "AMENITY" && cat.kind === "VIBE";
+              const isVibe = cat.kind === "VIBE";
+              return (
+                <div key={cat.title}>
+                  {needsDivider && <div className="h-px bg-stone-100 mb-3.5" />}
+                  <FilterGroup
+                    title={cat.title}
+                    tags={cat.tags}
+                    selected={isVibe ? selectedVibes : selectedAmenities}
+                    onToggle={isVibe ? toggleVibe : toggleAmenity}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

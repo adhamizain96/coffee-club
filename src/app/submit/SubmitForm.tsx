@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import type { TagDTO } from "@/lib/types";
+import { TAG_CATEGORIES, type TagDisplay } from "@/lib/tag-display";
 
 const CAFE_NAME_MAX = 100;
 const ADDRESS_MAX = 200;
@@ -10,11 +10,11 @@ const WHY_MAX = 280;
 const SUBMITTER_NAME_MAX = 50;
 
 interface SubmitFormProps {
-  amenities: TagDTO[];
-  vibes: TagDTO[];
+  /** Map of DB Tag.name → Tag.id, fetched server-side. */
+  tagsByName: Record<string, string>;
 }
 
-export default function SubmitForm({ amenities, vibes }: SubmitFormProps) {
+export default function SubmitForm({ tagsByName }: SubmitFormProps) {
   const router = useRouter();
 
   const [cafeName, setCafeName] = useState("");
@@ -214,23 +214,26 @@ export default function SubmitForm({ amenities, vibes }: SubmitFormProps) {
           <span className="text-gray-400 font-normal">(optional)</span>
         </span>
 
-        <TagGroup
-          title="Amenities"
-          tags={amenities}
-          selected={selectedTagIds}
-          onToggle={toggleTag}
-          disabled={submitting}
-        />
-
-        <div className="h-px bg-stone-100 my-3" />
-
-        <TagGroup
-          title="Vibes"
-          tags={vibes}
-          selected={selectedTagIds}
-          onToggle={toggleTag}
-          disabled={submitting}
-        />
+        <div className="space-y-3">
+          {TAG_CATEGORIES.map((cat, i) => {
+            const prev = TAG_CATEGORIES[i - 1];
+            const needsDivider =
+              prev && prev.kind === "AMENITY" && cat.kind === "VIBE";
+            return (
+              <div key={cat.title}>
+                {needsDivider && <div className="h-px bg-stone-100 my-3" />}
+                <TagGroup
+                  title={cat.title}
+                  tags={cat.tags}
+                  tagsByName={tagsByName}
+                  selected={selectedTagIds}
+                  onToggle={toggleTag}
+                  disabled={submitting}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       <Field
@@ -314,23 +317,33 @@ function Field({
 function TagGroup({
   title,
   tags,
+  tagsByName,
   selected,
   onToggle,
   disabled,
 }: {
   title: string;
-  tags: TagDTO[];
+  tags: ReadonlyArray<TagDisplay>;
+  tagsByName: Record<string, string>;
   selected: Set<string>;
   onToggle: (id: string) => void;
   disabled: boolean;
 }) {
+  // Skip helper entries with no matching DB row, so dev-state drift can't crash
+  // the form. The mapped array stays in display order from TAG_CATEGORIES.
+  const renderable = tags
+    .map((t) => ({ id: tagsByName[t.name], label: t.label }))
+    .filter((t): t is { id: string; label: string } => Boolean(t.id));
+
+  if (renderable.length === 0) return null;
+
   return (
     <div>
-      <p className="text-xs font-semibold text-stone-500 uppercase tracking-wide mb-2">
+      <h3 className="text-[10px] font-semibold text-stone-400 uppercase tracking-widest mb-1.5">
         {title}
-      </p>
+      </h3>
       <div className="flex flex-wrap gap-1.5">
-        {tags.map((tag) => {
+        {renderable.map((tag) => {
           const isSelected = selected.has(tag.id);
           return (
             <button
@@ -344,7 +357,7 @@ function TagGroup({
                   : "bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-800"
               }`}
             >
-              {tag.name}
+              {tag.label}
             </button>
           );
         })}

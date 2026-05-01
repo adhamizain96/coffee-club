@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
-import type { TagDTO } from "@/lib/types";
 import SubmitForm from "./SubmitForm";
 
 export const dynamic = "force-dynamic";
@@ -13,13 +12,10 @@ export const metadata: Metadata = {
 };
 
 export default async function SubmitPage() {
-  const tags = await prisma.tag.findMany({ orderBy: { name: "asc" } });
-  const amenities: TagDTO[] = tags
-    .filter((t) => t.type === "AMENITY")
-    .map((t) => ({ id: t.id, name: t.name, type: t.type }));
-  const vibes: TagDTO[] = tags
-    .filter((t) => t.type === "VIBE")
-    .map((t) => ({ id: t.id, name: t.name, type: t.type }));
+  const tags = await prisma.tag.findMany({ select: { id: true, name: true } });
+  const tagsByName: Record<string, string> = Object.fromEntries(
+    tags.map((t) => [t.name, t.id])
+  );
 
   return (
     <div>
@@ -103,7 +99,7 @@ export default async function SubmitPage() {
         </p>
 
         <div className="mt-8">
-          <SubmitForm amenities={amenities} vibes={vibes} />
+          <SubmitForm tagsByName={tagsByName} />
         </div>
       </div>
     </div>
