@@ -397,16 +397,30 @@ export default function CafeMapInner({
     zoom: number;
   } | null>(null);
 
-  useEffect(() => {
+  // Adjust userPanTarget when either source prop changes. Done during render
+  // (with prev-value tracking) instead of in useEffect — React explicitly
+  // sanctions this for "derive state from prop changes" cases, and avoids
+  // the cascading-render hit that effect-driven setState produces.
+  // https://react.dev/reference/react/useState#storing-information-from-previous-renders
+  const [prevUserLocation, setPrevUserLocation] = useState(userLocation);
+  if (userLocation !== prevUserLocation) {
+    setPrevUserLocation(userLocation);
     if (userLocation) {
-      setUserPanTarget({ lat: userLocation.lat, lng: userLocation.lng, zoom: 14 });
+      setUserPanTarget({
+        lat: userLocation.lat,
+        lng: userLocation.lng,
+        zoom: 14,
+      });
     }
-  }, [userLocation]);
+  }
+
+  const [prevPanTarget, setPrevPanTarget] = useState(panTarget);
+  if (panTarget !== prevPanTarget) {
+    setPrevPanTarget(panTarget);
+    if (panTarget) setUserPanTarget(null);
+  }
 
   const effectivePanTarget = userPanTarget ?? panTarget;
-  useEffect(() => {
-    if (panTarget) setUserPanTarget(null);
-  }, [panTarget]);
 
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
 

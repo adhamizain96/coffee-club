@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useRef, createRef } from "react";
 import CafeCard from "./CafeCard";
 import type { CafeListItem } from "@/lib/types";
 import type { RatingsMap } from "@/app/HomeContent";
@@ -22,26 +21,6 @@ export default function CafeList({
   onPinClick,
   ratings,
 }: CafeListProps) {
-  const cardRefs = useRef<Map<string, React.RefObject<HTMLDivElement | null>>>(
-    new Map()
-  );
-
-  // Ensure refs exist for all current cafes
-  for (const cafe of cafes) {
-    if (!cardRefs.current.has(cafe.id)) {
-      cardRefs.current.set(cafe.id, createRef<HTMLDivElement>());
-    }
-  }
-
-  useEffect(() => {
-    if (selectedCafeId) {
-      const ref = cardRefs.current.get(selectedCafeId);
-      if (ref?.current) {
-        ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
-  }, [selectedCafeId]);
-
   if (cafes.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center py-12 text-center px-4">
@@ -61,7 +40,6 @@ export default function CafeList({
       {cafes.map((cafe) => (
         <CafeCard
           key={cafe.id}
-          ref={cardRefs.current.get(cafe.id)}
           id={cafe.id}
           name={cafe.name}
           neighborhood={cafe.neighborhood}

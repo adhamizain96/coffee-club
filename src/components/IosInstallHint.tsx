@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 const DISMISS_KEY = "coffee-club:ios-install-dismissed";
 
@@ -13,26 +13,45 @@ const DISMISS_KEY = "coffee-club:ios-install-dismissed";
  *  - userAgent looks like iPhone / iPad / iPod
  *  - app is NOT already running in standalone
  *  - user has not previously dismissed (localStorage flag)
+ *
+ * Implementation note: the banner reads mutable browser state (userAgent,
+ * matchMedia, localStorage) that doesn't exist server-side. `useSyncExternalStore`
+ * is React's blessed primitive for that — `getServerSnapshot` returns false so
+ * the SSR/hydration pass renders nothing and matches; the post-hydration render
+ * then switches to `getSnapshot` and shows the banner if eligible. No
+ * setState-in-effect, no hydration mismatch.
  */
+
+const subscribers = new Set<() => void>();
+
+function subscribe(callback: () => void): () => void {
+  subscribers.add(callback);
+  return () => {
+    subscribers.delete(callback);
+  };
+}
+
+function notify(): void {
+  for (const cb of subscribers) cb();
+}
+
+function getSnapshot(): boolean {
+  if (typeof window === "undefined") return false;
+  const ua = window.navigator.userAgent;
+  if (!/iPhone|iPad|iPod/.test(ua)) return false;
+  const standalone =
+    window.matchMedia?.("(display-mode: standalone)").matches ||
+    (window.navigator as Navigator & { standalone?: boolean }).standalone === true;
+  if (standalone) return false;
+  return window.localStorage.getItem(DISMISS_KEY) !== "1";
+}
+
+function getServerSnapshot(): boolean {
+  return false;
+}
+
 export function IosInstallHint() {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const ua = window.navigator.userAgent;
-    const isIos = /iPhone|iPad|iPod/.test(ua);
-    if (!isIos) return;
-
-    const standalone =
-      window.matchMedia?.("(display-mode: standalone)").matches ||
-      (window.navigator as Navigator & { standalone?: boolean }).standalone === true;
-    if (standalone) return;
-
-    if (window.localStorage.getItem(DISMISS_KEY) === "1") return;
-
-    setShow(true);
-  }, []);
+  const show = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const dismiss = () => {
     try {
@@ -40,7 +59,7 @@ export function IosInstallHint() {
     } catch {
       // localStorage unavailable in some private modes — degrade silently
     }
-    setShow(false);
+    notify();
   };
 
   if (!show) return null;

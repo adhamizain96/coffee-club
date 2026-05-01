@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
 import TagBadge from "./TagBadge";
 import type { TagDTO } from "@/lib/types";
@@ -22,22 +22,29 @@ interface CafeCardProps {
   rating?: number | null;
 }
 
-const CafeCard = forwardRef<HTMLDivElement, CafeCardProps>(function CafeCard(
-  {
-    id,
-    name,
-    neighborhood,
-    imageUrl,
-    description,
-    tags,
-    isHighlighted,
-    mode = "pan",
-    onCardClick,
-    onPinClick,
-    rating,
-  },
-  ref
-) {
+export default function CafeCard({
+  id,
+  name,
+  neighborhood,
+  imageUrl,
+  description,
+  tags,
+  isHighlighted,
+  mode = "pan",
+  onCardClick,
+  onPinClick,
+  rating,
+}: CafeCardProps) {
+  // Self-scroll into view when this card becomes the highlighted one. This
+  // owns the scroll behavior locally instead of having the parent juggle a
+  // ref-per-card map (which trips react-hooks/refs on render).
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (isHighlighted) {
+      ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [isHighlighted]);
+
   return (
     <div
       ref={ref}
@@ -130,6 +137,4 @@ const CafeCard = forwardRef<HTMLDivElement, CafeCardProps>(function CafeCard(
       )}
     </div>
   );
-});
-
-export default CafeCard;
+}
