@@ -75,7 +75,7 @@ export default function CafeCard({
 
         <div className="p-3.5">
           <div className="flex items-center justify-between gap-2">
-            <h3 className="text-sm font-semibold text-stone-900 group-hover:text-amber-800 transition-colors line-clamp-1 leading-tight">
+            <h3 className="font-serif text-sm font-semibold text-stone-900 group-hover:text-amber-800 transition-colors line-clamp-1 leading-tight">
               {name}
             </h3>
             {rating != null && (
