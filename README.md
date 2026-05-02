@@ -219,7 +219,7 @@ No email is collected and no notifications are sent — submitters re-check the 
 
 ### Curator flow (`/admin/submissions`)
 
-Every `/admin/*` and `/api/admin/*` route is gated by [`src/proxy.ts`](src/proxy.ts) (Next 16 Proxy), which verifies an HMAC-signed cookie. `/admin/login` and `/api/admin/login` always pass through, so you can never lock yourself out.
+Every `/admin/*` and `/api/admin/*` route is gated by [`src/proxy.ts`](src/proxy.ts) (Next 16 Proxy), which verifies an HMAC-signed cookie. Three paths always pass through: `/admin/login` and `/api/admin/login` so you can't lock yourself out, and `/api/admin/logout` so it stays idempotent — clicking it with an expired/missing cookie still clears the browser cookie and redirects to `/admin/login` instead of returning 401.
 
 #### 1. Sign in
 
@@ -305,6 +305,12 @@ DATABASE_URL='postgres://...direct-url...?sslmode=require' npm run db:seed
 ```
 
 `prisma generate` runs automatically during the Vercel build via `postinstall`. No build command override needed.
+
+### Known limitations
+
+- **`/cafes/<bad-id>` returns HTTP 200, not 404.** The not-found UI from `src/app/not-found.tsx` renders correctly and Next.js injects `<meta name="robots" content="noindex">`, but the response status stays 200. This is documented Next.js 16 behavior for streamed responses (see `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/not-found.md`: *"Next.js will return a `200` HTTP status code for streamed responses, and `404` for non-streamed responses"*). Search engines respect the `noindex` meta, so SEO is unaffected; only programmatic clients that key off the status code are.
+- **In-memory rate limiter** (`src/lib/rate-limit.ts`) and **Google Places cache** (`src/lib/google-places.ts`) are per-process. Each Vercel function invocation may land in a fresh process, so rate-limit budgets reset between cold starts and the cache amortizes only within a warm function. For higher traffic, swap in a Redis-backed limiter.
+- **Submission rate-limit keys on `x-forwarded-for`** with a fallback bucket of `"unknown"`. Behind Vercel the header is set, so this is fine in production. Direct (no-proxy) traffic all collapses into the `unknown` bucket and a single bad actor can starve everyone.
 
 ### Deployment Protection
 

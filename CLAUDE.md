@@ -74,13 +74,19 @@ Priorities, in order:
 - **Admin gate** — `src/proxy.ts` (Next 16 Proxy) gates `/admin/*` and `/api/admin/*`:
   - HMAC-signed cookie verified in `src/lib/admin-auth.ts`.
   - `ADMIN_PASSWORD` is both the login password **and** the HMAC signing secret — rotating it logs out every active session.
-  - `/admin/login` and `/api/admin/login` always bypass the gate so the admin can't get locked out.
+  - Bypass list (`PROXY_BYPASS_PATHS`): `/admin/login`, `/api/admin/login`, `/api/admin/logout`. Login bypasses so the admin can't lock themselves out; logout bypasses so it stays idempotent — clicking it with an expired/missing cookie still clears the cookie and redirects to `/admin/login` instead of returning 401.
 - **Submission → cafe approval** — `POST /api/admin/submissions/[id]/approve` runs one atomic transaction:
   - Latches the submission `PENDING → APPROVED` via `updateMany` (race-safe against double-approval).
   - Creates the `Cafe` with `submitterName` and `addedAt` backfilled from the submission.
   - Inserts `CafeTag` rows for the chosen tags.
   - Backlinks `submission.approvedCafeId → cafe.id`.
   - The edit page (`/admin/submissions/[id]/edit`) pre-fills from the submission plus a server-side Google geocode (`src/lib/geocode.ts`). New cafes appear on the public site immediately — no rebuild required.
+
+## Known Behaviors
+
+- **`/cafes/<bad-id>` returns HTTP 200 + the not-found UI, not 404.** Reproduces in production builds. The `notFound()` call in `src/app/cafes/[id]/page.tsx` renders `src/app/not-found.tsx` and Next.js injects `<meta name="robots" content="noindex">`, but the response status stays 200. This is documented Next.js 16 behavior for streamed responses (see `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/not-found.md`). Search engines respect the noindex; only programmatic clients keying off the status code are affected. Don't "fix" without checking whether a refactor away from streamed rendering is justified.
+- **Rate limiter and Google Places cache are per-process** (`src/lib/rate-limit.ts`, `src/lib/google-places.ts`). Per Vercel function instance, so budgets/cache reset across cold starts. Acceptable for current traffic; swap in Redis if scale demands it.
+- **Honeypot path still increments the rate-limit counter.** `POST /api/submissions` runs `rateLimit()` *before* the honeypot check, so bots tripping the honeypot also burn into their per-IP budget. Intentional — bots should not get unlimited free attempts.
 
 ## Seed File Conventions (`prisma/seed.ts`)
 
@@ -123,6 +129,14 @@ npm run lint                         # Run ESLint
 npx tsx scripts/geocode-cafes.ts     # Re-geocode all cafes; rewrites lat/lng in seed.ts in place
 .\scripts\dev-reset.ps1              # (Windows) recover from prisma dev EBUSY
 ```
+
+## Validation Quick-Reference
+
+Run before push, in this order:
+
+1. `npm run lint` — Vercel runs lint, `next build` does not. Currently 4 known `<img>` warnings (cafe images come from external URLs and are intentionally not run through `next/image`); 0 errors expected.
+2. `npm run build` — verifies TypeScript + production bundle.
+3. End-to-end smoke (with `npx prisma dev` + `npm run dev` running): hit `/`, `/submit`, `/admin/login`, `/api/cafes`, `/api/cafes?amenities=wifi&vibes=cozy`, `/api/ratings`. Confirm admin gate (no cookie → 307 for pages, 401 for non-bypass APIs; logout always 303 to `/admin/login`).
 
 ## Environment Variables
 
