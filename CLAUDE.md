@@ -70,7 +70,9 @@ Priorities, in order:
 - **Generated client**: Import from `@/generated/prisma/client`, not `@prisma/client`. Output is at `src/generated/prisma/`.
 - **Seed script**: Uses `SEED_DATABASE_URL` (falls back to `DATABASE_URL`) because seeding runs via `tsx` outside the Prisma proxy and needs a direct PostgreSQL connection.
 - **Filtering logic**: Amenities use AND (cafe must have all selected), vibes use OR (cafe must have at least one selected).
-- **No auth**: No authentication system. Notes are anonymous (optional name field only). Cafes are curated/owner-controlled.
+- **Public site is unauthenticated**: notes are anonymous (optional name field only). Public cafe submissions at `/submit` write to `CafeSubmission` (status `PENDING`) — they do *not* create `Cafe` rows directly.
+- **Admin gate**: `/admin/*` and `/api/admin/*` are gated by `src/proxy.ts` (Next 16 Proxy) using an HMAC-signed cookie verified in `src/lib/admin-auth.ts`. `ADMIN_PASSWORD` is both the login password and the HMAC signing secret — rotating it logs out every active session. `/admin/login` and `/api/admin/login` always bypass the gate so the admin can't get locked out.
+- **Submission → cafe approval**: `/admin/submissions/[id]/edit` pre-fills from the submission plus a server-side Google geocode (`src/lib/geocode.ts`). `POST /api/admin/submissions/[id]/approve` runs an atomic transaction: latches the submission `PENDING → APPROVED` via `updateMany` (race-safe), creates the `Cafe` with `submitterName`/`addedAt` backfilled, inserts `CafeTag` rows, and backlinks `approvedCafeId`. New cafes appear on the public site immediately — no rebuild required.
 
 ## Seed File Conventions (`prisma/seed.ts`)
 
@@ -118,5 +120,6 @@ npx tsx scripts/geocode-cafes.ts     # Re-geocode all cafes; rewrites lat/lng in
 
 - `DATABASE_URL` — Raw `postgres://` connection string. Used by the app (PrismaPg adapter) and the seed script.
 - `PRISMA_PROXY_URL` — `prisma+postgres://` proxy URL printed by `npx prisma dev`. Used by `prisma.config.ts` for `db push` and migrations.
-- `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` — Maps JavaScript API key for the map view, and the Geocoding API for `scripts/geocode-cafes.ts`. The geocode script needs an unrestricted or IP-restricted key; referrer-only browser keys fail server-side with `REQUEST_DENIED`.
+- `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` — Maps JavaScript API key for the map view, the Geocoding API for `scripts/geocode-cafes.ts`, and the server-side geocode in the admin approval flow (`src/lib/geocode.ts`). Needs an unrestricted or IP-restricted key; referrer-only browser keys fail server-side with `REQUEST_DENIED`.
+- `ADMIN_PASSWORD` — Password for `/admin/login`. Doubles as the HMAC signing secret for the admin session cookie, so rotating it logs out every active session. Admin routes 401/redirect cleanly when unset, so builds without it still succeed.
 - `SEED_DATABASE_URL` *(optional)* — Override for the seed script when `DATABASE_URL` doesn't point at a direct PG connection. Falls back to `DATABASE_URL`.
