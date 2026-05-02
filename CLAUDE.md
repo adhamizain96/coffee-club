@@ -65,14 +65,22 @@ Priorities, in order:
 
 ## Architecture Notes
 
-- **Prisma v7**: DB connection URL is configured in `prisma.config.ts`, not in `schema.prisma`. The `datasource` block in the schema has no `url` field.
-- **PrismaPg adapter**: The app uses `@prisma/adapter-pg` which requires a raw `postgres://` connection string. The `prisma+postgres://` proxy URL only works for Prisma CLI operations (migrations, db push).
-- **Generated client**: Import from `@/generated/prisma/client`, not `@prisma/client`. Output is at `src/generated/prisma/`.
-- **Seed script**: Uses `SEED_DATABASE_URL` (falls back to `DATABASE_URL`) because seeding runs via `tsx` outside the Prisma proxy and needs a direct PostgreSQL connection.
-- **Filtering logic**: Amenities use AND (cafe must have all selected), vibes use OR (cafe must have at least one selected).
-- **Public site is unauthenticated**: notes are anonymous (optional name field only). Public cafe submissions at `/submit` write to `CafeSubmission` (status `PENDING`) — they do *not* create `Cafe` rows directly.
-- **Admin gate**: `/admin/*` and `/api/admin/*` are gated by `src/proxy.ts` (Next 16 Proxy) using an HMAC-signed cookie verified in `src/lib/admin-auth.ts`. `ADMIN_PASSWORD` is both the login password and the HMAC signing secret — rotating it logs out every active session. `/admin/login` and `/api/admin/login` always bypass the gate so the admin can't get locked out.
-- **Submission → cafe approval**: `/admin/submissions/[id]/edit` pre-fills from the submission plus a server-side Google geocode (`src/lib/geocode.ts`). `POST /api/admin/submissions/[id]/approve` runs an atomic transaction: latches the submission `PENDING → APPROVED` via `updateMany` (race-safe), creates the `Cafe` with `submitterName`/`addedAt` backfilled, inserts `CafeTag` rows, and backlinks `approvedCafeId`. New cafes appear on the public site immediately — no rebuild required.
+- **Prisma v7** — DB connection URL is configured in `prisma.config.ts`, not in `schema.prisma`. The `datasource` block in the schema has no `url` field.
+- **PrismaPg adapter** — The app uses `@prisma/adapter-pg`, which requires a raw `postgres://` connection string. The `prisma+postgres://` proxy URL only works for Prisma CLI operations (migrations, `db push`).
+- **Generated client** — Import from `@/generated/prisma/client`, not `@prisma/client`. Output is at `src/generated/prisma/`.
+- **Seed script** — Uses `SEED_DATABASE_URL` (falls back to `DATABASE_URL`) because seeding runs via `tsx` outside the Prisma proxy and needs a direct PostgreSQL connection.
+- **Filtering logic** — Amenities use **AND** (cafe must have all selected); vibes use **OR** (cafe must have at least one selected).
+- **Public site is unauthenticated** — Notes are anonymous (optional name field only). Public cafe submissions at `/submit` write to `CafeSubmission` with `status = PENDING`; they do *not* create `Cafe` rows directly.
+- **Admin gate** — `src/proxy.ts` (Next 16 Proxy) gates `/admin/*` and `/api/admin/*`:
+  - HMAC-signed cookie verified in `src/lib/admin-auth.ts`.
+  - `ADMIN_PASSWORD` is both the login password **and** the HMAC signing secret — rotating it logs out every active session.
+  - `/admin/login` and `/api/admin/login` always bypass the gate so the admin can't get locked out.
+- **Submission → cafe approval** — `POST /api/admin/submissions/[id]/approve` runs one atomic transaction:
+  - Latches the submission `PENDING → APPROVED` via `updateMany` (race-safe against double-approval).
+  - Creates the `Cafe` with `submitterName` and `addedAt` backfilled from the submission.
+  - Inserts `CafeTag` rows for the chosen tags.
+  - Backlinks `submission.approvedCafeId → cafe.id`.
+  - The edit page (`/admin/submissions/[id]/edit`) pre-fills from the submission plus a server-side Google geocode (`src/lib/geocode.ts`). New cafes appear on the public site immediately — no rebuild required.
 
 ## Seed File Conventions (`prisma/seed.ts`)
 
