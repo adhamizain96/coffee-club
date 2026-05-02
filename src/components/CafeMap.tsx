@@ -75,7 +75,7 @@ function MapTypeToggle({
       onClick={onToggle}
       className={`inline-flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-sm font-medium shadow-lg transition-all duration-200 ${
         isSatellite
-          ? "bg-amber-700 text-white hover:bg-amber-800"
+          ? "bg-stone-900 text-white hover:bg-stone-800"
           : "bg-white/95 backdrop-blur-md text-stone-700 border border-stone-200/60 hover:bg-white"
       }`}
     >

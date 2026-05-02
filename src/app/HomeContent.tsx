@@ -198,7 +198,7 @@ export default function HomeContent({ cafes }: HomeContentProps) {
                 </svg>
               </div>
               <div>
-                <h1 className="font-serif text-base font-bold tracking-tight text-stone-900">
+                <h1 className="text-base font-bold tracking-tight text-stone-900">
                   Coffee Club
                 </h1>
                 <p className="text-xs text-stone-400 leading-tight">

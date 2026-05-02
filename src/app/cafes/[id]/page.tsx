@@ -92,17 +92,17 @@ export default async function CafeDetailPage({
       </div>
 
       {/* Desktop (lg+): original sticky bar — preserved */}
-      <div className="hidden lg:flex sticky top-0 z-40 bg-white/80 backdrop-blur-sm border-b border-stone-200 px-4 sm:px-6 lg:px-8 py-3 items-center gap-3">
+      <div className="hidden lg:flex sticky top-0 z-40 bg-white/80 backdrop-blur-sm border-b border-gray-200 px-4 sm:px-6 lg:px-8 py-3 items-center gap-3">
         <Link
           href="/"
-          className="inline-flex items-center gap-1 text-sm font-medium text-stone-600 hover:text-amber-700 transition-colors"
+          className="inline-flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-amber-700 transition-colors"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
           </svg>
           Back to map
         </Link>
-        <span className="text-sm text-stone-300">|</span>
+        <span className="text-sm text-gray-300">|</span>
         <span className="text-sm font-bold tracking-tight text-amber-700">Coffee Club</span>
         <Link
           href="/submit"
@@ -113,7 +113,7 @@ export default async function CafeDetailPage({
       </div>
 
       {/* Hero image */}
-      <div className="w-full h-64 sm:h-80 md:h-96 bg-stone-200 overflow-hidden">
+      <div className="w-full h-64 sm:h-80 md:h-96 bg-gray-200 overflow-hidden">
         <img
           src={cafe.imageUrl}
           alt={cafe.name}
@@ -123,11 +123,11 @@ export default async function CafeDetailPage({
 
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-8">
         {/* Cafe info */}
-        <h1 className="font-serif text-2xl font-bold text-stone-900 sm:text-3xl">
+        <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
           {cafe.name}
         </h1>
         <div className="mt-1 flex items-center gap-3">
-          <p className="text-stone-500">{cafe.neighborhood}</p>
+          <p className="text-gray-500">{cafe.neighborhood}</p>
           {placeData.rating && (
             <span className="inline-flex items-center gap-1 text-sm font-medium text-amber-700 bg-amber-50 rounded-full px-2.5 py-0.5">
               <svg className="h-3.5 w-3.5 text-amber-400" viewBox="0 0 20 20" fill="currentColor">
@@ -137,10 +137,10 @@ export default async function CafeDetailPage({
             </span>
           )}
         </div>
-        <p className="mt-0.5 text-sm text-stone-400">{cafe.address}</p>
+        <p className="mt-0.5 text-sm text-gray-400">{cafe.address}</p>
 
         {(cafe.submitterName || cafe.addedAt) && (
-          <p className="mt-1 text-xs text-stone-400">
+          <p className="mt-1 text-xs text-gray-400">
             {cafe.submitterName && <>Suggested by {cafe.submitterName}</>}
             {cafe.submitterName && cafe.addedAt && <span className="mx-1.5">·</span>}
             {cafe.addedAt && (
@@ -165,17 +165,17 @@ export default async function CafeDetailPage({
         )}
 
         {/* Description */}
-        <p className="mt-6 text-stone-700 leading-relaxed">
+        <p className="mt-6 text-gray-700 leading-relaxed">
           {cafe.description}
         </p>
 
         {/* Owner review */}
         <section className="mt-8">
-          <h2 className="font-serif text-lg font-semibold text-stone-900 mb-3">
+          <h2 className="text-lg font-semibold text-gray-900 mb-3">
             Curator&apos;s Note
           </h2>
           <div className="rounded-xl bg-amber-50 border border-amber-100 p-5">
-            <p className="text-stone-800 leading-relaxed italic">
+            <p className="text-gray-800 leading-relaxed italic">
               &ldquo;{cafe.ownerReview}&rdquo;
             </p>
           </div>
