@@ -44,6 +44,12 @@ model Cafe {
   status        CafeStatus? @default(OPEN)
   /// When the curator last visited. Null for cafes added from research only.
   curatorVisitedAt DateTime? @map("curator_visited_at")
+  /// Weekly hours JSON (src/lib/hours.ts). Null means "hours not listed".
+  hours          Json?
+  /// When the hours were last checked against hoursSourceUrl. Shown to users.
+  hoursCheckedAt DateTime? @map("hours_checked_at")
+  hoursSourceUrl String?   @map("hours_source_url")
+  website        String?
 
   tags        CafeTag[]
   notes       Note[]

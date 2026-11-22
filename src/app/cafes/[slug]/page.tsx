@@ -7,6 +7,8 @@ import TagBadge from "@/components/TagBadge";
 import CafeImage from "@/components/CafeImage";
 import FreshnessBadges from "@/components/FreshnessBadges";
 import { formatVisited, isNewCafe, normalizeStatus, STATUS_LABELS } from "@/lib/freshness";
+import CafeHours from "@/components/CafeHours";
+import { parseWeeklyHours } from "@/lib/hours";
 import CafeDetailNotes from "./CafeDetailNotes";
 
 export const dynamic = "force-dynamic";
@@ -165,6 +167,14 @@ export default async function CafeDetailPage({
             ))}
           </div>
         )}
+
+        <CafeHours
+          hours={status === "OPEN" ? parseWeeklyHours(cafe.hours) : null}
+          checkedAt={cafe.hoursCheckedAt}
+          sourceUrl={cafe.hoursSourceUrl}
+          website={cafe.website}
+          closed={status !== "OPEN"}
+        />
 
         {/* Description */}
         <p className="mt-6 text-gray-700 leading-relaxed">

@@ -5,6 +5,9 @@ import { useRouter } from "next/navigation";
 import { TAG_CATEGORIES } from "@/lib/tag-display";
 import type { GeocodeResult } from "@/lib/geocode";
 import { Field, TagGroup, adminInputClass } from "../AdminFormParts";
+import { DAY_KEYS, DAY_LABELS, type DayKey } from "@/lib/hours";
+
+const EMPTY_WEEK: Record<DayKey, string> = { mon: "", tue: "", wed: "", thu: "", fri: "", sat: "", sun: "" };
 
 export interface CafeFormValues {
   name: string;
@@ -19,6 +22,11 @@ export interface CafeFormValues {
   status: "OPEN" | "TEMPORARILY_CLOSED" | "CLOSED";
   /** YYYY-MM-DD or "". */
   curatorVisitedAt: string;
+  /** Per-day admin text ("7:00-15:00" / "closed"), or null for "hours not listed". */
+  hours: Record<DayKey, string> | null;
+  hoursCheckedAt: string;
+  hoursSourceUrl: string;
+  website: string;
 }
 
 interface CafeFormProps {
@@ -49,6 +57,11 @@ export default function CafeForm({ cafeId, slug, initial, tagsByName }: CafeForm
   const [selectedTagIds, setSelectedTagIds] = useState<Set<string>>(new Set(initial.tagIds));
   const [status, setStatus] = useState(initial.status);
   const [curatorVisitedAt, setCuratorVisitedAt] = useState(initial.curatorVisitedAt);
+  const [hoursListed, setHoursListed] = useState(initial.hours !== null);
+  const [hoursText, setHoursText] = useState<Record<DayKey, string>>(initial.hours ?? EMPTY_WEEK);
+  const [hoursCheckedAt, setHoursCheckedAt] = useState(initial.hoursCheckedAt);
+  const [hoursSourceUrl, setHoursSourceUrl] = useState(initial.hoursSourceUrl);
+  const [website, setWebsite] = useState(initial.website);
 
   const [geocoding, setGeocoding] = useState(false);
   const [geocodeNote, setGeocodeNote] = useState<string | null>(null);
@@ -118,6 +131,10 @@ export default function CafeForm({ cafeId, slug, initial, tagsByName }: CafeForm
           tagIds: Array.from(selectedTagIds),
           status,
           curatorVisitedAt,
+          hours: hoursListed ? hoursText : null,
+          hoursCheckedAt,
+          hoursSourceUrl,
+          website,
         }),
       });
       const data = await res.json().catch(() => null);
@@ -234,6 +251,48 @@ export default function CafeForm({ cafeId, slug, initial, tagsByName }: CafeForm
           />
         </Field>
       </div>
+
+      <Field id="website" label="Website (optional)" error={errors.website}>
+        <input id="website" type="url" value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="https://…" className={adminInputClass} disabled={disabled} />
+      </Field>
+
+      <fieldset className="rounded-lg border border-stone-200 p-4 space-y-3">
+        <legend className="px-1 text-sm font-medium text-gray-700">Hours (Chicago time)</legend>
+        <label className="flex items-center gap-2 text-sm text-stone-700">
+          <input type="checkbox" checked={hoursListed} onChange={(e) => setHoursListed(e.target.checked)} disabled={disabled} />
+          Hours are listed (uncheck to show &ldquo;Hours not listed&rdquo;)
+        </label>
+        {hoursListed && (
+          <>
+            <p className="text-xs text-stone-500">24-hour times, e.g. <code>7:00-15:00</code>, comma-separate split shifts, or <code>closed</code>. A close time earlier than the open time runs past midnight.</p>
+            <div className="grid gap-2 sm:grid-cols-2">
+              {DAY_KEYS.map((day) => (
+                <label key={day} className="flex items-center gap-2">
+                  <span className="w-10 text-xs font-semibold text-stone-500">{DAY_LABELS[day]}</span>
+                  <input
+                    type="text"
+                    value={hoursText[day]}
+                    onChange={(e) => setHoursText((prev) => ({ ...prev, [day]: e.target.value }))}
+                    placeholder="closed"
+                    className={adminInputClass}
+                    disabled={disabled}
+                    aria-label={`${DAY_LABELS[day]} hours`}
+                  />
+                </label>
+              ))}
+            </div>
+            {errors.hours && <p className="text-xs text-red-600">{errors.hours}</p>}
+            <div className="grid gap-3 sm:grid-cols-2">
+              <Field id="hoursCheckedAt" label="Hours checked on" error={errors.hoursCheckedAt}>
+                <input id="hoursCheckedAt" type="date" value={hoursCheckedAt} onChange={(e) => setHoursCheckedAt(e.target.value)} className={adminInputClass} disabled={disabled} />
+              </Field>
+              <Field id="hoursSourceUrl" label="Hours source URL" error={errors.hoursSourceUrl}>
+                <input id="hoursSourceUrl" type="url" value={hoursSourceUrl} onChange={(e) => setHoursSourceUrl(e.target.value)} placeholder="https://…" className={adminInputClass} disabled={disabled} />
+              </Field>
+            </div>
+          </>
+        )}
+      </fieldset>
 
       <Field id="ownerReview" label="Curator's note" error={errors.ownerReview}>
         <textarea id="ownerReview" rows={4} value={ownerReview} onChange={(e) => setOwnerReview(e.target.value)} className={`${adminInputClass} resize-y`} disabled={disabled} />

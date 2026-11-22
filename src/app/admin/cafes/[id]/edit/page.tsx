@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import AdminHeader from "../../../AdminHeader";
 import CafeForm from "../../CafeForm";
+import { DAY_KEYS, dayText, parseWeeklyHours, type DayKey } from "@/lib/hours";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +21,7 @@ export default async function EditCafePage({ params }: { params: Promise<{ id: s
   ]);
   if (!cafe) notFound();
   const tagsByName = Object.fromEntries(tags.map((t) => [t.name, t.id]));
+  const hours = parseWeeklyHours(cafe.hours);
 
   return (
     <div className="min-h-screen bg-stone-50">
@@ -45,6 +47,10 @@ export default async function EditCafePage({ params }: { params: Promise<{ id: s
             tagIds: cafe.tags.map((t) => t.tagId),
             status: cafe.status ?? "OPEN",
             curatorVisitedAt: cafe.curatorVisitedAt ? cafe.curatorVisitedAt.toISOString().slice(0, 10) : "",
+            hours: hours ? (Object.fromEntries(DAY_KEYS.map((d) => [d, dayText(hours[d])])) as Record<DayKey, string>) : null,
+            hoursCheckedAt: cafe.hoursCheckedAt ? cafe.hoursCheckedAt.toISOString().slice(0, 10) : "",
+            hoursSourceUrl: cafe.hoursSourceUrl ?? "",
+            website: cafe.website ?? "",
           }}
         />
       </main>

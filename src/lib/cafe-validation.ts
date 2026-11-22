@@ -2,6 +2,7 @@
 // approve route and the admin cafe create/edit routes so the rules can't drift.
 
 import type { PrismaClient } from "@/generated/prisma/client";
+import { DAY_KEYS, parseDayText, type WeeklyHours } from "@/lib/hours";
 
 export const CAFE_LIMITS = {
   name: { min: 2, max: 100 },
@@ -145,4 +146,55 @@ export function validateCafeAdminFields(
   }
   if (Object.keys(errors).length > 0) return { ok: false, errors };
   return { ok: true, data: { status: status as CafeStatusInput, curatorVisitedAt } };
+}
+
+// ---------------------------------------------------------------------------
+// Hours + website (admin only)
+// ---------------------------------------------------------------------------
+
+export interface CafeHoursFields {
+  hours: WeeklyHours | null;
+  hoursCheckedAt: Date | null;
+  hoursSourceUrl: string | null;
+  website: string | null;
+}
+
+/** Body shape: hours = { mon: "7:00-15:00", ..., sun: "closed" } (admin text) or null for "not listed". */
+export function validateCafeHoursFields(
+  body: Partial<Record<keyof CafeHoursFields, unknown>>
+): { ok: true; data: CafeHoursFields } | { ok: false; errors: Partial<Record<keyof CafeHoursFields, string>> } {
+  const errors: Partial<Record<keyof CafeHoursFields, string>> = {};
+  let hours: WeeklyHours | null = null;
+  if (body.hours !== undefined && body.hours !== null) {
+    if (typeof body.hours !== "object" || Array.isArray(body.hours)) {
+      errors.hours = "Hours must be an object of day -> text.";
+    } else {
+      const parsed = {} as WeeklyHours;
+      const bad: string[] = [];
+      for (const day of DAY_KEYS) {
+        const raw = (body.hours as Record<string, unknown>)[day];
+        const intervals = parseDayText(typeof raw === "string" ? raw : "");
+        if (!intervals) bad.push(day);
+        else parsed[day] = intervals;
+      }
+      if (bad.length) errors.hours = `Use 24h "7:00-15:00" (comma-separated) or "closed". Check: ${bad.join(", ")}.`;
+      else hours = parsed;
+    }
+  }
+  let hoursCheckedAt: Date | null = null;
+  const rawChecked = typeof body.hoursCheckedAt === "string" ? body.hoursCheckedAt.trim() : "";
+  if (rawChecked) {
+    hoursCheckedAt = parseDateOnly(rawChecked);
+    if (!hoursCheckedAt) errors.hoursCheckedAt = "Checked date must be YYYY-MM-DD.";
+  }
+  if (hours && !hoursCheckedAt) errors.hoursCheckedAt = "Add the date you checked these hours.";
+  const urlField = (key: "hoursSourceUrl" | "website") => {
+    const v = typeof body[key] === "string" ? (body[key] as string).trim() : "";
+    if (v && !isValidHttpUrl(v)) errors[key] = "Must be a valid http(s) URL.";
+    return v || null;
+  };
+  const hoursSourceUrl = urlField("hoursSourceUrl");
+  const website = urlField("website");
+  if (Object.keys(errors).length > 0) return { ok: false, errors };
+  return { ok: true, data: { hours, hoursCheckedAt, hoursSourceUrl, website } };
 }

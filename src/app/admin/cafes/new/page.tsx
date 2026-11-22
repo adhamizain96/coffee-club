@@ -38,6 +38,10 @@ export default async function NewCafePage() {
             tagIds: [],
             status: "OPEN",
             curatorVisitedAt: "",
+            hours: null,
+            hoursCheckedAt: "",
+            hoursSourceUrl: "",
+            website: "",
           }}
         />
       </main>

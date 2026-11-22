@@ -1,11 +1,14 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { Prisma } from "@/generated/prisma/client";
 import {
   validateCafeFields,
   validateCafeAdminFields,
+  validateCafeHoursFields,
   allTagsExist,
   type CafeFields,
   type CafeAdminFields,
+  type CafeHoursFields,
 } from "@/lib/cafe-validation";
 
 export const dynamic = "force-dynamic";
@@ -16,20 +19,34 @@ export const dynamic = "force-dynamic";
  *  The slug never changes. Returns { cafeId, slug }. */
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const body = (await request.json().catch(() => null)) as Partial<Record<keyof CafeFields | keyof CafeAdminFields, unknown>> | null;
+  const body = (await request.json().catch(() => null)) as Partial<Record<keyof CafeFields | keyof CafeAdminFields | keyof CafeHoursFields, unknown>> | null;
   if (!body || typeof body !== "object") {
     return Response.json({ error: "Invalid JSON body" }, { status: 400 });
   }
   const validated = validateCafeFields(body);
   const adminValidated = validateCafeAdminFields(body);
-  if (!validated.ok || !adminValidated.ok) {
+  const hoursValidated = validateCafeHoursFields(body);
+  if (!validated.ok || !adminValidated.ok || !hoursValidated.ok) {
     return Response.json(
-      { errors: { ...(validated.ok ? {} : validated.errors), ...(adminValidated.ok ? {} : adminValidated.errors) } },
+      {
+        errors: {
+          ...(validated.ok ? {} : validated.errors),
+          ...(adminValidated.ok ? {} : adminValidated.errors),
+          ...(hoursValidated.ok ? {} : hoursValidated.errors),
+        },
+      },
       { status: 400 }
     );
   }
   const { tagIds, ...coreFields } = validated.data;
-  const fields = { ...coreFields, ...adminValidated.data };
+  const { hours, ...hoursMeta } = hoursValidated.data;
+  const fields = {
+    ...coreFields,
+    ...adminValidated.data,
+    ...hoursMeta,
+    // Prisma needs DbNull (not JS null) to clear a Json column.
+    hours: hours ? (hours as unknown as Prisma.InputJsonValue) : Prisma.DbNull,
+  };
   if (!(await allTagsExist(prisma, tagIds))) {
     return Response.json({ errors: { tagIds: "One or more tags are invalid." } }, { status: 400 });
   }
