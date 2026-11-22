@@ -6,6 +6,7 @@ import { usePassport } from "@/hooks/usePassport";
 import { computeBadges, type PassportCafe } from "@/lib/passport-badges";
 import { REGIONS, REGION_LABELS, type RegionValue } from "@/lib/regions";
 import { STATUS_LABELS } from "@/lib/freshness";
+import PassportActions from "./PassportActions";
 
 export default function PassportGrid({ cafes }: { cafes: PassportCafe[] }) {
   const { passport, toggleVisited } = usePassport();
@@ -33,6 +34,7 @@ export default function PassportGrid({ cafes }: { cafes: PassportCafe[] }) {
         <div className="mt-4 h-2 w-full max-w-md overflow-hidden rounded-full bg-stone-200" role="progressbar" aria-valuemin={0} aria-valuemax={cafes.length} aria-valuenow={stampedCount} aria-label="Cafes stamped">
           <div className="h-full rounded-full bg-amber-600 transition-all" style={{ width: `${cafes.length ? (stampedCount / cafes.length) * 100 : 0}%` }} />
         </div>
+        <PassportActions cafes={cafes} passport={passport} />
       </header>
 
       {stampedCount === 0 && (
