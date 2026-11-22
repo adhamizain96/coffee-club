@@ -28,7 +28,8 @@ model Cafe {
   neighborhood  String
   latitude      Float
   longitude     Float
-  imageUrl      String    @map("image_url")
+  /// Optional: cafes without a photo render a placeholder (src/components/CafeImage.tsx).
+  imageUrl      String?   @map("image_url")
   ownerReview   String    @map("owner_review")
   createdAt     DateTime  @default(now()) @map("created_at")
   submitterName String?   @map("submitter_name")

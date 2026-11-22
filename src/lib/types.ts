@@ -12,7 +12,7 @@ export interface CafeListItem {
   name: string;
   description: string;
   neighborhood: string;
-  imageUrl: string;
+  imageUrl: string | null;
   latitude: number;
   longitude: number;
   tags: TagDTO[];

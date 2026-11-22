@@ -117,9 +117,7 @@ export default function EditApprovalForm({
     if (description.trim().length < 1 || description.trim().length > 2000) {
       e.description = "Description is required.";
     }
-    if (!imageUrl.trim()) {
-      e.imageUrl = "Image URL is required.";
-    } else {
+    if (imageUrl.trim()) {
       try {
         const u = new URL(imageUrl.trim());
         if (u.protocol !== "http:" && u.protocol !== "https:") {
@@ -294,8 +292,8 @@ export default function EditApprovalForm({
 
       <Field
         id="imageUrl"
-        label="Image URL"
-        helper="Direct image link (jpg/png/webp). Real photo of the actual cafe — see CLAUDE.md for the rules."
+        label="Image URL (optional)"
+        helper="Direct image link (jpg/png/webp). Real photo of the actual cafe — see CLAUDE.md for the rules. Leave empty to show the placeholder."
         error={errors.imageUrl}
       >
         <input

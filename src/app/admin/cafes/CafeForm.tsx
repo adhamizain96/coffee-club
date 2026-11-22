@@ -195,8 +195,8 @@ export default function CafeForm({ cafeId, slug, initial, tagsByName }: CafeForm
 
       <Field
         id="imageUrl"
-        label="Image URL"
-        helper="Real photo of the actual cafe (official site, official Instagram, or a reputable publication)."
+        label="Image URL (optional)"
+        helper="Real photo of the actual cafe (official site, official Instagram, or a reputable publication). Leave empty to show the placeholder."
         error={errors.imageUrl}
       >
         <input id="imageUrl" type="url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} placeholder="https://…" className={adminInputClass} disabled={disabled} />

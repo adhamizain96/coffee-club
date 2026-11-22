@@ -9,6 +9,7 @@ import {
 } from "@vis.gl/react-google-maps";
 import type { CafeListItem } from "@/lib/types";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
+import CafeImage from "./CafeImage";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -280,11 +281,7 @@ function ClusteredMarkers({
 
             {/* Image */}
             <div className="aspect-[16/10] overflow-hidden bg-stone-200">
-              <img
-                src={infoCafe.imageUrl}
-                alt={infoCafe.name}
-                className="h-full w-full object-cover"
-              />
+              <CafeImage src={infoCafe.imageUrl} name={infoCafe.name} neighborhood={infoCafe.neighborhood} />
             </div>
 
             {/* Content — mirrors CafeCard */}

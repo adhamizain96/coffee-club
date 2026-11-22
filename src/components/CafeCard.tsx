@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import TagBadge from "./TagBadge";
+import CafeImage from "./CafeImage";
 import type { TagDTO } from "@/lib/types";
 
 interface CafeCardProps {
@@ -9,7 +10,7 @@ interface CafeCardProps {
   slug: string | null;
   name: string;
   neighborhood: string;
-  imageUrl: string;
+  imageUrl: string | null;
   description: string;
   tags: TagDTO[];
   isHighlighted?: boolean;
@@ -66,11 +67,12 @@ export default function CafeCard({
         className="block"
       >
         <div className="aspect-[16/10] overflow-hidden bg-stone-200">
-          <img
+          <CafeImage
             src={imageUrl}
-            alt={name}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            name={name}
+            neighborhood={neighborhood}
             loading="lazy"
+            className="transition-transform duration-300 group-hover:scale-105"
           />
         </div>
 

@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import type { TagDTO, NoteDTO } from "@/lib/types";
 import Link from "next/link";
 import TagBadge from "@/components/TagBadge";
+import CafeImage from "@/components/CafeImage";
 import CafeDetailNotes from "./CafeDetailNotes";
 
 export const dynamic = "force-dynamic";
@@ -109,11 +110,7 @@ export default async function CafeDetailPage({
 
       {/* Hero image */}
       <div className="w-full h-64 sm:h-80 md:h-96 bg-gray-200 overflow-hidden">
-        <img
-          src={cafe.imageUrl}
-          alt={cafe.name}
-          className="w-full h-full object-cover"
-        />
+        <CafeImage src={cafe.imageUrl} name={cafe.name} neighborhood={cafe.neighborhood} variant="hero" loading="eager" />
       </div>
 
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-8">

@@ -99,6 +99,7 @@ Priorities, in order:
 - Every entry has an explicit `slug` (stable public URL key, `src/lib/slug.ts`). Slugs never change once published, even if the cafe is renamed. Keep `slug` right after `name` (the geocode script's parser expects `name`, then `address`, then `latitude`/`longitude`).
 - `scripts/backfill-slugs.ts` fills `slug` for rows where it's null (dry run by default, `--apply` to write; uses seed slugs when names match).
 - `imageUrl` is matched to the cafe **by position** in `CAFE_IMAGES`. Adding a cafe to `cafes` means adding its image URL to `CAFE_IMAGES` at the same index.
+- `imageUrl` is optional. Cafes without a photo (or with a broken hotlink) render a designed placeholder via `src/components/CafeImage.tsx`. Don't download or self-host third-party photos.
 - Photos must be real images of the actual cafe — official site, official Instagram, or a reputable publication. Verify HTTP 200 + image content-type before commit. No stock images, no Yelp/Google user uploads, no AI-generated images.
 - Cafes must be real, currently operating businesses. Verify before adding. Do not fabricate names, addresses, or coordinates.
 - Coordinates: do not estimate by eye. Re-geocode only when an address is added or changed (each run makes one paid Geocoding call per cafe, `--check` included). `npx tsx scripts/geocode-cafes.ts` overwrites lat/lng in place and prints a delta table. Edits that don't touch an address (tags, reviews, hours, slugs) don't need a re-geocode.
@@ -142,7 +143,7 @@ npx tsx scripts/geocode-cafes.ts     # Re-geocode all cafes; rewrites lat/lng in
 
 Run before push, in this order:
 
-1. `npm run lint` — Vercel runs lint, `next build` does not. Currently 4 known `<img>` warnings (cafe images come from external URLs and are intentionally not run through `next/image`); 0 errors expected.
+1. `npm run lint` — Vercel runs lint, `next build` does not. 0 errors and 0 warnings expected (the one intentional `<img>` for hotlinked cafe photos lives in `src/components/CafeImage.tsx` with an inline disable).
 2. `npm run build` — verifies TypeScript + production bundle.
 3. End-to-end smoke (with `npx prisma dev` + `npm run dev` running): hit `/`, `/submit`, `/admin/login`, `/api/cafes`, `/api/cafes?amenities=wifi&vibes=cozy`. Confirm admin gate (no cookie → 307 for pages, 401 for non-bypass APIs; logout always 303 to `/admin/login`).
 

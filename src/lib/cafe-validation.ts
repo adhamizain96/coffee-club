@@ -18,7 +18,7 @@ export interface CafeFields {
   longitude: number;
   neighborhood: string;
   description: string;
-  imageUrl: string;
+  imageUrl: string | null;
   ownerReview: string;
   tagIds: string[];
 }
@@ -73,10 +73,10 @@ export function validateCafeFields(
   if (description.length < L.description.min || description.length > L.description.max) {
     errors.description = `Description must be ${L.description.min}-${L.description.max} characters.`;
   }
-  const imageUrl = text(body.imageUrl);
-  if (!imageUrl) {
-    errors.imageUrl = "Image URL is required.";
-  } else if (!isValidHttpUrl(imageUrl)) {
+  // Optional: empty means "no photo yet" (the UI shows a placeholder).
+  const imageUrlText = text(body.imageUrl);
+  const imageUrl = imageUrlText || null;
+  if (imageUrlText && !isValidHttpUrl(imageUrlText)) {
     errors.imageUrl = "Image URL must be a valid http(s) URL.";
   }
   const ownerReview = text(body.ownerReview);

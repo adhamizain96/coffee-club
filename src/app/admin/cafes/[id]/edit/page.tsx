@@ -40,7 +40,7 @@ export default async function EditCafePage({ params }: { params: Promise<{ id: s
             longitude: cafe.longitude,
             neighborhood: cafe.neighborhood,
             description: cafe.description,
-            imageUrl: cafe.imageUrl,
+            imageUrl: cafe.imageUrl ?? "",
             ownerReview: cafe.ownerReview,
             tagIds: cafe.tags.map((t) => t.tagId),
           }}
