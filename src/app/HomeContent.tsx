@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import Link from "next/link";
 import { Drawer } from "vaul";
 import type { CafeListItem } from "@/lib/types";
@@ -13,8 +13,6 @@ interface HomeContentProps {
   cafes: CafeListItem[];
 }
 
-export type RatingsMap = Record<string, { rating: number | null; userRatingTotal: number | null }>;
-
 const SNAP_POINTS: (number | string)[] = [0.15, 0.5, 0.92];
 
 export default function HomeContent({ cafes }: HomeContentProps) {
@@ -26,16 +24,7 @@ export default function HomeContent({ cafes }: HomeContentProps) {
     lng: number;
     zoom: number;
   } | null>(null);
-  const [ratings, setRatings] = useState<RatingsMap>({});
   const [snap, setSnap] = useState<number | string | null>(SNAP_POINTS[1]);
-
-  // Fetch Google ratings for all cafes on mount
-  useEffect(() => {
-    fetch("/api/ratings")
-      .then((res) => res.json())
-      .then((data: RatingsMap) => setRatings(data))
-      .catch(() => {});
-  }, []);
 
   const filteredCafes = useCafes({
     cafes,
@@ -107,7 +96,6 @@ export default function HomeContent({ cafes }: HomeContentProps) {
           onMarkerClick={handleMarkerClick}
           panTarget={panTarget}
           controlBarSlot={desktopFilterPanel}
-          ratings={ratings}
           onMapClick={handleMapClick}
           mobileSheetSnap={snap}
         />
@@ -178,7 +166,6 @@ export default function HomeContent({ cafes }: HomeContentProps) {
                   selectedCafeId={selectedCafeId}
                   mode="navigate"
                   onPinClick={handlePinClick}
-                  ratings={ratings}
                 />
               </div>
             </Drawer.Content>
@@ -231,7 +218,6 @@ export default function HomeContent({ cafes }: HomeContentProps) {
               selectedCafeId={selectedCafeId}
               mode="pan"
               onCardClick={handleCardClick}
-              ratings={ratings}
             />
           </div>
         </div>

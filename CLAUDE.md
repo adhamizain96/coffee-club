@@ -86,7 +86,8 @@ Priorities, in order:
 ## Known Behaviors
 
 - **`/cafes/<bad-id>` returns HTTP 200 + the not-found UI, not 404.** Reproduces in production builds. The `notFound()` call in `src/app/cafes/[id]/page.tsx` renders `src/app/not-found.tsx` and Next.js injects `<meta name="robots" content="noindex">`, but the response status stays 200. This is documented Next.js 16 behavior for streamed responses (see `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/not-found.md`). Search engines respect the noindex; only programmatic clients keying off the status code are affected. Don't "fix" without checking whether a refactor away from streamed rendering is justified.
-- **Rate limiter and Google Places cache are per-process** (`src/lib/rate-limit.ts`, `src/lib/google-places.ts`). Per Vercel function instance, so budgets/cache reset across cold starts. Acceptable for current traffic; swap in Redis if scale demands it.
+- **Rate limiter is per-process** (`src/lib/rate-limit.ts`). Per Vercel function instance, so budgets reset across cold starts. Acceptable for current traffic; swap in Redis if scale demands it.
+- **No Google ratings or reviews.** Removed in the overhaul (no Places API calls anywhere). The Maps key is used only for the map, `src/lib/geocode.ts`, and `scripts/geocode-cafes.ts`.
 - **Honeypot path still increments the rate-limit counter.** `POST /api/submissions` runs `rateLimit()` *before* the honeypot check, so bots tripping the honeypot also burn into their per-IP budget. Intentional — bots should not get unlimited free attempts.
 
 ## Seed File Conventions (`prisma/seed.ts`)
@@ -138,7 +139,7 @@ Run before push, in this order:
 
 1. `npm run lint` — Vercel runs lint, `next build` does not. Currently 4 known `<img>` warnings (cafe images come from external URLs and are intentionally not run through `next/image`); 0 errors expected.
 2. `npm run build` — verifies TypeScript + production bundle.
-3. End-to-end smoke (with `npx prisma dev` + `npm run dev` running): hit `/`, `/submit`, `/admin/login`, `/api/cafes`, `/api/cafes?amenities=wifi&vibes=cozy`, `/api/ratings`. Confirm admin gate (no cookie → 307 for pages, 401 for non-bypass APIs; logout always 303 to `/admin/login`).
+3. End-to-end smoke (with `npx prisma dev` + `npm run dev` running): hit `/`, `/submit`, `/admin/login`, `/api/cafes`, `/api/cafes?amenities=wifi&vibes=cozy`. Confirm admin gate (no cookie → 307 for pages, 401 for non-bypass APIs; logout always 303 to `/admin/login`).
 
 ## Environment Variables
 

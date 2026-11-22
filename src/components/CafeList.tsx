@@ -2,7 +2,6 @@
 
 import CafeCard from "./CafeCard";
 import type { CafeListItem } from "@/lib/types";
-import type { RatingsMap } from "@/app/HomeContent";
 
 interface CafeListProps {
   cafes: CafeListItem[];
@@ -10,7 +9,6 @@ interface CafeListProps {
   mode?: "pan" | "navigate";
   onCardClick?: (cafeId: string) => void;
   onPinClick?: (cafeId: string) => void;
-  ratings?: RatingsMap;
 }
 
 export default function CafeList({
@@ -19,7 +17,6 @@ export default function CafeList({
   mode,
   onCardClick,
   onPinClick,
-  ratings,
 }: CafeListProps) {
   if (cafes.length === 0) {
     return (
@@ -50,7 +47,6 @@ export default function CafeList({
           mode={mode}
           onCardClick={onCardClick}
           onPinClick={onPinClick}
-          rating={ratings?.[cafe.id]?.rating ?? null}
         />
       ))}
     </div>

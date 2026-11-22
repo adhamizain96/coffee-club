@@ -11,7 +11,7 @@ A curated cafe discovery site for Chicago and the surrounding suburbs. Browse ca
 - TypeScript
 - Prisma 7 + PostgreSQL
 - Tailwind CSS v4
-- Google Maps (Maps JavaScript, Geocoding, Places)
+- Google Maps (Maps JavaScript, Geocoding)
 
 ## Prerequisites
 
@@ -129,7 +129,7 @@ Add-MpPreference -ExclusionPath "$env:LOCALAPPDATA\prisma-dev-nodejs"
 |---|---|---|
 | `DATABASE_URL` | yes | Raw `postgres://` connection. Used by the app (PrismaPg adapter) and the seed script. |
 | `PRISMA_PROXY_URL` | local dev | `prisma+postgres://` URL from `npx prisma dev`. Used by `prisma.config.ts` for `db push` and migrations. |
-| `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | yes | Map view (browser) + Geocoding + Places (server). Enable all three APIs on the key. The geocode script needs an unrestricted or IP-restricted key — referrer-only browser keys fail server-side. |
+| `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | yes | Map view (browser) + Geocoding (server). Enable both APIs on the key. The geocode script needs an unrestricted or IP-restricted key — referrer-only browser keys fail server-side. |
 | `ADMIN_PASSWORD` | for moderation | Password for `/admin/login`. Doubles as the HMAC signing secret for the admin cookie, so rotating it logs out every active session. Admin routes 401/redirect cleanly when unset. |
 | `SEED_DATABASE_URL` | optional | Override DB URL for the seed script only. Falls back to `DATABASE_URL`. |
 
@@ -174,7 +174,6 @@ coffee-club/
 │   │   └── api/
 │   │       ├── cafes/           # GET list + GET detail
 │   │       ├── notes/           # POST community note
-│   │       ├── ratings/         # GET Google Places ratings batch
 │   │       ├── submissions/     # POST public submission
 │   │       └── admin/           # login · logout · geocode · approve · reject
 │   ├── components/              # FilterPanel, CafeCard, CafeMap, etc.
@@ -185,7 +184,6 @@ coffee-club/
 │       ├── tag-display.ts       # Tag chip labels + groupings
 │       ├── rate-limit.ts        # In-memory rate limiter (notes + submissions)
 │       ├── geocode.ts           # Server-side Google Geocoding wrapper
-│       ├── google-places.ts     # Server-side Google Places lookup with cache
 │       └── admin-auth.ts        # HMAC-signed cookie + constant-time compare
 ├── .env.example
 └── package.json
@@ -295,7 +293,7 @@ Defined as `as const` in `prisma/seed.ts`.
 Set on **Production + Preview + Development** before the first build:
 
 - **`DATABASE_URL`** — `postgres://` with `?sslmode=require`. For providers offering both pooled and direct URLs (Neon, Supabase): use the **pooled** URL. Vercel functions are serverless and exhaust direct connections under load. PrismaPg + node-pg is safe with PgBouncer transaction-mode pooling because it doesn't use server-side prepared statements.
-- **`NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`** — must be set **before** the first build. `NEXT_PUBLIC_*` vars are inlined into the JS bundle at build time, so changes after deploy require a rebuild. The key is also used **server-side** for `/api/ratings`, the cafe detail page (Place Details), and the admin geocode — enable **Maps JavaScript**, **Places**, and **Geocoding** APIs. Referrer restrictions don't block server calls; set the primary referrer to `https://coffee-club.dev/*` and add `https://*.vercel.app/*` for previews.
+- **`NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`** — must be set **before** the first build. `NEXT_PUBLIC_*` vars are inlined into the JS bundle at build time, so changes after deploy require a rebuild. The key is also used **server-side** for the admin geocode. Enable the **Maps JavaScript** and **Geocoding** APIs. Referrer restrictions don't block server calls; set the primary referrer to `https://coffee-club.dev/*` and add `https://*.vercel.app/*` for previews.
 - **`ADMIN_PASSWORD`** — required for the moderation queue. Mark **Sensitive** in Vercel. Without it, every admin route 401/redirects, so visitors can still submit but you can't review.
 
 ### Initial database setup
@@ -313,7 +311,7 @@ The production database was baselined at `0_init` on 2026-11-22. Never run `db:s
 ### Known limitations
 
 - **`/cafes/<bad-id>` returns HTTP 200, not 404.** The not-found UI from `src/app/not-found.tsx` renders correctly and Next.js injects `<meta name="robots" content="noindex">`, but the response status stays 200. This is documented Next.js 16 behavior for streamed responses (see `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/not-found.md`: *"Next.js will return a `200` HTTP status code for streamed responses, and `404` for non-streamed responses"*). Search engines respect the `noindex` meta, so SEO is unaffected; only programmatic clients that key off the status code are.
-- **In-memory rate limiter** (`src/lib/rate-limit.ts`) and **Google Places cache** (`src/lib/google-places.ts`) are per-process. Each Vercel function invocation may land in a fresh process, so rate-limit budgets reset between cold starts and the cache amortizes only within a warm function. For higher traffic, swap in a Redis-backed limiter.
+- **In-memory rate limiter** (`src/lib/rate-limit.ts`) is per-process. Each Vercel function invocation may land in a fresh process, so rate-limit budgets reset between cold starts. For higher traffic, swap in a Redis-backed limiter.
 - **Submission rate-limit keys on `x-forwarded-for`** with a fallback bucket of `"unknown"`. Behind Vercel the header is set, so this is fine in production. Direct (no-proxy) traffic all collapses into the `unknown` bucket and a single bad actor can starve everyone.
 
 ### Deployment Protection
