@@ -18,6 +18,7 @@ export async function GET(
           },
         },
         notes: {
+          where: { hiddenAt: null },
           orderBy: { createdAt: "desc" },
         },
       },
@@ -32,6 +33,7 @@ export async function GET(
 
     const result = {
       id: cafe.id,
+      slug: cafe.slug,
       name: cafe.name,
       description: cafe.description,
       address: cafe.address,

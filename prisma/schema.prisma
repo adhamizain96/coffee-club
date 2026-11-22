@@ -69,6 +69,8 @@ model Note {
   content    String   @db.VarChar(500)
   authorName String?  @map("author_name")
   createdAt  DateTime @default(now()) @map("created_at")
+  /// Set by an admin to hide the note from every public read.
+  hiddenAt   DateTime? @map("hidden_at")
 
   cafe Cafe @relation(fields: [cafeId], references: [id], onDelete: Cascade)
 

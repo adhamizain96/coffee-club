@@ -76,6 +76,7 @@ Priorities, in order:
   - HMAC-signed cookie verified in `src/lib/admin-auth.ts`.
   - `ADMIN_PASSWORD` is both the login password **and** the HMAC signing secret — rotating it logs out every active session.
   - Bypass list (`PROXY_BYPASS_PATHS`): `/admin/login`, `/api/admin/login`, `/api/admin/logout`. Login bypasses so the admin can't lock themselves out; logout bypasses so it stays idempotent — clicking it with an expired/missing cookie still clears the cookie and redirects to `/admin/login` instead of returning 401.
+- **Note moderation** — `/admin/notes` lists every note (filter all/visible/hidden). `PATCH /api/admin/notes/[id]` `{ hidden }` sets/clears `Note.hiddenAt`; `DELETE` removes the note permanently (two-step confirm in the UI). Every public note read (`/cafes/[slug]`, `/api/cafes/[id]`) filters `hiddenAt: null`. Admin pages share `src/app/admin/AdminHeader.tsx`.
 - **Submission → cafe approval** — `POST /api/admin/submissions/[id]/approve` runs one atomic transaction:
   - Latches the submission `PENDING → APPROVED` via `updateMany` (race-safe against double-approval).
   - Creates the `Cafe` with a unique `slug` and with `submitterName` and `addedAt` backfilled from the submission.

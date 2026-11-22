@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AdminHeader from "../AdminHeader";
 import { prisma } from "@/lib/prisma";
 import { SubmissionStatus } from "@/generated/prisma/client";
 import { getTagLabel } from "@/lib/tag-display";
@@ -96,29 +97,7 @@ export default async function AdminSubmissionsPage({
 
   return (
     <div className="min-h-screen bg-stone-50">
-      <header className="border-b border-stone-200 bg-white">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-3">
-          <div className="flex items-baseline gap-3">
-            <h1 className="text-base font-bold text-stone-900">
-              Coffee Club admin
-            </h1>
-            <Link
-              href="/"
-              className="text-xs font-medium text-stone-500 hover:text-amber-700 transition-colors"
-            >
-              Back to map
-            </Link>
-          </div>
-          <form method="POST" action="/api/admin/logout">
-            <button
-              type="submit"
-              className="text-xs font-medium text-stone-500 hover:text-stone-800 transition-colors"
-            >
-              Sign out
-            </button>
-          </form>
-        </div>
-      </header>
+      <AdminHeader active="/admin/submissions" />
 
       <main className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
         <h2 className="text-xl font-bold text-stone-900">Submissions queue</h2>

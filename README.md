@@ -264,6 +264,10 @@ The new cafe appears on the public map and detail page immediately — no rebuil
 
 Header button → `POST /api/admin/logout` clears the cookie.
 
+### Moderating community notes (`/admin/notes`)
+
+Lists every note, newest first, with a filter for all / visible / hidden. **Hide** removes a note from the public site without deleting it (reversible with **Unhide**). **Delete** removes it permanently after a second confirmation.
+
 ### Adding cafes via seed
 
 Use the seed for the initial set or large batched additions:

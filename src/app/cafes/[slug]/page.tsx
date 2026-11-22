@@ -40,7 +40,7 @@ export default async function CafeDetailPage({
     where: { slug },
     include: {
       tags: { include: { tag: true } },
-      notes: { orderBy: { createdAt: "desc" } },
+      notes: { where: { hiddenAt: null }, orderBy: { createdAt: "desc" } },
     },
   });
 

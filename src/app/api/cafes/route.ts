@@ -58,6 +58,7 @@ export async function GET(request: NextRequest) {
 
     const result = cafes.map((cafe) => ({
       id: cafe.id,
+      slug: cafe.slug,
       name: cafe.name,
       description: cafe.description,
       address: cafe.address,
