@@ -56,14 +56,16 @@ DATABASE_URL="postgres://postgres:postgres@localhost:51214/template1?sslmode=dis
 
 The port may vary — use the one printed by `npx prisma dev`.
 
-### 4. Push schema and seed
+### 4. Apply migrations and seed
 
 In a new terminal:
 
 ```bash
-npx prisma db push
+npm run db:migrate:deploy
 npm run db:seed
 ```
+
+For a database that was set up with `db push` before migrations existed, mark the baseline once: `npx prisma migrate resolve --applied 0_init`.
 
 Seeds 32 curated cafes (Chicago + suburbs), tags, and sample notes. Wipes `cafe_tags`, `notes`, `cafes`, and `tags` first; **does not** touch the `cafe_submissions` queue.
 
@@ -84,7 +86,7 @@ Local dev needs three terminals:
 | # | Command | Purpose |
 |---|---------|---------|
 | 1 | `npx prisma dev` | Local PostgreSQL (long-running) |
-| 2 | `npx prisma db push` then `npm run db:seed` | Schema push + seed (one-shot) |
+| 2 | `npm run db:migrate:deploy` then `npm run db:seed` | Migrations + seed (one-shot) |
 | 3 | `npm run dev` | Next.js dev server (long-running) |
 
 ### Shutdown order
@@ -140,7 +142,8 @@ Production-specific notes are in [Deployment](#deployment-vercel).
 | `npm run dev` | Start the Next.js dev server. |
 | `npm run build` | Production build. |
 | `npm run lint` | Run ESLint. |
-| `npm run db:push` | Push the Prisma schema to the database. |
+| `npm run db:migrate:deploy` | Apply pending Prisma migrations. |
+| `npm run db:migrate:status` | Show applied and pending migrations. |
 | `npm run db:seed` | Insert 32 curated cafes, tags, and sample notes. Wipes `cafe_tags`, `notes`, `cafes`, `tags` first; leaves `cafe_submissions` alone. |
 | `npx tsx scripts/geocode-cafes.ts` | Re-geocode every cafe address against the Google Maps Geocoding API and rewrite `latitude`/`longitude` in `prisma/seed.ts` in place. Prints a delta table; flags any cafe that moves >200 m. |
 | `.\scripts\dev-reset.ps1` *(Windows)* | Recover from `EBUSY` on `npx prisma dev`. See [Recovering from `EBUSY`](#recovering-from-ebusy-windows). |
@@ -271,7 +274,7 @@ Use the seed for the initial set or large batched additions:
 - Append a corresponding image URL to `CAFE_IMAGES` at the **same index**. Cafes match images by array position.
 - Use a real photo of the actual cafe — official site, official Instagram, or a reputable publication. **No** stock photos, **no** Yelp/Google user uploads, **no** AI-generated images.
 - Use only real, currently operating cafes — verify before adding.
-- After adding, run `npx tsx scripts/geocode-cafes.ts` to lock in accurate coordinates from the address.
+- After adding or changing an address, run `npx tsx scripts/geocode-cafes.ts` to lock in accurate coordinates. Edits that don't touch an address don't need it.
 
 ### Tag reference
 
@@ -297,12 +300,13 @@ Set on **Production + Preview + Development** before the first build:
 
 ### Initial database setup
 
-Use the **direct** (non-pooled) URL — `db push` and the seed script need session-mode connections, not transaction-mode pooling:
+Use the **direct** (non-pooled) URL. Migrations need session-mode connections, not transaction-mode pooling. Vercel builds don't run migrations, so apply them before deploying code that depends on them:
 
 ```bash
-DATABASE_URL='postgres://...direct-url...?sslmode=require' npx prisma db push
-DATABASE_URL='postgres://...direct-url...?sslmode=require' npm run db:seed
+DATABASE_URL='postgres://...direct-url...?sslmode=require' npm run db:migrate:deploy
 ```
+
+The production database was baselined at `0_init` on 2026-11-22. Never run `db:seed` against production.
 
 `prisma generate` runs automatically during the Vercel build via `postinstall`. No build command override needed.
 

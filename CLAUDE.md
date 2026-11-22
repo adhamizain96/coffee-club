@@ -67,6 +67,7 @@ Priorities, in order:
 
 - **Prisma v7** — DB connection URL is configured in `prisma.config.ts`, not in `schema.prisma`. The `datasource` block in the schema has no `url` field.
 - **PrismaPg adapter** — The app uses `@prisma/adapter-pg`, which requires a raw `postgres://` connection string. The `prisma+postgres://` proxy URL only works for Prisma CLI operations (migrations, `db push`).
+- **Migrations** — Schema changes go through Prisma Migrate (`prisma/migrations/`). `0_init` is a baseline that matches the production schema as of 2026-11-22. New migrations are additive and nullable so the currently deployed code keeps working before the new code ships. Generate SQL with `npx prisma migrate diff --from-migrations prisma/migrations --to-schema prisma/schema.prisma --script` (or `migrate dev --create-only`), apply with `npm run db:migrate:deploy`. Vercel builds do **not** run migrations; apply them to production by hand with the **direct** (unpooled) URL before deploying code that needs them. `db push` is no longer used.
 - **Generated client** — Import from `@/generated/prisma/client`, not `@prisma/client`. Output is at `src/generated/prisma/`.
 - **Seed script** — Uses `SEED_DATABASE_URL` (falls back to `DATABASE_URL`) because seeding runs via `tsx` outside the Prisma proxy and needs a direct PostgreSQL connection.
 - **Filtering logic** — Amenities use **AND** (cafe must have all selected); vibes use **OR** (cafe must have at least one selected).
@@ -94,7 +95,7 @@ Priorities, in order:
 - `imageUrl` is matched to the cafe **by position** in `CAFE_IMAGES`. Adding a cafe to `cafes` means adding its image URL to `CAFE_IMAGES` at the same index.
 - Photos must be real images of the actual cafe — official site, official Instagram, or a reputable publication. Verify HTTP 200 + image content-type before commit. No stock images, no Yelp/Google user uploads, no AI-generated images.
 - Cafes must be real, currently operating businesses. Verify before adding. Do not fabricate names, addresses, or coordinates.
-- Coordinates: do not estimate by eye. Run `npx tsx scripts/geocode-cafes.ts` after adding entries — it overwrites lat/lng in place using the Google Maps Geocoding API and prints a delta table.
+- Coordinates: do not estimate by eye. Re-geocode only when an address is added or changed (each run makes one paid Geocoding call per cafe, `--check` included). `npx tsx scripts/geocode-cafes.ts` overwrites lat/lng in place and prints a delta table. Edits that don't touch an address (tags, reviews, hours, slugs) don't need a re-geocode.
 
 ## Local Dev Workflow
 
@@ -103,7 +104,7 @@ Three terminals:
 | # | Command | Notes |
 |---|---|---|
 | 1 | `npx prisma dev` | Local PostgreSQL — long-running. Print connection URL goes into `.env`. |
-| 2 | `npx prisma db push` then `npm run db:seed` | One-time per setup, plus whenever the schema or seed changes. |
+| 2 | `npm run db:migrate:deploy` then `npm run db:seed` | One-time per setup, plus whenever a migration or the seed changes. |
 | 3 | `npm run dev` | Next.js dev server — long-running. |
 
 **Shutdown order**: stop Terminal 3 first, then Terminal 1. Always Ctrl+C — never close the window. Wrong order causes EBUSY on the next `npx prisma dev` because the durable-streams SQLite handle isn't released cleanly.
@@ -121,7 +122,8 @@ Add-MpPreference -ExclusionPath "$env:LOCALAPPDATA\prisma-dev-nodejs"
 ```bash
 npx prisma dev                       # Start local PostgreSQL (Terminal 1, must run before dev server)
 npm run dev                          # Start Next.js dev server (Terminal 3)
-npm run db:push                      # Push schema to database
+npm run db:migrate:deploy            # Apply pending migrations (local, or production with the direct URL)
+npm run db:migrate:status            # Show applied/pending migrations
 npm run db:seed                      # Seed 32 cafes, tags, notes (wipes existing rows first)
 npx prisma generate                  # Regenerate Prisma client
 npm run build                        # Production build
