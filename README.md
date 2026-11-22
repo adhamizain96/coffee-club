@@ -306,7 +306,7 @@ Use the **direct** (non-pooled) URL. Migrations need session-mode connections, n
 DATABASE_URL='postgres://...direct-url...?sslmode=require' npm run db:migrate:deploy
 ```
 
-The production database was baselined at `0_init` on 2026-11-22. Never run `db:seed` against production.
+The production database was baselined at `0_init` on 2026-11-22. Never run `db:seed` against production. The seed refuses non-local hosts.
 
 `prisma generate` runs automatically during the Vercel build via `postinstall`. No build command override needed.
 

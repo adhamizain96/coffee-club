@@ -6,6 +6,26 @@ import { PrismaPg } from "@prisma/adapter-pg";
 // but PrismaPg adapter needs the raw PostgreSQL connection string.
 // SEED_DATABASE_URL allows overriding for direct PG connections.
 const connectionString = process.env.SEED_DATABASE_URL ?? process.env.DATABASE_URL!;
+
+// The seed is for local development only. Refuse any non-local host before
+// connecting, and say where we're writing without leaking credentials.
+const LOCAL_SEED_HOSTS = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
+function assertLocalTarget(url: string | undefined): void {
+  let parsed: URL;
+  try {
+    parsed = new URL(url ?? "");
+  } catch {
+    console.error("Refusing to seed: SEED_DATABASE_URL / DATABASE_URL is missing or not a valid URL.");
+    process.exit(1);
+  }
+  if (!LOCAL_SEED_HOSTS.has(parsed.hostname)) {
+    console.error(`Refusing to seed non-local host ${parsed.hostname}. The seed is for local development only.`);
+    process.exit(1);
+  }
+  console.log(`Seeding ${parsed.hostname}:${parsed.port || "5432"}${parsed.pathname}`);
+}
+assertLocalTarget(connectionString);
+
 const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 
