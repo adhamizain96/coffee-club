@@ -1,13 +1,26 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import TagBadge from "./TagBadge";
+import CafeImage from "./CafeImage";
+import FreshnessBadges from "./FreshnessBadges";
+import PassportToggle from "./PassportToggle";
+import { HoursBadges, HoursStatusLine } from "./HoursStatus";
+import type { WeeklyHours } from "@/lib/hours";
+import type { CafeStatusValue } from "@/lib/freshness";
 import type { TagDTO } from "@/lib/types";
 
 interface CafeCardProps {
   id: string;
+  /** Public URL key; falls back to id for rows not yet backfilled. */
+  slug: string | null;
   name: string;
   neighborhood: string;
-  imageUrl: string;
+  imageUrl: string | null;
+  status: CafeStatusValue;
+  isNew: boolean;
+  hours: WeeklyHours | null;
+  /** e.g. "1.2 mi", shown after "Near me". */
+  distanceLabel?: string;
   description: string;
   tags: TagDTO[];
   isHighlighted?: boolean;
@@ -19,21 +32,24 @@ interface CafeCardProps {
   onCardClick?: (cafeId: string) => void;
   /** When provided, renders a small map-pin icon button. Tapping it calls this handler instead of navigating. */
   onPinClick?: (cafeId: string) => void;
-  rating?: number | null;
 }
 
 export default function CafeCard({
   id,
+  slug,
   name,
   neighborhood,
   imageUrl,
+  status,
+  isNew,
+  hours,
+  distanceLabel,
   description,
   tags,
   isHighlighted,
   mode = "pan",
   onCardClick,
   onPinClick,
-  rating,
 }: CafeCardProps) {
   // Self-scroll into view when this card becomes the highlighted one. This
   // owns the scroll behavior locally instead of having the parent juggle a
@@ -55,7 +71,7 @@ export default function CafeCard({
       }`}
     >
       <Link
-        href={`/cafes/${id}`}
+        href={`/cafes/${slug ?? id}`}
         onClick={(e) => {
           if (mode === "pan" && onCardClick) {
             e.preventDefault();
@@ -65,11 +81,12 @@ export default function CafeCard({
         className="block"
       >
         <div className="aspect-[16/10] overflow-hidden bg-stone-200">
-          <img
+          <CafeImage
             src={imageUrl}
-            alt={name}
-            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            name={name}
+            neighborhood={neighborhood}
             loading="lazy"
+            className={`transition-transform duration-300 group-hover:scale-105 ${status === "CLOSED" ? "grayscale opacity-70" : ""}`}
           />
         </div>
 
@@ -78,17 +95,14 @@ export default function CafeCard({
             <h3 className="text-sm font-semibold text-stone-900 group-hover:text-amber-800 transition-colors line-clamp-1 leading-tight">
               {name}
             </h3>
-            {rating != null && (
-              <span className="inline-flex items-center gap-1 shrink-0 text-xs font-medium text-amber-700 bg-amber-50 rounded-full px-2 py-0.5">
-                <svg className="h-3 w-3 text-amber-400" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-                {rating.toFixed(1)}
-              </span>
-            )}
+            <FreshnessBadges status={status} isNew={isNew} />
           </div>
 
-          <p className="text-xs text-stone-400 mt-0.5">{neighborhood}</p>
+          <p className="text-xs text-stone-400 mt-0.5">
+            {neighborhood}
+            {distanceLabel && <span className="text-stone-500"> · {distanceLabel}</span>}
+          </p>
+          <HoursStatusLine hours={hours} className="mt-0.5" />
 
           <p className="text-xs text-stone-500 line-clamp-2 mt-1.5 leading-relaxed">
             {description}
@@ -99,10 +113,13 @@ export default function CafeCard({
               {tags.map((tag) => (
                 <TagBadge key={tag.id} name={tag.name} type={tag.type} />
               ))}
+              <HoursBadges hours={hours} />
             </div>
           )}
         </div>
       </Link>
+
+      <PassportToggle slug={slug} name={name} />
 
       {onPinClick && (
         <button

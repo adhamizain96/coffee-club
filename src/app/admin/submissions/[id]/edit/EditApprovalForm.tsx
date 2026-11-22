@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { TAG_CATEGORIES, type TagDisplay } from "@/lib/tag-display";
+import { TAG_CATEGORIES } from "@/lib/tag-display";
+import { Field, TagGroup, adminInputClass } from "../../../AdminFormParts";
 import type { GeocodeResult } from "@/lib/geocode";
 
 interface EditApprovalFormProps {
@@ -116,9 +117,7 @@ export default function EditApprovalForm({
     if (description.trim().length < 1 || description.trim().length > 2000) {
       e.description = "Description is required.";
     }
-    if (!imageUrl.trim()) {
-      e.imageUrl = "Image URL is required.";
-    } else {
+    if (imageUrl.trim()) {
       try {
         const u = new URL(imageUrl.trim());
         if (u.protocol !== "http:" && u.protocol !== "https:") {
@@ -172,7 +171,7 @@ export default function EditApprovalForm({
       const data = await res.json().catch(() => null);
 
       if (res.status === 200 && data?.cafeId) {
-        router.push(`/cafes/${data.cafeId}`);
+        router.push(`/cafes/${data.slug ?? data.cafeId}`);
         return;
       }
 
@@ -189,8 +188,7 @@ export default function EditApprovalForm({
     }
   }
 
-  const inputClass =
-    "block w-full rounded-lg border border-stone-300 px-3 py-2 text-sm text-stone-900 placeholder:text-stone-400 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 outline-none disabled:opacity-50 disabled:cursor-not-allowed";
+  const inputClass = adminInputClass;
 
   const approveDisabled =
     submitting || regeocoding || geocode === null;
@@ -294,8 +292,8 @@ export default function EditApprovalForm({
 
       <Field
         id="imageUrl"
-        label="Image URL"
-        helper="Direct image link (jpg/png/webp). Real photo of the actual cafe — see CLAUDE.md for the rules."
+        label="Image URL (optional)"
+        helper="Direct image link (jpg/png/webp). Real photo of the actual cafe — see CLAUDE.md for the rules. Leave empty to show the placeholder."
         error={errors.imageUrl}
       >
         <input
@@ -372,86 +370,5 @@ export default function EditApprovalForm({
         )}
       </div>
     </form>
-  );
-}
-
-function Field({
-  id,
-  label,
-  helper,
-  error,
-  children,
-}: {
-  id: string;
-  label: React.ReactNode;
-  helper?: string;
-  error?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div>
-      <label
-        htmlFor={id}
-        className="block text-sm font-medium text-gray-700 mb-1"
-      >
-        {label}
-      </label>
-      {children}
-      {error ? (
-        <p className="mt-1 text-xs text-red-600">{error}</p>
-      ) : helper ? (
-        <p className="mt-1 text-xs text-gray-500">{helper}</p>
-      ) : null}
-    </div>
-  );
-}
-
-function TagGroup({
-  title,
-  tags,
-  tagsByName,
-  selected,
-  onToggle,
-  disabled,
-}: {
-  title: string;
-  tags: ReadonlyArray<TagDisplay>;
-  tagsByName: Record<string, string>;
-  selected: Set<string>;
-  onToggle: (id: string) => void;
-  disabled: boolean;
-}) {
-  const renderable = tags
-    .map((t) => ({ id: tagsByName[t.name], label: t.label }))
-    .filter((t): t is { id: string; label: string } => Boolean(t.id));
-
-  if (renderable.length === 0) return null;
-
-  return (
-    <div>
-      <h3 className="text-[10px] font-semibold text-stone-400 uppercase tracking-widest mb-1.5">
-        {title}
-      </h3>
-      <div className="flex flex-wrap gap-1.5">
-        {renderable.map((tag) => {
-          const isSelected = selected.has(tag.id);
-          return (
-            <button
-              key={tag.id}
-              type="button"
-              onClick={() => onToggle(tag.id)}
-              disabled={disabled}
-              className={`rounded-full px-2.5 py-1 text-xs font-medium transition-all duration-150 disabled:opacity-50 ${
-                isSelected
-                  ? "bg-stone-900 text-white shadow-sm"
-                  : "bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-800"
-              }`}
-            >
-              {tag.label}
-            </button>
-          );
-        })}
-      </div>
-    </div>
   );
 }

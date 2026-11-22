@@ -2,12 +2,20 @@
 
 import { useState } from "react";
 import { TAG_CATEGORIES } from "@/lib/tag-display";
+import { HOURS_FILTERS, type HoursFilter } from "@/hooks/useCafes";
+import { REGIONS, REGION_CHIP_LABELS, type RegionValue } from "@/lib/regions";
+
+const REGION_CHIPS = REGIONS.map((r) => ({ name: r, label: REGION_CHIP_LABELS[r] }));
 
 interface FilterPanelProps {
   selectedAmenities: string[];
   selectedVibes: string[];
   onAmenitiesChange: (amenities: string[]) => void;
   onVibesChange: (vibes: string[]) => void;
+  selectedHours: HoursFilter[];
+  onHoursChange: (hours: HoursFilter[]) => void;
+  selectedRegions: RegionValue[];
+  onRegionsChange: (regions: RegionValue[]) => void;
   /**
    * Where to anchor the dropdown panel relative to the trigger button.
    * - undefined (default): renders in normal flow under the button (desktop legacy behavior)
@@ -75,11 +83,15 @@ export default function FilterPanel({
   selectedVibes,
   onAmenitiesChange,
   onVibesChange,
+  selectedHours,
+  onHoursChange,
+  selectedRegions,
+  onRegionsChange,
   dropdownAlign,
 }: FilterPanelProps) {
   const [open, setOpen] = useState(false);
 
-  const activeCount = selectedAmenities.length + selectedVibes.length;
+  const activeCount = selectedAmenities.length + selectedVibes.length + selectedHours.length + selectedRegions.length;
 
   function toggleAmenity(value: string) {
     onAmenitiesChange(
@@ -97,9 +109,21 @@ export default function FilterPanel({
     );
   }
 
+  function toggleHours(value: string) {
+    const v = value as HoursFilter;
+    onHoursChange(selectedHours.includes(v) ? selectedHours.filter((h) => h !== v) : [...selectedHours, v]);
+  }
+
+  function toggleRegion(value: string) {
+    const v = value as RegionValue;
+    onRegionsChange(selectedRegions.includes(v) ? selectedRegions.filter((r) => r !== v) : [...selectedRegions, v]);
+  }
+
   function clearAll() {
+    onRegionsChange([]);
     onAmenitiesChange([]);
     onVibesChange([]);
+    onHoursChange([]);
   }
 
   return (
@@ -163,6 +187,10 @@ export default function FilterPanel({
             </div>
 
             <div className="h-px bg-stone-100" />
+
+            <FilterGroup title="Area" tags={REGION_CHIPS} selected={selectedRegions} onToggle={toggleRegion} />
+
+            <FilterGroup title="When" tags={HOURS_FILTERS} selected={selectedHours} onToggle={toggleHours} />
 
             {TAG_CATEGORIES.map((cat, i) => {
               const prev = TAG_CATEGORIES[i - 1];

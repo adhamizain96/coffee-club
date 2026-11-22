@@ -2,7 +2,6 @@
 
 import dynamic from "next/dynamic";
 import type { CafeListItem } from "@/lib/types";
-import type { RatingsMap } from "@/app/HomeContent";
 
 const CafeMapInner = dynamic(() => import("./CafeMap"), {
   ssr: false,
@@ -19,9 +18,9 @@ interface CafeMapLoaderProps {
   onMarkerClick: (cafeId: string) => void;
   panTarget: { lat: number; lng: number; zoom: number } | null;
   controlBarSlot?: React.ReactNode;
-  ratings?: RatingsMap;
   onMapClick?: () => void;
   mobileSheetSnap?: number | string | null;
+  onUserLocation?: (location: google.maps.LatLngLiteral) => void;
 }
 
 export default function CafeMapLoader({
@@ -30,9 +29,9 @@ export default function CafeMapLoader({
   onMarkerClick,
   panTarget,
   controlBarSlot,
-  ratings,
   onMapClick,
   mobileSheetSnap,
+  onUserLocation,
 }: CafeMapLoaderProps) {
   return (
     <CafeMapInner
@@ -41,9 +40,9 @@ export default function CafeMapLoader({
       onMarkerClick={onMarkerClick}
       panTarget={panTarget}
       controlBarSlot={controlBarSlot}
-      ratings={ratings}
       onMapClick={onMapClick}
       mobileSheetSnap={mobileSheetSnap}
+      onUserLocation={onUserLocation}
     />
   );
 }

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { IosInstallHint } from "@/components/IosInstallHint";
 import { Analytics } from "@vercel/analytics/next";
+import { SITE_DESCRIPTION, SITE_TAGLINE, SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,9 +16,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Coffee Club — Chicagoland Cafe Discovery",
-  description:
-    "Discover curated cafes across Chicago and the suburbs. Browse by amenities, vibes, and read community notes.",
+  metadataBase: new URL(SITE_URL),
+  title: `Coffee Club — ${SITE_TAGLINE}`,
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Coffee Club",
+    title: `Coffee Club — ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
+    url: "/",
+  },
+  twitter: { card: "summary_large_image" },
   applicationName: "Coffee Club",
   appleWebApp: {
     capable: true,

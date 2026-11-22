@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useMemo, useRef } from "react";
 import {
   APIProvider,
   Map,
@@ -8,8 +8,11 @@ import {
   useMap,
 } from "@vis.gl/react-google-maps";
 import type { CafeListItem } from "@/lib/types";
-import type { RatingsMap } from "@/app/HomeContent";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
+import CafeImage from "./CafeImage";
+import FreshnessBadges from "./FreshnessBadges";
+import { HoursStatusLine } from "./HoursStatus";
+import { getTagLabel } from "@/lib/tag-display";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -115,7 +118,9 @@ function MapController({
 }
 
 /** Custom coffee-coloured pin SVG */
-function CafePin({ highlighted }: { highlighted?: boolean }) {
+function CafePin({ highlighted, muted }: { highlighted?: boolean; muted?: boolean }) {
+  // Non-open cafes keep their pin but in stone instead of amber.
+  const fill = highlighted ? (muted ? "#44403c" : "#92400e") : muted ? "#a8a29e" : "#d97706";
   const size = highlighted ? 40 : 30;
 
   return (
@@ -133,13 +138,13 @@ function CafePin({ highlighted }: { highlighted?: boolean }) {
       >
         <path
           d="M12 0C5.4 0 0 5.4 0 12c0 9 12 22 12 22s12-13 12-22C24 5.4 18.6 0 12 0z"
-          fill={highlighted ? "#92400e" : "#d97706"}
+          fill={fill}
         />
         <circle cx="12" cy="11" r="5.5" fill="white" />
         {/* Coffee cup icon */}
         <path
           d="M8.5 9.5h5v3.5c0 1.1-.9 2-2 2h-1c-1.1 0-2-.9-2-2v-3.5zm5 1h1c.55 0 1 .45 1 1s-.45 1-1 1h-1v-2z"
-          fill={highlighted ? "#92400e" : "#d97706"}
+          fill={fill}
         />
       </svg>
     </div>
@@ -162,64 +167,85 @@ function UserLocationMarker({ position }: { position: google.maps.LatLngLiteral 
 // Clustered markers
 // ---------------------------------------------------------------------------
 
+/** One cafe marker with a stable ref callback, so React doesn't detach and
+ *  re-attach it on every render. */
+function ClusteredCafeMarker({
+  cafe,
+  selected,
+  onMarkerClick,
+  setMarkerRef,
+}: {
+  cafe: CafeListItem;
+  selected: boolean;
+  onMarkerClick: (cafe: CafeListItem) => void;
+  setMarkerRef: (marker: google.maps.marker.AdvancedMarkerElement | null, id: string) => void;
+}) {
+  const ref = useCallback(
+    (marker: google.maps.marker.AdvancedMarkerElement | null) => setMarkerRef(marker, cafe.id),
+    [setMarkerRef, cafe.id]
+  );
+  return (
+    <AdvancedMarker
+      position={{ lat: cafe.latitude, lng: cafe.longitude }}
+      ref={ref}
+      onClick={() => onMarkerClick(cafe)}
+      zIndex={selected ? 100 : 1}
+    >
+      <CafePin highlighted={selected} muted={cafe.status !== "OPEN"} />
+    </AdvancedMarker>
+  );
+}
+
 function ClusteredMarkers({
   cafes,
   selectedCafeId,
   onMarkerClick,
   infoCafe,
   onInfoClose,
-  ratings,
 }: {
   cafes: CafeListItem[];
   selectedCafeId: string | null;
   onMarkerClick: (cafe: CafeListItem) => void;
   infoCafe: CafeListItem | null;
   onInfoClose: () => void;
-  ratings?: RatingsMap;
 }) {
   const map = useMap();
-  const clustererRef = useRef<MarkerClusterer | null>(null);
-  const markersRef = useRef<Map<string, google.maps.marker.AdvancedMarkerElement>>(
-    new globalThis.Map()
+  // Pattern from the @vis.gl/react-google-maps marker-clustering example:
+  // markers live in state keyed by cafe id, and the clusterer is synced from
+  // that state, so registration order between refs and the map doesn't matter.
+  const [markers, setMarkers] = useState<
+    Record<string, google.maps.marker.AdvancedMarkerElement>
+  >({});
+
+  const clusterer = useMemo(
+    () => (map ? new MarkerClusterer({ map }) : null),
+    [map]
   );
 
+  // Detach the clusterer from the map when it's replaced or unmounted.
   useEffect(() => {
-    if (!map) return;
-    if (!clustererRef.current) {
-      clustererRef.current = new MarkerClusterer({ map, markers: [] });
-    }
+    if (!clusterer) return;
     return () => {
-      clustererRef.current?.clearMarkers();
-      clustererRef.current = null;
+      clusterer.clearMarkers();
+      clusterer.setMap(null);
     };
-  }, [map]);
+  }, [clusterer]);
 
   useEffect(() => {
-    if (!clustererRef.current) return;
-    const currentIds = new Set(cafes.map((c) => c.id));
-    for (const [id, marker] of markersRef.current) {
-      if (!currentIds.has(id)) {
-        clustererRef.current.removeMarker(marker);
-        markersRef.current.delete(id);
-      }
-    }
-  }, [cafes]);
+    if (!clusterer) return;
+    clusterer.clearMarkers();
+    clusterer.addMarkers(Object.values(markers));
+  }, [clusterer, markers]);
 
   const setMarkerRef = useCallback(
     (marker: google.maps.marker.AdvancedMarkerElement | null, id: string) => {
-      if (!clustererRef.current) return;
-      if (marker) {
-        if (!markersRef.current.has(id)) {
-          markersRef.current.set(id, marker);
-          clustererRef.current.addMarker(marker);
-        }
-      } else {
-        const existing = markersRef.current.get(id);
-        if (existing) {
-          clustererRef.current.removeMarker(existing);
-          markersRef.current.delete(id);
-        }
-      }
+      setMarkers((prev) => {
+        if ((marker && prev[id] === marker) || (!marker && !prev[id])) return prev;
+        if (marker) return { ...prev, [id]: marker };
+        const next = { ...prev };
+        delete next[id];
+        return next;
+      });
     },
     []
   );
@@ -227,15 +253,13 @@ function ClusteredMarkers({
   return (
     <>
       {cafes.map((cafe) => (
-        <AdvancedMarker
+        <ClusteredCafeMarker
           key={cafe.id}
-          position={{ lat: cafe.latitude, lng: cafe.longitude }}
-          ref={(marker) => setMarkerRef(marker, cafe.id)}
-          onClick={() => onMarkerClick(cafe)}
-          zIndex={cafe.id === selectedCafeId ? 100 : 1}
-        >
-          <CafePin highlighted={cafe.id === selectedCafeId} />
-        </AdvancedMarker>
+          cafe={cafe}
+          selected={cafe.id === selectedCafeId}
+          onMarkerClick={onMarkerClick}
+          setMarkerRef={setMarkerRef}
+        />
       ))}
 
       {infoCafe && (
@@ -262,11 +286,7 @@ function ClusteredMarkers({
 
             {/* Image */}
             <div className="aspect-[16/10] overflow-hidden bg-stone-200">
-              <img
-                src={infoCafe.imageUrl}
-                alt={infoCafe.name}
-                className="h-full w-full object-cover"
-              />
+              <CafeImage src={infoCafe.imageUrl} name={infoCafe.name} neighborhood={infoCafe.neighborhood} />
             </div>
 
             {/* Content — mirrors CafeCard */}
@@ -275,17 +295,11 @@ function ClusteredMarkers({
                 <h3 className="text-sm font-semibold text-stone-900 line-clamp-1 leading-tight">
                   {infoCafe.name}
                 </h3>
-                {ratings?.[infoCafe.id]?.rating != null && (
-                  <span className="inline-flex items-center gap-1 shrink-0 text-xs font-medium text-amber-700 bg-amber-50 rounded-full px-2 py-0.5">
-                    <svg className="h-3 w-3 text-amber-400" viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                    {ratings[infoCafe.id].rating!.toFixed(1)}
-                  </span>
-                )}
+                <FreshnessBadges status={infoCafe.status} isNew={infoCafe.isNew} />
               </div>
 
               <p className="text-xs text-stone-400 mt-0.5">{infoCafe.neighborhood}</p>
+              <HoursStatusLine hours={infoCafe.hours} className="mt-0.5" />
 
               {(() => {
                 const vibes = infoCafe.tags.filter((t) => t.type === "VIBE").slice(0, 3);
@@ -293,7 +307,7 @@ function ClusteredMarkers({
                   <div className="flex flex-wrap gap-1 mt-2">
                     {vibes.map((v) => (
                       <span key={v.id} className="rounded-full bg-amber-100 text-amber-800 px-2 py-0.5 text-[10px] font-medium">
-                        {v.name.replace("-", " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+                        {getTagLabel(v.name)}
                       </span>
                     ))}
                   </div>
@@ -301,7 +315,7 @@ function ClusteredMarkers({
               })()}
 
               <a
-                href={`/cafes/${infoCafe.id}`}
+                href={`/cafes/${infoCafe.slug ?? infoCafe.id}`}
                 className="inline-flex items-center gap-1 text-xs text-amber-700 hover:text-amber-900 font-semibold transition-colors mt-2.5"
               >
                 View details
@@ -328,7 +342,6 @@ export interface CafeMapProps {
   panTarget: { lat: number; lng: number; zoom: number } | null;
   /** Slot for the filter panel — rendered in the desktop top control bar alongside zoom/map-type */
   controlBarSlot?: React.ReactNode;
-  ratings?: RatingsMap;
   /** Fired when the user taps the map background (no marker hit). */
   onMapClick?: () => void;
   /**
@@ -337,6 +350,8 @@ export interface CafeMapProps {
    * the sheet's top edge at every snap.
    */
   mobileSheetSnap?: number | string | null;
+  /** Fired when "Near me" resolves, so the list can sort by distance. */
+  onUserLocation?: (location: google.maps.LatLngLiteral) => void;
 }
 
 export default function CafeMapInner({
@@ -345,9 +360,9 @@ export default function CafeMapInner({
   onMarkerClick,
   panTarget,
   controlBarSlot,
-  ratings,
   onMapClick,
   mobileSheetSnap,
+  onUserLocation,
 }: CafeMapProps) {
   const [infoCafe, setInfoCafe] = useState<CafeListItem | null>(null);
   const [userLocation, setUserLocation] = useState<google.maps.LatLngLiteral | null>(null);
@@ -376,7 +391,9 @@ export default function CafeMapInner({
     setGeoError(null);
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        setUserLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        const location = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        setUserLocation(location);
+        onUserLocation?.(location);
         setLocating(false);
       },
       (err) => {
@@ -389,7 +406,7 @@ export default function CafeMapInner({
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
-  }, []);
+  }, [onUserLocation]);
 
   const [userPanTarget, setUserPanTarget] = useState<{
     lat: number;
@@ -444,7 +461,6 @@ export default function CafeMapInner({
             onMarkerClick={handleMarkerClick}
             infoCafe={infoCafe}
             onInfoClose={() => setInfoCafe(null)}
-            ratings={ratings}
           />
           {userLocation && <UserLocationMarker position={userLocation} />}
         </Map>

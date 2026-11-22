@@ -1,4 +1,5 @@
 import { prisma } from "@/lib/prisma";
+import { RETIRED_TAG_NAMES } from "@/lib/tag-display";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +19,7 @@ export async function GET(
           },
         },
         notes: {
+          where: { hiddenAt: null },
           orderBy: { createdAt: "desc" },
         },
       },
@@ -32,6 +34,7 @@ export async function GET(
 
     const result = {
       id: cafe.id,
+      slug: cafe.slug,
       name: cafe.name,
       description: cafe.description,
       address: cafe.address,
@@ -41,7 +44,7 @@ export async function GET(
       imageUrl: cafe.imageUrl,
       ownerReview: cafe.ownerReview,
       createdAt: cafe.createdAt.toISOString(),
-      tags: cafe.tags.map((ct) => ({
+      tags: cafe.tags.filter((ct) => !RETIRED_TAG_NAMES.has(ct.tag.name)).map((ct) => ({
         id: ct.tag.id,
         name: ct.tag.name,
         type: ct.tag.type,

@@ -2,7 +2,6 @@
 
 import CafeCard from "./CafeCard";
 import type { CafeListItem } from "@/lib/types";
-import type { RatingsMap } from "@/app/HomeContent";
 
 interface CafeListProps {
   cafes: CafeListItem[];
@@ -10,7 +9,9 @@ interface CafeListProps {
   mode?: "pan" | "navigate";
   onCardClick?: (cafeId: string) => void;
   onPinClick?: (cafeId: string) => void;
-  ratings?: RatingsMap;
+  distanceLabels?: Record<string, string>;
+  /** Shown when filters/search match nothing. */
+  onClearFilters?: () => void;
 }
 
 export default function CafeList({
@@ -19,7 +20,8 @@ export default function CafeList({
   mode,
   onCardClick,
   onPinClick,
-  ratings,
+  distanceLabels,
+  onClearFilters,
 }: CafeListProps) {
   if (cafes.length === 0) {
     return (
@@ -29,8 +31,13 @@ export default function CafeList({
           No cafes match
         </h3>
         <p className="text-xs text-stone-400">
-          Try adjusting your filters.
+          Try adjusting your filters or search.
         </p>
+        {onClearFilters && (
+          <button type="button" onClick={onClearFilters} className="mt-3 text-xs font-semibold text-amber-700 hover:text-amber-800">
+            Clear filters and search
+          </button>
+        )}
       </div>
     );
   }
@@ -41,16 +48,20 @@ export default function CafeList({
         <CafeCard
           key={cafe.id}
           id={cafe.id}
+          slug={cafe.slug}
           name={cafe.name}
           neighborhood={cafe.neighborhood}
           imageUrl={cafe.imageUrl}
+          status={cafe.status}
+          isNew={cafe.isNew}
+          hours={cafe.hours}
+          distanceLabel={distanceLabels?.[cafe.id]}
           description={cafe.description}
           tags={cafe.tags}
           isHighlighted={cafe.id === selectedCafeId}
           mode={mode}
           onCardClick={onCardClick}
           onPinClick={onPinClick}
-          rating={ratings?.[cafe.id]?.rating ?? null}
         />
       ))}
     </div>

@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Coffee Club — Chicagoland Cafe Discovery",
     short_name: "Coffee Club",
     description:
-      "Discover curated cafes across Chicago and the suburbs. Browse by amenities, vibes, and read community notes.",
+      "Curated cafes across Chicago and the suburbs, with real hours, an open-now filter, and a passport to stamp.",
     start_url: "/",
     scope: "/",
     display: "standalone",

@@ -11,7 +11,7 @@ A curated cafe discovery site for Chicago and the surrounding suburbs. Browse ca
 - TypeScript
 - Prisma 7 + PostgreSQL
 - Tailwind CSS v4
-- Google Maps (Maps JavaScript, Geocoding, Places)
+- Google Maps (Maps JavaScript, Geocoding)
 
 ## Prerequisites
 
@@ -56,16 +56,27 @@ DATABASE_URL="postgres://postgres:postgres@localhost:51214/template1?sslmode=dis
 
 The port may vary — use the one printed by `npx prisma dev`.
 
-### 4. Push schema and seed
+### 4. Apply migrations and seed
 
 In a new terminal:
 
 ```bash
-npx prisma db push
+npm run db:migrate:deploy
 npm run db:seed
 ```
 
-Seeds 32 curated cafes (Chicago + suburbs), tags, and sample notes. Wipes `cafe_tags`, `notes`, `cafes`, and `tags` first; **does not** touch the `cafe_submissions` queue.
+For a database that was set up with `db push` before migrations existed, mark the baseline once: `npx prisma migrate resolve --applied 0_init`, then run `npx tsx scripts/backfill-slugs.ts --apply`.
+
+To load hours, regions, and the researched cafes:
+
+```bash
+npx tsx scripts/backfill-overhaul.ts --apply
+npx tsx scripts/import-cafes.ts --apply
+```
+
+All three scripts are dry runs unless you pass `--apply`.
+
+Upserts the curated cafes (by `slug`), tags, and sample notes. It never deletes notes, submissions, or cafes that aren't in `seed.ts` (e.g. cafes approved through the admin queue), so it's safe to re-run. Sample notes are only created the first time a cafe is created.
 
 ### 5. Run the app
 
@@ -84,7 +95,7 @@ Local dev needs three terminals:
 | # | Command | Purpose |
 |---|---------|---------|
 | 1 | `npx prisma dev` | Local PostgreSQL (long-running) |
-| 2 | `npx prisma db push` then `npm run db:seed` | Schema push + seed (one-shot) |
+| 2 | `npm run db:migrate:deploy` then `npm run db:seed` | Migrations + seed (one-shot) |
 | 3 | `npm run dev` | Next.js dev server (long-running) |
 
 ### Shutdown order
@@ -127,7 +138,7 @@ Add-MpPreference -ExclusionPath "$env:LOCALAPPDATA\prisma-dev-nodejs"
 |---|---|---|
 | `DATABASE_URL` | yes | Raw `postgres://` connection. Used by the app (PrismaPg adapter) and the seed script. |
 | `PRISMA_PROXY_URL` | local dev | `prisma+postgres://` URL from `npx prisma dev`. Used by `prisma.config.ts` for `db push` and migrations. |
-| `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | yes | Map view (browser) + Geocoding + Places (server). Enable all three APIs on the key. The geocode script needs an unrestricted or IP-restricted key — referrer-only browser keys fail server-side. |
+| `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | yes | Map view (browser) + Geocoding (server). Enable both APIs on the key. The geocode script needs an unrestricted or IP-restricted key — referrer-only browser keys fail server-side. |
 | `ADMIN_PASSWORD` | for moderation | Password for `/admin/login`. Doubles as the HMAC signing secret for the admin cookie, so rotating it logs out every active session. Admin routes 401/redirect cleanly when unset. |
 | `SEED_DATABASE_URL` | optional | Override DB URL for the seed script only. Falls back to `DATABASE_URL`. |
 
@@ -140,8 +151,9 @@ Production-specific notes are in [Deployment](#deployment-vercel).
 | `npm run dev` | Start the Next.js dev server. |
 | `npm run build` | Production build. |
 | `npm run lint` | Run ESLint. |
-| `npm run db:push` | Push the Prisma schema to the database. |
-| `npm run db:seed` | Insert 32 curated cafes, tags, and sample notes. Wipes `cafe_tags`, `notes`, `cafes`, `tags` first; leaves `cafe_submissions` alone. |
+| `npm run db:migrate:deploy` | Apply pending Prisma migrations. |
+| `npm run db:migrate:status` | Show applied and pending migrations. |
+| `npm run db:seed` | Upsert the curated cafes (by slug), tags, and sample notes. Local only; never deletes notes, submissions, or admin-added cafes. |
 | `npx tsx scripts/geocode-cafes.ts` | Re-geocode every cafe address against the Google Maps Geocoding API and rewrite `latitude`/`longitude` in `prisma/seed.ts` in place. Prints a delta table; flags any cafe that moves >200 m. |
 | `.\scripts\dev-reset.ps1` *(Windows)* | Recover from `EBUSY` on `npx prisma dev`. See [Recovering from `EBUSY`](#recovering-from-ebusy-windows). |
 
@@ -163,7 +175,7 @@ coffee-club/
 │   │   ├── page.tsx             # Homepage (server)
 │   │   ├── HomeContent.tsx      # Homepage client (filter state)
 │   │   ├── loading.tsx · error.tsx · not-found.tsx
-│   │   ├── cafes/[id]/          # Detail page + notes form
+│   │   ├── cafes/[slug]/        # Detail page + notes form
 │   │   ├── submit/              # /submit + /submit/thanks (public submission)
 │   │   ├── admin/
 │   │   │   ├── login/           # Password form
@@ -171,7 +183,6 @@ coffee-club/
 │   │   └── api/
 │   │       ├── cafes/           # GET list + GET detail
 │   │       ├── notes/           # POST community note
-│   │       ├── ratings/         # GET Google Places ratings batch
 │   │       ├── submissions/     # POST public submission
 │   │       └── admin/           # login · logout · geocode · approve · reject
 │   ├── components/              # FilterPanel, CafeCard, CafeMap, etc.
@@ -182,7 +193,6 @@ coffee-club/
 │       ├── tag-display.ts       # Tag chip labels + groupings
 │       ├── rate-limit.ts        # In-memory rate limiter (notes + submissions)
 │       ├── geocode.ts           # Server-side Google Geocoding wrapper
-│       ├── google-places.ts     # Server-side Google Places lookup with cache
 │       └── admin-auth.ts        # HMAC-signed cookie + constant-time compare
 ├── .env.example
 └── package.json
@@ -263,6 +273,14 @@ The new cafe appears on the public map and detail page immediately — no rebuil
 
 Header button → `POST /api/admin/logout` clears the cookie.
 
+### Managing cafes (`/admin/cafes`)
+
+The list links to an edit page for every cafe. **Add cafe** creates one directly without a submission. Edit the address, click **Geocode** (one Geocoding call), then save; saving is blocked while the address and coordinates disagree. The public URL (`/cafes/<slug>`) never changes, even if you rename the cafe. This is the way to change production data; the seed is local-only.
+
+### Moderating community notes (`/admin/notes`)
+
+Lists every note, newest first, with a filter for all / visible / hidden. **Hide** removes a note from the public site without deleting it (reversible with **Unhide**). **Delete** removes it permanently after a second confirmation.
+
 ### Adding cafes via seed
 
 Use the seed for the initial set or large batched additions:
@@ -271,7 +289,7 @@ Use the seed for the initial set or large batched additions:
 - Append a corresponding image URL to `CAFE_IMAGES` at the **same index**. Cafes match images by array position.
 - Use a real photo of the actual cafe — official site, official Instagram, or a reputable publication. **No** stock photos, **no** Yelp/Google user uploads, **no** AI-generated images.
 - Use only real, currently operating cafes — verify before adding.
-- After adding, run `npx tsx scripts/geocode-cafes.ts` to lock in accurate coordinates from the address.
+- After adding or changing an address, run `npx tsx scripts/geocode-cafes.ts` to lock in accurate coordinates. Edits that don't touch an address don't need it.
 
 ### Tag reference
 
@@ -279,7 +297,9 @@ Defined as `as const` in `prisma/seed.ts`.
 
 **Amenities** — filter logic is **AND** (cafe must have all selected):
 
-`wifi`, `outlets`, `outdoor_seating`, `pet_friendly`, `parking`, `bar_seating`, `communal_tables`, `couch_seating`, `laptop_friendly`, `meeting_space`, `no_laptops`, `full_menu`, `pastries_only`, `vegan_options`, `whisper_quiet`, `moderate_noise`, `bustling`, `early_bird`, `late_night`, `weekend_brunch`
+`wifi`, `outlets`, `outdoor_seating`, `pet_friendly`, `parking`, `bar_seating`, `communal_tables`, `couch_seating`, `laptop_friendly`, `meeting_space`, `no_laptops`, `full_menu`, `pastries_only`, `vegan_options`, `whisper_quiet`, `moderate_noise`, `bustling`, `weekend_brunch`
+
+`early_bird` and `late_night` are retired; Early Bird / Late Night are derived from structured hours instead.
 
 **Vibes** — filter logic is **OR** (cafe must have at least one selected):
 
@@ -292,24 +312,25 @@ Defined as `as const` in `prisma/seed.ts`.
 Set on **Production + Preview + Development** before the first build:
 
 - **`DATABASE_URL`** — `postgres://` with `?sslmode=require`. For providers offering both pooled and direct URLs (Neon, Supabase): use the **pooled** URL. Vercel functions are serverless and exhaust direct connections under load. PrismaPg + node-pg is safe with PgBouncer transaction-mode pooling because it doesn't use server-side prepared statements.
-- **`NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`** — must be set **before** the first build. `NEXT_PUBLIC_*` vars are inlined into the JS bundle at build time, so changes after deploy require a rebuild. The key is also used **server-side** for `/api/ratings`, the cafe detail page (Place Details), and the admin geocode — enable **Maps JavaScript**, **Places**, and **Geocoding** APIs. Referrer restrictions don't block server calls; set the primary referrer to `https://coffee-club.dev/*` and add `https://*.vercel.app/*` for previews.
+- **`NEXT_PUBLIC_GOOGLE_MAPS_API_KEY`** — must be set **before** the first build. `NEXT_PUBLIC_*` vars are inlined into the JS bundle at build time, so changes after deploy require a rebuild. The key is also used **server-side** for the admin geocode. Enable the **Maps JavaScript** and **Geocoding** APIs. Referrer restrictions don't block server calls; set the primary referrer to `https://coffee-club.dev/*` and add `https://*.vercel.app/*` for previews.
 - **`ADMIN_PASSWORD`** — required for the moderation queue. Mark **Sensitive** in Vercel. Without it, every admin route 401/redirects, so visitors can still submit but you can't review.
 
 ### Initial database setup
 
-Use the **direct** (non-pooled) URL — `db push` and the seed script need session-mode connections, not transaction-mode pooling:
+Use the **direct** (non-pooled) URL. Migrations need session-mode connections, not transaction-mode pooling. Vercel builds don't run migrations, so apply them before deploying code that depends on them:
 
 ```bash
-DATABASE_URL='postgres://...direct-url...?sslmode=require' npx prisma db push
-DATABASE_URL='postgres://...direct-url...?sslmode=require' npm run db:seed
+DATABASE_URL='postgres://...direct-url...?sslmode=require' npm run db:migrate:deploy
 ```
+
+The production database was baselined at `0_init` on 2026-11-22. Never run `db:seed` against production. The seed refuses non-local hosts.
 
 `prisma generate` runs automatically during the Vercel build via `postinstall`. No build command override needed.
 
 ### Known limitations
 
-- **`/cafes/<bad-id>` returns HTTP 200, not 404.** The not-found UI from `src/app/not-found.tsx` renders correctly and Next.js injects `<meta name="robots" content="noindex">`, but the response status stays 200. This is documented Next.js 16 behavior for streamed responses (see `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/not-found.md`: *"Next.js will return a `200` HTTP status code for streamed responses, and `404` for non-streamed responses"*). Search engines respect the `noindex` meta, so SEO is unaffected; only programmatic clients that key off the status code are.
-- **In-memory rate limiter** (`src/lib/rate-limit.ts`) and **Google Places cache** (`src/lib/google-places.ts`) are per-process. Each Vercel function invocation may land in a fresh process, so rate-limit budgets reset between cold starts and the cache amortizes only within a warm function. For higher traffic, swap in a Redis-backed limiter.
+- **`/cafes/<bad-slug>` returns HTTP 200, not 404.** (Old `/cafes/<id>` links 308 to the slug URL.) The not-found UI from `src/app/not-found.tsx` renders correctly and Next.js injects `<meta name="robots" content="noindex">`, but the response status stays 200. This is documented Next.js 16 behavior for streamed responses (see `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/not-found.md`: *"Next.js will return a `200` HTTP status code for streamed responses, and `404` for non-streamed responses"*). Search engines respect the `noindex` meta, so SEO is unaffected; only programmatic clients that key off the status code are.
+- **In-memory rate limiter** (`src/lib/rate-limit.ts`) is per-process. Each Vercel function invocation may land in a fresh process, so rate-limit budgets reset between cold starts. For higher traffic, swap in a Redis-backed limiter.
 - **Submission rate-limit keys on `x-forwarded-for`** with a fallback bucket of `"unknown"`. Behind Vercel the header is set, so this is fine in production. Direct (no-proxy) traffic all collapses into the `unknown` bucket and a single bad actor can starve everyone.
 
 ### Deployment Protection

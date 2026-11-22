@@ -12,6 +12,20 @@ enum TagType {
   VIBE
 }
 
+enum CafeStatus {
+  OPEN
+  TEMPORARILY_CLOSED
+  CLOSED
+}
+
+enum Region {
+  CITY
+  NORTH
+  NORTHWEST
+  WEST
+  SOUTH
+}
+
 enum SubmissionStatus {
   PENDING
   APPROVED
@@ -21,16 +35,31 @@ enum SubmissionStatus {
 model Cafe {
   id            String    @id @default(cuid())
   name          String
+  /// Stable public URL key (/cafes/[slug]). Nullable until backfilled everywhere.
+  slug          String?   @unique
   description   String
   address       String
   neighborhood  String
   latitude      Float
   longitude     Float
-  imageUrl      String    @map("image_url")
+  /// Optional: cafes without a photo render a placeholder (src/components/CafeImage.tsx).
+  imageUrl      String?   @map("image_url")
   ownerReview   String    @map("owner_review")
   createdAt     DateTime  @default(now()) @map("created_at")
   submitterName String?   @map("submitter_name")
   addedAt       DateTime? @map("added_at")
+  /// Null means OPEN (rows created before the column existed). Closed cafes stay listed with a label.
+  status        CafeStatus? @default(OPEN)
+  /// When the curator last visited. Null for cafes added from research only.
+  curatorVisitedAt DateTime? @map("curator_visited_at")
+  /// Weekly hours JSON (src/lib/hours.ts). Null means "hours not listed".
+  hours          Json?
+  /// When the hours were last checked against hoursSourceUrl. Shown to users.
+  hoursCheckedAt DateTime? @map("hours_checked_at")
+  hoursSourceUrl String?   @map("hours_source_url")
+  website        String?
+  /// City or suburb area (src/lib/regions.ts). Null until assigned.
+  region         Region?
 
   tags        CafeTag[]
   notes       Note[]
@@ -67,6 +96,8 @@ model Note {
   content    String   @db.VarChar(500)
   authorName String?  @map("author_name")
   createdAt  DateTime @default(now()) @map("created_at")
+  /// Set by an admin to hide the note from every public read.
+  hiddenAt   DateTime? @map("hidden_at")
 
   cafe Cafe @relation(fields: [cafeId], references: [id], onDelete: Cascade)
 

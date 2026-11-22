@@ -1,11 +1,32 @@
 import "dotenv/config";
 import { PrismaClient, TagType } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { regionForAddress } from "../src/lib/regions";
 
 // Prisma Dev uses a proxy URL (prisma+postgres://...) for migrations/push,
 // but PrismaPg adapter needs the raw PostgreSQL connection string.
 // SEED_DATABASE_URL allows overriding for direct PG connections.
 const connectionString = process.env.SEED_DATABASE_URL ?? process.env.DATABASE_URL!;
+
+// The seed is for local development only. Refuse any non-local host before
+// connecting, and say where we're writing without leaking credentials.
+const LOCAL_SEED_HOSTS = new Set(["localhost", "127.0.0.1", "::1", "[::1]"]);
+function assertLocalTarget(url: string | undefined): void {
+  let parsed: URL;
+  try {
+    parsed = new URL(url ?? "");
+  } catch {
+    console.error("Refusing to seed: SEED_DATABASE_URL / DATABASE_URL is missing or not a valid URL.");
+    process.exit(1);
+  }
+  if (!LOCAL_SEED_HOSTS.has(parsed.hostname)) {
+    console.error(`Refusing to seed non-local host ${parsed.hostname}. The seed is for local development only.`);
+    process.exit(1);
+  }
+  console.log(`Seeding ${parsed.hostname}:${parsed.port || "5432"}${parsed.pathname}`);
+}
+assertLocalTarget(connectionString);
+
 const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
 
@@ -69,13 +90,15 @@ const amenityTags = [
   "full_menu", "pastries_only", "vegan_options",
   // Noise Level
   "whisper_quiet", "moderate_noise", "bustling",
-  // Hours
-  "early_bird", "late_night", "weekend_brunch",
+  // Hours (early_bird / late_night retired in favor of hours-derived badges)
+  "weekend_brunch",
 ] as const;
 const vibeTags = ["cozy", "study-friendly", "quiet", "lively", "bright", "date-spot"] as const;
 
 interface CafeSeed {
   name: string;
+  /** Stable public URL key. Never change once published. */
+  slug: string;
   description: string;
   address: string;
   neighborhood: string;
@@ -90,6 +113,7 @@ interface CafeSeed {
 const cafes: CafeSeed[] = [
   {
     name: "Metric Coffee",
+    slug: "metric-coffee",
     description:
       "A spacious roastery and cafe in Fulton Market with industrial charm and exceptional single-origin pour-overs.",
     address: "2021 W Fulton St, Chicago, IL 60612",
@@ -98,7 +122,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.6778477,
     ownerReview:
       "Metric is the real deal for coffee nerds. The space is huge and airy with exposed brick and concrete floors. Their rotating single-origins are always interesting, and the baristas actually know their stuff. Not the coziest spot, but the quality speaks for itself.",
-    amenities: ["wifi", "outlets", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["lively", "bright"],
     notes: [
       {
@@ -120,6 +144,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Sawada Coffee",
+    slug: "sawada-coffee",
     description:
       "A sleek West Loop spot known for its military latte — a matcha-espresso hybrid that's become a Chicago icon.",
     address: "112 N Green St, Chicago, IL 60607",
@@ -145,12 +170,13 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Osmium Coffee Bar",
+    slug: "osmium-coffee-bar",
     description:
-      "A tiny, immaculate coffee bar in Wicker Park with a serious dedication to precision brewing and seasonal menus.",
-    address: "1117 N Damen Ave, Chicago, IL 60622",
-    neighborhood: "Wicker Park",
-    latitude: 41.9019121,
-    longitude: -87.6768962,
+      "A tiny, immaculate coffee bar in Lakeview with a serious dedication to precision brewing and seasonal menus.",
+    address: "1117 W Belmont Ave, Chicago, IL 60657",
+    neighborhood: "Lakeview",
+    latitude: 41.9396745,
+    longitude: -87.65732200000001,
     ownerReview:
       "Osmium is for people who take coffee seriously without being pretentious about it. The baristas are meticulous, the seasonal menu rotates thoughtfully, and the space — though small — is beautifully curated. My favorite pour-over in the city.",
     amenities: ["wifi", "outlets", "bar_seating", "laptop_friendly", "pastries_only", "whisper_quiet"],
@@ -175,6 +201,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "The Wormhole Coffee",
+    slug: "the-wormhole-coffee",
     description:
       "A retro 80s-themed cafe in Wicker Park with a DeLorean parked inside and solid espresso drinks in a fun atmosphere.",
     address: "1462 N Milwaukee Ave, Chicago, IL 60622",
@@ -200,15 +227,16 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Dark Matter Coffee — Star Lounge",
+    slug: "dark-matter-coffee-star-lounge",
     description:
       "The flagship cafe of Chicago's beloved punk-rock roaster, with bold blends and an unapologetically loud aesthetic.",
-    address: "738 N Western Ave, Chicago, IL 60612",
+    address: "2521 W Chicago Ave, Chicago, IL 60622",
     neighborhood: "Ukrainian Village",
-    latitude: 41.8950599,
-    longitude: -87.6871762,
+    latitude: 41.8955127,
+    longitude: -87.69017989999999,
     ownerReview:
       "Dark Matter doesn't play it safe, and that's exactly why I love it. The UniverSoul blend is my daily driver. Star Lounge has that perfectly chaotic energy — art everywhere, loud music sometimes, but the coffee is always dialed in.",
-    amenities: ["wifi", "outdoor_seating", "pet_friendly", "communal_tables", "full_menu", "bustling", "early_bird"],
+    amenities: ["wifi", "outdoor_seating", "pet_friendly", "communal_tables", "full_menu", "bustling"],
     vibes: ["lively", "bright"],
     notes: [
       {
@@ -230,12 +258,13 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Colectivo Coffee — Evanston",
+    slug: "colectivo-coffee-evanston",
     description:
       "A warm, welcoming cafe in downtown Evanston popular with Northwestern students for its generous space and reliable coffee.",
-    address: "1631 Sherman Ave, Evanston, IL 60201",
+    address: "716 Church St, Evanston, IL 60201",
     neighborhood: "Evanston",
-    latitude: 42.04818,
-    longitude: -87.6816001,
+    latitude: 42.0483102,
+    longitude: -87.6815847,
     ownerReview:
       "Colectivo Evanston is the quintessential college-town cafe. Plenty of tables, fast wifi, and a menu that goes beyond just coffee — their bakery items are baked in-house and genuinely good. Perfect for a long study session or catching up with friends.",
     amenities: ["wifi", "outlets", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "full_menu", "moderate_noise", "weekend_brunch"],
@@ -255,6 +284,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Bridgeport Coffeehouse",
+    slug: "bridgeport-coffeehouse",
     description:
       "A neighborhood staple in Bridgeport with a living-room feel, local art on the walls, and a loyal community of regulars.",
     address: "3101 S Morgan St, Chicago, IL 60608",
@@ -263,7 +293,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.65088539999999,
     ownerReview:
       "Bridgeport Coffeehouse feels like someone's cool aunt's living room. Mismatched furniture, local art everywhere, and a crowd that ranges from artists to retirees to WFH folks. The coffee is good, the pastries are great, and the vibe is unmatched.",
-    amenities: ["wifi", "outlets", "pet_friendly", "couch_seating", "laptop_friendly", "pastries_only", "whisper_quiet", "late_night"],
+    amenities: ["wifi", "outlets", "pet_friendly", "couch_seating", "laptop_friendly", "pastries_only", "whisper_quiet"],
     vibes: ["cozy", "quiet", "study-friendly"],
     notes: [
       {
@@ -284,16 +314,17 @@ const cafes: CafeSeed[] = [
     ],
   },
   {
-    name: "Groundswell Coffee — Oak Park",
+    name: "Groundswell Coffee — Forest Park",
+    slug: "groundswell-coffee",
     description:
-      "A bright, airy suburban cafe in Oak Park with a focus on direct-trade coffee and community gathering.",
+      "A bright, airy suburban cafe in Forest Park with a focus on direct-trade coffee and community gathering.",
     address: "7228 Madison St, Forest Park, IL 60130",
-    neighborhood: "Oak Park",
+    neighborhood: "Forest Park",
     latitude: 41.8795223,
     longitude: -87.80612769999999,
     ownerReview:
       "Groundswell is what every suburb deserves — a thoughtful, quality-focused cafe that also functions as a community hub. Their direct-trade sourcing is legit, the space is beautiful, and the staff remembers your name after two visits.",
-    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "communal_tables", "laptop_friendly", "vegan_options", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "communal_tables", "laptop_friendly", "vegan_options", "moderate_noise"],
     vibes: ["bright", "quiet", "study-friendly"],
     notes: [
       {
@@ -310,6 +341,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Dollop Coffee — Streeterville",
+    slug: "dollop-coffee-streeterville",
     description:
       "A polished downtown cafe near the Magnificent Mile with strong drinks and a sleek modern interior perfect for a quick meeting.",
     address: "345 E Ohio St, Chicago, IL 60611",
@@ -318,7 +350,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.6191609,
     ownerReview:
       "Dollop Streeterville is the most refined cafe on this list. Clean lines, great lighting, and espresso drinks that are consistently excellent. It's a popular spot for quick meetings and laptop work. Not cheap, but the quality justifies it.",
-    amenities: ["wifi", "outlets", "bar_seating", "meeting_space", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "bar_seating", "meeting_space", "pastries_only", "moderate_noise"],
     vibes: ["bright", "quiet", "date-spot"],
     notes: [
       {
@@ -340,6 +372,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Sip of Hope",
+    slug: "sip-of-hope",
     description:
       "A cafe in Logan Square where 100% of profits support mental health education and suicide prevention. Great coffee, greater cause.",
     address: "3039 W Fullerton Ave, Chicago, IL 60647",
@@ -370,6 +403,7 @@ const cafes: CafeSeed[] = [
   // ---------------------------------------------------------------------------
   {
     name: "Backlot Coffee",
+    slug: "backlot-coffee",
     description:
       "An independent neighborhood coffeehouse and roastery on Central Street in north Evanston, serving locally roasted beans, pastries, breakfast, and lunch.",
     address: "2006 Central St, Evanston, IL 60201",
@@ -378,7 +412,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.70129469999999,
     ownerReview:
       "Backlot is the model for what a neighborhood roaster should be. They roast in-house, the staff knows regulars by name, and the Central Street strip around them has a small-town feel. Solid pour-overs and a tight breakfast/lunch menu that rotates seasonally.",
-    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "laptop_friendly", "full_menu", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "laptop_friendly", "full_menu", "moderate_noise"],
     vibes: ["cozy", "bright", "study-friendly"],
     notes: [
       {
@@ -393,6 +427,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Brothers K Coffeehouse",
+    slug: "brothers-k-coffeehouse",
     description:
       "A south Evanston staple on Main Street with a deep-rooted community feel, named for the Dostoevsky novel and beloved by NU students and locals alike.",
     address: "500 Main St, Evanston, IL 60202",
@@ -401,7 +436,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.6779009,
     ownerReview:
       "Brothers K has the lived-in soul of a true neighborhood coffeehouse. Wood-paneled walls, mismatched tables, and a steady mix of students hammering on laptops alongside retirees reading the paper. Coffee is reliable, atmosphere is the draw.",
-    amenities: ["wifi", "outlets", "communal_tables", "couch_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outlets", "communal_tables", "couch_seating", "laptop_friendly", "pastries_only", "moderate_noise", "weekend_brunch"],
     vibes: ["cozy", "study-friendly", "lively"],
     notes: [
       {
@@ -416,6 +451,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Newport Coffee House",
+    slug: "newport-coffee-house",
     description:
       "A downtown Evanston classic on Davis Street, serving Chicago's North Shore since 1992 with single-origin coffees from around the world.",
     address: "622 Davis St, Evanston, IL 60201",
@@ -424,7 +460,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.68099810000001,
     ownerReview:
       "Newport has been on Davis since 1992 and earns it. The bean selection runs deep — they'll grind for whatever brew method you mention — and the room itself feels like a piece of pre-Starbucks coffee history. Easy walking distance from the Davis CTA stop.",
-    amenities: ["wifi", "outlets", "bar_seating", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "bar_seating", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["cozy", "quiet", "bright"],
     notes: [
       {
@@ -435,6 +471,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Reprise Coffee Roasters",
+    slug: "reprise-coffee-roasters",
     description:
       "A specialty roaster's flagship cafe on Main Street in south Evanston, with carefully sourced single-origins and a clean, modern aesthetic.",
     address: "710 Main St, Evanston, IL 60202",
@@ -443,7 +480,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.681035,
     ownerReview:
       "Reprise takes the technical side of coffee seriously without making customers feel like they need a wiki tab open to order. Espresso is dialed in daily, the pour-over menu rotates often, and the room is calm enough to actually focus.",
-    amenities: ["wifi", "outlets", "bar_seating", "laptop_friendly", "pastries_only", "whisper_quiet", "early_bird"],
+    amenities: ["wifi", "outlets", "bar_seating", "laptop_friendly", "pastries_only", "whisper_quiet"],
     vibes: ["quiet", "bright", "study-friendly"],
     notes: [
       {
@@ -458,6 +495,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Central Station Coffee & Tea",
+    slug: "central-station-coffee-tea",
     description:
       "A downtown Wilmette cafe on Central Avenue offering espresso, tea, made-from-scratch sandwiches, salads, and quiches near the Metra station.",
     address: "1150 Central Ave, Wilmette, IL 60091",
@@ -466,7 +504,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.70736,
     ownerReview:
       "Central Station is the village square cafe Wilmette deserves. Coffee, tea, and a real lunch menu — quiches and sandwiches that go beyond the usual pastry case. Steps from the Metra, so it doubles as a commuter pit stop.",
-    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "moderate_noise", "weekend_brunch"],
     vibes: ["bright", "cozy", "study-friendly"],
     notes: [
       {
@@ -477,6 +515,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Glenview Grind",
+    slug: "glenview-grind",
     description:
       "An independent downtown Glenview shop with a drive-thru, private-label roasted coffee, smoothies, and pastries. Family-owned, not a chain.",
     address: "1837 Glenview Rd, Glenview, IL 60025",
@@ -485,7 +524,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.80370099999999,
     ownerReview:
       "The drive-thru alone makes Glenview Grind a Glenview essential, but the coffee holds up if you stop in. Private-label roasts, gourmet teas, and a bench out front that's the unofficial neighborhood meeting spot on weekend mornings.",
-    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["cozy", "bright"],
     notes: [
       {
@@ -496,6 +535,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Bean Bar",
+    slug: "bean-bar",
     description:
       "A Northbrook coffee bar on Cherry Lane with a warm interior and a focused menu of espresso drinks and pastries.",
     address: "1901 Cherry Ln, Northbrook, IL 60062",
@@ -504,7 +544,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.8263837,
     ownerReview:
       "Bean Bar is the kind of small, well-run shop you wish every suburb had. Espresso is dialed, the room is bright, and the staff treats every drink like it matters. A welcome alternative to the chains that dominate the Edens corridor.",
-    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["bright", "cozy", "study-friendly"],
     notes: [
       {
@@ -515,6 +555,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Complimentary Cafe & Co",
+    slug: "complimentary-cafe-co",
     description:
       "A Highland Park spot on St Johns Avenue serving thoughtfully prepared coffee and matcha lattes alongside fresh pastries and savory empanadas.",
     address: "1700 St Johns Ave, Highland Park, IL 60035",
@@ -523,7 +564,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.7974502,
     ownerReview:
       "Complimentary nails the Highland Park brief — polished, generous service, and a menu that goes well past coffee. The empanadas are legitimately a meal, and the matcha is among the better ones on the North Shore.",
-    amenities: ["wifi", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "vegan_options", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "vegan_options", "moderate_noise", "weekend_brunch"],
     vibes: ["bright", "date-spot", "cozy"],
     notes: [
       {
@@ -534,6 +575,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Harmony Coffee Bar",
+    slug: "harmony-coffee-bar",
     description:
       "A modern Highland Park coffee bar on Central Avenue with a clean, minimal aesthetic and carefully sourced espresso drinks.",
     address: "610 Central Ave Ste 155, Highland Park, IL 60035",
@@ -542,7 +584,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.80002859999999,
     ownerReview:
       "Harmony is the polished, design-forward end of the Highland Park coffee scene. Bright space, attentive baristas, drinks that reward slowing down. Closed Sundays, which is a quirk you learn fast.",
-    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "whisper_quiet", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "whisper_quiet"],
     vibes: ["bright", "quiet", "date-spot"],
     notes: [
       {
@@ -553,6 +595,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Hometown Coffee & Juice",
+    slug: "hometown-coffee-juice",
     description:
       "A Lake Forest favorite on Wisconsin Avenue blending a coffee bar with a juice and smoothie program, in the heart of the downtown shopping district.",
     address: "231 E Wisconsin Ave, Lake Forest, IL 60045",
@@ -561,7 +604,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.8414159,
     ownerReview:
       "Hometown is what makes downtown Lake Forest feel alive on weekday mornings. Half coffee bar, half juice and smoothie counter — the dual menu means it works for whoever you bring with you, and the room is a constant low buzz of regulars.",
-    amenities: ["wifi", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "vegan_options", "full_menu", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "vegan_options", "full_menu", "moderate_noise"],
     vibes: ["bright", "lively", "cozy"],
     notes: [
       {
@@ -572,6 +615,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Gerry's Café",
+    slug: "gerrys-cafe",
     description:
       "A mission-driven Arlington Heights coffee shop staffed by adults with intellectual and developmental disabilities. Excellent coffee with real social impact.",
     address: "1802 N Arlington Heights Rd, Arlington Heights, IL 60004",
@@ -580,7 +624,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.98115589999999,
     ownerReview:
       "Gerry's is special. The staff is built around employing people with intellectual and developmental disabilities, and it shows in every interaction — the place runs on genuine care. The coffee program is no afterthought either: real espresso drinks, real attention to detail.",
-    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "full_menu", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "full_menu", "moderate_noise", "weekend_brunch"],
     vibes: ["bright", "lively", "cozy"],
     notes: [
       {
@@ -595,6 +639,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Two Libras Cafe",
+    slug: "two-libras-cafe",
     description:
       "A small family-owned 'Euro-ish' cafe tucked in a downtown Palatine alleyway, with hot and cold drinks, smoothies, pastries, and French-style sandwiches.",
     address: "10 N Bothwell St, Palatine, IL 60067",
@@ -603,7 +648,7 @@ const cafes: CafeSeed[] = [
     longitude: -88.04511749999999,
     ownerReview:
       "Two Libras feels like stumbling into a hidden cafe in a small European town — except it's a downtown Palatine alley. The 'French-ish' sandwiches are the move at lunch, and the space punches well above its size. Closed Mondays.",
-    amenities: ["wifi", "outdoor_seating", "communal_tables", "laptop_friendly", "full_menu", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outdoor_seating", "communal_tables", "laptop_friendly", "full_menu", "moderate_noise", "weekend_brunch"],
     vibes: ["cozy", "date-spot", "bright"],
     notes: [
       {
@@ -618,6 +663,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Sayfani Coffee House",
+    slug: "sayfani-coffee-house",
     description:
       "A community-centered Schaumburg coffee house on Golf Road offering exceptional coffee and tea in a warm, locally-rooted setting.",
     address: "157 W Golf Rd, Schaumburg, IL 60195",
@@ -626,7 +672,7 @@ const cafes: CafeSeed[] = [
     longitude: -88.0837415,
     ownerReview:
       "Sayfani is the Schaumburg coffee shop that proves you don't have to go to the city to find a real one. Warm room, attentive service, drinks that go beyond the usual suburban-strip-mall coffee. A genuine community spot in a part of the suburbs that doesn't have many.",
-    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["cozy", "bright", "study-friendly"],
     notes: [
       {
@@ -637,6 +683,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Conscious Cup Coffee Roasters",
+    slug: "conscious-cup-coffee-roasters",
     description:
       "A family-owned Barrington roaster operating since 2006, with a focus on ethically sourced beans and a strong community-roaster identity.",
     address: "100 E Station St, Barrington, IL 60010",
@@ -645,7 +692,7 @@ const cafes: CafeSeed[] = [
     longitude: -88.1354679,
     ownerReview:
       "Conscious Cup has been roasting in Barrington since 2006 and the depth shows. The sourcing story is real — they actually talk about the farms — and the Cook Street location is a comfortable place to spend an hour. The retail beans are worth taking home.",
-    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["cozy", "quiet", "bright"],
     notes: [
       {
@@ -656,6 +703,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Kribi Coffee",
+    slug: "kribi-coffee",
     description:
       "An Oak Park roaster sourcing green beans directly from farmers in Cameroon, where the owner is from. Air-roasted, single-origin, with a clear point of view.",
     address: "1033 South Blvd, Oak Park, IL 60302",
@@ -664,7 +712,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.80165350000001,
     ownerReview:
       "Kribi has one of the clearest origin stories in the Chicago area — owner Jacques Shalo sources green beans directly from Cameroon, and the air-roasting setup gives the cups a distinct profile. Worth a trip even if you're not in Oak Park.",
-    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["bright", "quiet", "study-friendly"],
     notes: [
       {
@@ -675,6 +723,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Five & Hoek Coffee",
+    slug: "five-hoek-coffee",
     description:
       "A focused take-away coffee bar on Wheaton's Main Street (formerly River City Roasters), serving carefully prepared espresso and brew without any indoor seating distractions.",
     address: "112 N Main St Unit B, Wheaton, IL 60187",
@@ -683,7 +732,7 @@ const cafes: CafeSeed[] = [
     longitude: -88.10687759999999,
     ownerReview:
       "Five & Hoek (the rebranded River City Roasters) leans hard into the take-away coffee bar concept — no indoor seating, just a clean menu and very dialed-in drinks. If you're a 'order, walk, drink' person, this is the platonic ideal of that experience.",
-    amenities: ["parking", "no_laptops", "pastries_only", "early_bird"],
+    amenities: ["parking", "no_laptops", "pastries_only"],
     vibes: ["bright"],
     notes: [
       {
@@ -694,6 +743,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Sparrow Coffee",
+    slug: "sparrow-coffee",
     description:
       "Sparrow's flagship cafe on the Naperville Riverwalk, a serious roaster's space with seasonal menus and a downtown-Naperville magnetism.",
     address: "120 Water St Ste 110, Naperville, IL 60540",
@@ -702,7 +752,7 @@ const cafes: CafeSeed[] = [
     longitude: -88.1506319,
     ownerReview:
       "Sparrow is the cafe that put Naperville on the specialty coffee map. Riverwalk location, design-forward space, and a roasting program that holds up against anything in the city. Get a window seat and a pour-over and stay a while.",
-    amenities: ["wifi", "outdoor_seating", "parking", "bar_seating", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outdoor_seating", "parking", "bar_seating", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "weekend_brunch"],
     vibes: ["bright", "lively", "date-spot"],
     notes: [
       {
@@ -717,6 +767,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Café La Fortuna",
+    slug: "cafe-la-fortuna",
     description:
       "A Hinsdale coffee shop on Village Place, house-roasting since 2012 and serving as the village's de facto living room.",
     address: "46 Village Pl, Hinsdale, IL 60521",
@@ -725,7 +776,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.9283288,
     ownerReview:
       "La Fortuna has anchored Hinsdale's coffee scene since 2012 and earned its reputation as the village's living room. House-roasted, community-first, and the kind of place where the regulars greet each other by first name. Comfortable to settle in for an hour or three.",
-    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "couch_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "couch_seating", "laptop_friendly", "pastries_only", "moderate_noise", "weekend_brunch"],
     vibes: ["cozy", "study-friendly", "bright"],
     notes: [
       {
@@ -736,6 +787,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Owl & Lark",
+    slug: "owl-lark",
     description:
       "A La Grange juice and coffee bar with specialty espresso, fresh-squeezed juices, smoothie bowls, and gluten-free baked goods in a cozy downtown setting.",
     address: "41 S La Grange Rd, La Grange, IL 60525",
@@ -744,7 +796,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.86943409999999,
     ownerReview:
       "Owl & Lark hits the wellness-cafe sweet spot without losing the plot on coffee. Smoothie bowls, fresh juices, and a real espresso program — the kind of place where you can grab breakfast with someone who hates coffee and not feel like you compromised.",
-    amenities: ["wifi", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "vegan_options", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "vegan_options", "moderate_noise", "weekend_brunch"],
     vibes: ["bright", "cozy", "study-friendly"],
     notes: [
       {
@@ -755,6 +807,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Pekoe & Bean",
+    slug: "pekoe-bean",
     description:
       "A Tinley Park cafe on Oak Park Avenue offering a strong tea program alongside coffee, in a comfortable south-suburban setting.",
     address: "17028 Oak Park Ave, Tinley Park, IL 60477",
@@ -763,7 +816,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.7849991,
     ownerReview:
       "Pekoe & Bean leans harder on tea than most cafes around, which makes it a destination for anyone tired of an afterthought tea menu. Coffee is solid too, the room is comfortable, and the south-suburban location fills a gap on the map.",
-    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["cozy", "quiet", "study-friendly"],
     notes: [
       {
@@ -774,6 +827,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Two Mile Coffee Bar",
+    slug: "two-mile-coffee-bar",
     description:
       "A Beverly community coffee shop on Walden Parkway partnered with Intelligentsia, anchoring the south side coffee scene.",
     address: "9907 S Walden Pkwy, Chicago, IL 60643",
@@ -782,7 +836,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.66754309999999,
     ownerReview:
       "Two Mile is the south-side coffee bar Beverly deserves. Intelligentsia partnership means the espresso is sharp, but the soul of the place is the regulars — kids on the way to school, neighbors meeting up before work, the steady rhythm of a community shop.",
-    amenities: ["wifi", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["cozy", "lively", "bright"],
     notes: [
       {
@@ -797,6 +851,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Beverly Bakery & Cafe",
+    slug: "beverly-bakery-cafe",
     description:
       "A family-owned Beverly bakery and roaster on Western Avenue, billed as the only Chicago coffee roaster south of Bridgeport, with 22 coffees by the cup or pound.",
     address: "10528 S Western Ave, Chicago, IL 60643",
@@ -805,7 +860,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.68172779999999,
     ownerReview:
       "Beverly Bakery is two beloved south-side institutions in one — a from-scratch bakery and a small roaster that fills a real gap on the map. They say they're the only Chicago coffee roaster south of Bridgeport and that's not just marketing; the bag selection is genuinely deep.",
-    amenities: ["parking", "communal_tables", "full_menu", "moderate_noise", "early_bird"],
+    amenities: ["parking", "communal_tables", "full_menu", "moderate_noise"],
     vibes: ["cozy", "lively"],
     notes: [
       {
@@ -817,64 +872,74 @@ const cafes: CafeSeed[] = [
 ];
 
 async function main() {
-  console.log("Seeding database...");
+  console.log("Seeding (upsert by slug; never deletes notes, submissions, or cafes missing from this file)...");
 
-  // Clear existing data in correct order (respecting foreign keys)
-  await prisma.cafeTag.deleteMany();
-  await prisma.note.deleteMany();
-  await prisma.cafe.deleteMany();
-  await prisma.tag.deleteMany();
+  // A database created before slugs existed must be backfilled first, or the
+  // upsert below would create duplicates of its existing cafes.
+  const missingSlugs = await prisma.cafe.count({ where: { slug: null } });
+  if (missingSlugs > 0) {
+    console.error(
+      `${missingSlugs} cafe(s) have no slug. Run "npx tsx scripts/backfill-slugs.ts --apply" first.`
+    );
+    process.exit(1);
+  }
 
-  // Create tags
-  const tagRecords = new Map<string, string>();
-
+  const tagIds = new Map<string, string>();
   for (const name of amenityTags) {
-    const tag = await prisma.tag.create({
-      data: { name, type: TagType.AMENITY },
-    });
-    tagRecords.set(name, tag.id);
+    const tag = await prisma.tag.upsert({ where: { name }, update: {}, create: { name, type: TagType.AMENITY } });
+    tagIds.set(name, tag.id);
   }
-
   for (const name of vibeTags) {
-    const tag = await prisma.tag.create({
-      data: { name, type: TagType.VIBE },
-    });
-    tagRecords.set(name, tag.id);
+    const tag = await prisma.tag.upsert({ where: { name }, update: {}, create: { name, type: TagType.VIBE } });
+    tagIds.set(name, tag.id);
   }
+  console.log(`Tags: ${tagIds.size} upserted`);
 
-  console.log(`Created ${tagRecords.size} tags`);
-
-  // Create cafes with tags and notes
+  let created = 0;
+  let updated = 0;
   for (let i = 0; i < cafes.length; i++) {
     const cafe = cafes[i];
-    const created = await prisma.cafe.create({
-      data: {
-        name: cafe.name,
-        description: cafe.description,
-        address: cafe.address,
-        neighborhood: cafe.neighborhood,
-        latitude: cafe.latitude,
-        longitude: cafe.longitude,
-        imageUrl: CAFE_IMAGES[i % CAFE_IMAGES.length],
-        ownerReview: cafe.ownerReview,
-        tags: {
-          create: [...cafe.amenities, ...cafe.vibes].map((tagName) => ({
-            tagId: tagRecords.get(tagName)!,
-          })),
-        },
-        notes: {
-          create: cafe.notes.map((note) => ({
-            content: note.content,
-            authorName: note.authorName,
-          })),
-        },
-      },
-    });
+    // Seed-owned curated fields. submitterName / addedAt are never touched.
+    const curated = {
+      name: cafe.name,
+      description: cafe.description,
+      address: cafe.address,
+      neighborhood: cafe.neighborhood,
+      latitude: cafe.latitude,
+      longitude: cafe.longitude,
+      imageUrl: CAFE_IMAGES[i % CAFE_IMAGES.length],
+      ownerReview: cafe.ownerReview,
+      region: regionForAddress(cafe.address),
+    };
+    const desiredTagIds = [...cafe.amenities, ...cafe.vibes].map((tagName) => tagIds.get(tagName)!);
+    const existing = await prisma.cafe.findUnique({ where: { slug: cafe.slug }, select: { id: true } });
 
-    console.log(`Created cafe: ${created.name}`);
+    if (!existing) {
+      // Sample notes are only created with the cafe, never re-created or deleted.
+      await prisma.cafe.create({
+        data: {
+          ...curated,
+          slug: cafe.slug,
+          tags: { create: desiredTagIds.map((tagId) => ({ tagId })) },
+          notes: { create: cafe.notes.map((note) => ({ content: note.content, authorName: note.authorName })) },
+        },
+      });
+      created++;
+    } else {
+      // The only delete in the seed: stale tag links on cafes the seed owns.
+      await prisma.$transaction([
+        prisma.cafe.update({ where: { id: existing.id }, data: curated }),
+        prisma.cafeTag.deleteMany({ where: { cafeId: existing.id, tagId: { notIn: desiredTagIds } } }),
+        prisma.cafeTag.createMany({
+          data: desiredTagIds.map((tagId) => ({ cafeId: existing.id, tagId })),
+          skipDuplicates: true,
+        }),
+      ]);
+      updated++;
+    }
   }
 
-  console.log("Seeding complete.");
+  console.log(`Cafes: ${created} created, ${updated} updated. Seeding complete.`);
 }
 
 main()

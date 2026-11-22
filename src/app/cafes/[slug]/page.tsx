@@ -4,20 +4,27 @@ import { prisma } from "@/lib/prisma";
 import type { TagDTO, NoteDTO } from "@/lib/types";
 import Link from "next/link";
 import TagBadge from "@/components/TagBadge";
-import GoogleReviews from "@/components/GoogleReviews";
+import CafeImage from "@/components/CafeImage";
+import FreshnessBadges from "@/components/FreshnessBadges";
+import PassportToggle from "@/components/PassportToggle";
+import { formatVisited, isNewCafe, normalizeStatus, STATUS_LABELS } from "@/lib/freshness";
+import CafeHours from "@/components/CafeHours";
+import { parseWeeklyHours } from "@/lib/hours";
+import { RETIRED_TAG_NAMES } from "@/lib/tag-display";
+import { REGION_LABELS } from "@/lib/regions";
+import { HoursBadges } from "@/components/HoursStatus";
 import CafeDetailNotes from "./CafeDetailNotes";
-import { getGooglePlaceData } from "@/lib/google-places";
 
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { id } = await params;
+  const { slug } = await params;
   const cafe = await prisma.cafe.findUnique({
-    where: { id },
+    where: { slug },
     select: { name: true, neighborhood: true, description: true },
   });
 
@@ -28,21 +35,24 @@ export async function generateMetadata({
   return {
     title: `${cafe.name} — Coffee Club`,
     description: cafe.description,
+    alternates: { canonical: `/cafes/${slug}` },
+    openGraph: { type: "article", title: `${cafe.name} · ${cafe.neighborhood}`, description: cafe.description, url: `/cafes/${slug}` },
+    twitter: { card: "summary_large_image" },
   };
 }
 
 export default async function CafeDetailPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { id } = await params;
+  const { slug } = await params;
 
   const cafe = await prisma.cafe.findUnique({
-    where: { id },
+    where: { slug },
     include: {
       tags: { include: { tag: true } },
-      notes: { orderBy: { createdAt: "desc" } },
+      notes: { where: { hiddenAt: null }, orderBy: { createdAt: "desc" } },
     },
   });
 
@@ -50,7 +60,9 @@ export default async function CafeDetailPage({
     notFound();
   }
 
-  const tags: TagDTO[] = cafe.tags.map((ct) => ({
+  const status = normalizeStatus(cafe.status);
+
+  const tags: TagDTO[] = cafe.tags.filter((ct) => !RETIRED_TAG_NAMES.has(ct.tag.name)).map((ct) => ({
     id: ct.tag.id,
     name: ct.tag.name,
     type: ct.tag.type,
@@ -62,9 +74,6 @@ export default async function CafeDetailPage({
     authorName: n.authorName,
     createdAt: n.createdAt.toISOString(),
   }));
-
-  // Fetch Google Places data (rating + reviews) — runs server-side, cached for 1 hour
-  const placeData = await getGooglePlaceData(cafe.name, cafe.address);
 
   return (
     <div>
@@ -105,8 +114,14 @@ export default async function CafeDetailPage({
         <span className="text-sm text-gray-300">|</span>
         <span className="text-sm font-bold tracking-tight text-amber-700">Coffee Club</span>
         <Link
-          href="/submit"
+          href="/passport"
           className="ml-auto text-sm font-medium text-amber-700 hover:text-amber-800 transition-colors"
+        >
+          Your passport →
+        </Link>
+        <Link
+          href="/submit"
+          className="text-sm font-medium text-stone-500 hover:text-amber-800 transition-colors"
         >
           Suggest a cafe →
         </Link>
@@ -114,30 +129,40 @@ export default async function CafeDetailPage({
 
       {/* Hero image */}
       <div className="w-full h-64 sm:h-80 md:h-96 bg-gray-200 overflow-hidden">
-        <img
-          src={cafe.imageUrl}
-          alt={cafe.name}
-          className="w-full h-full object-cover"
-        />
+        <CafeImage src={cafe.imageUrl} name={cafe.name} neighborhood={cafe.neighborhood} variant="hero" loading="eager" />
       </div>
 
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-8">
+        {status !== "OPEN" && (
+          <div role="status" className="mb-5 rounded-xl border border-stone-300 bg-stone-100 px-4 py-3 text-sm text-stone-700">
+            <strong className="font-semibold">{STATUS_LABELS[status]}.</strong>{" "}
+            {status === "CLOSED"
+              ? "This cafe has closed. It stays listed so the history (and your passport stamps) are kept."
+              : "This cafe is temporarily closed. Check its own channels before you go."}
+          </div>
+        )}
+
         {/* Cafe info */}
         <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
           {cafe.name}
         </h1>
-        <div className="mt-1 flex items-center gap-3">
+        <div className="mt-1 flex flex-wrap items-center gap-2">
           <p className="text-gray-500">{cafe.neighborhood}</p>
-          {placeData.rating && (
-            <span className="inline-flex items-center gap-1 text-sm font-medium text-amber-700 bg-amber-50 rounded-full px-2.5 py-0.5">
-              <svg className="h-3.5 w-3.5 text-amber-400" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-              {placeData.rating.toFixed(1)}
-            </span>
-          )}
+          <FreshnessBadges status={status} isNew={isNewCafe(cafe.createdAt)} size="md" />
         </div>
-        <p className="mt-0.5 text-sm text-gray-400">{cafe.address}</p>
+        <p className="mt-0.5 text-sm text-gray-400">
+          {cafe.address}
+          {cafe.region && <span className="text-gray-300"> · </span>}
+          {cafe.region && <span>{REGION_LABELS[cafe.region]}</span>}
+        </p>
+
+        <div className="mt-4">
+          <PassportToggle slug={cafe.slug} name={cafe.name} variant="inline" />
+        </div>
+
+        {cafe.curatorVisitedAt && (
+          <p className="mt-1 text-xs text-gray-500">Curator visited {formatVisited(cafe.curatorVisitedAt)}</p>
+        )}
 
         {(cafe.submitterName || cafe.addedAt) && (
           <p className="mt-1 text-xs text-gray-400">
@@ -161,8 +186,17 @@ export default async function CafeDetailPage({
             {tags.map((tag) => (
               <TagBadge key={tag.id} name={tag.name} type={tag.type} />
             ))}
+            <HoursBadges hours={status === "OPEN" ? parseWeeklyHours(cafe.hours) : null} />
           </div>
         )}
+
+        <CafeHours
+          hours={status === "OPEN" ? parseWeeklyHours(cafe.hours) : null}
+          checkedAt={cafe.hoursCheckedAt}
+          sourceUrl={cafe.hoursSourceUrl}
+          website={cafe.website}
+          closed={status !== "OPEN"}
+        />
 
         {/* Description */}
         <p className="mt-6 text-gray-700 leading-relaxed">
@@ -180,9 +214,6 @@ export default async function CafeDetailPage({
             </p>
           </div>
         </section>
-
-        {/* Google Reviews */}
-        <GoogleReviews placeData={placeData} />
 
         {/* Community Notes */}
         <CafeDetailNotes cafeId={cafe.id} initialNotes={notes} />

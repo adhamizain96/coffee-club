@@ -1,3 +1,7 @@
+import type { CafeStatusValue } from "./freshness";
+import type { WeeklyHours } from "./hours";
+import type { RegionValue } from "./regions";
+
 export type TagType = "AMENITY" | "VIBE";
 
 export interface TagDTO {
@@ -8,13 +12,20 @@ export interface TagDTO {
 
 export interface CafeListItem {
   id: string;
+  slug: string | null;
   name: string;
   description: string;
   neighborhood: string;
-  imageUrl: string;
+  imageUrl: string | null;
   latitude: number;
   longitude: number;
   tags: TagDTO[];
+  status: CafeStatusValue;
+  region: RegionValue | null;
+  /** Parsed weekly hours, or null when not listed (or the cafe isn't open). */
+  hours: WeeklyHours | null;
+  /** Computed server-side so server and client render the same badge. */
+  isNew: boolean;
 }
 
 export interface CafeDetail extends CafeListItem {
