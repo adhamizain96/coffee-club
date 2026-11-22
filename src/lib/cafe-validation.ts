@@ -3,6 +3,7 @@
 
 import type { PrismaClient } from "@/generated/prisma/client";
 import { DAY_KEYS, parseDayText, type WeeklyHours } from "@/lib/hours";
+import { isRegion, type RegionValue } from "@/lib/regions";
 
 export const CAFE_LIMITS = {
   name: { min: 2, max: 100 },
@@ -197,4 +198,10 @@ export function validateCafeHoursFields(
   const website = urlField("website");
   if (Object.keys(errors).length > 0) return { ok: false, errors };
   return { ok: true, data: { hours, hoursCheckedAt, hoursSourceUrl, website } };
+}
+
+/** Region is optional; null means "not assigned". */
+export function validateRegion(value: unknown): { ok: true; region: RegionValue | null } | { ok: false; error: string } {
+  if (value === undefined || value === null || value === "") return { ok: true, region: null };
+  return isRegion(value) ? { ok: true, region: value } : { ok: false, error: "Unknown region." };
 }

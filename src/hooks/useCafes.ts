@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import type { CafeListItem } from "@/lib/types";
 import { getStatusAt, isEarlyBird, isLateNight } from "@/lib/hours";
+import type { RegionValue } from "@/lib/regions";
 
 export type HoursFilter = "open_now" | "early_bird" | "late_night";
 
@@ -16,6 +17,8 @@ interface UseCafesOptions {
   selectedVibes: string[];
   /** Hours-derived filters; AND with each other and with amenities. */
   selectedHours?: HoursFilter[];
+  /** Regions use OR: a cafe in any selected region matches. */
+  selectedRegions?: RegionValue[];
   /** Client clock. While null (SSR/hydration) "Open now" doesn't filter. */
   now?: Date | null;
 }
@@ -25,6 +28,7 @@ export function useCafes({
   selectedAmenities,
   selectedVibes,
   selectedHours = [],
+  selectedRegions = [],
   now = null,
 }: UseCafesOptions): CafeListItem[] {
   return useMemo(() => {
@@ -43,6 +47,8 @@ export function useCafes({
         if (!hasAny) return false;
       }
 
+      if (selectedRegions.length > 0 && (!cafe.region || !selectedRegions.includes(cafe.region))) return false;
+
       // Hours filters: cafes without listed hours (or not open) never match.
       for (const filter of selectedHours) {
         if (filter === "open_now" && !now) continue;
@@ -54,5 +60,5 @@ export function useCafes({
 
       return true;
     });
-  }, [cafes, selectedAmenities, selectedVibes, selectedHours, now]);
+  }, [cafes, selectedAmenities, selectedVibes, selectedHours, selectedRegions, now]);
 }

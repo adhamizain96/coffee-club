@@ -3,6 +3,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import AdminHeader from "../AdminHeader";
 import { STATUS_LABELS, normalizeStatus } from "@/lib/freshness";
+import { REGION_LABELS } from "@/lib/regions";
 
 export const dynamic = "force-dynamic";
 
@@ -19,7 +20,7 @@ export default async function AdminCafesPage({
   const { saved } = await searchParams;
   const cafes = await prisma.cafe.findMany({
     orderBy: { name: "asc" },
-    select: { id: true, name: true, slug: true, neighborhood: true, status: true, curatorVisitedAt: true },
+    select: { id: true, name: true, slug: true, neighborhood: true, status: true, curatorVisitedAt: true, region: true },
   });
 
   return (
@@ -51,6 +52,7 @@ export default async function AdminCafesPage({
               <tr>
                 <th scope="col" className="px-4 py-2">Name</th>
                 <th scope="col" className="px-4 py-2">Neighborhood</th>
+                <th scope="col" className="px-4 py-2">Region</th>
                 <th scope="col" className="px-4 py-2">Status</th>
                 <th scope="col" className="px-4 py-2">Visited</th>
                 <th scope="col" className="px-4 py-2">Slug</th>
@@ -62,6 +64,7 @@ export default async function AdminCafesPage({
                 <tr key={cafe.id}>
                   <td className="px-4 py-2 font-medium text-stone-900">{cafe.name}</td>
                   <td className="px-4 py-2 text-stone-600">{cafe.neighborhood}</td>
+                  <td className="px-4 py-2 text-xs text-stone-600">{cafe.region ? REGION_LABELS[cafe.region] : "—"}</td>
                   <td className="px-4 py-2 text-xs text-stone-600">{STATUS_LABELS[normalizeStatus(cafe.status)]}</td>
                   <td className="px-4 py-2 text-xs text-stone-500">{cafe.curatorVisitedAt ? cafe.curatorVisitedAt.toISOString().slice(0, 10) : "—"}</td>
                   <td className="px-4 py-2 text-xs text-stone-500"><code>{cafe.slug ?? "—"}</code></td>

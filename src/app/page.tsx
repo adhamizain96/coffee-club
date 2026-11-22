@@ -20,6 +20,7 @@ export default async function HomePage() {
   const now = new Date();
   const cafeList: CafeListItem[] = cafes.map((cafe) => ({
     status: normalizeStatus(cafe.status),
+    region: cafe.region,
     hours: normalizeStatus(cafe.status) === "OPEN" ? parseWeeklyHours(cafe.hours) : null,
     isNew: isNewCafe(cafe.createdAt, now),
     id: cafe.id,

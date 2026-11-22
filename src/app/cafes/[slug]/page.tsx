@@ -10,6 +10,7 @@ import { formatVisited, isNewCafe, normalizeStatus, STATUS_LABELS } from "@/lib/
 import CafeHours from "@/components/CafeHours";
 import { parseWeeklyHours } from "@/lib/hours";
 import { RETIRED_TAG_NAMES } from "@/lib/tag-display";
+import { REGION_LABELS } from "@/lib/regions";
 import { HoursBadges } from "@/components/HoursStatus";
 import CafeDetailNotes from "./CafeDetailNotes";
 
@@ -139,7 +140,11 @@ export default async function CafeDetailPage({
           <p className="text-gray-500">{cafe.neighborhood}</p>
           <FreshnessBadges status={status} isNew={isNewCafe(cafe.createdAt)} size="md" />
         </div>
-        <p className="mt-0.5 text-sm text-gray-400">{cafe.address}</p>
+        <p className="mt-0.5 text-sm text-gray-400">
+          {cafe.address}
+          {cafe.region && <span className="text-gray-300"> · </span>}
+          {cafe.region && <span>{REGION_LABELS[cafe.region]}</span>}
+        </p>
 
         {cafe.curatorVisitedAt && (
           <p className="mt-1 text-xs text-gray-500">Curator visited {formatVisited(cafe.curatorVisitedAt)}</p>

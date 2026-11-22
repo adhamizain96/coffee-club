@@ -6,6 +6,7 @@ import { Drawer } from "vaul";
 import type { CafeListItem } from "@/lib/types";
 import { useCafes, type HoursFilter } from "@/hooks/useCafes";
 import { useClientNow } from "@/hooks/useClientNow";
+import type { RegionValue } from "@/lib/regions";
 import FilterPanel from "@/components/FilterPanel";
 import CafeList from "@/components/CafeList";
 import CafeMapLoader from "@/components/CafeMapLoader";
@@ -20,6 +21,7 @@ export default function HomeContent({ cafes }: HomeContentProps) {
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
   const [selectedVibes, setSelectedVibes] = useState<string[]>([]);
   const [selectedHours, setSelectedHours] = useState<HoursFilter[]>([]);
+  const [selectedRegions, setSelectedRegions] = useState<RegionValue[]>([]);
   const now = useClientNow();
   const [selectedCafeId, setSelectedCafeId] = useState<string | null>(null);
   const [panTarget, setPanTarget] = useState<{
@@ -34,6 +36,7 @@ export default function HomeContent({ cafes }: HomeContentProps) {
     selectedAmenities,
     selectedVibes,
     selectedHours,
+    selectedRegions,
     now,
   });
 
@@ -87,11 +90,13 @@ export default function HomeContent({ cafes }: HomeContentProps) {
       onVibesChange={setSelectedVibes}
       selectedHours={selectedHours}
       onHoursChange={setSelectedHours}
+      selectedRegions={selectedRegions}
+      onRegionsChange={setSelectedRegions}
     />
   );
 
   const filteredCount = filteredCafes.length;
-  const filterActive = selectedAmenities.length > 0 || selectedVibes.length > 0 || selectedHours.length > 0;
+  const filterActive = selectedAmenities.length > 0 || selectedVibes.length > 0 || selectedHours.length > 0 || selectedRegions.length > 0;
   const hoursUnknownCount =
     selectedHours.length > 0 ? cafes.filter((c) => c.status === "OPEN" && !c.hours).length : 0;
   const hoursNote =
@@ -142,6 +147,8 @@ export default function HomeContent({ cafes }: HomeContentProps) {
             onVibesChange={setSelectedVibes}
             selectedHours={selectedHours}
             onHoursChange={setSelectedHours}
+            selectedRegions={selectedRegions}
+            onRegionsChange={setSelectedRegions}
             dropdownAlign="right"
           />
         </div>

@@ -5,6 +5,7 @@ import {
   validateCafeFields,
   validateCafeAdminFields,
   validateCafeHoursFields,
+  validateRegion,
   allTagsExist,
   type CafeFields,
   type CafeAdminFields,
@@ -19,20 +20,22 @@ export const dynamic = "force-dynamic";
  *  The slug never changes. Returns { cafeId, slug }. */
 export async function PATCH(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const body = (await request.json().catch(() => null)) as Partial<Record<keyof CafeFields | keyof CafeAdminFields | keyof CafeHoursFields, unknown>> | null;
+  const body = (await request.json().catch(() => null)) as Partial<Record<keyof CafeFields | keyof CafeAdminFields | keyof CafeHoursFields | "region", unknown>> | null;
   if (!body || typeof body !== "object") {
     return Response.json({ error: "Invalid JSON body" }, { status: 400 });
   }
   const validated = validateCafeFields(body);
   const adminValidated = validateCafeAdminFields(body);
   const hoursValidated = validateCafeHoursFields(body);
-  if (!validated.ok || !adminValidated.ok || !hoursValidated.ok) {
+  const regionValidated = validateRegion(body.region);
+  if (!validated.ok || !adminValidated.ok || !hoursValidated.ok || !regionValidated.ok) {
     return Response.json(
       {
         errors: {
           ...(validated.ok ? {} : validated.errors),
           ...(adminValidated.ok ? {} : adminValidated.errors),
           ...(hoursValidated.ok ? {} : hoursValidated.errors),
+          ...(regionValidated.ok ? {} : { region: regionValidated.error }),
         },
       },
       { status: 400 }
@@ -44,6 +47,7 @@ export async function PATCH(request: NextRequest, { params }: { params: Promise<
     ...coreFields,
     ...adminValidated.data,
     ...hoursMeta,
+    region: regionValidated.region,
     // Prisma needs DbNull (not JS null) to clear a Json column.
     hours: hours ? (hours as unknown as Prisma.InputJsonValue) : Prisma.DbNull,
   };

@@ -42,6 +42,7 @@ export default async function NewCafePage() {
             hoursCheckedAt: "",
             hoursSourceUrl: "",
             website: "",
+            region: "",
           }}
         />
       </main>

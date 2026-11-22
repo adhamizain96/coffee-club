@@ -51,6 +51,7 @@ export default async function EditCafePage({ params }: { params: Promise<{ id: s
             hoursCheckedAt: cafe.hoursCheckedAt ? cafe.hoursCheckedAt.toISOString().slice(0, 10) : "",
             hoursSourceUrl: cafe.hoursSourceUrl ?? "",
             website: cafe.website ?? "",
+            region: cafe.region ?? "",
           }}
         />
       </main>

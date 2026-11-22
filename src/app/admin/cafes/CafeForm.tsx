@@ -6,6 +6,7 @@ import { TAG_CATEGORIES } from "@/lib/tag-display";
 import type { GeocodeResult } from "@/lib/geocode";
 import { Field, TagGroup, adminInputClass } from "../AdminFormParts";
 import { DAY_KEYS, DAY_LABELS, type DayKey } from "@/lib/hours";
+import { REGIONS, REGION_LABELS, regionForAddress, type RegionValue } from "@/lib/regions";
 
 const EMPTY_WEEK: Record<DayKey, string> = { mon: "", tue: "", wed: "", thu: "", fri: "", sat: "", sun: "" };
 
@@ -27,6 +28,7 @@ export interface CafeFormValues {
   hoursCheckedAt: string;
   hoursSourceUrl: string;
   website: string;
+  region: RegionValue | "";
 }
 
 interface CafeFormProps {
@@ -62,6 +64,7 @@ export default function CafeForm({ cafeId, slug, initial, tagsByName }: CafeForm
   const [hoursCheckedAt, setHoursCheckedAt] = useState(initial.hoursCheckedAt);
   const [hoursSourceUrl, setHoursSourceUrl] = useState(initial.hoursSourceUrl);
   const [website, setWebsite] = useState(initial.website);
+  const [region, setRegion] = useState<RegionValue | "">(initial.region);
 
   const [geocoding, setGeocoding] = useState(false);
   const [geocodeNote, setGeocodeNote] = useState<string | null>(null);
@@ -99,6 +102,7 @@ export default function CafeForm({ cafeId, slug, initial, tagsByName }: CafeForm
       setAddress(result.formattedAddress);
       setGeocodedFor(result.formattedAddress.trim());
       if (!neighborhood.trim() && result.neighborhood) setNeighborhood(result.neighborhood);
+      if (!region) setRegion(regionForAddress(result.formattedAddress) ?? "");
     } catch {
       setGeocodeNote("Network error during geocode. Try again.");
     } finally {
@@ -135,6 +139,7 @@ export default function CafeForm({ cafeId, slug, initial, tagsByName }: CafeForm
           hoursCheckedAt,
           hoursSourceUrl,
           website,
+          region,
         }),
       });
       const data = await res.json().catch(() => null);
@@ -199,6 +204,15 @@ export default function CafeForm({ cafeId, slug, initial, tagsByName }: CafeForm
           </button>
         </div>
         {geocodeNote && <p className="mt-1 text-xs text-red-600">{geocodeNote}</p>}
+      </Field>
+
+      <Field id="region" label="Region" helper="Filled from the town after geocoding when known." error={errors.region}>
+        <select id="region" value={region} onChange={(e) => setRegion(e.target.value as RegionValue | "")} className={adminInputClass} disabled={disabled}>
+          <option value="">Not assigned</option>
+          {REGIONS.map((r) => (
+            <option key={r} value={r}>{REGION_LABELS[r]}</option>
+          ))}
+        </select>
       </Field>
 
       <Field id="neighborhood" label="Neighborhood or suburb" error={errors.neighborhood}>

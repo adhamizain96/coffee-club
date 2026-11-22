@@ -18,6 +18,14 @@ enum CafeStatus {
   CLOSED
 }
 
+enum Region {
+  CITY
+  NORTH
+  NORTHWEST
+  WEST
+  SOUTH
+}
+
 enum SubmissionStatus {
   PENDING
   APPROVED
@@ -50,6 +58,8 @@ model Cafe {
   hoursCheckedAt DateTime? @map("hours_checked_at")
   hoursSourceUrl String?   @map("hours_source_url")
   website        String?
+  /// City or suburb area (src/lib/regions.ts). Null until assigned.
+  region         Region?
 
   tags        CafeTag[]
   notes       Note[]
