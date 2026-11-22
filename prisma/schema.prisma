@@ -21,6 +21,8 @@ enum SubmissionStatus {
 model Cafe {
   id            String    @id @default(cuid())
   name          String
+  /// Stable public URL key (/cafes/[slug]). Nullable until backfilled everywhere.
+  slug          String?   @unique
   description   String
   address       String
   neighborhood  String

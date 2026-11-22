@@ -93,6 +93,8 @@ Priorities, in order:
 ## Seed File Conventions (`prisma/seed.ts`)
 
 - 32 cafes total: indexes 0–9 are the original Chicago entries, 10–31 are Chicagoland suburban additions.
+- Every entry has an explicit `slug` (stable public URL key, `src/lib/slug.ts`). Slugs never change once published, even if the cafe is renamed. Keep `slug` right after `name` (the geocode script's parser expects `name`, then `address`, then `latitude`/`longitude`).
+- `scripts/backfill-slugs.ts` fills `slug` for rows where it's null (dry run by default, `--apply` to write; uses seed slugs when names match).
 - `imageUrl` is matched to the cafe **by position** in `CAFE_IMAGES`. Adding a cafe to `cafes` means adding its image URL to `CAFE_IMAGES` at the same index.
 - Photos must be real images of the actual cafe — official site, official Instagram, or a reputable publication. Verify HTTP 200 + image content-type before commit. No stock images, no Yelp/Google user uploads, no AI-generated images.
 - Cafes must be real, currently operating businesses. Verify before adding. Do not fabricate names, addresses, or coordinates.

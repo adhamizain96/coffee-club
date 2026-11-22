@@ -8,6 +8,7 @@ export interface TagDTO {
 
 export interface CafeListItem {
   id: string;
+  slug: string | null;
   name: string;
   description: string;
   neighborhood: string;

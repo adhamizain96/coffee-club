@@ -16,6 +16,7 @@ export default async function HomePage() {
 
   const cafeList: CafeListItem[] = cafes.map((cafe) => ({
     id: cafe.id,
+    slug: cafe.slug,
     name: cafe.name,
     description: cafe.description,
     neighborhood: cafe.neighborhood,

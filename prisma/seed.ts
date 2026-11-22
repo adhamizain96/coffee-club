@@ -96,6 +96,8 @@ const vibeTags = ["cozy", "study-friendly", "quiet", "lively", "bright", "date-s
 
 interface CafeSeed {
   name: string;
+  /** Stable public URL key. Never change once published. */
+  slug: string;
   description: string;
   address: string;
   neighborhood: string;
@@ -110,6 +112,7 @@ interface CafeSeed {
 const cafes: CafeSeed[] = [
   {
     name: "Metric Coffee",
+    slug: "metric-coffee",
     description:
       "A spacious roastery and cafe in Fulton Market with industrial charm and exceptional single-origin pour-overs.",
     address: "2021 W Fulton St, Chicago, IL 60612",
@@ -140,6 +143,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Sawada Coffee",
+    slug: "sawada-coffee",
     description:
       "A sleek West Loop spot known for its military latte — a matcha-espresso hybrid that's become a Chicago icon.",
     address: "112 N Green St, Chicago, IL 60607",
@@ -165,6 +169,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Osmium Coffee Bar",
+    slug: "osmium-coffee-bar",
     description:
       "A tiny, immaculate coffee bar in Wicker Park with a serious dedication to precision brewing and seasonal menus.",
     address: "1117 N Damen Ave, Chicago, IL 60622",
@@ -195,6 +200,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "The Wormhole Coffee",
+    slug: "the-wormhole-coffee",
     description:
       "A retro 80s-themed cafe in Wicker Park with a DeLorean parked inside and solid espresso drinks in a fun atmosphere.",
     address: "1462 N Milwaukee Ave, Chicago, IL 60622",
@@ -220,6 +226,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Dark Matter Coffee — Star Lounge",
+    slug: "dark-matter-coffee-star-lounge",
     description:
       "The flagship cafe of Chicago's beloved punk-rock roaster, with bold blends and an unapologetically loud aesthetic.",
     address: "738 N Western Ave, Chicago, IL 60612",
@@ -250,6 +257,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Colectivo Coffee — Evanston",
+    slug: "colectivo-coffee-evanston",
     description:
       "A warm, welcoming cafe in downtown Evanston popular with Northwestern students for its generous space and reliable coffee.",
     address: "1631 Sherman Ave, Evanston, IL 60201",
@@ -275,6 +283,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Bridgeport Coffeehouse",
+    slug: "bridgeport-coffeehouse",
     description:
       "A neighborhood staple in Bridgeport with a living-room feel, local art on the walls, and a loyal community of regulars.",
     address: "3101 S Morgan St, Chicago, IL 60608",
@@ -305,6 +314,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Groundswell Coffee — Oak Park",
+    slug: "groundswell-coffee",
     description:
       "A bright, airy suburban cafe in Oak Park with a focus on direct-trade coffee and community gathering.",
     address: "7228 Madison St, Forest Park, IL 60130",
@@ -330,6 +340,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Dollop Coffee — Streeterville",
+    slug: "dollop-coffee-streeterville",
     description:
       "A polished downtown cafe near the Magnificent Mile with strong drinks and a sleek modern interior perfect for a quick meeting.",
     address: "345 E Ohio St, Chicago, IL 60611",
@@ -360,6 +371,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Sip of Hope",
+    slug: "sip-of-hope",
     description:
       "A cafe in Logan Square where 100% of profits support mental health education and suicide prevention. Great coffee, greater cause.",
     address: "3039 W Fullerton Ave, Chicago, IL 60647",
@@ -390,6 +402,7 @@ const cafes: CafeSeed[] = [
   // ---------------------------------------------------------------------------
   {
     name: "Backlot Coffee",
+    slug: "backlot-coffee",
     description:
       "An independent neighborhood coffeehouse and roastery on Central Street in north Evanston, serving locally roasted beans, pastries, breakfast, and lunch.",
     address: "2006 Central St, Evanston, IL 60201",
@@ -413,6 +426,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Brothers K Coffeehouse",
+    slug: "brothers-k-coffeehouse",
     description:
       "A south Evanston staple on Main Street with a deep-rooted community feel, named for the Dostoevsky novel and beloved by NU students and locals alike.",
     address: "500 Main St, Evanston, IL 60202",
@@ -436,6 +450,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Newport Coffee House",
+    slug: "newport-coffee-house",
     description:
       "A downtown Evanston classic on Davis Street, serving Chicago's North Shore since 1992 with single-origin coffees from around the world.",
     address: "622 Davis St, Evanston, IL 60201",
@@ -455,6 +470,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Reprise Coffee Roasters",
+    slug: "reprise-coffee-roasters",
     description:
       "A specialty roaster's flagship cafe on Main Street in south Evanston, with carefully sourced single-origins and a clean, modern aesthetic.",
     address: "710 Main St, Evanston, IL 60202",
@@ -478,6 +494,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Central Station Coffee & Tea",
+    slug: "central-station-coffee-tea",
     description:
       "A downtown Wilmette cafe on Central Avenue offering espresso, tea, made-from-scratch sandwiches, salads, and quiches near the Metra station.",
     address: "1150 Central Ave, Wilmette, IL 60091",
@@ -497,6 +514,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Glenview Grind",
+    slug: "glenview-grind",
     description:
       "An independent downtown Glenview shop with a drive-thru, private-label roasted coffee, smoothies, and pastries. Family-owned, not a chain.",
     address: "1837 Glenview Rd, Glenview, IL 60025",
@@ -516,6 +534,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Bean Bar",
+    slug: "bean-bar",
     description:
       "A Northbrook coffee bar on Cherry Lane with a warm interior and a focused menu of espresso drinks and pastries.",
     address: "1901 Cherry Ln, Northbrook, IL 60062",
@@ -535,6 +554,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Complimentary Cafe & Co",
+    slug: "complimentary-cafe-co",
     description:
       "A Highland Park spot on St Johns Avenue serving thoughtfully prepared coffee and matcha lattes alongside fresh pastries and savory empanadas.",
     address: "1700 St Johns Ave, Highland Park, IL 60035",
@@ -554,6 +574,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Harmony Coffee Bar",
+    slug: "harmony-coffee-bar",
     description:
       "A modern Highland Park coffee bar on Central Avenue with a clean, minimal aesthetic and carefully sourced espresso drinks.",
     address: "610 Central Ave Ste 155, Highland Park, IL 60035",
@@ -573,6 +594,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Hometown Coffee & Juice",
+    slug: "hometown-coffee-juice",
     description:
       "A Lake Forest favorite on Wisconsin Avenue blending a coffee bar with a juice and smoothie program, in the heart of the downtown shopping district.",
     address: "231 E Wisconsin Ave, Lake Forest, IL 60045",
@@ -592,6 +614,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Gerry's Café",
+    slug: "gerrys-cafe",
     description:
       "A mission-driven Arlington Heights coffee shop staffed by adults with intellectual and developmental disabilities. Excellent coffee with real social impact.",
     address: "1802 N Arlington Heights Rd, Arlington Heights, IL 60004",
@@ -615,6 +638,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Two Libras Cafe",
+    slug: "two-libras-cafe",
     description:
       "A small family-owned 'Euro-ish' cafe tucked in a downtown Palatine alleyway, with hot and cold drinks, smoothies, pastries, and French-style sandwiches.",
     address: "10 N Bothwell St, Palatine, IL 60067",
@@ -638,6 +662,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Sayfani Coffee House",
+    slug: "sayfani-coffee-house",
     description:
       "A community-centered Schaumburg coffee house on Golf Road offering exceptional coffee and tea in a warm, locally-rooted setting.",
     address: "157 W Golf Rd, Schaumburg, IL 60195",
@@ -657,6 +682,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Conscious Cup Coffee Roasters",
+    slug: "conscious-cup-coffee-roasters",
     description:
       "A family-owned Barrington roaster operating since 2006, with a focus on ethically sourced beans and a strong community-roaster identity.",
     address: "100 E Station St, Barrington, IL 60010",
@@ -676,6 +702,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Kribi Coffee",
+    slug: "kribi-coffee",
     description:
       "An Oak Park roaster sourcing green beans directly from farmers in Cameroon, where the owner is from. Air-roasted, single-origin, with a clear point of view.",
     address: "1033 South Blvd, Oak Park, IL 60302",
@@ -695,6 +722,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Five & Hoek Coffee",
+    slug: "five-hoek-coffee",
     description:
       "A focused take-away coffee bar on Wheaton's Main Street (formerly River City Roasters), serving carefully prepared espresso and brew without any indoor seating distractions.",
     address: "112 N Main St Unit B, Wheaton, IL 60187",
@@ -714,6 +742,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Sparrow Coffee",
+    slug: "sparrow-coffee",
     description:
       "Sparrow's flagship cafe on the Naperville Riverwalk, a serious roaster's space with seasonal menus and a downtown-Naperville magnetism.",
     address: "120 Water St Ste 110, Naperville, IL 60540",
@@ -737,6 +766,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Café La Fortuna",
+    slug: "cafe-la-fortuna",
     description:
       "A Hinsdale coffee shop on Village Place, house-roasting since 2012 and serving as the village's de facto living room.",
     address: "46 Village Pl, Hinsdale, IL 60521",
@@ -756,6 +786,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Owl & Lark",
+    slug: "owl-lark",
     description:
       "A La Grange juice and coffee bar with specialty espresso, fresh-squeezed juices, smoothie bowls, and gluten-free baked goods in a cozy downtown setting.",
     address: "41 S La Grange Rd, La Grange, IL 60525",
@@ -775,6 +806,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Pekoe & Bean",
+    slug: "pekoe-bean",
     description:
       "A Tinley Park cafe on Oak Park Avenue offering a strong tea program alongside coffee, in a comfortable south-suburban setting.",
     address: "17028 Oak Park Ave, Tinley Park, IL 60477",
@@ -794,6 +826,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Two Mile Coffee Bar",
+    slug: "two-mile-coffee-bar",
     description:
       "A Beverly community coffee shop on Walden Parkway partnered with Intelligentsia, anchoring the south side coffee scene.",
     address: "9907 S Walden Pkwy, Chicago, IL 60643",
@@ -817,6 +850,7 @@ const cafes: CafeSeed[] = [
   },
   {
     name: "Beverly Bakery & Cafe",
+    slug: "beverly-bakery-cafe",
     description:
       "A family-owned Beverly bakery and roaster on Western Avenue, billed as the only Chicago coffee roaster south of Bridgeport, with 22 coffees by the cup or pound.",
     address: "10528 S Western Ave, Chicago, IL 60643",
@@ -870,6 +904,7 @@ async function main() {
     const created = await prisma.cafe.create({
       data: {
         name: cafe.name,
+        slug: cafe.slug,
         description: cafe.description,
         address: cafe.address,
         neighborhood: cafe.neighborhood,
