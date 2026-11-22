@@ -89,8 +89,8 @@ const amenityTags = [
   "full_menu", "pastries_only", "vegan_options",
   // Noise Level
   "whisper_quiet", "moderate_noise", "bustling",
-  // Hours
-  "early_bird", "late_night", "weekend_brunch",
+  // Hours (early_bird / late_night retired in favor of hours-derived badges)
+  "weekend_brunch",
 ] as const;
 const vibeTags = ["cozy", "study-friendly", "quiet", "lively", "bright", "date-spot"] as const;
 
@@ -121,7 +121,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.6778477,
     ownerReview:
       "Metric is the real deal for coffee nerds. The space is huge and airy with exposed brick and concrete floors. Their rotating single-origins are always interesting, and the baristas actually know their stuff. Not the coziest spot, but the quality speaks for itself.",
-    amenities: ["wifi", "outlets", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["lively", "bright"],
     notes: [
       {
@@ -235,7 +235,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.6871762,
     ownerReview:
       "Dark Matter doesn't play it safe, and that's exactly why I love it. The UniverSoul blend is my daily driver. Star Lounge has that perfectly chaotic energy — art everywhere, loud music sometimes, but the coffee is always dialed in.",
-    amenities: ["wifi", "outdoor_seating", "pet_friendly", "communal_tables", "full_menu", "bustling", "early_bird"],
+    amenities: ["wifi", "outdoor_seating", "pet_friendly", "communal_tables", "full_menu", "bustling"],
     vibes: ["lively", "bright"],
     notes: [
       {
@@ -292,7 +292,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.65088539999999,
     ownerReview:
       "Bridgeport Coffeehouse feels like someone's cool aunt's living room. Mismatched furniture, local art everywhere, and a crowd that ranges from artists to retirees to WFH folks. The coffee is good, the pastries are great, and the vibe is unmatched.",
-    amenities: ["wifi", "outlets", "pet_friendly", "couch_seating", "laptop_friendly", "pastries_only", "whisper_quiet", "late_night"],
+    amenities: ["wifi", "outlets", "pet_friendly", "couch_seating", "laptop_friendly", "pastries_only", "whisper_quiet"],
     vibes: ["cozy", "quiet", "study-friendly"],
     notes: [
       {
@@ -323,7 +323,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.80612769999999,
     ownerReview:
       "Groundswell is what every suburb deserves — a thoughtful, quality-focused cafe that also functions as a community hub. Their direct-trade sourcing is legit, the space is beautiful, and the staff remembers your name after two visits.",
-    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "communal_tables", "laptop_friendly", "vegan_options", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "communal_tables", "laptop_friendly", "vegan_options", "moderate_noise"],
     vibes: ["bright", "quiet", "study-friendly"],
     notes: [
       {
@@ -349,7 +349,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.6191609,
     ownerReview:
       "Dollop Streeterville is the most refined cafe on this list. Clean lines, great lighting, and espresso drinks that are consistently excellent. It's a popular spot for quick meetings and laptop work. Not cheap, but the quality justifies it.",
-    amenities: ["wifi", "outlets", "bar_seating", "meeting_space", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "bar_seating", "meeting_space", "pastries_only", "moderate_noise"],
     vibes: ["bright", "quiet", "date-spot"],
     notes: [
       {
@@ -411,7 +411,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.70129469999999,
     ownerReview:
       "Backlot is the model for what a neighborhood roaster should be. They roast in-house, the staff knows regulars by name, and the Central Street strip around them has a small-town feel. Solid pour-overs and a tight breakfast/lunch menu that rotates seasonally.",
-    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "laptop_friendly", "full_menu", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "laptop_friendly", "full_menu", "moderate_noise"],
     vibes: ["cozy", "bright", "study-friendly"],
     notes: [
       {
@@ -435,7 +435,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.6779009,
     ownerReview:
       "Brothers K has the lived-in soul of a true neighborhood coffeehouse. Wood-paneled walls, mismatched tables, and a steady mix of students hammering on laptops alongside retirees reading the paper. Coffee is reliable, atmosphere is the draw.",
-    amenities: ["wifi", "outlets", "communal_tables", "couch_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outlets", "communal_tables", "couch_seating", "laptop_friendly", "pastries_only", "moderate_noise", "weekend_brunch"],
     vibes: ["cozy", "study-friendly", "lively"],
     notes: [
       {
@@ -459,7 +459,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.68099810000001,
     ownerReview:
       "Newport has been on Davis since 1992 and earns it. The bean selection runs deep — they'll grind for whatever brew method you mention — and the room itself feels like a piece of pre-Starbucks coffee history. Easy walking distance from the Davis CTA stop.",
-    amenities: ["wifi", "outlets", "bar_seating", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "bar_seating", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["cozy", "quiet", "bright"],
     notes: [
       {
@@ -479,7 +479,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.681035,
     ownerReview:
       "Reprise takes the technical side of coffee seriously without making customers feel like they need a wiki tab open to order. Espresso is dialed in daily, the pour-over menu rotates often, and the room is calm enough to actually focus.",
-    amenities: ["wifi", "outlets", "bar_seating", "laptop_friendly", "pastries_only", "whisper_quiet", "early_bird"],
+    amenities: ["wifi", "outlets", "bar_seating", "laptop_friendly", "pastries_only", "whisper_quiet"],
     vibes: ["quiet", "bright", "study-friendly"],
     notes: [
       {
@@ -503,7 +503,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.70736,
     ownerReview:
       "Central Station is the village square cafe Wilmette deserves. Coffee, tea, and a real lunch menu — quiches and sandwiches that go beyond the usual pastry case. Steps from the Metra, so it doubles as a commuter pit stop.",
-    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "moderate_noise", "weekend_brunch"],
     vibes: ["bright", "cozy", "study-friendly"],
     notes: [
       {
@@ -523,7 +523,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.80370099999999,
     ownerReview:
       "The drive-thru alone makes Glenview Grind a Glenview essential, but the coffee holds up if you stop in. Private-label roasts, gourmet teas, and a bench out front that's the unofficial neighborhood meeting spot on weekend mornings.",
-    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["cozy", "bright"],
     notes: [
       {
@@ -543,7 +543,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.8263837,
     ownerReview:
       "Bean Bar is the kind of small, well-run shop you wish every suburb had. Espresso is dialed, the room is bright, and the staff treats every drink like it matters. A welcome alternative to the chains that dominate the Edens corridor.",
-    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["bright", "cozy", "study-friendly"],
     notes: [
       {
@@ -563,7 +563,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.7974502,
     ownerReview:
       "Complimentary nails the Highland Park brief — polished, generous service, and a menu that goes well past coffee. The empanadas are legitimately a meal, and the matcha is among the better ones on the North Shore.",
-    amenities: ["wifi", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "vegan_options", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "vegan_options", "moderate_noise", "weekend_brunch"],
     vibes: ["bright", "date-spot", "cozy"],
     notes: [
       {
@@ -583,7 +583,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.80002859999999,
     ownerReview:
       "Harmony is the polished, design-forward end of the Highland Park coffee scene. Bright space, attentive baristas, drinks that reward slowing down. Closed Sundays, which is a quirk you learn fast.",
-    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "whisper_quiet", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "whisper_quiet"],
     vibes: ["bright", "quiet", "date-spot"],
     notes: [
       {
@@ -603,7 +603,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.8414159,
     ownerReview:
       "Hometown is what makes downtown Lake Forest feel alive on weekday mornings. Half coffee bar, half juice and smoothie counter — the dual menu means it works for whoever you bring with you, and the room is a constant low buzz of regulars.",
-    amenities: ["wifi", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "vegan_options", "full_menu", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "vegan_options", "full_menu", "moderate_noise"],
     vibes: ["bright", "lively", "cozy"],
     notes: [
       {
@@ -623,7 +623,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.98115589999999,
     ownerReview:
       "Gerry's is special. The staff is built around employing people with intellectual and developmental disabilities, and it shows in every interaction — the place runs on genuine care. The coffee program is no afterthought either: real espresso drinks, real attention to detail.",
-    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "full_menu", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "full_menu", "moderate_noise", "weekend_brunch"],
     vibes: ["bright", "lively", "cozy"],
     notes: [
       {
@@ -647,7 +647,7 @@ const cafes: CafeSeed[] = [
     longitude: -88.04511749999999,
     ownerReview:
       "Two Libras feels like stumbling into a hidden cafe in a small European town — except it's a downtown Palatine alley. The 'French-ish' sandwiches are the move at lunch, and the space punches well above its size. Closed Mondays.",
-    amenities: ["wifi", "outdoor_seating", "communal_tables", "laptop_friendly", "full_menu", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outdoor_seating", "communal_tables", "laptop_friendly", "full_menu", "moderate_noise", "weekend_brunch"],
     vibes: ["cozy", "date-spot", "bright"],
     notes: [
       {
@@ -671,7 +671,7 @@ const cafes: CafeSeed[] = [
     longitude: -88.0837415,
     ownerReview:
       "Sayfani is the Schaumburg coffee shop that proves you don't have to go to the city to find a real one. Warm room, attentive service, drinks that go beyond the usual suburban-strip-mall coffee. A genuine community spot in a part of the suburbs that doesn't have many.",
-    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["cozy", "bright", "study-friendly"],
     notes: [
       {
@@ -691,7 +691,7 @@ const cafes: CafeSeed[] = [
     longitude: -88.1354679,
     ownerReview:
       "Conscious Cup has been roasting in Barrington since 2006 and the depth shows. The sourcing story is real — they actually talk about the farms — and the Cook Street location is a comfortable place to spend an hour. The retail beans are worth taking home.",
-    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["cozy", "quiet", "bright"],
     notes: [
       {
@@ -711,7 +711,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.80165350000001,
     ownerReview:
       "Kribi has one of the clearest origin stories in the Chicago area — owner Jacques Shalo sources green beans directly from Cameroon, and the air-roasting setup gives the cups a distinct profile. Worth a trip even if you're not in Oak Park.",
-    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "bar_seating", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["bright", "quiet", "study-friendly"],
     notes: [
       {
@@ -731,7 +731,7 @@ const cafes: CafeSeed[] = [
     longitude: -88.10687759999999,
     ownerReview:
       "Five & Hoek (the rebranded River City Roasters) leans hard into the take-away coffee bar concept — no indoor seating, just a clean menu and very dialed-in drinks. If you're a 'order, walk, drink' person, this is the platonic ideal of that experience.",
-    amenities: ["parking", "no_laptops", "pastries_only", "early_bird"],
+    amenities: ["parking", "no_laptops", "pastries_only"],
     vibes: ["bright"],
     notes: [
       {
@@ -751,7 +751,7 @@ const cafes: CafeSeed[] = [
     longitude: -88.1506319,
     ownerReview:
       "Sparrow is the cafe that put Naperville on the specialty coffee map. Riverwalk location, design-forward space, and a roasting program that holds up against anything in the city. Get a window seat and a pour-over and stay a while.",
-    amenities: ["wifi", "outdoor_seating", "parking", "bar_seating", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outdoor_seating", "parking", "bar_seating", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "weekend_brunch"],
     vibes: ["bright", "lively", "date-spot"],
     notes: [
       {
@@ -775,7 +775,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.9283288,
     ownerReview:
       "La Fortuna has anchored Hinsdale's coffee scene since 2012 and earned its reputation as the village's living room. House-roasted, community-first, and the kind of place where the regulars greet each other by first name. Comfortable to settle in for an hour or three.",
-    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "couch_seating", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outlets", "outdoor_seating", "parking", "couch_seating", "laptop_friendly", "pastries_only", "moderate_noise", "weekend_brunch"],
     vibes: ["cozy", "study-friendly", "bright"],
     notes: [
       {
@@ -795,7 +795,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.86943409999999,
     ownerReview:
       "Owl & Lark hits the wellness-cafe sweet spot without losing the plot on coffee. Smoothie bowls, fresh juices, and a real espresso program — the kind of place where you can grab breakfast with someone who hates coffee and not feel like you compromised.",
-    amenities: ["wifi", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "vegan_options", "moderate_noise", "early_bird", "weekend_brunch"],
+    amenities: ["wifi", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "vegan_options", "moderate_noise", "weekend_brunch"],
     vibes: ["bright", "cozy", "study-friendly"],
     notes: [
       {
@@ -815,7 +815,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.7849991,
     ownerReview:
       "Pekoe & Bean leans harder on tea than most cafes around, which makes it a destination for anyone tired of an afterthought tea menu. Coffee is solid too, the room is comfortable, and the south-suburban location fills a gap on the map.",
-    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outlets", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["cozy", "quiet", "study-friendly"],
     notes: [
       {
@@ -835,7 +835,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.66754309999999,
     ownerReview:
       "Two Mile is the south-side coffee bar Beverly deserves. Intelligentsia partnership means the espresso is sharp, but the soul of the place is the regulars — kids on the way to school, neighbors meeting up before work, the steady rhythm of a community shop.",
-    amenities: ["wifi", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise", "early_bird"],
+    amenities: ["wifi", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "pastries_only", "moderate_noise"],
     vibes: ["cozy", "lively", "bright"],
     notes: [
       {
@@ -859,7 +859,7 @@ const cafes: CafeSeed[] = [
     longitude: -87.68172779999999,
     ownerReview:
       "Beverly Bakery is two beloved south-side institutions in one — a from-scratch bakery and a small roaster that fills a real gap on the map. They say they're the only Chicago coffee roaster south of Bridgeport and that's not just marketing; the bag selection is genuinely deep.",
-    amenities: ["parking", "communal_tables", "full_menu", "moderate_noise", "early_bird"],
+    amenities: ["parking", "communal_tables", "full_menu", "moderate_noise"],
     vibes: ["cozy", "lively"],
     notes: [
       {

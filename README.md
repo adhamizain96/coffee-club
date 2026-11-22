@@ -288,7 +288,9 @@ Defined as `as const` in `prisma/seed.ts`.
 
 **Amenities** — filter logic is **AND** (cafe must have all selected):
 
-`wifi`, `outlets`, `outdoor_seating`, `pet_friendly`, `parking`, `bar_seating`, `communal_tables`, `couch_seating`, `laptop_friendly`, `meeting_space`, `no_laptops`, `full_menu`, `pastries_only`, `vegan_options`, `whisper_quiet`, `moderate_noise`, `bustling`, `early_bird`, `late_night`, `weekend_brunch`
+`wifi`, `outlets`, `outdoor_seating`, `pet_friendly`, `parking`, `bar_seating`, `communal_tables`, `couch_seating`, `laptop_friendly`, `meeting_space`, `no_laptops`, `full_menu`, `pastries_only`, `vegan_options`, `whisper_quiet`, `moderate_noise`, `bustling`, `weekend_brunch`
+
+`early_bird` and `late_night` are retired; Early Bird / Late Night are derived from structured hours instead.
 
 **Vibes** — filter logic is **OR** (cafe must have at least one selected):
 

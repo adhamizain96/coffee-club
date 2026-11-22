@@ -4,7 +4,8 @@ import { useState, useCallback } from "react";
 import Link from "next/link";
 import { Drawer } from "vaul";
 import type { CafeListItem } from "@/lib/types";
-import { useCafes } from "@/hooks/useCafes";
+import { useCafes, type HoursFilter } from "@/hooks/useCafes";
+import { useClientNow } from "@/hooks/useClientNow";
 import FilterPanel from "@/components/FilterPanel";
 import CafeList from "@/components/CafeList";
 import CafeMapLoader from "@/components/CafeMapLoader";
@@ -18,6 +19,8 @@ const SNAP_POINTS: (number | string)[] = [0.15, 0.5, 0.92];
 export default function HomeContent({ cafes }: HomeContentProps) {
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
   const [selectedVibes, setSelectedVibes] = useState<string[]>([]);
+  const [selectedHours, setSelectedHours] = useState<HoursFilter[]>([]);
+  const now = useClientNow();
   const [selectedCafeId, setSelectedCafeId] = useState<string | null>(null);
   const [panTarget, setPanTarget] = useState<{
     lat: number;
@@ -30,6 +33,8 @@ export default function HomeContent({ cafes }: HomeContentProps) {
     cafes,
     selectedAmenities,
     selectedVibes,
+    selectedHours,
+    now,
   });
 
   const handleMarkerClick = useCallback((cafeId: string) => {
@@ -80,11 +85,19 @@ export default function HomeContent({ cafes }: HomeContentProps) {
       selectedVibes={selectedVibes}
       onAmenitiesChange={setSelectedAmenities}
       onVibesChange={setSelectedVibes}
+      selectedHours={selectedHours}
+      onHoursChange={setSelectedHours}
     />
   );
 
   const filteredCount = filteredCafes.length;
-  const filterActive = selectedAmenities.length > 0 || selectedVibes.length > 0;
+  const filterActive = selectedAmenities.length > 0 || selectedVibes.length > 0 || selectedHours.length > 0;
+  const hoursUnknownCount =
+    selectedHours.length > 0 ? cafes.filter((c) => c.status === "OPEN" && !c.hours).length : 0;
+  const hoursNote =
+    hoursUnknownCount > 0
+      ? `${hoursUnknownCount} ${hoursUnknownCount === 1 ? "cafe has" : "cafes have"} no listed hours and ${hoursUnknownCount === 1 ? "isn't" : "aren't"} included.`
+      : null;
 
   return (
     <div className="relative h-screen overflow-hidden">
@@ -127,6 +140,8 @@ export default function HomeContent({ cafes }: HomeContentProps) {
             selectedVibes={selectedVibes}
             onAmenitiesChange={setSelectedAmenities}
             onVibesChange={setSelectedVibes}
+            selectedHours={selectedHours}
+            onHoursChange={setSelectedHours}
             dropdownAlign="right"
           />
         </div>
@@ -161,6 +176,7 @@ export default function HomeContent({ cafes }: HomeContentProps) {
                 List of {filteredCount} curated cafes. Drag the handle to expand or collapse.
               </Drawer.Description>
               <div className="flex-1 overflow-y-auto px-4 pb-6">
+                {hoursNote && <p className="mb-3 text-xs text-stone-500">{hoursNote}</p>}
                 <CafeList
                   cafes={filteredCafes}
                   selectedCafeId={selectedCafeId}
@@ -213,6 +229,7 @@ export default function HomeContent({ cafes }: HomeContentProps) {
 
           {/* Scrollable cafe list */}
           <div className="flex-1 overflow-y-auto p-4">
+            {hoursNote && <p className="mb-3 text-xs text-stone-500">{hoursNote}</p>}
             <CafeList
               cafes={filteredCafes}
               selectedCafeId={selectedCafeId}

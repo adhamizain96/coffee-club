@@ -2,12 +2,15 @@
 
 import { useState } from "react";
 import { TAG_CATEGORIES } from "@/lib/tag-display";
+import { HOURS_FILTERS, type HoursFilter } from "@/hooks/useCafes";
 
 interface FilterPanelProps {
   selectedAmenities: string[];
   selectedVibes: string[];
   onAmenitiesChange: (amenities: string[]) => void;
   onVibesChange: (vibes: string[]) => void;
+  selectedHours: HoursFilter[];
+  onHoursChange: (hours: HoursFilter[]) => void;
   /**
    * Where to anchor the dropdown panel relative to the trigger button.
    * - undefined (default): renders in normal flow under the button (desktop legacy behavior)
@@ -75,11 +78,13 @@ export default function FilterPanel({
   selectedVibes,
   onAmenitiesChange,
   onVibesChange,
+  selectedHours,
+  onHoursChange,
   dropdownAlign,
 }: FilterPanelProps) {
   const [open, setOpen] = useState(false);
 
-  const activeCount = selectedAmenities.length + selectedVibes.length;
+  const activeCount = selectedAmenities.length + selectedVibes.length + selectedHours.length;
 
   function toggleAmenity(value: string) {
     onAmenitiesChange(
@@ -97,9 +102,15 @@ export default function FilterPanel({
     );
   }
 
+  function toggleHours(value: string) {
+    const v = value as HoursFilter;
+    onHoursChange(selectedHours.includes(v) ? selectedHours.filter((h) => h !== v) : [...selectedHours, v]);
+  }
+
   function clearAll() {
     onAmenitiesChange([]);
     onVibesChange([]);
+    onHoursChange([]);
   }
 
   return (
@@ -163,6 +174,8 @@ export default function FilterPanel({
             </div>
 
             <div className="h-px bg-stone-100" />
+
+            <FilterGroup title="When" tags={HOURS_FILTERS} selected={selectedHours} onToggle={toggleHours} />
 
             {TAG_CATEGORIES.map((cat, i) => {
               const prev = TAG_CATEGORIES[i - 1];

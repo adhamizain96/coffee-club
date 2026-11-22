@@ -44,6 +44,7 @@ export default function CafeList({
           imageUrl={cafe.imageUrl}
           status={cafe.status}
           isNew={cafe.isNew}
+          hours={cafe.hours}
           description={cafe.description}
           tags={cafe.tags}
           isHighlighted={cafe.id === selectedCafeId}

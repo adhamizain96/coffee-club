@@ -9,6 +9,8 @@ import FreshnessBadges from "@/components/FreshnessBadges";
 import { formatVisited, isNewCafe, normalizeStatus, STATUS_LABELS } from "@/lib/freshness";
 import CafeHours from "@/components/CafeHours";
 import { parseWeeklyHours } from "@/lib/hours";
+import { RETIRED_TAG_NAMES } from "@/lib/tag-display";
+import { HoursBadges } from "@/components/HoursStatus";
 import CafeDetailNotes from "./CafeDetailNotes";
 
 export const dynamic = "force-dynamic";
@@ -55,7 +57,7 @@ export default async function CafeDetailPage({
 
   const status = normalizeStatus(cafe.status);
 
-  const tags: TagDTO[] = cafe.tags.map((ct) => ({
+  const tags: TagDTO[] = cafe.tags.filter((ct) => !RETIRED_TAG_NAMES.has(ct.tag.name)).map((ct) => ({
     id: ct.tag.id,
     name: ct.tag.name,
     type: ct.tag.type,
@@ -165,6 +167,7 @@ export default async function CafeDetailPage({
             {tags.map((tag) => (
               <TagBadge key={tag.id} name={tag.name} type={tag.type} />
             ))}
+            <HoursBadges hours={status === "OPEN" ? parseWeeklyHours(cafe.hours) : null} />
           </div>
         )}
 

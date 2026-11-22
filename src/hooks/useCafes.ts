@@ -1,16 +1,31 @@
 import { useMemo } from "react";
 import type { CafeListItem } from "@/lib/types";
+import { getStatusAt, isEarlyBird, isLateNight } from "@/lib/hours";
+
+export type HoursFilter = "open_now" | "early_bird" | "late_night";
+
+export const HOURS_FILTERS: ReadonlyArray<{ name: HoursFilter; label: string }> = [
+  { name: "open_now", label: "Open now" },
+  { name: "early_bird", label: "Early Bird" },
+  { name: "late_night", label: "Late Night" },
+];
 
 interface UseCafesOptions {
   cafes: CafeListItem[];
   selectedAmenities: string[];
   selectedVibes: string[];
+  /** Hours-derived filters; AND with each other and with amenities. */
+  selectedHours?: HoursFilter[];
+  /** Client clock. While null (SSR/hydration) "Open now" doesn't filter. */
+  now?: Date | null;
 }
 
 export function useCafes({
   cafes,
   selectedAmenities,
   selectedVibes,
+  selectedHours = [],
+  now = null,
 }: UseCafesOptions): CafeListItem[] {
   return useMemo(() => {
     return cafes.filter((cafe) => {
@@ -28,7 +43,16 @@ export function useCafes({
         if (!hasAny) return false;
       }
 
+      // Hours filters: cafes without listed hours (or not open) never match.
+      for (const filter of selectedHours) {
+        if (filter === "open_now" && !now) continue;
+        if (!cafe.hours || cafe.status !== "OPEN") return false;
+        if (filter === "open_now" && !getStatusAt(cafe.hours, now!).open) return false;
+        if (filter === "early_bird" && !isEarlyBird(cafe.hours)) return false;
+        if (filter === "late_night" && !isLateNight(cafe.hours)) return false;
+      }
+
       return true;
     });
-  }, [cafes, selectedAmenities, selectedVibes]);
+  }, [cafes, selectedAmenities, selectedVibes, selectedHours, now]);
 }

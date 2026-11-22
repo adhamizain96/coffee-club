@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useClientNow } from "@/hooks/useClientNow";
 import { getStatusAt, hoursRows, statusLine, chicagoClock, type WeeklyHours } from "@/lib/hours";
 
 interface CafeHoursProps {
@@ -12,22 +12,9 @@ interface CafeHoursProps {
   closed?: boolean;
 }
 
-// "now" is read on the client only (the server renders a neutral state), so a
-// cached or slow render never shows a stale open/closed line.
-const subscribe = (onChange: () => void) => {
-  const id = window.setInterval(onChange, 60_000);
-  document.addEventListener("visibilitychange", onChange);
-  return () => {
-    window.clearInterval(id);
-    document.removeEventListener("visibilitychange", onChange);
-  };
-};
-const getMinuteSnapshot = () => Math.floor(Date.now() / 60_000);
-const getServerSnapshot = () => null;
-
 export default function CafeHours({ hours, checkedAt, sourceUrl, website, closed }: CafeHoursProps) {
-  const minute = useSyncExternalStore(subscribe, getMinuteSnapshot, getServerSnapshot);
-  const now = minute === null ? null : new Date(minute * 60_000);
+  // Client-only clock: the server renders no open/closed line.
+  const now = useClientNow();
 
   if (closed) return null;
 

@@ -3,6 +3,8 @@ import Link from "next/link";
 import TagBadge from "./TagBadge";
 import CafeImage from "./CafeImage";
 import FreshnessBadges from "./FreshnessBadges";
+import { HoursBadges, HoursStatusLine } from "./HoursStatus";
+import type { WeeklyHours } from "@/lib/hours";
 import type { CafeStatusValue } from "@/lib/freshness";
 import type { TagDTO } from "@/lib/types";
 
@@ -15,6 +17,7 @@ interface CafeCardProps {
   imageUrl: string | null;
   status: CafeStatusValue;
   isNew: boolean;
+  hours: WeeklyHours | null;
   description: string;
   tags: TagDTO[];
   isHighlighted?: boolean;
@@ -36,6 +39,7 @@ export default function CafeCard({
   imageUrl,
   status,
   isNew,
+  hours,
   description,
   tags,
   isHighlighted,
@@ -91,6 +95,7 @@ export default function CafeCard({
           </div>
 
           <p className="text-xs text-stone-400 mt-0.5">{neighborhood}</p>
+          <HoursStatusLine hours={hours} className="mt-0.5" />
 
           <p className="text-xs text-stone-500 line-clamp-2 mt-1.5 leading-relaxed">
             {description}
@@ -101,6 +106,7 @@ export default function CafeCard({
               {tags.map((tag) => (
                 <TagBadge key={tag.id} name={tag.name} type={tag.type} />
               ))}
+              <HoursBadges hours={hours} />
             </div>
           )}
         </div>

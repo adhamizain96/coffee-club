@@ -11,6 +11,7 @@ import type { CafeListItem } from "@/lib/types";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import CafeImage from "./CafeImage";
 import FreshnessBadges from "./FreshnessBadges";
+import { HoursStatusLine } from "./HoursStatus";
 import { getTagLabel } from "@/lib/tag-display";
 
 // ---------------------------------------------------------------------------
@@ -298,6 +299,7 @@ function ClusteredMarkers({
               </div>
 
               <p className="text-xs text-stone-400 mt-0.5">{infoCafe.neighborhood}</p>
+              <HoursStatusLine hours={infoCafe.hours} className="mt-0.5" />
 
               {(() => {
                 const vibes = infoCafe.tags.filter((t) => t.type === "VIBE").slice(0, 3);
