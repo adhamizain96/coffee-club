@@ -264,6 +264,10 @@ The new cafe appears on the public map and detail page immediately — no rebuil
 
 Header button → `POST /api/admin/logout` clears the cookie.
 
+### Managing cafes (`/admin/cafes`)
+
+The list links to an edit page for every cafe. **Add cafe** creates one directly without a submission. Edit the address, click **Geocode** (one Geocoding call), then save; saving is blocked while the address and coordinates disagree. The public URL (`/cafes/<slug>`) never changes, even if you rename the cafe. This is the way to change production data; the seed is local-only.
+
 ### Moderating community notes (`/admin/notes`)
 
 Lists every note, newest first, with a filter for all / visible / hidden. **Hide** removes a note from the public site without deleting it (reversible with **Unhide**). **Delete** removes it permanently after a second confirmation.

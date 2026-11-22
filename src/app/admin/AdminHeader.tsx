@@ -3,6 +3,7 @@ import Link from "next/link";
 const NAV = [
   { href: "/admin/submissions", label: "Submissions" },
   { href: "/admin/notes", label: "Notes" },
+  { href: "/admin/cafes", label: "Cafes" },
 ] as const;
 
 /** Shared header for admin pages: title, section nav, back link, sign out. */
