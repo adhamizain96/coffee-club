@@ -122,7 +122,7 @@ export default function HomeContent({ cafes }: HomeContentProps) {
       {/* ===== Mobile (below lg): floating header + bottom sheet ===== */}
       <div className="lg:hidden absolute top-3 left-3 right-3 z-30">
         <div className="max-w-md mx-auto flex items-center justify-between gap-2">
-          <h1 className="inline-flex items-center gap-2 rounded-xl bg-white/95 backdrop-blur-md border border-stone-200/60 shadow-lg px-3.5 py-2 text-sm font-semibold tracking-tight text-stone-900">
+          <h1 className="inline-flex items-center gap-2 whitespace-nowrap rounded-xl bg-white/95 backdrop-blur-md border border-stone-200/60 shadow-lg px-3.5 py-2 text-sm font-semibold tracking-tight text-stone-900">
             <span className="flex items-center justify-center h-5 w-5 rounded-md bg-amber-100 shrink-0">
               <svg className="h-3 w-3 text-amber-700" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M2 21V17H4V10C4 7.83 4.87 5.93 6.26 4.57L7.67 5.98C6.63 7 6 8.42 6 10V17H11V3H13V7H18C19.1 7 20 7.9 20 9V12C20 13.1 19.1 14 18 14H13V17H18V21H2ZM13 12H18V9H13V12Z" />
@@ -131,6 +131,13 @@ export default function HomeContent({ cafes }: HomeContentProps) {
             Coffee Club
           </h1>
           <Link
+            href="/passport"
+            aria-label="Your passport"
+            className="ml-auto inline-flex items-center justify-center rounded-xl bg-white/95 backdrop-blur-md border border-stone-200/60 shadow-lg h-9 w-9 text-stone-700 hover:text-amber-700 transition-colors"
+          >
+            <svg aria-hidden="true" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><circle cx="12" cy="12" r="8.5" /><path d="M8.5 12.5l2.3 2.3 4.7-5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+          </Link>
+          <Link
             href="/submit"
             className="inline-flex items-center gap-1 rounded-xl bg-amber-600 hover:bg-amber-700 text-white shadow-lg px-3 py-2 text-sm font-medium transition-colors"
             aria-label="Suggest a cafe"
@@ -138,7 +145,7 @@ export default function HomeContent({ cafes }: HomeContentProps) {
             <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
             </svg>
-            Suggest
+            <span className="hidden min-[400px]:inline">Suggest</span>
           </Link>
           <FilterPanel
             selectedAmenities={selectedAmenities}
@@ -214,12 +221,20 @@ export default function HomeContent({ cafes }: HomeContentProps) {
                 <p className="text-xs text-stone-400 leading-tight">
                   Curated by Zain. Suggested by you.
                 </p>
-                <Link
-                  href="/submit"
-                  className="inline-block mt-1 text-xs font-medium text-amber-700 hover:text-amber-800 transition-colors"
-                >
-                  Suggest a cafe →
-                </Link>
+                <div className="mt-1 flex items-center gap-3">
+                  <Link
+                    href="/passport"
+                    className="text-xs font-medium text-amber-700 hover:text-amber-800 transition-colors"
+                  >
+                    Your passport →
+                  </Link>
+                  <Link
+                    href="/submit"
+                    className="text-xs font-medium text-stone-500 hover:text-amber-800 transition-colors"
+                  >
+                    Suggest a cafe →
+                  </Link>
+                </div>
               </div>
             </div>
             <div className="flex items-center justify-between mt-3 pt-3 border-t border-stone-100">

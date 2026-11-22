@@ -111,8 +111,14 @@ export default async function CafeDetailPage({
         <span className="text-sm text-gray-300">|</span>
         <span className="text-sm font-bold tracking-tight text-amber-700">Coffee Club</span>
         <Link
-          href="/submit"
+          href="/passport"
           className="ml-auto text-sm font-medium text-amber-700 hover:text-amber-800 transition-colors"
+        >
+          Your passport →
+        </Link>
+        <Link
+          href="/submit"
+          className="text-sm font-medium text-stone-500 hover:text-amber-800 transition-colors"
         >
           Suggest a cafe →
         </Link>
