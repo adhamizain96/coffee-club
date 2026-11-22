@@ -13,6 +13,7 @@ import CafeMapLoader from "@/components/CafeMapLoader";
 import SearchBox from "@/components/SearchBox";
 import { serializeHomeView, type HomeViewState } from "@/lib/home-filters";
 import { distanceMiles, formatMiles, type LatLng } from "@/lib/geo";
+import { SITE_TAGLINE } from "@/lib/site";
 
 interface HomeContentProps {
   cafes: CafeListItem[];
@@ -139,6 +140,10 @@ export default function HomeContent({ cafes, initialView }: HomeContentProps) {
   );
 
   const filteredCount = filteredCafes.length;
+  const cityCount = cafes.filter((c) => c.region === "CITY").length;
+  const suburbCount = cafes.filter((c) => c.region && c.region !== "CITY").length;
+  const coverage =
+    cityCount + suburbCount > 0 ? `${cityCount} in Chicago, ${suburbCount} in the suburbs` : `${cafes.length} cafes`;
   const filterActive = selectedAmenities.length > 0 || selectedVibes.length > 0 || selectedHours.length > 0 || selectedRegions.length > 0 || query.trim().length > 0;
   const hoursUnknownCount =
     selectedHours.length > 0 ? cafes.filter((c) => c.status === "OPEN" && !c.hours).length : 0;
@@ -230,6 +235,7 @@ export default function HomeContent({ cafes, initialView }: HomeContentProps) {
                   </span>
                 )}
               </div>
+              <p className="px-5 -mt-2 pb-2 text-[11px] text-stone-500">{SITE_TAGLINE}. {coverage}.</p>
               <div className="px-4 pb-3 shrink-0">
                 <SearchBox id="search-mobile" value={query} onChange={setQuery} />
                 {userLocation && <p className="mt-2 text-[11px] text-stone-500">Sorted by distance from you</p>}
@@ -268,8 +274,9 @@ export default function HomeContent({ cafes, initialView }: HomeContentProps) {
                 <h1 className="text-base font-bold tracking-tight text-stone-900">
                   Coffee Club
                 </h1>
-                <p className="text-xs text-stone-400 leading-tight">
-                  Curated by Zain. Suggested by you.
+                <p className="text-xs font-medium text-stone-600 leading-tight">{SITE_TAGLINE}.</p>
+                <p className="mt-0.5 text-[11px] text-stone-400 leading-tight">
+                  {coverage}. Curated by Zain, suggested by you.
                 </p>
                 <div className="mt-1 flex items-center gap-3">
                   <Link

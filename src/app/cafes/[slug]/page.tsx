@@ -35,6 +35,9 @@ export async function generateMetadata({
   return {
     title: `${cafe.name} — Coffee Club`,
     description: cafe.description,
+    alternates: { canonical: `/cafes/${slug}` },
+    openGraph: { type: "article", title: `${cafe.name} · ${cafe.neighborhood}`, description: cafe.description, url: `/cafes/${slug}` },
+    twitter: { card: "summary_large_image" },
   };
 }
 
