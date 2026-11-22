@@ -65,7 +65,7 @@ npm run db:migrate:deploy
 npm run db:seed
 ```
 
-For a database that was set up with `db push` before migrations existed, mark the baseline once: `npx prisma migrate resolve --applied 0_init`, then run `npx tsx scripts/backfill-slugs.ts --apply`.
+For a database that was set up with `db push` before migrations existed, mark the baseline once with `npx prisma migrate resolve --applied 0_init`. Its cafes need slugs before the `cafe_slug_required` migration can apply (production and the rollout databases were backfilled on 2026-11-22).
 
 To load hours, regions, and the researched cafes:
 

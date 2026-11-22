@@ -14,12 +14,11 @@ export const metadata: Metadata = {
 
 export default async function PassportPage() {
   const rows = await prisma.cafe.findMany({
-    where: { slug: { not: null } },
     select: { slug: true, name: true, neighborhood: true, region: true, status: true },
     orderBy: { name: "asc" },
   });
   const cafes: PassportCafe[] = rows.map((c) => ({
-    slug: c.slug!,
+    slug: c.slug,
     name: c.name,
     neighborhood: c.neighborhood,
     region: c.region,

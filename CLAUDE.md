@@ -104,7 +104,7 @@ Priorities, in order:
 
 - 32 cafes total: indexes 0–9 are the original Chicago entries, 10–31 are Chicagoland suburban additions.
 - Every entry has an explicit `slug` (stable public URL key, `src/lib/slug.ts`). Slugs never change once published, even if the cafe is renamed. Keep `slug` right after `name` (the geocode script's parser expects `name`, then `address`, then `latitude`/`longitude`).
-- `scripts/backfill-slugs.ts` fills `slug` for rows where it's null (dry run by default, `--apply` to write; uses seed slugs when names match).
+- `Cafe.slug` is required (`NOT NULL`, migration `20261122000700_cafe_slug_required`). The one-off slug backfill used during the 2026-11 rollout has been retired.
 - `imageUrl` is matched to the cafe **by position** in `CAFE_IMAGES`. Adding a cafe to `cafes` means adding its image URL to `CAFE_IMAGES` at the same index.
 - `imageUrl` is optional. Cafes without a photo (or with a broken hotlink) render a designed placeholder via `src/components/CafeImage.tsx`. Don't download or self-host third-party photos.
 - Photos must be real images of the actual cafe — official site, official Instagram, or a reputable publication. Verify HTTP 200 + image content-type before commit. No stock images, no Yelp/Google user uploads, no AI-generated images.
@@ -149,7 +149,6 @@ npx prisma generate                  # Regenerate Prisma client
 npm run build                        # Production build
 npm run lint                         # Run ESLint
 npx tsx scripts/geocode-cafes.ts     # Re-geocode all cafes; rewrites lat/lng in seed.ts in place (address changes only)
-npx tsx scripts/backfill-slugs.ts    # Fill null slugs (dry run; --apply to write)
 npx tsx scripts/backfill-overhaul.ts # Hours/status/corrections from data/cafes-existing-updates.json + regions (dry run; --apply)
 npx tsx scripts/import-cafes.ts      # Upsert researched cafes from data/cafes-new.json by slug (dry run; --apply)
 npx tsx scripts/check-hours.ts       # Assertions for src/lib/hours.ts
