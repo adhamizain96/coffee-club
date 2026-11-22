@@ -67,7 +67,7 @@ npm run db:seed
 
 For a database that was set up with `db push` before migrations existed, mark the baseline once: `npx prisma migrate resolve --applied 0_init`.
 
-Seeds 32 curated cafes (Chicago + suburbs), tags, and sample notes. Wipes `cafe_tags`, `notes`, `cafes`, and `tags` first; **does not** touch the `cafe_submissions` queue.
+Upserts the curated cafes (by `slug`), tags, and sample notes. It never deletes notes, submissions, or cafes that aren't in `seed.ts` (e.g. cafes approved through the admin queue), so it's safe to re-run. Sample notes are only created the first time a cafe is created.
 
 ### 5. Run the app
 
@@ -144,7 +144,7 @@ Production-specific notes are in [Deployment](#deployment-vercel).
 | `npm run lint` | Run ESLint. |
 | `npm run db:migrate:deploy` | Apply pending Prisma migrations. |
 | `npm run db:migrate:status` | Show applied and pending migrations. |
-| `npm run db:seed` | Insert 32 curated cafes, tags, and sample notes. Wipes `cafe_tags`, `notes`, `cafes`, `tags` first; leaves `cafe_submissions` alone. |
+| `npm run db:seed` | Upsert the curated cafes (by slug), tags, and sample notes. Local only; never deletes notes, submissions, or admin-added cafes. |
 | `npx tsx scripts/geocode-cafes.ts` | Re-geocode every cafe address against the Google Maps Geocoding API and rewrite `latitude`/`longitude` in `prisma/seed.ts` in place. Prints a delta table; flags any cafe that moves >200 m. |
 | `.\scripts\dev-reset.ps1` *(Windows)* | Recover from `EBUSY` on `npx prisma dev`. See [Recovering from `EBUSY`](#recovering-from-ebusy-windows). |
 

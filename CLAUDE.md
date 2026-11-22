@@ -69,7 +69,7 @@ Priorities, in order:
 - **PrismaPg adapter** — The app uses `@prisma/adapter-pg`, which requires a raw `postgres://` connection string. The `prisma+postgres://` proxy URL only works for Prisma CLI operations (migrations, `db push`).
 - **Migrations** — Schema changes go through Prisma Migrate (`prisma/migrations/`). `0_init` is a baseline that matches the production schema as of 2026-11-22. New migrations are additive and nullable so the currently deployed code keeps working before the new code ships. Generate SQL with `npx prisma migrate diff --from-migrations prisma/migrations --to-schema prisma/schema.prisma --script` (or `migrate dev --create-only`), apply with `npm run db:migrate:deploy`. Vercel builds do **not** run migrations; apply them to production by hand with the **direct** (unpooled) URL before deploying code that needs them. `db push` is no longer used.
 - **Generated client** — Import from `@/generated/prisma/client`, not `@prisma/client`. Output is at `src/generated/prisma/`.
-- **Seed script** — Uses `SEED_DATABASE_URL` (falls back to `DATABASE_URL`) because seeding runs via `tsx` outside the Prisma proxy and needs a direct PostgreSQL connection. It is **local-only**: it refuses any host other than `localhost`, `127.0.0.1`, or `::1` before connecting, and logs `host:port/db` (never credentials). There is no override.
+- **Seed script** — Uses `SEED_DATABASE_URL` (falls back to `DATABASE_URL`) because seeding runs via `tsx` outside the Prisma proxy and needs a direct PostgreSQL connection. It is **local-only**: it refuses any host other than `localhost`, `127.0.0.1`, or `::1` before connecting, and logs `host:port/db` (never credentials). There is no override. It upserts by `slug` and never deletes notes, submissions, or cafes missing from `seed.ts`; the only delete is stale `CafeTag` links on cafes the seed owns. It refuses to run if any cafe has a null slug (backfill first).
 - **Filtering logic** — Amenities use **AND** (cafe must have all selected); vibes use **OR** (cafe must have at least one selected).
 - **Public site is unauthenticated** — Notes are anonymous (optional name field only). Public cafe submissions at `/submit` write to `CafeSubmission` with `status = PENDING`; they do *not* create `Cafe` rows directly.
 - **Admin gate** — `src/proxy.ts` (Next 16 Proxy) gates `/admin/*` and `/api/admin/*`:
@@ -127,7 +127,7 @@ npx prisma dev                       # Start local PostgreSQL (Terminal 1, must 
 npm run dev                          # Start Next.js dev server (Terminal 3)
 npm run db:migrate:deploy            # Apply pending migrations (local, or production with the direct URL)
 npm run db:migrate:status            # Show applied/pending migrations
-npm run db:seed                      # Seed 32 cafes, tags, notes (wipes existing rows first)
+npm run db:seed                      # Upsert seed cafes by slug (local only; never deletes notes, submissions, or admin-added cafes)
 npx prisma generate                  # Regenerate Prisma client
 npm run build                        # Production build
 npm run lint                         # Run ESLint

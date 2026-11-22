@@ -871,65 +871,73 @@ const cafes: CafeSeed[] = [
 ];
 
 async function main() {
-  console.log("Seeding database...");
+  console.log("Seeding (upsert by slug; never deletes notes, submissions, or cafes missing from this file)...");
 
-  // Clear existing data in correct order (respecting foreign keys)
-  await prisma.cafeTag.deleteMany();
-  await prisma.note.deleteMany();
-  await prisma.cafe.deleteMany();
-  await prisma.tag.deleteMany();
+  // A database created before slugs existed must be backfilled first, or the
+  // upsert below would create duplicates of its existing cafes.
+  const missingSlugs = await prisma.cafe.count({ where: { slug: null } });
+  if (missingSlugs > 0) {
+    console.error(
+      `${missingSlugs} cafe(s) have no slug. Run "npx tsx scripts/backfill-slugs.ts --apply" first.`
+    );
+    process.exit(1);
+  }
 
-  // Create tags
-  const tagRecords = new Map<string, string>();
-
+  const tagIds = new Map<string, string>();
   for (const name of amenityTags) {
-    const tag = await prisma.tag.create({
-      data: { name, type: TagType.AMENITY },
-    });
-    tagRecords.set(name, tag.id);
+    const tag = await prisma.tag.upsert({ where: { name }, update: {}, create: { name, type: TagType.AMENITY } });
+    tagIds.set(name, tag.id);
   }
-
   for (const name of vibeTags) {
-    const tag = await prisma.tag.create({
-      data: { name, type: TagType.VIBE },
-    });
-    tagRecords.set(name, tag.id);
+    const tag = await prisma.tag.upsert({ where: { name }, update: {}, create: { name, type: TagType.VIBE } });
+    tagIds.set(name, tag.id);
   }
+  console.log(`Tags: ${tagIds.size} upserted`);
 
-  console.log(`Created ${tagRecords.size} tags`);
-
-  // Create cafes with tags and notes
+  let created = 0;
+  let updated = 0;
   for (let i = 0; i < cafes.length; i++) {
     const cafe = cafes[i];
-    const created = await prisma.cafe.create({
-      data: {
-        name: cafe.name,
-        slug: cafe.slug,
-        description: cafe.description,
-        address: cafe.address,
-        neighborhood: cafe.neighborhood,
-        latitude: cafe.latitude,
-        longitude: cafe.longitude,
-        imageUrl: CAFE_IMAGES[i % CAFE_IMAGES.length],
-        ownerReview: cafe.ownerReview,
-        tags: {
-          create: [...cafe.amenities, ...cafe.vibes].map((tagName) => ({
-            tagId: tagRecords.get(tagName)!,
-          })),
-        },
-        notes: {
-          create: cafe.notes.map((note) => ({
-            content: note.content,
-            authorName: note.authorName,
-          })),
-        },
-      },
-    });
+    // Seed-owned curated fields. submitterName / addedAt are never touched.
+    const curated = {
+      name: cafe.name,
+      description: cafe.description,
+      address: cafe.address,
+      neighborhood: cafe.neighborhood,
+      latitude: cafe.latitude,
+      longitude: cafe.longitude,
+      imageUrl: CAFE_IMAGES[i % CAFE_IMAGES.length],
+      ownerReview: cafe.ownerReview,
+    };
+    const desiredTagIds = [...cafe.amenities, ...cafe.vibes].map((tagName) => tagIds.get(tagName)!);
+    const existing = await prisma.cafe.findUnique({ where: { slug: cafe.slug }, select: { id: true } });
 
-    console.log(`Created cafe: ${created.name}`);
+    if (!existing) {
+      // Sample notes are only created with the cafe, never re-created or deleted.
+      await prisma.cafe.create({
+        data: {
+          ...curated,
+          slug: cafe.slug,
+          tags: { create: desiredTagIds.map((tagId) => ({ tagId })) },
+          notes: { create: cafe.notes.map((note) => ({ content: note.content, authorName: note.authorName })) },
+        },
+      });
+      created++;
+    } else {
+      // The only delete in the seed: stale tag links on cafes the seed owns.
+      await prisma.$transaction([
+        prisma.cafe.update({ where: { id: existing.id }, data: curated }),
+        prisma.cafeTag.deleteMany({ where: { cafeId: existing.id, tagId: { notIn: desiredTagIds } } }),
+        prisma.cafeTag.createMany({
+          data: desiredTagIds.map((tagId) => ({ cafeId: existing.id, tagId })),
+          skipDuplicates: true,
+        }),
+      ]);
+      updated++;
+    }
   }
 
-  console.log("Seeding complete.");
+  console.log(`Cafes: ${created} created, ${updated} updated. Seeding complete.`);
 }
 
 main()
