@@ -111,6 +111,12 @@ Priorities, in order:
 - Cafes must be real, currently operating businesses. Verify before adding. Do not fabricate names, addresses, or coordinates.
 - Coordinates: do not estimate by eye. Re-geocode only when an address is added or changed (each run makes one paid Geocoding call per cafe, `--check` included). `npx tsx scripts/geocode-cafes.ts` overwrites lat/lng in place and prints a delta table. Edits that don't touch an address (tags, reviews, hours, slugs) don't need a re-geocode.
 
+## Data files
+
+- `data/cafes-new.json` — researched cafes (source of `scripts/import-cafes.ts`): address, coordinates (one Geocoding call each), region, hours with source and checked date, sourced tags, and the 2026 open evidence. `docs/research/cafes-new.md` is the human-readable log, including exclusions and why.
+- `data/cafes-existing-updates.json` — hours, website, closures, and verified corrections for the original 32 cafes (source of `scripts/backfill-overhaul.ts`).
+- All three data scripts print the target `host:port/db`, default to a dry run, write in one transaction with `--apply`, never delete, and are idempotent. For a fresh local DB: `db:migrate:deploy`, `db:seed`, then `backfill-overhaul.ts --apply` and `import-cafes.ts --apply`.
+
 ## Local Dev Workflow
 
 Three terminals:
@@ -142,7 +148,11 @@ npm run db:seed                      # Upsert seed cafes by slug (local only; ne
 npx prisma generate                  # Regenerate Prisma client
 npm run build                        # Production build
 npm run lint                         # Run ESLint
-npx tsx scripts/geocode-cafes.ts     # Re-geocode all cafes; rewrites lat/lng in seed.ts in place
+npx tsx scripts/geocode-cafes.ts     # Re-geocode all cafes; rewrites lat/lng in seed.ts in place (address changes only)
+npx tsx scripts/backfill-slugs.ts    # Fill null slugs (dry run; --apply to write)
+npx tsx scripts/backfill-overhaul.ts # Hours/status/corrections from data/cafes-existing-updates.json + regions (dry run; --apply)
+npx tsx scripts/import-cafes.ts      # Upsert researched cafes from data/cafes-new.json by slug (dry run; --apply)
+npx tsx scripts/check-hours.ts       # Assertions for src/lib/hours.ts
 .\scripts\dev-reset.ps1              # (Windows) recover from prisma dev EBUSY
 ```
 

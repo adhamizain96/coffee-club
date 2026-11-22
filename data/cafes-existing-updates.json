@@ -1,0 +1,1390 @@
+{
+  "metric-coffee": {
+    "website": "https://metriccoffee.com",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://metriccoffee.com/pages/cafe",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "sawada-coffee": {
+    "website": "https://www.sawadacoffee.com",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.timeout.com/chicago/restaurants/sawada-coffee",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "osmium-coffee-bar": {
+    "website": "https://www.darkmattercoffee.com/pages/osmium",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.darkmattercoffee.com/pages/osmium",
+    "hoursCheckedAt": "2026-11-22",
+    "address": "1117 W Belmont Ave, Chicago, IL 60657",
+    "neighborhood": "Lakeview",
+    "latitude": 41.9396745,
+    "longitude": -87.65732200000001,
+    "description": "A tiny, immaculate coffee bar in Lakeview with a serious dedication to precision brewing and seasonal menus."
+  },
+  "the-wormhole-coffee": {
+    "website": "https://www.thewormhole.us/",
+    "hours": null,
+    "hoursSourceUrl": null,
+    "hoursCheckedAt": null
+  },
+  "dark-matter-coffee-star-lounge": {
+    "website": "https://www.darkmattercoffee.com/pages/star-lounge",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "06:00",
+          "close": "21:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.darkmattercoffee.com/pages/star-lounge",
+    "hoursCheckedAt": "2026-11-22",
+    "address": "2521 W Chicago Ave, Chicago, IL 60622",
+    "latitude": 41.8955127,
+    "longitude": -87.69017989999999
+  },
+  "colectivo-coffee-evanston": {
+    "website": "https://colectivo.com/pages/evanston",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:30",
+          "close": "18:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:30",
+          "close": "18:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:30",
+          "close": "18:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:30",
+          "close": "18:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:30",
+          "close": "18:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "06:30",
+          "close": "18:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "06:30",
+          "close": "18:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://colectivo.com/pages/evanston",
+    "hoursCheckedAt": "2026-11-22",
+    "address": "716 Church St, Evanston, IL 60201",
+    "latitude": 42.0483102,
+    "longitude": -87.6815847
+  },
+  "bridgeport-coffeehouse": {
+    "website": "https://bridgeportcoffee.net",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:00",
+          "close": "20:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:00",
+          "close": "20:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:00",
+          "close": "20:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:00",
+          "close": "20:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:00",
+          "close": "20:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "19:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://bridgeportcoffee.net/contact/",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "groundswell-coffee": {
+    "website": "https://www.groundswellcoffeeroasters.com",
+    "hours": null,
+    "hoursSourceUrl": null,
+    "hoursCheckedAt": null,
+    "status": "CLOSED",
+    "name": "Groundswell Coffee — Forest Park",
+    "neighborhood": "Forest Park",
+    "description": "A bright, airy suburban cafe in Forest Park with a focus on direct-trade coffee and community gathering."
+  },
+  "dollop-coffee-streeterville": {
+    "website": "https://www.dollopcoffee.com/locations/streeter/",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.dollopcoffee.com/locations/streeter/",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "sip-of-hope": {
+    "website": "https://sipofhope.com",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "13:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "13:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "13:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "13:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "13:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "13:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "13:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://sipofhope.com/faq",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "backlot-coffee": {
+    "website": "https://www.backlotcoffee.com",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.backlotcoffee.com/pages/locations",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "brothers-k-coffeehouse": {
+    "website": "https://brotherskcoffee.com",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://joe.coffee/locations/il/evanston/brothers-k-coffeehouse-evanston-7b310199-11ef-4208-81c4-74f49747adeb",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "newport-coffee-house": {
+    "website": "https://www.newport-coffee.com",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://joe.coffee/locations/il/evanston/newport-coffee-house-evanston",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "reprise-coffee-roasters": {
+    "website": "https://repriseroasters.com/locations/evanston",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:30",
+          "close": "18:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:30",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://repriseroasters.com/locations/evanston",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "central-station-coffee-tea": {
+    "website": "http://www.centralstationcoffee.com/",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "http://www.centralstationcoffee.com/",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "glenview-grind": {
+    "website": "https://glenviewgrind.com",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "06:30",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://joe.coffee/locations/il/glenview/glenview-grind-glenview-416b8193-8bad-4397-96e1-3562e7ecbd15",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "bean-bar": {
+    "website": "https://bbeanbar.com",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://bbeanbar.com",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "complimentary-cafe-co": {
+    "website": "https://complimentaryc.com",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:30",
+          "close": "18:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:30",
+          "close": "18:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:30",
+          "close": "18:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:30",
+          "close": "18:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:30",
+          "close": "19:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:30",
+          "close": "19:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:30",
+          "close": "18:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://joe.coffee/locations/il/highland-park/complimentary-cafe-and-co-highland-park-ed8e6a08-bc75-4e0d-8e1d-a61ce1b4cf4a",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "harmony-coffee-bar": {
+    "website": "https://www.harmonycoffeebar.com/",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:30",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:30",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:30",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:30",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:30",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:30",
+          "close": "17:00"
+        }
+      ],
+      "sun": []
+    },
+    "hoursSourceUrl": "https://www.instagram.com/harmonycoffeebar/",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "hometown-coffee-juice": {
+    "website": "https://www.hometowncoffeejuice.com/",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.hometowncoffeejuice.com/locations",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "gerrys-cafe": {
+    "website": "https://www.gerryscafe.org/",
+    "hours": {
+      "mon": [],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.gerryscafe.org/",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "two-libras-cafe": {
+    "website": "https://www.two-libras.com",
+    "hours": {
+      "mon": [],
+      "tue": [
+        {
+          "open": "06:30",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:30",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:30",
+          "close": "16:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:30",
+          "close": "16:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.two-libras.com",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "sayfani-coffee-house": {
+    "website": "https://www.sayfanischaumburg.com/",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:30",
+          "close": "00:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:30",
+          "close": "00:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:30",
+          "close": "00:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:30",
+          "close": "00:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "09:00",
+          "close": "01:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "09:00",
+          "close": "01:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "09:00",
+          "close": "01:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://joe.coffee/locations/il/schaumburg/sayfani-coffee-house-schaumburg-87872285-94e4-45c2-bbaf-7e0e36aee0fb",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "conscious-cup-coffee-roasters": {
+    "website": "https://www.consciouscup.com/pages/stores/barrington",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:00",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:00",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:00",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "06:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.consciouscup.com/pages/stores/barrington",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "kribi-coffee": {
+    "website": "https://kribicoffee.com",
+    "hours": null,
+    "hoursSourceUrl": null,
+    "hoursCheckedAt": null,
+    "status": "CLOSED"
+  },
+  "five-hoek-coffee": {
+    "website": "https://fiveandhoek.com",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://fiveandhoek.com/pages/wheaton-coffee-shop",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "sparrow-coffee": {
+    "website": "https://sparrowcoffee.com/naperville",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:00",
+          "close": "18:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:00",
+          "close": "18:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:00",
+          "close": "18:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:00",
+          "close": "18:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:00",
+          "close": "18:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "06:00",
+          "close": "18:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "06:00",
+          "close": "18:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://sparrowcoffee.com/naperville",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "cafe-la-fortuna": {
+    "website": "http://www.cafelafortuna.com",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "12:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://wanderlog.com/place/details/3326438/cafe-la-fortuna",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "owl-lark": {
+    "website": "https://www.owlandlark.com/",
+    "hours": {
+      "mon": [
+        {
+          "open": "08:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "08:00",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "08:00",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "08:00",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "08:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.owlandlark.com/",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "pekoe-bean": {
+    "website": null,
+    "hours": null,
+    "hoursSourceUrl": null,
+    "hoursCheckedAt": null,
+    "status": "CLOSED"
+  },
+  "two-mile-coffee-bar": {
+    "website": "https://twomilecoffee.com",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:00",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:00",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:00",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": []
+    },
+    "hoursSourceUrl": "https://twomilecoffee.com",
+    "hoursCheckedAt": "2026-11-22"
+  },
+  "beverly-bakery-cafe": {
+    "website": "https://www.beverlycoffeeroasters.com",
+    "hours": {
+      "mon": [],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "13:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "13:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "13:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "13:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.beverlycoffeeroasters.com",
+    "hoursCheckedAt": "2026-11-22"
+  }
+}

@@ -1,0 +1,5000 @@
+[
+  {
+    "name": "Hansa Coffee Roasters — Lake Bluff",
+    "slug": "hansa-coffee-roasters-lake-bluff",
+    "address": "24 E Scranton Ave, Lake Bluff, IL 60044",
+    "neighborhood": "Lake Bluff",
+    "region": "NORTH",
+    "latitude": 42.2798658,
+    "longitude": -87.8450728,
+    "website": "https://www.hansacoffee.com/",
+    "instagram": "https://www.instagram.com/hansacoffee",
+    "description": "Hansa's remaining cafe, inside Lake Bluff's Historic Village Market, pouring the Libertyville roaster's own coffee with espresso, scones and a seasonal wine program.",
+    "ownerReview": "Hansa has roasted for Lake County since 2010, and since the Libertyville flagship closed in September 2026, the Lake Bluff cafe is where to drink it. It sits in the Historic Village Market on Scranton Avenue and serves the house roast as espresso and brewed coffee, with scones and a seasonal wine list.",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:00",
+          "close": "18:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:00",
+          "close": "18:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:00",
+          "close": "18:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:00",
+          "close": "18:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:00",
+          "close": "18:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://teampimentel.com/blog/hansas-gone-from-milwaukee-avenue-where-does-libertyville-get-its-coffee-now",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [],
+    "vibes": [],
+    "tagSources": [],
+    "openEvidence": [
+      {
+        "url": "https://www.hansacoffee.com/blogs/news/i-just-got-an-espresso-machine-do-i-need-espresso-beans",
+        "date": "2026-11-19",
+        "official": true,
+        "what": "Official Hansa blog post dated 11/19/26. The homepage footer reads (c) 2026 and lists the Lake Bluff cafe at 24 E Scranton."
+      },
+      {
+        "url": "https://www.dailyherald.com/2026/09/29/after-13-years-hansa-coffee-roasters-in-libertyville-moving-on/",
+        "date": "2026-09-29",
+        "official": false,
+        "what": "Daily Herald report that the Libertyville shop closed and Hansa still runs its Lake Bluff retail outlet."
+      },
+      {
+        "url": "https://teampimentel.com/blog/hansas-gone-from-milwaukee-avenue-where-does-libertyville-get-its-coffee-now",
+        "date": "2026-10-15",
+        "official": false,
+        "what": "Local roundup (real-estate blog) listing Hansa Lake Bluff Cafe at 24 E. Scranton Ave as the remaining location, with hours."
+      }
+    ],
+    "sources": [
+      "https://www.hansacoffee.com/",
+      "https://www.hansacoffee.com/pages/about",
+      "https://www.dailyherald.com/2026/09/29/after-13-years-hansa-coffee-roasters-in-libertyville-moving-on/",
+      "https://teampimentel.com/blog/hansas-gone-from-milwaukee-avenue-where-does-libertyville-get-its-coffee-now",
+      "https://spinach.guide/venues/hansa-coffee-roasters-134291/"
+    ],
+    "researchAgent": "A"
+  },
+  {
+    "name": "Tala Coffee Roasters — Libertyville",
+    "slug": "tala-coffee-roasters-libertyville",
+    "address": "834 Liberty Dr, Libertyville, IL 60048",
+    "neighborhood": "Libertyville",
+    "region": "NORTH",
+    "latitude": 42.2862618,
+    "longitude": -87.9407234,
+    "website": "https://www.talacoffeeroasters.com/",
+    "instagram": null,
+    "description": "North Shore specialty roaster's Libertyville cafe, in the same building as its roastery and headquarters, with a window into the roasting area and regular coffee classes.",
+    "ownerReview": "The Libertyville cafe sits in the same building as Tala's roastery, and you can watch the roasting through a window. The drink list runs from espresso classics to house signatures like the honey-lavender Bonebreaker. Tala also runs regular roastery tours, cuppings and brewing classes here.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://teampimentel.com/blog/hansas-gone-from-milwaukee-avenue-where-does-libertyville-get-its-coffee-now",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "meeting_space"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "meeting_space",
+        "source": "https://www.talacoffeeroasters.com/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.talacoffeeroasters.com/upcoming-events",
+        "date": "2026-11-21",
+        "official": true,
+        "what": "Official events calendar listing 2026 events at the Libertyville cafe, including Coffee Class 101 on Sat Nov 21 and the Tala-days launch on Nov 23 at all cafes."
+      },
+      {
+        "url": "https://teampimentel.com/blog/hansas-gone-from-milwaukee-avenue-where-does-libertyville-get-its-coffee-now",
+        "date": "2026-10-15",
+        "official": false,
+        "what": "Local roundup (real-estate blog) listing Tala at 834 Liberty Dr., roasting on site, open 7 a.m. to 6 p.m. daily."
+      }
+    ],
+    "sources": [
+      "https://www.talacoffeeroasters.com/",
+      "https://www.talacoffeeroasters.com/our-locations",
+      "https://www.talacoffeeroasters.com/menu",
+      "https://www.talacoffeeroasters.com/upcoming-events",
+      "https://teampimentel.com/blog/hansas-gone-from-milwaukee-avenue-where-does-libertyville-get-its-coffee-now"
+    ],
+    "researchAgent": "A"
+  },
+  {
+    "name": "Frunchroom Collective",
+    "slug": "frunchroom-collective",
+    "address": "1193 S Milwaukee Ave, Libertyville, IL 60048",
+    "neighborhood": "Libertyville",
+    "region": "NORTH",
+    "latitude": 42.2642653,
+    "longitude": -87.95077979999999,
+    "website": "https://www.frunchroomcollective.com/",
+    "instagram": "https://www.instagram.com/frunchroomcollective/",
+    "description": "Sibling-owned coffee house and community space in Libertyville's Greentree Plaza that opened in February 2026, serving Tala coffee with couches, event rooms and a wellness studio.",
+    "ownerReview": "Frunchroom is built to be a third space, named for the Chicago word for a front room. It pours Tala coffee and specialty lattes, and the pastries come from local bakers, with vegan options in the mix. The room is furnished like a living room, with leather couches and armchairs, and has separate rooms you can book for groups.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.frunchroomcollective.com/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "couch_seating",
+      "meeting_space",
+      "vegan_options"
+    ],
+    "vibes": [
+      "cozy"
+    ],
+    "tagSources": [
+      {
+        "tag": "couch_seating",
+        "source": "https://www.frunchroomcollective.com/"
+      },
+      {
+        "tag": "meeting_space",
+        "source": "https://www.frunchroomcollective.com/"
+      },
+      {
+        "tag": "vegan_options",
+        "source": "https://www.lhsdoi.com/31180/news/new-coffee-shop-downtown-is-bringing-different-people-together-in-a-collective/"
+      },
+      {
+        "tag": "cozy",
+        "source": "https://www.lhsdoi.com/31180/news/new-coffee-shop-downtown-is-bringing-different-people-together-in-a-collective/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/frunchroomcollective/",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Own Instagram (bio: 1193 S. Milwaukee Ave; Mon-Thu 7am-8pm, Fri-Sun 7am-6pm) with own posts dated Nov 8 to Nov 22, 2026"
+      },
+      {
+        "url": "https://www.tickettailor.com/events/lakecountyempowerbreakfast/2410073",
+        "date": "2026-10-21",
+        "official": false,
+        "what": "Ticketed event held at Frunchroom Collective, 1193 S. Milwaukee Ave, on Oct 21, 2026"
+      },
+      {
+        "url": "https://www.lhsdoi.com/31180/news/new-coffee-shop-downtown-is-bringing-different-people-together-in-a-collective/",
+        "date": "2026-03-20",
+        "official": false,
+        "what": "Student paper article on the Feb 17, 2026 grand opening"
+      },
+      {
+        "url": "https://www.frunchroomcollective.com/",
+        "date": "2026-06-10",
+        "official": true,
+        "what": "Official site with current address and hours. It has no dated text: the date comes from an image filename on the page (Screenshot 2026-06-10). The cafe opened in Feb 2026, so this content can only date from 2026."
+      },
+      {
+        "url": "https://www.lhsdoi.com/31180/news/new-coffee-shop-downtown-is-bringing-different-people-together-in-a-collective/",
+        "date": "2026-03-20",
+        "official": false,
+        "what": "Libertyville High School student paper article on the Feb. 17 grand opening at Greentree Plaza."
+      },
+      {
+        "url": "https://www.tickettailor.com/events/lakecountyempowerbreakfast/2410073",
+        "date": "2026-10-21",
+        "official": false,
+        "what": "Ticketed event held at Frunchroom Collective, 1193 S. Milwaukee Ave, on Oct 21, 2026."
+      },
+      {
+        "url": "https://teampimentel.com/blog/hansas-gone-from-milwaukee-avenue-where-does-libertyville-get-its-coffee-now",
+        "date": "2026-10-15",
+        "official": false,
+        "what": "Local roundup listing Frunchroom as open, with a 4,000 sq ft space."
+      }
+    ],
+    "sources": [
+      "https://www.frunchroomcollective.com/",
+      "https://dailyherald.com/20260106/business-openings/cozy-warm-and-welcomed-new-libertyville-coffee-shop-concept-aims-for-comfort-and-building-connec",
+      "https://www.lhsdoi.com/31180/news/new-coffee-shop-downtown-is-bringing-different-people-together-in-a-collective/",
+      "https://www.tickettailor.com/events/lakecountyempowerbreakfast/2410073",
+      "https://teampimentel.com/blog/hansas-gone-from-milwaukee-avenue-where-does-libertyville-get-its-coffee-now"
+    ],
+    "researchAgent": "A"
+  },
+  {
+    "name": "Pelago Cafe",
+    "slug": "pelago-cafe",
+    "address": "325 Waukegan Ave, Highwood, IL 60040",
+    "neighborhood": "Highwood",
+    "region": "NORTH",
+    "latitude": 42.2026711,
+    "longitude": -87.8088848,
+    "website": "https://www.pelagocafe.com/",
+    "instagram": "https://www.instagram.com/pelagocafe/",
+    "description": "Family-run Northern Italian cafe in Highwood, opened in 2026 by two cousins, serving espresso and imported Italian coffee alongside croissants, panini, antipasti and wine.",
+    "ownerReview": "Two cousins opened Pelago in 2026, cooking from family recipes from Emilia-Romagna in a small counter-service room near the Highwood Metra station. Espresso and Italian coffee come with filled croissants, panini on mortadella or Italian sausage, and tiramisu or cannoli. Wine is on the menu too, and Italian coffee beans are for sale to take home.",
+    "hours": {
+      "mon": [],
+      "tue": [],
+      "wed": [
+        {
+          "open": "10:00",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "11:00",
+          "close": "19:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "11:00",
+          "close": "19:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "11:00",
+          "close": "19:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "10:00",
+          "close": "16:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.pelagocafe.com/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "full_menu"
+    ],
+    "vibes": [
+      "cozy"
+    ],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://franoi.com/dining/new-cafe-honors-familys-culinary-roots/"
+      },
+      {
+        "tag": "cozy",
+        "source": "https://www.therecordnorthshore.org/2026/04/23/incoming-pelago-cafe-is-a-true-love-story-of-family-food-and-coming-together/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/pelagocafe/",
+        "date": "2026-11-21",
+        "official": true,
+        "what": "Own Instagram (cousins running a cafe reflecting their Italian roots) with posts dated Oct 29 to Nov 21, 2026"
+      },
+      {
+        "url": "https://franoi.com/dining/new-cafe-honors-familys-culinary-roots/",
+        "date": "2026-08-05",
+        "official": false,
+        "what": "Article reporting the cafe recently opened at 325 Waukegan Ave"
+      },
+      {
+        "url": "https://www.pelagocafe.com/",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Official site, footer (c) 2026 PELAGO CAFE, posting 'NEW HOURS: Thurs-Sat 11-7, Wed & Sun 10-4'."
+      },
+      {
+        "url": "https://franoi.com/dining/new-cafe-honors-familys-culinary-roots/",
+        "date": "2026-08-05",
+        "official": false,
+        "what": "Article reporting the cafe recently opened at 325 Waukegan Ave., with menu details."
+      },
+      {
+        "url": "https://www.therecordnorthshore.org/2026/04/23/incoming-pelago-cafe-is-a-true-love-story-of-family-food-and-coming-together/",
+        "date": "2026-04-23",
+        "official": false,
+        "what": "The Record North Shore preview of the opening, with owners, address and concept."
+      }
+    ],
+    "sources": [
+      "https://www.pelagocafe.com/",
+      "https://franoi.com/dining/new-cafe-honors-familys-culinary-roots/",
+      "https://www.therecordnorthshore.org/2026/04/23/incoming-pelago-cafe-is-a-true-love-story-of-family-food-and-coming-together/"
+    ],
+    "researchAgent": "A"
+  },
+  {
+    "name": "Towne & Oak",
+    "slug": "towne-oak",
+    "address": "921 Green Bay Rd, Winnetka, IL 60093",
+    "neighborhood": "Winnetka (Hubbard Woods)",
+    "region": "NORTH",
+    "latitude": 42.11648580000001,
+    "longitude": -87.7433085,
+    "website": "https://www.towneandoak.com/",
+    "instagram": "https://www.instagram.com/towneandoak",
+    "description": "Counter-service cafe in Winnetka's Hubbard Woods district, open since 2020, serving coffee, pastries, breakfast and lunch, with tea service, catering and private events.",
+    "ownerReview": "Towne & Oak has been a Hubbard Woods fixture since 2020. You order at the counter, and the menu is meant to stay casual and easy. Coffee and pastries start at 7 a.m., lunch comes on later, and there is a tea service if you want to stay a while.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.towneandoak.com/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "full_menu",
+      "meeting_space"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://www.towneandoak.com/"
+      },
+      {
+        "tag": "meeting_space",
+        "source": "https://www.towneandoak.com/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/towneandoak/",
+        "date": "2026-11-20",
+        "official": true,
+        "what": "Own Instagram (bio: Cafe + Private Event Venue in Winnetka, Open Daily 7am) with posts dated Oct 29 to Nov 20, 2026"
+      },
+      {
+        "url": "https://www.spynergystudios.com/towne-oak-schedule",
+        "date": "2026-11-22",
+        "official": false,
+        "what": "Spynergy Studios page (shows a 'Black Friday 2026' offer) says its Winnetka studio is at 921 Green Bay Rd, entered via the Towne & Oak event space entrance"
+      },
+      {
+        "url": "https://www.towneandoak.com/",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Official homepage, (c) 2026, with a Thanksgiving catering banner: order by Sunday Nov 22, pick up Wednesday Nov 25."
+      },
+      {
+        "url": "https://www.towneandoak.com/s/TO_Menu_85x14_Nov_2026_PRINT_v12.pdf",
+        "date": "2026-11-01",
+        "official": true,
+        "what": "Official cafe menu PDF labeled Nov 2026 (date taken from the filename)."
+      }
+    ],
+    "sources": [
+      "https://www.towneandoak.com/",
+      "https://www.towneandoak.com/s/TO_Menu_85x14_Nov_2026_PRINT_v12.pdf",
+      "https://www.therecordnorthshore.org/2020/11/19/new-cafe-towne-and-oak-plants-roots-in-winnetka/",
+      "https://tableagent.com/chicago/towne-oak/"
+    ],
+    "researchAgent": "A"
+  },
+  {
+    "name": "Brewpoint Craft",
+    "slug": "brewpoint-craft",
+    "address": "617 N York St, Elmhurst, IL 60126",
+    "neighborhood": "Elmhurst",
+    "region": "WEST",
+    "latitude": 41.9170648,
+    "longitude": -87.9392106,
+    "website": "https://www.brewpointcoffee.com",
+    "instagram": "https://instagram.com/brewpointcoffee",
+    "description": "Woman-owned Elmhurst roaster's cafe and roastery in a converted loading dock on York St, pairing house-roasted coffee with cocktails, charcuterie and pastries.",
+    "ownerReview": "Brewpoint Craft is where the Elmhurst roaster shows off its range: coffee roasted on site in a converted truck dock, then cocktails and charcuterie once the afternoon turns into evening. The Acrobat espresso blend is their best seller, and the open-late hours make it one of the few suburban cafes that works for both morning laptop sessions and after-work drinks.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "21:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "21:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "21:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.brewpointcoffee.com/pages/locations",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "laptop_friendly",
+      "meeting_space"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "laptop_friendly",
+        "source": "https://www.brewpointcoffee.com"
+      },
+      {
+        "tag": "meeting_space",
+        "source": "https://www.brewpointcoffee.com"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.brewpointcoffee.com",
+        "date": "2026-11-11",
+        "official": true,
+        "what": "Official homepage links a Fall 2026 seasonal menu and 2026 menu PDF, shows winter blend, reviews dated through 11/11/2026"
+      },
+      {
+        "url": "https://www.yelp.com/biz/brewpoint-craft-elmhurst-elmhurst-4",
+        "date": "2026-06-11",
+        "official": false,
+        "what": "Yelp listing for Brewpoint Craft at 617 N York (titled 'Updated November 2026') showing special hours for Thu Jun 11, 2026"
+      }
+    ],
+    "sources": [
+      "https://www.brewpointcoffee.com",
+      "https://www.brewpointcoffee.com/pages/locations",
+      "https://enjoyillinois.com/explore/listing/brewpoint-craft",
+      "https://joe.coffee/locations/il/elmhurst/brewpoint-craft-elmhurst-elmhurst-db83f63a-5088-49b2-8912-7ce4bfc67d66",
+      "https://www.yelp.com/biz/brewpoint-craft-elmhurst-elmhurst-4"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "Maple Leaf Roasters Coffee House",
+    "slug": "maple-leaf-roasters-coffee-house",
+    "address": "1 W Illinois St, St. Charles, IL 60174",
+    "neighborhood": "St. Charles",
+    "region": "WEST",
+    "latitude": 41.9117221,
+    "longitude": -88.3128735,
+    "website": "https://www.mapleleafcafe.com",
+    "instagram": "https://instagram.com/mapleleafcoffeehousestc",
+    "description": "Riverfront cafe in downtown St. Charles run by Roselle roaster Maple Leaf Coffee Roasters, serving its small-batch coffee with an organic breakfast and lunch menu.",
+    "ownerReview": "Maple Leaf took over the old Kava Diem spot on the Fox River and turned it into the cafe for their own small-batch roasts. The Toronto Blend and Hartford Espresso are the house staples, the kitchen does breakfast and lunch with plenty of vegan and gluten-free options, and the room is known for being quiet with a view of the river.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.mapleleafcafe.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "full_menu",
+      "vegan_options"
+    ],
+    "vibes": [
+      "quiet",
+      "cozy"
+    ],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://www.mapleleafcafe.com"
+      },
+      {
+        "tag": "vegan_options",
+        "source": "https://www.mapleleafcafe.com"
+      },
+      {
+        "tag": "quiet",
+        "source": "https://www.shawlocal.com/kc-magazine/dining/2025/05/12/visit-coffee-and-teahouses-along-the-river"
+      },
+      {
+        "tag": "cozy",
+        "source": "https://www.mapleleafcafe.com"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/mapleleafcoffeehousestc/",
+        "date": "2026-11-20",
+        "official": true,
+        "what": "Official cafe Instagram with posts dated through Nov 20, 2026; bio lists current hours"
+      },
+      {
+        "url": "https://www.mapleleafcafe.com",
+        "date": "2026-11-26",
+        "official": true,
+        "what": "Official site posts Thanksgiving-week hours (closed Thu Nov 26, open Fri Nov 27 8am-5pm)"
+      },
+      {
+        "url": "https://www.shawlocal.com/thescene/2025/11/14/best-of-the-best-brews-top-coffee-shops-in-suburbs-sauk-valley-illinois-valley",
+        "date": "2026-02-28",
+        "official": false,
+        "what": "Shaw Local 'Best of the Best Brews' (dated Feb 28, 2026) lists Maple Leaf Roasters Coffee House, 1 Illinois St., St. Charles"
+      }
+    ],
+    "sources": [
+      "https://www.mapleleafcafe.com",
+      "https://www.instagram.com/mapleleafcoffeehousestc/",
+      "https://www.mapleleafroasters.com",
+      "https://shawlocal.com/kane-county-chronicle/2024/01/26/st-charles-riverfront-coffee-shop-kava-diem-to-change-name",
+      "https://www.shawlocal.com/kc-magazine/dining/2025/05/12/visit-coffee-and-teahouses-along-the-river",
+      "https://www.shawlocal.com/thescene/2025/11/14/best-of-the-best-brews-top-coffee-shops-in-suburbs-sauk-valley-illinois-valley"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "Limestone Coffee & Tea",
+    "slug": "limestone-coffee-tea",
+    "address": "8 W Wilson St, Batavia, IL 60510",
+    "neighborhood": "Batavia",
+    "region": "WEST",
+    "latitude": 41.8498849,
+    "longitude": -88.3079341,
+    "website": "https://limestonebatavia.com",
+    "instagram": "https://instagram.com/limestonecoffeeandtea",
+    "description": "Women-owned coffee, tea and bakery shop in downtown Batavia near the Fox River, known for signature lattes, loose-leaf teas and vegan baked goods.",
+    "ownerReview": "Limestone keeps winning Kane County reader polls, and the menu explains why: signature lattes like the Limestone (white mocha and almond) and The Fox (mocha and peanut butter), a deep loose-leaf tea list, and house-made muffins with vegan options every day. The space is bright and community-minded, with free wifi, a book swap and a reservable room for meetings or study groups.",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:00",
+          "close": "13:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:00",
+          "close": "13:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:00",
+          "close": "13:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:00",
+          "close": "13:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:00",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "06:00",
+          "close": "15:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "06:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://limestonebatavia.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "wifi",
+      "meeting_space",
+      "outdoor_seating",
+      "vegan_options"
+    ],
+    "vibes": [
+      "bright"
+    ],
+    "tagSources": [
+      {
+        "tag": "wifi",
+        "source": "https://www.enjoyillinois.com/explore/listing/limestone-coffee-and-tea/"
+      },
+      {
+        "tag": "meeting_space",
+        "source": "https://www.enjoyillinois.com/explore/listing/limestone-coffee-and-tea/"
+      },
+      {
+        "tag": "outdoor_seating",
+        "source": "https://business.bataviachamber.org/list/member/limestone-coffee-tea-batavia-20364"
+      },
+      {
+        "tag": "vegan_options",
+        "source": "https://limestonebatavia.com"
+      },
+      {
+        "tag": "bright",
+        "source": "https://www.enjoyillinois.com/explore/listing/limestone-coffee-and-tea/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://limestonebatavia.com",
+        "date": "2026-10-07",
+        "official": true,
+        "what": "Official site shows 2026 Kane County Best of the Fox badge and images uploaded Jan 2026 and Oct 7, 2026 (wp-content/uploads/2026/10)"
+      },
+      {
+        "url": "https://www.shawlocal.com/thescene/2025/11/14/best-of-the-best-brews-top-coffee-shops-in-suburbs-sauk-valley-illinois-valley",
+        "date": "2026-02-28",
+        "official": false,
+        "what": "Shaw Local 'Best of the Best Brews' (dated Feb 28, 2026) names Limestone, 8 W. Wilson St., Batavia, Kane County's best coffee shop"
+      }
+    ],
+    "sources": [
+      "https://limestonebatavia.com",
+      "https://www.enjoyillinois.com/explore/listing/limestone-coffee-and-tea/",
+      "https://business.bataviachamber.org/list/member/limestone-coffee-tea-batavia-20364",
+      "https://www.shawlocal.com/thescene/2025/11/14/best-of-the-best-brews-top-coffee-shops-in-suburbs-sauk-valley-illinois-valley",
+      "https://www.shawlocal.com/kc-magazine/dining/2025/05/12/visit-coffee-and-teahouses-along-the-river"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "Sugar & Rhyme Coffeehouse",
+    "slug": "sugar-rhyme-coffeehouse",
+    "address": "203 E Chicago St, Elgin, IL 60120",
+    "neighborhood": "Elgin",
+    "region": "NORTHWEST",
+    "latitude": 42.03707379999999,
+    "longitude": -88.2823659,
+    "website": "https://www.sugarandrhyme.com",
+    "instagram": "https://instagram.com/sugarandrhymecoffeehouse",
+    "description": "Family-owned coffeehouse and bakery in downtown Elgin with from-scratch pastries and croissants and house-made syrups, sauces and spice mixes.",
+    "ownerReview": "Sugar & Rhyme is a bakery first, and the croissants are the reason most people find it. Every syrup and sauce is made in house, so the specialty drinks like the Creme Brulatte and Chocolate Cashew Latte are the order, and the downtown room has a cozy, small-town feel.",
+    "hours": {
+      "mon": [],
+      "tue": [],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "13:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "13:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "14:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.sugarandrhyme.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "full_menu"
+    ],
+    "vibes": [
+      "cozy"
+    ],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://www.sugarandrhyme.com"
+      },
+      {
+        "tag": "cozy",
+        "source": "https://www.shawlocal.com/kc-magazine/dining/2025/05/12/visit-coffee-and-teahouses-along-the-river"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/sugarandrhymecoffeehouse/",
+        "date": "2026-11-20",
+        "official": true,
+        "what": "Official Instagram with posts dated Nov 12-20, 2026"
+      },
+      {
+        "url": "https://mycoffeeexplorer.com/guides/elgin",
+        "date": "2026-11-07",
+        "official": false,
+        "what": "Elgin coffee guide 'last updated November 7, 2026' lists Sugar & Rhyme at 203 E Chicago St"
+      }
+    ],
+    "sources": [
+      "https://www.sugarandrhyme.com",
+      "https://www.instagram.com/sugarandrhymecoffeehouse/",
+      "https://mycoffeeexplorer.com/guides/elgin",
+      "https://www.shawlocal.com/kc-magazine/dining/2025/05/12/visit-coffee-and-teahouses-along-the-river"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "Viator Coffee Co.",
+    "slug": "viator-coffee-co",
+    "address": "51 S Grove Ave, Elgin, IL 60120",
+    "neighborhood": "Elgin",
+    "region": "NORTHWEST",
+    "latitude": 42.0361608,
+    "longitude": -88.2831152,
+    "website": "https://viatorcoffeeco.com",
+    "instagram": "https://instagram.com/viatorcoffee",
+    "description": "Specialty coffee shop and roaster inside Dream Hall food hall in downtown Elgin, also running a mobile espresso bar for events.",
+    "ownerReview": "Viator roasts its own beans and pours them in a cafe tucked inside Dream Hall, Elgin's downtown food incubator. The menu is built around tiers of coffee from approachable to rare, so it suits both casual drinkers and people chasing complex single origins, and the two-floor food hall means there is usually somewhere to sit.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": []
+    },
+    "hoursSourceUrl": "https://viatorcoffeeco.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [],
+    "vibes": [],
+    "tagSources": [],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/viatorcoffee/",
+        "date": "2026-11-14",
+        "official": true,
+        "what": "Official Instagram with posts dated Aug-Nov 14, 2026"
+      },
+      {
+        "url": "https://mycoffeeexplorer.com/guides/elgin",
+        "date": "2026-11-07",
+        "official": false,
+        "what": "Elgin coffee guide 'last updated November 7, 2026' lists Viator at 51 S Grove Ave inside Dream Hall"
+      },
+      {
+        "url": "https://viatorcoffeeco.com",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Official site with Copyright 2026 footer, hours and roastery shop"
+      }
+    ],
+    "sources": [
+      "https://viatorcoffeeco.com",
+      "https://www.instagram.com/viatorcoffee/",
+      "https://mycoffeeexplorer.com/guides/elgin",
+      "https://mycoffeeexplorer.com/shops/viator-coffee-co-elgin"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "Society 57",
+    "slug": "society-57",
+    "address": "100 S River St, Aurora, IL 60506",
+    "neighborhood": "Aurora",
+    "region": "WEST",
+    "latitude": 41.75683230000001,
+    "longitude": -88.3191856,
+    "website": "https://www.society57.com",
+    "instagram": "https://instagram.com/society57",
+    "description": "Specialty coffee shop and event venue in downtown Aurora's historic Pocus building, with nitro and cold brew on tap and meeting rooms.",
+    "ownerReview": "Society 57 fills a big slice of the historic Pocus building with a specialty coffee bar, event space and meeting rooms. Nitro and cold brew are on tap, there is sidewalk seating out front, and its downtown River Street spot makes it an easy first stop on an Aurora coffee walk.",
+    "hours": {
+      "mon": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.society57.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "outdoor_seating",
+      "meeting_space"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "outdoor_seating",
+        "source": "https://www.society57.com"
+      },
+      {
+        "tag": "meeting_space",
+        "source": "https://www.society57.com"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/society57/",
+        "date": "2026-11-03",
+        "official": true,
+        "what": "Official Instagram with posts dated Oct 22-Nov 3, 2026; bio lists shop hours 8a-3p daily"
+      },
+      {
+        "url": "https://mycoffeeexplorer.com/guides/aurora",
+        "date": "2026-11-07",
+        "official": false,
+        "what": "Aurora coffee guide 'last updated November 7, 2026' lists Society 57 at 100 S River St"
+      }
+    ],
+    "sources": [
+      "https://www.society57.com",
+      "https://www.instagram.com/society57/",
+      "https://mycoffeeexplorer.com/guides/aurora",
+      "https://enjoyaurora.com/plan-your-visit/trip-ideas-and-itineraries/aurora-area-cafe-crawl/"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "Endiro Coffee",
+    "slug": "endiro-coffee",
+    "address": "29 W New York St, Aurora, IL 60506",
+    "neighborhood": "Aurora",
+    "region": "WEST",
+    "latitude": 41.7596253,
+    "longitude": -88.31482779999999,
+    "website": "https://www.endirocoffee.com",
+    "instagram": "https://instagram.com/endirocoffee",
+    "description": "Ugandan-rooted B Corp cafe in downtown Aurora that roasts its own tree-to-cup coffee and serves a full breakfast, lunch and dinner menu.",
+    "ownerReview": "Endiro brings coffee grown by women-led cooperatives in Uganda to downtown Aurora and roasts it under its own name. Beyond espresso there are teas, smoothies and a full food menu, and the company puts its profits toward reducing child vulnerability in Uganda and in Aurora.",
+    "hours": null,
+    "hoursSourceUrl": null,
+    "hoursCheckedAt": null,
+    "amenities": [
+      "full_menu"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://enjoyillinois.com/explore/listing/endiro-coffee/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/endirocoffee/",
+        "date": "2026-11-11",
+        "official": true,
+        "what": "Official Instagram with posts dated Oct 26-Nov 11, 2026"
+      },
+      {
+        "url": "https://mycoffeeexplorer.com/guides/aurora",
+        "date": "2026-11-07",
+        "official": false,
+        "what": "Aurora coffee guide 'last updated November 7, 2026' lists Endiro at 29 W New York St as a local roaster"
+      }
+    ],
+    "sources": [
+      "https://www.endirocoffee.com",
+      "https://www.instagram.com/endirocoffee/",
+      "https://enjoyillinois.com/explore/listing/endiro-coffee/",
+      "https://mycoffeeexplorer.com/guides/aurora"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "AROMA Coffee & Wine",
+    "slug": "aroma-coffee-wine",
+    "address": "77 E Woodstock St, Crystal Lake, IL 60014",
+    "neighborhood": "Crystal Lake",
+    "region": "NORTHWEST",
+    "latitude": 42.243496,
+    "longitude": -88.317657,
+    "website": "https://www.aromacoffeeandwine.com",
+    "instagram": "https://instagram.com/aromacoffeeandwine",
+    "description": "Locally owned coffee shop and wine bar in downtown Crystal Lake serving imported espresso, local loose-leaf tea, wine and health-conscious food.",
+    "ownerReview": "AROMA pulls double duty in downtown Crystal Lake: imported espresso and local loose-leaf tea by day, plus a curated wine list and a few craft cocktails. The kitchen leans health-conscious and sources locally where it can, and the space is pitched as somewhere to work during the day.",
+    "hours": {
+      "mon": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": []
+    },
+    "hoursSourceUrl": "https://www.instagram.com/aromacoffeeandwine/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "laptop_friendly",
+      "full_menu"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "laptop_friendly",
+        "source": "https://www.aromacoffeeandwine.com"
+      },
+      {
+        "tag": "full_menu",
+        "source": "https://www.aromacoffeeandwine.com"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/aromacoffeeandwine/",
+        "date": "2026-11-18",
+        "official": true,
+        "what": "Official Instagram with posts dated Sep-Nov 18, 2026; bio lists Mon-Sat 8am-4pm"
+      },
+      {
+        "url": "https://www.shawlocal.com/thescene/2025/11/14/best-of-the-best-brews-top-coffee-shops-in-suburbs-sauk-valley-illinois-valley",
+        "date": "2026-02-28",
+        "official": false,
+        "what": "Shaw Local 'Best of the Best Brews' (dated Feb 28, 2026) lists AROMA Coffee & Wine, 77 E. Woodstock St., Crystal Lake"
+      }
+    ],
+    "sources": [
+      "https://www.aromacoffeeandwine.com",
+      "https://www.instagram.com/aromacoffeeandwine/",
+      "https://www.downtowncl.org/aroma-coffee-wine",
+      "https://www.shawlocal.com/thescene/2025/11/14/best-of-the-best-brews-top-coffee-shops-in-suburbs-sauk-valley-illinois-valley"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "Whirlwind Coffee Company",
+    "slug": "whirlwind-coffee-company",
+    "address": "513 Madison St, Oak Park, IL 60302",
+    "neighborhood": "Oak Park",
+    "region": "WEST",
+    "latitude": 41.8796188,
+    "longitude": -87.7875656,
+    "website": "https://whirlwindcoffee.com/",
+    "instagram": "https://instagram.com/whirlwindcoffee",
+    "description": "Family-owned small-batch roastery and cafe in a 1920 former hardware store on Oak Park's Madison Street, donating 100% of net profits to charity.",
+    "ownerReview": "Whirlwind roasts in small batches right behind the counter, so you can watch the roaster while you order. Every dollar of net profit goes to charity, and the shop sits in a restored 1920 hardware building. Order the Espresso 513 or one of the rotating single origins, and take home a bag of beans.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:30",
+          "close": "14:30"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:30",
+          "close": "14:30"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:30",
+          "close": "14:30"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:30",
+          "close": "14:30"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:30",
+          "close": "14:30"
+        }
+      ],
+      "sat": [
+        {
+          "open": "09:00",
+          "close": "13:00"
+        }
+      ],
+      "sun": []
+    },
+    "hoursSourceUrl": "https://oakparkandbeyond.org/eat-drink/whirlwind-coffee-company",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [],
+    "vibes": [],
+    "tagSources": [],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/whirlwindcoffee/",
+        "date": "2026-11-13",
+        "official": true,
+        "what": "Official Instagram posts dated Nov 11, 12 and 13, 2026"
+      },
+      {
+        "url": "https://oakparkandbeyond.org/blog/best-coffee-shops",
+        "date": "2026-11-09",
+        "official": false,
+        "what": "Explore Oak Park & Beyond 'Best Coffee Shops (Updated 2026)' guide lists Whirlwind at 513 Madison St"
+      }
+    ],
+    "sources": [
+      "https://whirlwindcoffee.com/",
+      "https://www.instagram.com/whirlwindcoffee/",
+      "https://oakparkandbeyond.org/eat-drink/whirlwind-coffee-company",
+      "https://oakparkandbeyond.org/blog/best-coffee-shops"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "U3 Coffee Roasters",
+    "slug": "u3-coffee-roasters",
+    "address": "7430 Madison St, Forest Park, IL 60130",
+    "neighborhood": "Forest Park",
+    "region": "WEST",
+    "latitude": 41.8793193,
+    "longitude": -87.8112228,
+    "website": "https://www.u3coffee.com/",
+    "instagram": "https://instagram.com/u3coffee",
+    "description": "Forest Park cafe and roaster on Madison Street, roasting air-roasted coffee on site with a focus on Costa Rican beans and a rooftop patio.",
+    "ownerReview": "U3 roasts on site and leans hard into Costa Rican coffee, so the Tarrazu single origin is the obvious order. A cortado or one of the specialty lattes is a safe pick too. On a good-weather day, take your drink up to the rooftop patio.",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:30",
+          "close": "18:30"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:30",
+          "close": "18:30"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:30",
+          "close": "18:30"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:30",
+          "close": "18:30"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:30",
+          "close": "18:30"
+        }
+      ],
+      "sat": [
+        {
+          "open": "06:30",
+          "close": "18:30"
+        }
+      ],
+      "sun": [
+        {
+          "open": "06:30",
+          "close": "18:30"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://joe.coffee/locations/il/forest-park/u3-coffee-forest-park",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "outdoor_seating"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "outdoor_seating",
+        "source": "https://www.u3coffee.com/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/u3coffee/",
+        "date": "2026-11-17",
+        "official": true,
+        "what": "Official Instagram posts dated Nov 9, 11 and 17, 2026"
+      },
+      {
+        "url": "https://www.u3coffee.com/",
+        "date": "2026-10-15",
+        "official": true,
+        "what": "Official site page stamped Oct 15, 2026 with the cafe address and events section"
+      },
+      {
+        "url": "https://oakparkandbeyond.org/blog/best-coffee-shops",
+        "date": "2026-11-09",
+        "official": false,
+        "what": "2026 guide lists U3 at 7430 Madison St with on-site roasting and rooftop patio"
+      }
+    ],
+    "sources": [
+      "https://www.u3coffee.com/",
+      "https://www.instagram.com/u3coffee/",
+      "https://joe.coffee/locations/il/forest-park/u3-coffee-forest-park",
+      "https://oakparkandbeyond.org/blog/best-coffee-shops"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "Mulata Kitchen + Coffee",
+    "slug": "mulata-kitchen-coffee",
+    "address": "136 N Oak Park Ave, Oak Park, IL 60301",
+    "neighborhood": "Oak Park",
+    "region": "WEST",
+    "latitude": 41.888496,
+    "longitude": -87.7943638,
+    "website": "https://www.mulatakitchen.com/",
+    "instagram": "https://instagram.com/mulatakitchen",
+    "description": "Brazilian cafe at Oak Park Ave and Lake St known for handmade empanadas, pão de queijo, and custom coffee blends from Brazilian growing regions.",
+    "ownerReview": "Mulata is a Brazilian kitchen first and a coffee bar second, and that's the draw. The house blends come from Brazilian growing regions, and the handmade empanadas and gluten-free pão de queijo are what most people order with them. Feijoada carried over from the founder's earlier spot, Taste of Brasil, is there if you want a full meal.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "sun": []
+    },
+    "hoursSourceUrl": "https://www.mulatakitchen.com/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "full_menu"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://www.mulatakitchen.com/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/mulatakitchen/",
+        "date": "2026-06-23",
+        "official": true,
+        "what": "Official Instagram photo post dated June 23, 2026; bio shows Mon-Sat 7am-7pm"
+      },
+      {
+        "url": "https://oakparkandbeyond.org/blog/best-coffee-shops",
+        "date": "2026-11-09",
+        "official": false,
+        "what": "2026 guide lists Mulata at 136 N. Oak Park Ave"
+      }
+    ],
+    "sources": [
+      "https://www.mulatakitchen.com/",
+      "https://www.instagram.com/mulatakitchen/",
+      "https://oakparkandbeyond.org/blog/best-coffee-shops"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "Pink Owl Cafe",
+    "slug": "pink-owl-cafe",
+    "address": "2713 Ridgeland Ave, Berwyn, IL 60402",
+    "neighborhood": "Berwyn",
+    "region": "WEST",
+    "latitude": 41.8410491,
+    "longitude": -87.7830656,
+    "website": "https://pinkowlcafe.com",
+    "instagram": "https://instagram.com/pinkowlcafe",
+    "description": "Latino-owned coffee and brunch cafe on Berwyn's Ridgeland Avenue, known for its pink flower wall, cafe de olla, and chilaquiles.",
+    "ownerReview": "Pink Owl is the brightest room on Ridgeland Avenue, with chandeliers, gold mirrors, exposed brick and a pink flower wall. The kitchen does brunch most of the week, and chilaquiles and specialty waffles are what get mentioned most. Cafe de olla or a Mexican hot chocolate goes best with them.",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:00",
+          "close": "13:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "09:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "09:00",
+          "close": "16:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://pinkowlcafe.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "weekend_brunch"
+    ],
+    "vibes": [
+      "bright"
+    ],
+    "tagSources": [
+      {
+        "tag": "weekend_brunch",
+        "source": "https://pinkowlcafe.com"
+      },
+      {
+        "tag": "bright",
+        "source": "https://whyberwyn.com/?p=5882"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/pinkowlcafe/",
+        "date": "2026-10-28",
+        "official": true,
+        "what": "Official Instagram photo posts dated Oct 25 and Oct 28, 2026"
+      },
+      {
+        "url": "https://pinkowlcafe.com",
+        "date": "2026-11-23",
+        "official": true,
+        "what": "Official site lists a Monday, Nov 23 blood drive at the cafe (Nov 23 falls on a Monday in 2026), with a 2026 copyright footer"
+      }
+    ],
+    "sources": [
+      "https://pinkowlcafe.com",
+      "https://www.instagram.com/pinkowlcafe/",
+      "https://whyberwyn.com/?p=5882"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "Arista Coffee & Cafe",
+    "slug": "arista-coffee-cafe",
+    "address": "2155 CityGate Ln, Naperville, IL 60563",
+    "neighborhood": "Naperville",
+    "region": "WEST",
+    "latitude": 41.8085053,
+    "longitude": -88.2011075,
+    "website": "https://www.aristacoffeecafe.com/",
+    "instagram": "https://instagram.com/aristacoffeecafe",
+    "description": "Italian-style cafe at Naperville's CityGate Centre beside Hotel Arista, pouring Lavazza coffee with breakfast and lunch plates, pastries, and gelato.",
+    "ownerReview": "Arista is the old Lavazza Naperville under a new name, and it still pours Lavazza exclusively. Treat it like an Italian cafe: espresso with a pastry in the morning, a breakfast or lunch plate, or gelato later in the day. There's a 2 to 4 p.m. happy hour Monday through Saturday.",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.aristacoffeecafe.com/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "full_menu"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://www.aristacoffeecafe.com/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/aristacoffeecafe/",
+        "date": "2026-11-12",
+        "official": true,
+        "what": "Official Instagram posts dated Nov 5 to Nov 12, 2026; bio gives 2155 City Gate Ln"
+      },
+      {
+        "url": "https://mycoffeeexplorer.com/guides/naperville-il",
+        "date": "2026-11-07",
+        "official": false,
+        "what": "My Coffee Explorer Naperville guide, last updated Nov 7, 2026, lists Arista at 2155 CityGate Ln"
+      }
+    ],
+    "sources": [
+      "https://www.aristacoffeecafe.com/",
+      "https://www.instagram.com/aristacoffeecafe/",
+      "https://mycoffeeexplorer.com/guides/naperville-il",
+      "https://members.naperville.net/news/Details/with-a-new-name-naperville-favorite-lavazza-proudly-celebrates-quality-and-excellence-as-arista-coffee-caf-239304"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "CoCo & Maple",
+    "slug": "coco-maple",
+    "address": "130 E Northwest Hwy, Mount Prospect, IL 60056",
+    "neighborhood": "Mount Prospect",
+    "region": "NORTHWEST",
+    "latitude": 42.0627054,
+    "longitude": -87.93424739999999,
+    "website": "https://cocoandmaple.com",
+    "instagram": "https://instagram.com/cocoandmaplecafe",
+    "description": "Coffee and cocktail cafe in downtown Mount Prospect from the family behind Arlington Heights' CoCo & Blu, with regular trivia, bingo and live music nights.",
+    "ownerReview": "CoCo & Maple brings the coffee-and-cocktails formula from the family behind CoCo & Blu to downtown Mount Prospect. The room has high ceilings and plenty of natural light, the caramel pecan latte gets the mentions, and the calendar stays full with trivia, bingo, and live music. It can get busy, so espresso orders may take a while at peak times.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "21:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "21:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "21:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://cocoandmaple.com/contact",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "bustling"
+    ],
+    "vibes": [
+      "bright"
+    ],
+    "tagSources": [
+      {
+        "tag": "bustling",
+        "source": "https://www.atly.com/united-states/illinois/mount-prospect/best-coffee"
+      },
+      {
+        "tag": "bright",
+        "source": "https://www.atly.com/united-states/illinois/mount-prospect/best-coffee"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://cocoandmaple.com/events",
+        "date": "2026-11-19",
+        "official": true,
+        "what": "Official events page listing 2026 events: Disney Trivia on Nov 19, 2026 and Holiday Trivia on Dec 17, 2026"
+      },
+      {
+        "url": "https://www.instagram.com/cocoandmaplecafe/",
+        "date": "2026-11-20",
+        "official": true,
+        "what": "Official Instagram with posts dated Oct 23 to Nov 20, 2026"
+      },
+      {
+        "url": "https://www.atly.com/united-states/illinois/mount-prospect/best-coffee",
+        "date": "2026-11-01",
+        "official": false,
+        "what": "Atly Mount Prospect coffee guide marked 'Updated November 2026' (page gives no day; 01 is a placeholder) listing CoCo & Maple"
+      }
+    ],
+    "sources": [
+      "https://cocoandmaple.com/contact",
+      "https://cocoandmaple.com/events",
+      "https://cocoandmaple.com",
+      "https://www.instagram.com/cocoandmaplecafe/",
+      "https://www.atly.com/united-states/illinois/mount-prospect/best-coffee",
+      "https://whatnow.com/?p=286265"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "Blackberry Market",
+    "slug": "blackberry-market",
+    "address": "401 N Main St, Glen Ellyn, IL 60137",
+    "neighborhood": "Glen Ellyn",
+    "region": "WEST",
+    "latitude": 41.8741721,
+    "longitude": -88.0665569,
+    "website": "https://blackberry.cafe",
+    "instagram": "https://instagram.com/bberrymarket",
+    "description": "Fast-casual cafe, bakery and market in downtown Glen Ellyn, the original 2012 Blackberry Market location, pulling espresso on Intelligentsia coffee alongside breakfast and lunch.",
+    "ownerReview": "Blackberry Market started here in Glen Ellyn and has since grown into a small local group, and the shop still pairs a real coffee program with a full kitchen. Espresso drinks are pulled on Intelligentsia coffee, and the bakery, cafe menu, and grab-and-go market case make it as much a breakfast-and-lunch stop as a coffee one.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://blackberry.cafe/locations/glen-ellyn",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "full_menu"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://blackberry.cafe"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/bberrymarket/",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Official Instagram (bio lists Glen Ellyn among its locations) with posts dated Nov 8 to Nov 22, 2026"
+      },
+      {
+        "url": "https://blackberry.cafe",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Official site with Thanksgiving 2026 ordering: orders due Sun Nov 22, pickup and delivery Wed Nov 25"
+      }
+    ],
+    "sources": [
+      "https://blackberry.cafe",
+      "https://blackberry.cafe/locations/glen-ellyn",
+      "https://www.instagram.com/bberrymarket/",
+      "https://www.shawlocal.com/2012/12/17/family-community-all-part-of-downtown-glen-ellyns-new-treasure-blackberry-market/aueb3zn"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "The Guild",
+    "slug": "the-guild",
+    "address": "121 W Front St, Wheaton, IL 60187",
+    "neighborhood": "Wheaton",
+    "region": "WEST",
+    "latitude": 41.8650534,
+    "longitude": -88.107671,
+    "website": "https://theguildwheaton.com",
+    "instagram": "https://instagram.com/theguildwheaton",
+    "description": "Cafe, bookstore, listening bar and event space above Subourbon in downtown Wheaton, pouring Onyx Coffee Lab coffee with six rotating origins each season.",
+    "ownerReview": "The Guild sets itself up as a modern third place, with a cafe, a bookstore, and a hi-fi listening bar sharing one upstairs space on Front Street. Coffee comes from Onyx Coffee Lab with origins that rotate each season, and breakfast includes lemon-ricotta pancakes. There is Wi-Fi and a communal table, though the cafe asks guests to be mindful of seating when it is busy.",
+    "hours": {
+      "mon": [],
+      "tue": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": []
+    },
+    "hoursSourceUrl": "https://theguildwheaton.com/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "wifi",
+      "communal_tables"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "wifi",
+        "source": "https://theguildwheaton.com/"
+      },
+      {
+        "tag": "communal_tables",
+        "source": "https://theguildwheaton.com/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/theguildwheaton/",
+        "date": "2026-11-19",
+        "official": true,
+        "what": "Official Instagram (bio 'NOW OPEN') with posts dated Nov 8 to Nov 19, 2026, plus a Sep 20, 2026 post showing seasonal hours of 8-4 Tue-Sat"
+      },
+      {
+        "url": "https://mycoffeeexplorer.com/guides/wheaton-il",
+        "date": "2026-11-16",
+        "official": false,
+        "what": "Wheaton coffee guide 'last updated November 16, 2026' listing The Guild at 121 W Front St"
+      }
+    ],
+    "sources": [
+      "https://theguildwheaton.com/",
+      "https://www.instagram.com/theguildwheaton/",
+      "https://mycoffeeexplorer.com/guides/wheaton-il",
+      "https://mycoffeeexplorer.com/shops/the-guild-wheaton-il"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "My Half of the Sky Coffee House",
+    "slug": "my-half-of-the-sky-coffee-house",
+    "address": "121 W Wesley St, Wheaton, IL 60187",
+    "neighborhood": "Wheaton",
+    "region": "WEST",
+    "latitude": 41.8663375,
+    "longitude": -88.1077717,
+    "website": "https://myhalfofthesky.org",
+    "instagram": "https://instagram.com/myhalfoftheskycoffee",
+    "description": "Social-enterprise coffee house in downtown Wheaton whose proceeds support women affected by poverty and trafficking, with coworking and meeting rooms at The Kilns two doors east.",
+    "ownerReview": "My Half of the Sky runs as a business with a mission, and purchases go toward work and support for women affected by trafficking, poverty, and addiction. The coffee is organic, fair trade, and direct trade, and the bookable rooms and day passes at The Kilns next door make it easy to turn a coffee into a meeting. There is parking behind the building.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "sun": []
+    },
+    "hoursSourceUrl": "https://myhalfofthesky.org/pages/contact",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "meeting_space",
+      "parking"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "meeting_space",
+        "source": "https://myhalfofthesky.org/pages/co-work-rent-space"
+      },
+      {
+        "tag": "parking",
+        "source": "https://mycoffeeexplorer.com/shops/my-half-of-the-sky-wheaton-il"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/myhalfoftheskycoffee/",
+        "date": "2026-11-07",
+        "official": true,
+        "what": "Official Instagram with posts dated Oct 2 to Nov 7, 2026"
+      },
+      {
+        "url": "https://mycoffeeexplorer.com/guides/wheaton-il",
+        "date": "2026-11-16",
+        "official": false,
+        "what": "Wheaton coffee guide 'last updated November 16, 2026' listing My Half of the Sky at 121 West Wesley St"
+      }
+    ],
+    "sources": [
+      "https://myhalfofthesky.org",
+      "https://myhalfofthesky.org/pages/contact",
+      "https://myhalfofthesky.org/pages/co-work-rent-space",
+      "https://www.instagram.com/myhalfoftheskycoffee/",
+      "https://mycoffeeexplorer.com/guides/wheaton-il",
+      "https://mycoffeeexplorer.com/shops/my-half-of-the-sky-wheaton-il"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "Refeel Cafe",
+    "slug": "refeel-cafe",
+    "address": "1504 Algonquin Rd, Palatine, IL 60067",
+    "neighborhood": "Palatine",
+    "region": "NORTHWEST",
+    "latitude": 42.0806882,
+    "longitude": -88.08011809999999,
+    "website": "https://refeel.cafe",
+    "instagram": "https://instagram.com/refeel_cafe",
+    "description": "Cozy Palatine cafe with an all-day menu, house-made syrups, specialty lattes like cardamom sticky bun and pistachio, plus matcha, fruit teas and in-house pastries.",
+    "ownerReview": "Refeel leans into drinks with personality, using house-made syrups for specialty lattes like the cardamom sticky bun and roasted pistachio, and its matcha and fruit-tea list runs just as long. The small room is decorated with anime, flowers, and artwork, board games and manga are on hand, and the pastries are made in-house.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "21:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "09:00",
+          "close": "18:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://refeel.cafe/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [],
+    "vibes": [
+      "cozy"
+    ],
+    "tagSources": [
+      {
+        "tag": "cozy",
+        "source": "https://www.atly.com/location/ReFeelCafe"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/refeel_cafe/",
+        "date": "2026-07-29",
+        "official": true,
+        "what": "Official Instagram with posts dated Jul 17, Jul 24 and Jul 29, 2026"
+      },
+      {
+        "url": "https://www.atly.com/united-states/illinois/palatine/best-coffee",
+        "date": "2026-11-01",
+        "official": false,
+        "what": "Atly Palatine coffee guide marked 'Updated November 2026' (page gives no day; 01 is a placeholder) ranking ReFeel Cafe #1"
+      }
+    ],
+    "sources": [
+      "https://refeel.cafe/",
+      "https://www.instagram.com/refeel_cafe/",
+      "https://www.atly.com/united-states/illinois/palatine/best-coffee",
+      "https://www.atly.com/location/ReFeelCafe"
+    ],
+    "researchAgent": "B"
+  },
+  {
+    "name": "Electric Drip Coffee",
+    "slug": "electric-drip-coffee",
+    "address": "17028 Oak Park Ave, Tinley Park, IL 60477",
+    "neighborhood": "Tinley Park",
+    "region": "SOUTH",
+    "latitude": 41.5817328,
+    "longitude": -87.7849991,
+    "website": "https://www.electricdripcoffee.com",
+    "instagram": "https://www.instagram.com/electricdripcoffee/",
+    "description": "Retro, self-styled 'raddest' coffee shop on Oak Park Avenue in downtown Tinley Park, with signature lattes, afternoon tea service and regular community events.",
+    "ownerReview": "Electric Drip leans all the way into its look: dark, rich colors, retro stools and a Grim Reaper mural by a local artist. The drink list goes beyond the basics with a Toasted Coconut Affogato and a Banana Bread Latte, and the 'Ode to Pekoe' afternoon tea keeps a nod to the tea room that used to occupy the space. There is also a steady calendar of board game socials, yoga and private themed rooms for parties and meetings.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.electricdripcoffee.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "meeting_space"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "meeting_space",
+        "source": "https://www.electricdripcoffee.com"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.electricdripcoffee.com/event-list",
+        "date": "2026-11-29",
+        "official": true,
+        "what": "Official events page lists upcoming Coffee & Yoga on Sun Nov 29 (homepage dates it 11/29/26) and past 2026 events (Board Game Social Nov 8, Sound Bath Oct 17, Plant Bingo Aug 28)"
+      },
+      {
+        "url": "https://patch.com/illinois/tinleypark/tinleys-raddest-coffee-shop-electric-drip-brings-eclectic-look-whole-vibe-oak",
+        "date": "2026-06-05",
+        "official": false,
+        "what": "Patch article on the shop's grand opening (June 7) in the former Pekoe and Bean space, with owners, menu and decor"
+      }
+    ],
+    "sources": [
+      "https://www.electricdripcoffee.com",
+      "https://www.electricdripcoffee.com/event-list",
+      "https://patch.com/illinois/tinleypark/tinleys-raddest-coffee-shop-electric-drip-brings-eclectic-look-whole-vibe-oak"
+    ],
+    "researchAgent": "C"
+  },
+  {
+    "name": "Krema Coffee House",
+    "slug": "krema-coffee-house",
+    "address": "24038 W Lockport St, Plainfield, IL 60544",
+    "neighborhood": "Plainfield",
+    "region": "SOUTH",
+    "latitude": 41.6086873,
+    "longitude": -88.2043812,
+    "website": "https://kremacoffeeroasters.com",
+    "instagram": null,
+    "description": "The original Krema, an independent coffee house in downtown Plainfield since late 2017 that sells its own Krema-branded coffee and has grown to Lockport, Tinley Park and North Aurora.",
+    "ownerReview": "Krema is the original shop of a small local coffee company that started in downtown Plainfield in 2017 and now sells its own single-origin bags and city blends. The shop pitches itself as a place to relax, meet friends, work on a school project or settle in with a book. There is also an event room for about 20 people for showers and meetings.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://kremacoffeeroasters.com/pages/locations",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "meeting_space"
+    ],
+    "vibes": [
+      "study-friendly"
+    ],
+    "tagSources": [
+      {
+        "tag": "meeting_space",
+        "source": "https://kremacoffeeroasters.com/pages/events"
+      },
+      {
+        "tag": "study-friendly",
+        "source": "https://kremacoffeeroasters.com/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://kremacoffeeroasters.com/products.json",
+        "date": "2026-07-01",
+        "official": true,
+        "what": "Official Shopify store lists a 'Playnfield Players Fundraiser' product created 2026-07-01; seasonal products republished 2026-07-23; site banner 'Fall menu now available'"
+      },
+      {
+        "url": "https://patch.com/illinois/plainfield/krema-patisserie-now-open-plainfield",
+        "date": "2026-09-28",
+        "official": false,
+        "what": "Patch article on Krema's new patisserie; recaps that the original Krema Coffee House opened downtown Plainfield in late 2017 and has since opened Lockport, Tinley Park and North Aurora shops"
+      },
+      {
+        "url": "https://www.shawlocal.com/the-herald-news/2026/10/11/new-bakeries-opening-in-plainfield/",
+        "date": "2026-10-10",
+        "official": false,
+        "what": "Herald-News piece on the KREMA Patisserie opening Sept 28, 2026"
+      }
+    ],
+    "sources": [
+      "https://kremacoffeeroasters.com/",
+      "https://kremacoffeeroasters.com/pages/locations",
+      "https://kremacoffeeroasters.com/pages/events",
+      "https://patch.com/illinois/plainfield/krema-patisserie-now-open-plainfield",
+      "https://www.shawlocal.com/the-herald-news/2026/10/11/new-bakeries-opening-in-plainfield/"
+    ],
+    "researchAgent": "C"
+  },
+  {
+    "name": "Folklore Coffee",
+    "slug": "folklore-coffee",
+    "address": "214 Main St, Lemont, IL 60439",
+    "neighborhood": "Lemont",
+    "region": "SOUTH",
+    "latitude": 41.6735933,
+    "longitude": -88.00116829999999,
+    "website": "https://folklorecoffeeshop.com",
+    "instagram": "https://www.instagram.com/folklorecoffee.lemont/",
+    "description": "Cryptid-themed coffee shop in an 1800s general store building on Main Street in downtown Lemont, known for a new themed drink menu every month.",
+    "ownerReview": "Folklore turns a love of Bigfoot and jackalopes into a genuinely charming neighborhood shop inside an 1800s general store. The menu changes theme every month, the house beans are roasted by Whirlwind Coffee in Oak Park, and the pastries come from Honeyfluff Donuts in Countryside. It also hosts its own Bigfoot Day market, and State Rep. Nicole La Ha named it her August 2026 Business of the Month.",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:30",
+          "close": "16:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:30",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:30",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:30",
+          "close": "16:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:30",
+          "close": "16:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://folklorecoffeeshop.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "parking"
+    ],
+    "vibes": [
+      "cozy"
+    ],
+    "tagSources": [
+      {
+        "tag": "parking",
+        "source": "https://folklorecoffeeshop.com"
+      },
+      {
+        "tag": "cozy",
+        "source": "https://folklorecoffeeshop.com"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://folklorecoffeeshop.com",
+        "date": "2026-10-17",
+        "official": true,
+        "what": "Official site data lists a 'September 2026' seasonal menu and 2026 events (Witches Walk 2026-10-02, Bigfoot Day Market 2026-10-17, Mystic Night 2026-10-28); hours and address on homepage"
+      },
+      {
+        "url": "https://patch.com/illinois/lemont/state-rep-la-ha-recognizes-folklore-coffee-business-month",
+        "date": "2026-08-17",
+        "official": false,
+        "what": "Patch: State Rep. Nicole La Ha names Folklore Coffee her August Business of the Month"
+      },
+      {
+        "url": "https://lemontdowntown.squarespace.com/news/stars-hollow-day-in-lemont",
+        "date": "2026-11-05",
+        "official": false,
+        "what": "Lemont Downtown guide sends readers to Folklore at 214 Main St for coffee and its seasonal menu"
+      },
+      {
+        "url": "https://lemontdowntown.squarespace.com/news/celebrate-national-bigfoot-day-at-the-official-market",
+        "date": "2026-10-14",
+        "official": false,
+        "what": "Lemont Downtown post on Folklore hosting its 3rd annual National Bigfoot Market on Oct 17"
+      }
+    ],
+    "sources": [
+      "https://folklorecoffeeshop.com",
+      "https://folklorecoffeeshop.com/menu",
+      "https://patch.com/illinois/lemont/state-rep-la-ha-recognizes-folklore-coffee-business-month",
+      "https://lemontdowntown.squarespace.com/news/stars-hollow-day-in-lemont",
+      "https://lemontdowntown.squarespace.com/news/celebrate-national-bigfoot-day-at-the-official-market"
+    ],
+    "researchAgent": "C"
+  },
+  {
+    "name": "The Living Room",
+    "slug": "the-living-room",
+    "address": "102 Stephen St, Lemont, IL 60439",
+    "neighborhood": "Lemont",
+    "region": "SOUTH",
+    "latitude": 41.6755274,
+    "longitude": -87.9994159,
+    "website": "https://www.thelivingroomlemont.life",
+    "instagram": "https://www.instagram.com/thelivingroomlemont/",
+    "description": "Small coffee and events space on Stephen Street in downtown Lemont serving espresso drinks, chai and matcha, with cold brew from Pollyanna Coffee Roasting.",
+    "ownerReview": "The Living Room keeps things simple: drip, lattes, mochas, cappuccinos, chai and matcha, plus a cold brew made with Pollyanna Coffee Roasting. Lemont Downtown points to its cozy atmosphere as the reason to make it your second coffee stop of the day. The space can also be rented for events.",
+    "hours": {
+      "mon": [],
+      "tue": [
+        {
+          "open": "09:00",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "09:00",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "09:00",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "09:00",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "12:00"
+        }
+      ],
+      "sun": []
+    },
+    "hoursSourceUrl": "https://www.thelivingroomlemont.life",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "meeting_space"
+    ],
+    "vibes": [
+      "cozy"
+    ],
+    "tagSources": [
+      {
+        "tag": "meeting_space",
+        "source": "https://www.thelivingroomlemont.life"
+      },
+      {
+        "tag": "cozy",
+        "source": "https://lemontdowntown.squarespace.com/news/stars-hollow-day-in-lemont"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/thelivingroomlemont/",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Own Instagram (bio: gathering space in Downtown Lemont, 102 Stephen; Tue-Fri 9am-3pm, Sat 8am-12pm, Sun-Mon closed) with posts dated Aug 14 to Nov 22, 2026"
+      },
+      {
+        "url": "https://lemontdowntown.squarespace.com/news/stars-hollow-day-in-lemont",
+        "date": "2026-11-05",
+        "official": false,
+        "what": "Lemont Downtown guide recommends The Living Room at 102 Stephen St"
+      },
+      {
+        "url": "https://lemontdowntown.squarespace.com/news/stars-hollow-day-in-lemont",
+        "date": "2026-11-05",
+        "official": false,
+        "what": "Lemont Downtown guide recommends The Living Room at 102 Stephen St for coffee, mentions seasonal pumpkin spice and Pollyanna cold brew"
+      },
+      {
+        "url": "https://www.thelivingroomlemont.life/menu",
+        "date": "2026-03-31",
+        "official": true,
+        "what": "Official site with current hours and menu; Squarespace page metadata shows Home updated 2026-03-28 and Menu updated 2026-03-31 (no visible dated post; footer reads (c) 2025)"
+      }
+    ],
+    "sources": [
+      "https://www.thelivingroomlemont.life",
+      "https://www.thelivingroomlemont.life/menu",
+      "https://lemontdowntown.squarespace.com/news/stars-hollow-day-in-lemont"
+    ],
+    "researchAgent": "C"
+  },
+  {
+    "name": "Grove Coffee",
+    "slug": "grove-coffee",
+    "address": "4736 W 103rd St, Oak Lawn, IL 60453",
+    "neighborhood": "Oak Lawn",
+    "region": "SOUTH",
+    "latitude": 41.7068061,
+    "longitude": -87.7392425,
+    "website": "https://grovecoffeeshop.com",
+    "instagram": "https://www.instagram.com/grovecoffeeshop",
+    "description": "People-first neighborhood coffee shop on 103rd Street in Oak Lawn, opened in 2025, known for its Oak Latte, a kids' play corner and a private meeting room.",
+    "ownerReview": "Grove is built around community: it skips gaming, alcohol and a drive-thru, and puts its profits toward staff development and a local teen mentoring program. The signature Oak Latte with cinnamon and maple is the order, with a cinnamon roll croissant or the breakfast bagel sandwich on the side, and lattes use a Brazilian single-origin from Modest. The room is designed to feel calm and uncluttered, with a private meeting room and a kids' corner with a mini wooden coffee station.",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "06:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": []
+    },
+    "hoursSourceUrl": "https://grovecoffeeshop.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "meeting_space"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "meeting_space",
+        "source": "https://southwestregionalpublishing.com/2026/10/30/grove-coffee-brews-up-a-year-of-smiles/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/grovecoffeeshop/",
+        "date": "2026-11-21",
+        "official": true,
+        "what": "Own Instagram 'Grove Coffee Shop - Oak Lawn' (bio: Oak Lawn, IL, 6am-4pm Mon-Sat) with posts dated Oct 30 to Nov 21, 2026"
+      },
+      {
+        "url": "https://southwestregionalpublishing.com/2026/10/30/grove-coffee-brews-up-a-year-of-smiles/",
+        "date": "2026-10-30",
+        "official": false,
+        "what": "The Reporter article on the first anniversary at 4736 W 103rd St"
+      },
+      {
+        "url": "https://southwestregionalpublishing.com/2026/10/30/grove-coffee-brews-up-a-year-of-smiles/",
+        "date": "2026-10-30",
+        "official": false,
+        "what": "The Reporter article on Grove Coffee marking its first anniversary on Oct 29 at 4736 W 103rd St"
+      },
+      {
+        "url": "https://grovecoffeeshop.com",
+        "date": "2026-08-01",
+        "official": true,
+        "what": "Official site with hours, address, fall menu and rentals; Squarespace page metadata shows Home updated 2026-08-01 and Menu updated 2026-08-03 (no visible dated post)"
+      }
+    ],
+    "sources": [
+      "https://grovecoffeeshop.com",
+      "https://grovecoffeeshop.com/rentals",
+      "https://southwestregionalpublishing.com/2026/10/30/grove-coffee-brews-up-a-year-of-smiles/",
+      "https://southwestregionalpublishing.com/2025/10/30/fresh-brews-and-big-smiles-at-grove-coffee/"
+    ],
+    "researchAgent": "C"
+  },
+  {
+    "name": "Brew Bucket Coffee",
+    "slug": "brew-bucket-coffee",
+    "address": "5518 W 95th St, Oak Lawn, IL 60453",
+    "neighborhood": "Oak Lawn",
+    "region": "SOUTH",
+    "latitude": 41.7199283,
+    "longitude": -87.75868,
+    "website": "https://brewbucketcoffee.com",
+    "instagram": "https://www.instagram.com/brewbucketcoffee/",
+    "description": "Family-run cafe in downtown Oak Lawn, opened May 2026, serving lattes, matcha and fruit refreshers, many of them in actual buckets.",
+    "ownerReview": "Brew Bucket is a husband-and-wife shop where every drink on the menu started as one of the co-owner's home recipes. The Spanish Latte, made with espresso, steamed milk and sweetened condensed milk, is the early favorite, alongside mango and strawberry matcha and a long list of colorful refreshers. Many drinks come served in a bucket, which is exactly as photogenic as it sounds.",
+    "hours": {
+      "mon": [
+        {
+          "open": "08:00",
+          "close": "19:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "08:00",
+          "close": "19:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "08:00",
+          "close": "19:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "08:00",
+          "close": "19:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "08:00",
+          "close": "19:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "09:00",
+          "close": "19:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "09:00",
+          "close": "18:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://brewbucketcoffee.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [],
+    "vibes": [],
+    "tagSources": [],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/brewbucketcoffee/",
+        "date": "2026-11-21",
+        "official": true,
+        "what": "Own Instagram (bio links brewbucketcoffee.com) with posts dated Sep 23 to Nov 21, 2026, latest Nov 21, 2026"
+      },
+      {
+        "url": "https://southwestregionalpublishing.com/2026/05/14/brew-bucket-coffee-has-oak-lawn-buzzing-over-bucket-drinks/",
+        "date": "2026-05-14",
+        "official": false,
+        "what": "Southwest Regional Publishing article on the May 8, 2026 opening in downtown Oak Lawn"
+      },
+      {
+        "url": "https://southwestregionalpublishing.com/2026/05/14/brew-bucket-coffee-has-oak-lawn-buzzing-over-bucket-drinks/",
+        "date": "2026-05-14",
+        "official": false,
+        "what": "Southwest Regional Publishing article: Brew Bucket Coffee officially opened Friday, May 8 in downtown Oak Lawn; owners, menu and hours at the time"
+      },
+      {
+        "url": "https://brewbucketcoffee.com",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Official site live on check date with address, hours and social links; no dated post, but the business itself opened in May 2026 (site hours differ from the May article, so they were updated after opening)"
+      }
+    ],
+    "sources": [
+      "https://brewbucketcoffee.com",
+      "https://southwestregionalpublishing.com/2026/05/14/brew-bucket-coffee-has-oak-lawn-buzzing-over-bucket-drinks/"
+    ],
+    "researchAgent": "C"
+  },
+  {
+    "name": "Watershed Café & Books",
+    "slug": "watershed-cafe-books",
+    "address": "19852 S LaGrange Rd, Mokena, IL 60448",
+    "neighborhood": "Mokena",
+    "region": "SOUTH",
+    "latitude": 41.5289879,
+    "longitude": -87.8522105,
+    "website": "https://watershedcafe.com",
+    "instagram": "https://www.instagram.com/watershed777/",
+    "description": "Coffeehouse, Christian bookstore and local-artist gift shop under one roof on LaGrange Road in Mokena, serving organic handcrafted coffee and hosting frequent events.",
+    "ownerReview": "Watershed combines a coffee bar, a Christian bookstore and a gift shop stocked by local artists. The drinks are organic and seasonal, and the calendar stays busy with Bible studies, workshops, music and movie nights and seasonal maker markets. It describes itself as a cozy place to relax, read and catch up with friends.",
+    "hours": null,
+    "hoursSourceUrl": null,
+    "hoursCheckedAt": null,
+    "amenities": [
+      "meeting_space"
+    ],
+    "vibes": [
+      "cozy"
+    ],
+    "tagSources": [
+      {
+        "tag": "meeting_space",
+        "source": "https://watershedcafe.com/contact/"
+      },
+      {
+        "tag": "cozy",
+        "source": "https://watershedcafe.com/about/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://watershedcafe.com/holiday-market-2026/",
+        "date": "2026-11-28",
+        "official": true,
+        "what": "Official 'Holiday Market 2026' page for Saturday, November 28, 2026 at the cafe; events calendar lists Nov and Dec 2026 programs"
+      },
+      {
+        "url": "https://patch.com/illinois/newlenox/calendar/event/20261128/7b08b7ee-bd54-44bb-9deb-f46611e7105c/holiday-market-at-watershed-caf-books",
+        "date": "2026-11-28",
+        "official": false,
+        "what": "Patch community calendar listing for the Nov 28, 2026 Holiday Market at Watershed Cafe & Books, 19852 S LaGrange Rd (community-contributed post)"
+      }
+    ],
+    "sources": [
+      "https://watershedcafe.com",
+      "https://watershedcafe.com/about/",
+      "https://watershedcafe.com/contact/",
+      "https://watershedcafe.com/events/",
+      "https://watershedcafe.com/holiday-market-2026/",
+      "https://patch.com/illinois/newlenox/calendar/event/20261128/7b08b7ee-bd54-44bb-9deb-f46611e7105c/holiday-market-at-watershed-caf-books"
+    ],
+    "researchAgent": "C"
+  },
+  {
+    "name": "Grounded Coffee Bar",
+    "slug": "grounded-coffee-bar",
+    "address": "2111 Calistoga Dr, New Lenox, IL 60451",
+    "neighborhood": "New Lenox",
+    "region": "SOUTH",
+    "latitude": 41.4813965,
+    "longitude": -87.9588764,
+    "website": "https://www.thegroundedcoffeebars.com",
+    "instagram": "https://www.instagram.com/thegroundedcoffeebar/",
+    "description": "Local coffee bar in New Lenox pouring Intelligentsia coffee, with an attached indie bookshop, Grounded Books, and a regular lineup of family movie nights and book clubs.",
+    "ownerReview": "Grounded's New Lenox shop doubles as a third place: the coffee bar expanded next door into Grounded Books, an indie bookshop with comfortable nooks, extra seating and an event space. Drinks are built on Intelligentsia coffee and Kilogram tea, with a rotating monthly specials menu like the Cinnamon Bun Cold Brew. Book clubs, craft nights and family movie nights keep the room busy.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.thegroundedcoffeebars.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "meeting_space"
+    ],
+    "vibes": [
+      "cozy"
+    ],
+    "tagSources": [
+      {
+        "tag": "meeting_space",
+        "source": "https://patch.com/illinois/newlenox/more-just-coffee-shop-new-lenoxs-indie-grounded-books-blend-2-womens-passions"
+      },
+      {
+        "tag": "cozy",
+        "source": "https://patch.com/illinois/newlenox/more-just-coffee-shop-new-lenoxs-indie-grounded-books-blend-2-womens-passions"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.thegroundedcoffeebars.com/events/november21-movie-night",
+        "date": "2026-11-21",
+        "official": true,
+        "what": "Official event page: Family Movie Night, Saturday, November 21, 2026, at Grounded Coffee Bar New Lenox, 2111 Calistoga Drive, New Lenox, IL 60451"
+      },
+      {
+        "url": "https://www.thegroundedcoffeebars.com/read-coffee-and-drink-books",
+        "date": "2026-11-01",
+        "official": true,
+        "what": "Official blog post November Drink Specials, published 2026-11-01 (per round 1, not re-fetched)"
+      },
+      {
+        "url": "https://www.thegroundedcoffeebars.com/events/november21-movie-night",
+        "date": "2026-11-21",
+        "official": true,
+        "what": "Official event page: Family Movie Night, Saturday November 21, 2026 at Grounded Coffee Bar New Lenox, 2111 Calistoga Dr; Nov 28, 2026 movie night also listed"
+      },
+      {
+        "url": "https://www.thegroundedcoffeebars.com/read-coffee-and-drink-books",
+        "date": "2026-11-01",
+        "official": true,
+        "what": "Official blog post 'November Drink Specials - Cozy Weather Sweets' published 2026-11-01, plus Sept and Oct 2026 posts"
+      }
+    ],
+    "sources": [
+      "https://www.thegroundedcoffeebars.com",
+      "https://www.thegroundedcoffeebars.com/events/november21-movie-night",
+      "https://www.thegroundedcoffeebars.com/read-coffee-and-drink-books",
+      "https://patch.com/illinois/newlenox/more-just-coffee-shop-new-lenoxs-indie-grounded-books-blend-2-womens-passions"
+    ],
+    "researchAgent": "C"
+  },
+  {
+    "name": "Beyond Borders Cafe",
+    "slug": "beyond-borders-cafe",
+    "address": "1036 Sterling Ave Suite 2, Flossmoor, IL 60422",
+    "neighborhood": "Flossmoor",
+    "region": "SOUTH",
+    "latitude": 41.5432491,
+    "longitude": -87.67914019999999,
+    "website": "https://beyondborderscafe.com",
+    "instagram": "https://www.instagram.com/beyondborderscafe/",
+    "description": "Neighborhood cafe in downtown Flossmoor, founded in 2025, serving globally sourced coffee from Ethiopia, Costa Rica and Brazil, with seasonal drinks and occasional live music.",
+    "ownerReview": "Beyond Borders is built around a 'world of coffee' idea, with beans from Ethiopia, Costa Rica and Brazil and a menu of seasonal favorites, like its Easter drink specials. Founded in 2025 by Jen and Chris Zarozny, it describes its downtown Flossmoor space as warm and eclectic, a spot to linger over a quiet moment or catch a local artist. Live jazz nights have shown up on its feed.",
+    "hours": null,
+    "hoursSourceUrl": null,
+    "hoursCheckedAt": null,
+    "amenities": [],
+    "vibes": [],
+    "tagSources": [],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/beyondborderscafe/",
+        "date": "2026-11-19",
+        "official": true,
+        "what": "Own Instagram (neighborhood cafe with a wine bar) with posts dated Oct 14 to Nov 19, 2026"
+      },
+      {
+        "url": "https://www.hfchronicle.com/2026/01/12/1-injured-business-damaged-in-downtown-flossmoor-crash/",
+        "date": "2026-01-12",
+        "official": false,
+        "what": "HF Chronicle: cafe at 1036 Sterling Ave damaged by a vehicle crash on Jan 12, 2026"
+      },
+      {
+        "url": "https://beyondborderscafe.com",
+        "date": "2026-04-10",
+        "official": true,
+        "what": "Official site embeds the cafe's own Instagram feed; most recent posts are timestamped 2026-04-01 through 2026-04-10 (Easter drink specials, live jazz with Vashon Johnson, a 'New Spirit Alert' post)"
+      },
+      {
+        "url": "https://www.hfchronicle.com/2026/01/12/1-injured-business-damaged-in-downtown-flossmoor-crash/",
+        "date": "2026-01-12",
+        "official": false,
+        "what": "HF Chronicle: Beyond Borders Cafe at 1036 Sterling Ave was boarded up after a vehicle crashed into the shop on Jan 12, 2026 (shows the business at that address in 2026; the April 2026 official posts show it operating afterward)"
+      }
+    ],
+    "sources": [
+      "https://beyondborderscafe.com",
+      "https://beyondborderscafe.com/about-us/",
+      "https://www.hfchronicle.com/2026/01/12/1-injured-business-damaged-in-downtown-flossmoor-crash/",
+      "https://www.hfchronicle.com/2025/08/09/beyond-borders-cafe-brings-historical-theme-to-downtown-flossmoor/"
+    ],
+    "researchAgent": "C"
+  },
+  {
+    "name": "Afro Joe's",
+    "slug": "afro-joes",
+    "address": "1818 W 99th St, Chicago, IL 60643",
+    "neighborhood": "Beverly",
+    "region": "CITY",
+    "latitude": 41.7142797,
+    "longitude": -87.6681559,
+    "website": "https://afrojoes.com",
+    "instagram": "https://www.instagram.com/afrojoes/",
+    "description": "Beverly roaster-cafe in a former garden store that pairs its own roasted coffee with a full-service restaurant, a courtyard patio, and a community events calendar.",
+    "ownerReview": "Afro Joe's roasts its own coffee and runs a full kitchen alongside the espresso bar, so it works as a lunch stop as much as a coffee stop. The former garden store has an indoor-outdoor courtyard, and the events calendar runs from cigar nights to kids' movie screenings.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "09:00",
+          "close": "13:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://afrojoes.com/pages/locations-and-numbers",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "outdoor_seating",
+      "full_menu"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "outdoor_seating",
+        "source": "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html"
+      },
+      {
+        "tag": "full_menu",
+        "source": "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/afrojoes/",
+        "date": "2026-09-04",
+        "official": true,
+        "what": "Post by Afro Joe's Coffee & Tea account (also own posts Jul 2 and Jun 18, 2026)"
+      },
+      {
+        "url": "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html",
+        "date": "2026-01-06",
+        "official": false,
+        "what": "Sprudge '8 Cafes We Love In 2026' guide lists Afro Joe's at 1818 W 99th St"
+      },
+      {
+        "url": "https://littlechicagoguide.com/best-chicago-coffee-shops/",
+        "date": "2026-03-11",
+        "official": false,
+        "what": "Little Chicago Guide 2026 coffee guide (updated June 2026) lists Afro Joe's, 1818 W 99th St, Chicago, IL 60643"
+      }
+    ],
+    "sources": [
+      "https://afrojoes.com",
+      "https://afrojoes.com/pages/locations-and-numbers",
+      "https://www.instagram.com/afrojoes/",
+      "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html",
+      "https://littlechicagoguide.com/best-chicago-coffee-shops/"
+    ],
+    "researchAgent": "D"
+  },
+  {
+    "name": "Allez Café",
+    "slug": "allez-cafe",
+    "address": "2239 N Western Ave, Chicago, IL 60647",
+    "neighborhood": "Bucktown",
+    "region": "CITY",
+    "latitude": 41.922905,
+    "longitude": -87.687247,
+    "website": "https://www.toasttab.com/allezcafe-foods-2241-north-western-avenue",
+    "instagram": "https://www.instagram.com/allez.cafe/",
+    "description": "Bucktown cafe opened in 2023, known for laminated pastries, geometric breakfast sandwiches, and a rotating lineup of international guest roasters.",
+    "ownerReview": "Allez is a pastry-first cafe that takes its coffee just as seriously, with a rotating roaster lineup that pulls in international names. The laminated pastries and geometric breakfast sandwiches are the draw, and the room runs from terrazzo two-tops up front to a communal table in back.",
+    "hours": null,
+    "hoursSourceUrl": null,
+    "hoursCheckedAt": null,
+    "amenities": [
+      "communal_tables"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "communal_tables",
+        "source": "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/allez.cafe/",
+        "date": "2026-10-24",
+        "official": true,
+        "what": "Post by Allez Café account; bio lists 2239 N. Western Ave. 8am-2pm"
+      },
+      {
+        "url": "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html",
+        "date": "2026-01-06",
+        "official": false,
+        "what": "Sprudge '8 Cafes We Love In 2026' guide lists Allez at 2239 N Western Ave"
+      }
+    ],
+    "sources": [
+      "https://www.instagram.com/allez.cafe/",
+      "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html"
+    ],
+    "researchAgent": "D"
+  },
+  {
+    "name": "Four Letter Word Coffee",
+    "slug": "four-letter-word-coffee",
+    "address": "3022 W Diversey Ave, Chicago, IL 60647",
+    "neighborhood": "Avondale",
+    "region": "CITY",
+    "latitude": 41.9322754,
+    "longitude": -87.7035003,
+    "website": "https://4lwcoffee.com",
+    "instagram": "https://www.instagram.com/4lwcoffee/",
+    "description": "Roaster-cafe on Diversey at the Logan Square/Avondale line, roasting since 2014 and known for fruity espresso and a small art book and fashion retail corner.",
+    "ownerReview": "Four Letter Word roasts its own coffee and leans into bright, fruity espresso. Pastries come from Beacon Doughnuts and Publican Quality Bread, there is batch brew, tea, and kombucha, and the Four Letter Books shop next door opens on weekends.",
+    "hours": {
+      "mon": [
+        {
+          "open": "08:00",
+          "close": "14:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "08:00",
+          "close": "14:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "08:00",
+          "close": "14:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "08:00",
+          "close": "14:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "08:00",
+          "close": "14:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "14:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "14:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://4lwcoffee.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [],
+    "vibes": [],
+    "tagSources": [],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/4lwcoffee/",
+        "date": "2026-11-21",
+        "official": true,
+        "what": "Post by Four Letter Word account; bio lists Avondale, Chicago 8am-2pm"
+      },
+      {
+        "url": "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html",
+        "date": "2026-01-06",
+        "official": false,
+        "what": "Sprudge '8 Cafes We Love In 2026' guide lists Four Letter Word at 3022 W Diversey Ave"
+      }
+    ],
+    "sources": [
+      "https://4lwcoffee.com",
+      "https://www.instagram.com/4lwcoffee/",
+      "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html"
+    ],
+    "researchAgent": "D"
+  },
+  {
+    "name": "Necessary & Sufficient Coffee",
+    "slug": "necessary-sufficient-coffee",
+    "address": "3624 W Wrightwood Ave, Chicago, IL 60647",
+    "neighborhood": "Logan Square",
+    "region": "CITY",
+    "latitude": 41.9284198,
+    "longitude": -87.7181603,
+    "website": "https://necessary-coffee.com",
+    "instagram": "https://www.instagram.com/necessary_coffee/",
+    "description": "Women-owned walk-up coffee window in Logan Square serving Olympia Coffee, with pastries from Michele Millan Patisserie and breakfast sandwiches.",
+    "ownerReview": "Necessary & Sufficient is a walk-up window, not a sit-down cafe, and it does that format well. The coffee comes from Olympia, the pastries come from Michele Millan Patisserie, and there are a few benches under a shade umbrella for anyone who wants to linger.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://necessary-coffee.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "outdoor_seating"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "outdoor_seating",
+        "source": "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/necessary_coffee/",
+        "date": "2026-11-15",
+        "official": true,
+        "what": "Post by necessary & sufficient coffee account; bio lists 3624 W Wrightwood Av."
+      },
+      {
+        "url": "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html",
+        "date": "2026-01-06",
+        "official": false,
+        "what": "Sprudge '8 Cafes We Love In 2026' guide lists the Wrightwood walk-up window"
+      }
+    ],
+    "sources": [
+      "https://necessary-coffee.com",
+      "https://www.instagram.com/necessary_coffee/",
+      "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html"
+    ],
+    "researchAgent": "D"
+  },
+  {
+    "name": "Prequel Cafe",
+    "slug": "prequel-cafe",
+    "address": "1957 W Chicago Ave, Chicago, IL 60622",
+    "neighborhood": "West Town",
+    "region": "CITY",
+    "latitude": 41.8957142,
+    "longitude": -87.67677300000001,
+    "website": "https://prequelcafe.com",
+    "instagram": "https://www.instagram.com/prequel_cafe/",
+    "description": "Bright, pop-art West Town cafe pouring coffee roasted by Four Letter Word, with housemade pastries, breakfast bagels, and seasonal lattes.",
+    "ownerReview": "Prequel pairs a bright, pop-art room with serious coffee, roasted by Four Letter Word and offered as pour-over or batch brew. The pastries are made in-house, and the seasonal menu runs to drinks like a hazelnut latte and a lavender rose matcha.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://prequelcafe.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [],
+    "vibes": [
+      "bright"
+    ],
+    "tagSources": [
+      {
+        "tag": "bright",
+        "source": "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/prequel_cafe/",
+        "date": "2026-11-17",
+        "official": true,
+        "what": "Post by prequel_cafe account; bio lists West Town, 1957 W Chicago Ave, Open Everyday"
+      },
+      {
+        "url": "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html",
+        "date": "2026-01-06",
+        "official": false,
+        "what": "Sprudge '8 Cafes We Love In 2026' guide lists Prequel at 1957 W Chicago Ave"
+      }
+    ],
+    "sources": [
+      "https://prequelcafe.com",
+      "https://www.instagram.com/prequel_cafe/",
+      "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html"
+    ],
+    "researchAgent": "D"
+  },
+  {
+    "name": "Side Practice Coffee",
+    "slug": "side-practice-coffee",
+    "address": "5139 N Damen Ave, Chicago, IL 60625",
+    "neighborhood": "Ravenswood",
+    "region": "CITY",
+    "latitude": 41.9758819,
+    "longitude": -87.6791727,
+    "website": "https://sidepracticecoffee.com",
+    "instagram": "https://www.instagram.com/sidepractice.coffee",
+    "description": "Filipino-owned, living-room-style cafe in Ravenswood that hosts events, artist residencies, and pop-ups, known for the Manila Matcha and pandan drinks.",
+    "ownerReview": "Side Practice is set up like a living room and doubles as a community space, with events, artist residencies, and pop-ups on rotation. The Manila Matcha and the pandan drinks are the signatures, there is a weekly pour-over alongside batch brew, and the cardamom buns are worth adding.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://sidepracticecoffee.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [],
+    "vibes": [],
+    "tagSources": [],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/sidepractice.coffee/",
+        "date": "2026-11-17",
+        "official": true,
+        "what": "Video posted by Side Practice Coffee account (also own post Oct 27, 2026)"
+      },
+      {
+        "url": "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html",
+        "date": "2026-01-06",
+        "official": false,
+        "what": "Sprudge '8 Cafes We Love In 2026' guide lists Side Practice at 5139 N Damen Ave"
+      }
+    ],
+    "sources": [
+      "https://sidepracticecoffee.com",
+      "https://www.instagram.com/sidepractice.coffee/",
+      "https://sprudge.com/the-sprudge-guide-to-coffee-in-chicago-438548.html"
+    ],
+    "researchAgent": "D"
+  },
+  {
+    "name": "Anticonquista Café",
+    "slug": "anticonquista-cafe",
+    "address": "952 W 18th St, Chicago, IL 60608",
+    "neighborhood": "Pilsen",
+    "region": "CITY",
+    "latitude": 41.8582586,
+    "longitude": -87.6507392,
+    "website": "https://www.anticonquistacafe.com",
+    "instagram": "https://www.instagram.com/anticonquistacafe/",
+    "description": "Pilsen espresso bar and small-bites cafe from a farm-owned roaster whose coffee is grown in Guatemala and Honduras and roasted in Chicago.",
+    "ownerReview": "Anticonquista is a farm-to-cup operation: the family grows the coffee in Guatemala and Honduras and roasts it in Chicago. The 18th Street cafe is a full espresso bar with small bites, and single-origin coffees and cold brew are the things to order.",
+    "hours": {
+      "mon": [],
+      "tue": [
+        {
+          "open": "07:30",
+          "close": "15:30"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:30",
+          "close": "15:30"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:30",
+          "close": "15:30"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:30",
+          "close": "15:30"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.anticonquistacafe.com/pilsen",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "parking"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "parking",
+        "source": "https://www.anticonquistacafe.com/pilsen"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/anticonquistacafe/",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Post by Anticonquista Café account; bio lists Pilsen, T-F 730-330, Sa+Su 8-5"
+      },
+      {
+        "url": "https://linktr.ee/anticonquistacafe",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Official link page promotes a Fall 2026 tee and Pilsen events intake form (page undated; fetched 2026-11-22)"
+      },
+      {
+        "url": "https://littlechicagoguide.com/best-chicago-coffee-shops/",
+        "date": "2026-03-11",
+        "official": false,
+        "what": "Little Chicago Guide 2026 coffee guide (updated June 2026) lists Anticonquista at 952 W 18th St, Chicago, IL 60608"
+      }
+    ],
+    "sources": [
+      "https://www.anticonquistacafe.com",
+      "https://www.anticonquistacafe.com/pilsen",
+      "https://www.instagram.com/anticonquistacafe/",
+      "https://linktr.ee/anticonquistacafe",
+      "https://littlechicagoguide.com/best-chicago-coffee-shops/"
+    ],
+    "researchAgent": "D"
+  },
+  {
+    "name": "First Sip Cafe",
+    "slug": "first-sip-cafe",
+    "address": "1057 W Argyle St, Chicago, IL 60640",
+    "neighborhood": "Uptown",
+    "region": "CITY",
+    "latitude": 41.9731494,
+    "longitude": -87.6572391,
+    "website": null,
+    "instagram": "https://www.instagram.com/firstsipcafe/",
+    "description": "Locally owned Vietnamese coffee shop on Uptown's Argyle Street, open since 2017, known for specialty lattes and community events like comedy and craft nights.",
+    "ownerReview": "First Sip is a small Vietnamese coffee shop on the Asia on Argyle strip that doubles as a neighborhood creative hub. The specialty drinks, like the coconut jasmine Vietnamese iced coffee and brown butter pandan, are the reason to go, and the calendar fills with comedy, craft clubs, and a book exchange.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "19:30"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "19:30"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "19:30"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "19:30"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "19:30"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "19:30"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "19:30"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.instagram.com/firstsipcafe/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "laptop_friendly"
+    ],
+    "vibes": [
+      "cozy"
+    ],
+    "tagSources": [
+      {
+        "tag": "laptop_friendly",
+        "source": "https://wanderlog.com/place/details/432408/first-sip-cafe"
+      },
+      {
+        "tag": "cozy",
+        "source": "https://wanderlog.com/place/details/432408/first-sip-cafe"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/firstsipcafe/",
+        "date": "2026-11-14",
+        "official": true,
+        "what": "Video posted by First Sip Cafe account; bio lists Monday-Sunday 7am-7:30pm"
+      },
+      {
+        "url": "https://ma.to/venue/firstsipcafe",
+        "date": "2026-11-21",
+        "official": false,
+        "what": "Venue listing at 1057 W Argyle St showing upcoming events Dec 3 and Dec 5, 2026 (as of Nov 21, 2026)"
+      }
+    ],
+    "sources": [
+      "https://www.instagram.com/firstsipcafe/",
+      "https://ma.to/venue/firstsipcafe",
+      "https://wanderlog.com/place/details/432408/first-sip-cafe"
+    ],
+    "researchAgent": "D"
+  },
+  {
+    "name": "Metropolis Coffee Company — Edgewater Café",
+    "slug": "metropolis-coffee-company-edgewater-cafe",
+    "address": "1039 W Granville Ave, Chicago, IL 60660",
+    "neighborhood": "Edgewater",
+    "region": "CITY",
+    "latitude": 41.9944128,
+    "longitude": -87.657142,
+    "website": "https://metropoliscoffee.com/edgewater-cafe/",
+    "instagram": null,
+    "description": "Flagship cafe of father-and-son Chicago roaster Metropolis on Granville in Edgewater, a busy spot with indoor and outdoor seating, pastries, and wifi.",
+    "ownerReview": "Metropolis is a father-and-son roaster, and the Granville cafe is its flagship. The room runs busy and high-energy with an intergenerational crowd, there is seating inside and out, and the wifi is good enough that it pulls in plenty of studying and laptop work.",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:30",
+          "close": "17:30"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:30",
+          "close": "17:30"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:30",
+          "close": "17:30"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:30",
+          "close": "17:30"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:30",
+          "close": "17:30"
+        }
+      ],
+      "sat": [
+        {
+          "open": "06:30",
+          "close": "17:30"
+        }
+      ],
+      "sun": [
+        {
+          "open": "06:30",
+          "close": "17:30"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://metropoliscoffee.com/edgewater-cafe/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "wifi",
+      "outdoor_seating",
+      "bustling",
+      "laptop_friendly"
+    ],
+    "vibes": [
+      "lively"
+    ],
+    "tagSources": [
+      {
+        "tag": "wifi",
+        "source": "https://metropoliscoffee.com/edgewater-cafe/"
+      },
+      {
+        "tag": "outdoor_seating",
+        "source": "https://metropoliscoffee.com/edgewater-cafe/"
+      },
+      {
+        "tag": "bustling",
+        "source": "https://metropoliscoffee.com/edgewater-cafe/"
+      },
+      {
+        "tag": "laptop_friendly",
+        "source": "https://www.timeout.com/chicago/restaurants/metropolis-coffee-company"
+      },
+      {
+        "tag": "lively",
+        "source": "https://metropoliscoffee.com/edgewater-cafe/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://metropoliscoffee.com/2026/11/13/holiday-retail-coffee-sales/",
+        "date": "2026-11-13",
+        "official": true,
+        "what": "Company blog post that refers to 'our cafe' in the present tense (does not name the location)"
+      },
+      {
+        "url": "https://metropoliscoffee.com/2026/11/11/two-easy-recipes-on-the-brood-machine/",
+        "date": "2026-11-11",
+        "official": true,
+        "what": "Company blog post; homepage lists Edgewater Café as flagship"
+      }
+    ],
+    "sources": [
+      "https://metropoliscoffee.com/",
+      "https://metropoliscoffee.com/edgewater-cafe/",
+      "https://metropoliscoffee.com/2026/11/13/holiday-retail-coffee-sales/",
+      "https://www.timeout.com/chicago/restaurants/metropolis-coffee-company"
+    ],
+    "researchAgent": "D"
+  },
+  {
+    "name": "Ipsento 606",
+    "slug": "ipsento-606",
+    "address": "1813 N Milwaukee Ave, Chicago, IL 60647",
+    "neighborhood": "Bucktown",
+    "region": "CITY",
+    "latitude": 41.9144268,
+    "longitude": -87.6832962,
+    "website": "https://www.ipsento.com",
+    "instagram": "https://www.instagram.com/ipsento/",
+    "description": "Bucktown cafe and bar on the 606 trail serving all-day breakfast and lunch, lattes including the signature Ipsento latte, and space for groups.",
+    "ownerReview": "Ipsento sits right on the 606, so it works as a stop on or off the trail. The signature Ipsento latte is the order, the kitchen serves breakfast and lunch all day, and groups can reserve space.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.ipsento.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "full_menu",
+      "meeting_space"
+    ],
+    "vibes": [
+      "cozy"
+    ],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://www.ipsento.com"
+      },
+      {
+        "tag": "meeting_space",
+        "source": "https://www.ipsento.com"
+      },
+      {
+        "tag": "cozy",
+        "source": "https://www.ipsento.com"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.ipsento.com",
+        "date": "2026-11-16",
+        "official": true,
+        "what": "Official site journal post dated Nov 16, 2026 promoting the cafe for Thanksgiving week"
+      },
+      {
+        "url": "https://www.instagram.com/ipsento/",
+        "date": "2026-11-18",
+        "official": true,
+        "what": "Post by ipsento account; bio says Open Daily"
+      }
+    ],
+    "sources": [
+      "https://www.ipsento.com",
+      "https://www.instagram.com/ipsento/",
+      "https://timeout.com/chicago/restaurants/best-coffee-shops-in-chicago"
+    ],
+    "researchAgent": "D"
+  },
+  {
+    "name": "Soul Good Coffee",
+    "slug": "soul-good-coffee",
+    "address": "4022 Main St, Skokie, IL 60076",
+    "neighborhood": "Skokie",
+    "region": "NORTH",
+    "latitude": 42.0337799,
+    "longitude": -87.7289929,
+    "website": "https://www.soulgoodcoffee.com",
+    "instagram": "https://instagram.com/soulgoodcoffee",
+    "description": "Latina-owned neighborhood coffee shop on Main Street in Skokie that grew out of a mobile coffee business and is known for its signature Soul Good Latte.",
+    "ownerReview": "Soul Good started as a mobile coffee operation before settling into a Main Street storefront, and it still runs like a community hub, hosting local meetups and the village's winter market. The Soul Good Latte is the signature order, and the matcha drinks get regular praise.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "16:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.soulgoodcoffee.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [],
+    "vibes": [],
+    "tagSources": [],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/soulgoodcoffee/",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Own Instagram account with posts dated Nov 10-22, 2026; bio describes a neighborhood coffee shop in Skokie"
+      },
+      {
+        "url": "https://donorbox.org/events/870107/steps/choose_tickets",
+        "date": "2026-01-14",
+        "official": false,
+        "what": "The Record North Shore community conversation event held at Soul Good Coffee, 4022 Main St, Skokie on Jan 14, 2026"
+      }
+    ],
+    "sources": [
+      "https://www.soulgoodcoffee.com",
+      "https://www.instagram.com/soulgoodcoffee/",
+      "https://donorbox.org/events/870107/steps/choose_tickets",
+      "https://patch.com/illinois/skokie/skokies-winter-market-main-expanding-2026",
+      "https://nileswestnews.org/116010/arts-entertainment/reviews/soul-good-coffee-opens-their-first-brick-and-mortar-location"
+    ],
+    "researchAgent": "E"
+  },
+  {
+    "name": "That Little French Guy",
+    "slug": "that-little-french-guy",
+    "address": "1791 St Johns Ave, Highland Park, IL 60035",
+    "neighborhood": "Highland Park",
+    "region": "NORTH",
+    "latitude": 42.1849693,
+    "longitude": -87.797856,
+    "website": "https://www.thatlittlefrenchguy.com",
+    "instagram": "https://instagram.com/thatlittlefrenchguy",
+    "description": "French bakery and cafe in downtown Highland Park serving La Colombe coffee, French pastries, and breakfast and lunch.",
+    "ownerReview": "That Little French Guy is a pastry stop first, with a case of eclairs, macarons and other French classics, and La Colombe coffee to go with them. The kitchen also turns out breakfast and lunch, and the croque madame is the dish reviewers mention most.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.thatlittlefrenchguy.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "full_menu"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://www.thatlittlefrenchguy.com"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/thatlittlefrenchguy/",
+        "date": "2026-11-03",
+        "official": true,
+        "what": "Own Instagram account (Highland Park, online ordering link) with posts dated Jan-Nov 2026, latest Nov 3, 2026"
+      },
+      {
+        "url": "https://www.lynfredwinery.com/?p=22133",
+        "date": "2026-08-14",
+        "official": false,
+        "what": "City of Highland Park concert at Port Clinton Square, Aug 14, 2026, lists That Little French Guy as a featured participant"
+      }
+    ],
+    "sources": [
+      "https://www.thatlittlefrenchguy.com",
+      "https://www.instagram.com/thatlittlefrenchguy/",
+      "https://www.lynfredwinery.com/?p=22133",
+      "https://www.sluurpy.at/highland-park/restaurant/3665244/that-little-french-guy-patisserie-and-cafe",
+      "https://unearththevoyage.com/this-illinois-patisserie-brings-the-flavors-and-elegance-of-paris-to-the-midwest/"
+    ],
+    "researchAgent": "E"
+  },
+  {
+    "name": "Di Marko All Day Coffee Lounge",
+    "slug": "di-marko-all-day-coffee-lounge",
+    "address": "120 Main St, Park Ridge, IL 60068",
+    "neighborhood": "Park Ridge",
+    "region": "NORTH",
+    "latitude": 42.0094857,
+    "longitude": -87.83134539999999,
+    "website": "https://dimarkocoffee.com",
+    "instagram": "https://instagram.com/dimarkocoffee",
+    "description": "All-day coffee lounge in downtown Park Ridge with Greek and Italian hospitality, serving coffee, crepes, sandwiches and pizzas by day and wine and cocktails at night.",
+    "ownerReview": "Di Marko mixes Greek and Italian hospitality, and the owner is known for greeting nearly everyone who walks in. It runs from 6am to 10pm every day, with coffee, crepes and flatbreads early on and charcuterie boards with wine or cocktails in the evening.",
+    "hours": {
+      "mon": [
+        {
+          "open": "06:00",
+          "close": "22:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "06:00",
+          "close": "22:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "06:00",
+          "close": "22:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "06:00",
+          "close": "22:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "06:00",
+          "close": "22:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "06:00",
+          "close": "22:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "06:00",
+          "close": "22:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://dimarkocoffee.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "full_menu"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://dimarkocoffee.com"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/dimarkocoffee/",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Own Instagram account (Park Ridge, IL) with posts dated Nov 15-22, 2026"
+      },
+      {
+        "url": "https://therealparkridge.com/tag/di-marko-cafe/",
+        "date": "2026-11-18",
+        "official": false,
+        "what": "The Real Park Ridge Q&A with owner Dimitris Markos (Nov 18, 2026) on the cafe at 120 Main Street; also a May 18, 2026 item on its menu"
+      }
+    ],
+    "sources": [
+      "https://dimarkocoffee.com",
+      "https://www.instagram.com/dimarkocoffee/",
+      "https://therealparkridge.com/tag/di-marko-cafe/",
+      "https://therealparkridge.com/new-in-town-di-markos-all-day-cafe-park-ridge-coin-collectibles-hattys-club-kouklas-greek-eatery-and-chubby-cattle/"
+    ],
+    "researchAgent": "E"
+  },
+  {
+    "name": "Gost Coffee Roasters",
+    "slug": "gost-coffee-roasters",
+    "address": "1333 S Schoolhouse Rd, New Lenox, IL 60451",
+    "neighborhood": "New Lenox",
+    "region": "SOUTH",
+    "latitude": 41.4934032,
+    "longitude": -87.92846949999999,
+    "website": "https://www.gostcoffee.com",
+    "instagram": "https://instagram.com/gostcoffeeroasters",
+    "description": "Small-batch roaster and coffee bar on Schoolhouse Road in New Lenox, where the owner roasts single-origin beans in-house and sells bags at the shop.",
+    "ownerReview": "Gost is a true roaster-cafe: the owner roasts small batches of single-origin coffee on site and sells the bags right at the counter. It has been a New Lenox fixture since 2018, and evening hours on Thursdays and Fridays make it one of the later-open specialty options in the area.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "20:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "16:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.gostcoffee.com/our-shops",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [],
+    "vibes": [],
+    "tagSources": [],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/gostcoffeeroasters/",
+        "date": "2026-11-18",
+        "official": true,
+        "what": "Own Instagram account with posts dated Oct 25-Nov 18, 2026; bio address begins 1333 S..."
+      },
+      {
+        "url": "https://www.gostcoffee.com",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Own site shows a 'Thanksgiving 2026 PIE PRE-ORDERS' menu item and 'Thanksgiving Pie-Order 2026' product (date visible in page content, checked 2026-11-22)"
+      }
+    ],
+    "sources": [
+      "https://www.gostcoffee.com",
+      "https://www.gostcoffee.com/our-shops",
+      "https://www.instagram.com/gostcoffeeroasters/",
+      "https://patch.com/illinois/newlenox/gost-coffee-finds-home-new-lenox",
+      "https://www.shawlocal.com/the-herald-news/2025/08/23/coffee-business-remains-hot-across-joliet-area-as-shops-keep-opening"
+    ],
+    "researchAgent": "E"
+  },
+  {
+    "name": "Historia Coffee House",
+    "slug": "historia-coffee-house",
+    "address": "5430 W Main St, Monee, IL 60449",
+    "neighborhood": "Monee",
+    "region": "SOUTH",
+    "latitude": 41.4192863,
+    "longitude": -87.74381,
+    "website": null,
+    "instagram": "https://instagram.com/historiacoffee",
+    "description": "Coffee house in a renovated 1885 building on Main Street in Monee, opened May 2026, serving espresso drinks, custom teas, Pearson's pastries and Steingold's bagels.",
+    "ownerReview": "Historia opened in May 2026 inside an 1885 building on Monee's Main Street, and the renovation leans into an eclectic mix of seating meant for remote workers and friends meeting up alike. The menu runs from plain black coffee to specialty lattes, with Pearson's Bakery pastries and open-faced Steingold's bagel sandwiches.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "wed": [],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": []
+    },
+    "hoursSourceUrl": "https://www.instagram.com/historiacoffee/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "laptop_friendly"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "laptop_friendly",
+        "source": "https://southwestregionalpublishing.com/2026/04/30/historia-coffee-house-grand-opening-set-for-may-2/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/historiacoffee/",
+        "date": "2026-11-19",
+        "official": true,
+        "what": "Own Instagram account; bio lists 5430 W Main Street, Monee and hours; posts dated Apr-Nov 2026, latest Nov 19, 2026"
+      },
+      {
+        "url": "https://southwestregionalpublishing.com/2026/04/30/historia-coffee-house-grand-opening-set-for-may-2/",
+        "date": "2026-04-30",
+        "official": false,
+        "what": "Southwest Regional Publishing article on the May 2, 2026 grand opening, with address, hours and menu"
+      }
+    ],
+    "sources": [
+      "https://www.instagram.com/historiacoffee/",
+      "https://southwestregionalpublishing.com/2026/04/30/historia-coffee-house-grand-opening-set-for-may-2/",
+      "https://www.loopnet.com/property/5430-w-main-st-monee-il-60449/17197-2114213010090000"
+    ],
+    "researchAgent": "E"
+  },
+  {
+    "name": "Social Butterfly Coffee",
+    "slug": "social-butterfly-coffee",
+    "address": "310 N Ottawa St, Joliet, IL 60432",
+    "neighborhood": "Joliet",
+    "region": "SOUTH",
+    "latitude": 41.5304848,
+    "longitude": -88.0828983,
+    "website": "https://socialbutterflycoffee.com",
+    "instagram": "https://instagram.com/socialbutterflycoffee",
+    "description": "Women-owned coffee shop in downtown Joliet's 3TEN Building, known for cold brews with cold foam, homemade organic syrups and sourdough sandwiches.",
+    "ownerReview": "Social Butterfly pairs a big drink menu with real food. The cold brews and cold foam combinations are the most popular orders, the syrups are made in-house with organic cane sugar, and sourdough sandwiches like the Golden Hour hold their own. The room seats around 75, with sofas, tables and chairs for lounging or working, and weekends are the busiest days.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "14:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "14:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.instagram.com/socialbutterflycoffee/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "couch_seating",
+      "parking"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "couch_seating",
+        "source": "https://patch.com/illinois/joliet/best-coffee-shop-illinois-social-butterflys-1-year-anniversary-offers-joliet-block"
+      },
+      {
+        "tag": "parking",
+        "source": "https://patch.com/illinois/joliet/best-coffee-shop-illinois-social-butterflys-1-year-anniversary-offers-joliet-block"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/socialbutterflycoffee/",
+        "date": "2026-11-19",
+        "official": true,
+        "what": "Own Instagram (bio: homemade organic syrups, sourdough pastries and sandwiches, women-owned; M-F 7-3, Sat-Sun 8-2) with posts dated Oct 30 to Nov 19, 2026"
+      },
+      {
+        "url": "https://patch.com/illinois/joliet/best-coffee-shop-illinois-social-butterflys-1-year-anniversary-offers-joliet-block",
+        "date": "2026-06-11",
+        "official": false,
+        "what": "Joliet Patch article on the one-year anniversary block party at 310 N. Ottawa St., with hours, owners and menu"
+      }
+    ],
+    "sources": [
+      "https://www.instagram.com/socialbutterflycoffee/",
+      "https://patch.com/illinois/joliet/best-coffee-shop-illinois-social-butterflys-1-year-anniversary-offers-joliet-block",
+      "https://www.toasttab.com/local/order/social-butterfly-coffee",
+      "https://www.shawlocal.com/the-herald-news/2025/09/15/new-joliet-coffee-shop-changes-name-branding/"
+    ],
+    "researchAgent": "F"
+  },
+  {
+    "name": "Dimes Coffee Lounge",
+    "slug": "dimes-coffee-lounge",
+    "address": "10850 W Laraway Rd Suite 1W, Frankfort, IL 60423",
+    "neighborhood": "Frankfort",
+    "region": "SOUTH",
+    "latitude": 41.4845362,
+    "longitude": -87.8798613,
+    "website": "https://www.dimescoffee.com",
+    "instagram": "https://instagram.com/dimescoffee",
+    "description": "Woman-owned neighborhood coffee shop in Frankfort's Patriot Center on Laraway Road, with a private event Lounge next door that opened in July 2026.",
+    "ownerReview": "Dimes calls itself a friendly neighborhood coffee shop and backs that up with locally sourced products and a steady calendar of trivia nights and pop-up vendor markets. In July 2026 it opened the Lounge next door, a private space for customizable events, and it also runs a mobile coffee cart.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.dimescoffee.com",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "meeting_space"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "meeting_space",
+        "source": "https://www.dimescoffee.com"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/dimescoffee/",
+        "date": "2026-11-18",
+        "official": true,
+        "what": "Own Instagram (bio: your friendly neighborhood coffee shop, woman owned, address begins 10850 W) with own posts dated Nov 2 to Nov 18, 2026"
+      },
+      {
+        "url": "https://www.simpletix.com/e/fall-create-sip-with-west-creations-dimes-tickets-289337",
+        "date": "2026-09-26",
+        "official": false,
+        "what": "Ticketed Fall Create & Sip event at Dimes Coffee Lounge, 10850 West Laraway Road, Frankfort, IL 60423, Saturday, September 26, 2026"
+      },
+      {
+        "url": "https://www.dimescoffee.com",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Official site announces the Lounge opening in July 2026, with address and hours"
+      }
+    ],
+    "sources": [
+      "https://www.dimescoffee.com",
+      "https://www.instagram.com/dimescoffee/",
+      "https://www.simpletix.com/e/fall-create-sip-with-west-creations-dimes-tickets-289337",
+      "https://www.dimescoffee.com/event-details/trivia-night-at-dimes",
+      "https://minuteman.com/us/locations/il/frankfort/news/frankfort-to-welcome-two-coffee-establishments-295366"
+    ],
+    "researchAgent": "F"
+  },
+  {
+    "name": "Drip & Culture",
+    "slug": "drip-culture",
+    "address": "2015 Grand Ave, Waukegan, IL 60085",
+    "neighborhood": "Waukegan",
+    "region": "NORTH",
+    "latitude": 42.3700392,
+    "longitude": -87.8576168,
+    "website": "https://dripandculture.com/",
+    "instagram": "https://instagram.com/dripandculture",
+    "description": "Black- and Brown-owned, socially minded coffee shop inside Supermercado Gonzalez on Grand Ave in Waukegan, serving espresso, cold brew, matcha and house-baked kolaches.",
+    "ownerReview": "Drip & Culture is a socially minded coffee bar tucked inside a Waukegan grocery store, and it runs like a community hub as much as a cafe. The menu covers espresso, cold brew, matcha and single-origin coffee, and the kolaches (ham and gouda, carnitas with jalapeno) have become a staple. It also hosts flu shot clinics and full moon hikes, and as of October 2026 sells a curated shelf of books through Commonplace Books.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "18:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.findglocal.com/US/Waukegan/101779881740039/Drip-%26-Culture---Socially-Minded-Coffee",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [],
+    "vibes": [],
+    "tagSources": [],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/dripandculture/",
+        "date": "2026-11-20",
+        "official": true,
+        "what": "Own Instagram (@dripandculture, bio: inside La Gonzalez Market) with posts dated Nov 20, Nov 13, Oct 28, Oct 23 and Oct 8, 2026"
+      },
+      {
+        "url": "https://www.findglocal.com/US/Waukegan/101779881740039/Drip-%26-Culture---Socially-Minded-Coffee",
+        "date": "2026-10-08",
+        "official": true,
+        "what": "Mirror of the cafe's own Facebook page (facebook.com/DripandCulture): 10/08/2026 post announcing book sales at the shop via Commonplace Books; further posts 11/21/2026 (vaccination clinic), 10/28/2026 (fall menu), 9/26/2026 (kolaches)"
+      }
+    ],
+    "sources": [
+      "https://www.visitlakecounty.org/DripCultureSociallyMindedCoffee",
+      "https://dripandculture.com/",
+      "https://www.instagram.com/dripandculture/",
+      "https://www.findglocal.com/US/Waukegan/101779881740039/Drip-%26-Culture---Socially-Minded-Coffee",
+      "https://www.facebook.com/DripandCulture/"
+    ],
+    "researchAgent": "G"
+  },
+  {
+    "name": "Build Coffee & Books",
+    "slug": "build-coffee-books",
+    "address": "6100 S Blackstone Ave, Chicago, IL 60637",
+    "neighborhood": "Woodlawn",
+    "region": "CITY",
+    "latitude": 41.7840648,
+    "longitude": -87.59058,
+    "website": "https://www.buildcoffeeandbooks.com/",
+    "instagram": "https://instagram.com/buildcoffeeandbooks",
+    "description": "Cafe, bookstore and community hub inside Woodlawn's Experimental Station, steps from the Obama Presidential Center, serving Counter Culture coffee, sandwiches and salads.",
+    "ownerReview": "Build is a small Woodlawn cafe and bookstore that doubles as a gathering place for the neighborhood. Coffee comes from Counter Culture, the sandwiches use Publican Quality Bread, and there are vegetarian and vegan options. The shelves lean toward local and independently published books and zines, and local authors regularly host events there.",
+    "hours": {
+      "mon": [],
+      "tue": [
+        {
+          "open": "07:30",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:30",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:30",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:30",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "09:00",
+          "close": "15:00"
+        }
+      ],
+      "sun": []
+    },
+    "hoursSourceUrl": "https://www.buildcoffeeandbooks.com/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "vegan_options",
+      "full_menu"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "vegan_options",
+        "source": "https://www.cbsnews.com/chicago/news/build-coffee-books-woodlawn-obama-presidential-center/"
+      },
+      {
+        "tag": "full_menu",
+        "source": "https://www.cbsnews.com/chicago/news/build-coffee-books-woodlawn-obama-presidential-center/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/buildcoffeeandbooks/",
+        "date": "2026-10-31",
+        "official": true,
+        "what": "Own Instagram posts by Build Coffee & Books dated Oct 31, Oct 26, Oct 19, Sep 30 and Sep 24, 2026"
+      },
+      {
+        "url": "https://blockclubchicago.org/2026/11/16/shop-local-2026-a-hyde-park-woodlawn-south-shore-and-south-chicago-gift-guide/",
+        "date": "2026-11-16",
+        "official": false,
+        "what": "Block Club Chicago Shop Local 2026 gift guide listing Build at 6100 S. Blackstone, open 7:30 a.m.-3 p.m. Tue-Fri and 9 a.m.-3 p.m. Sat"
+      },
+      {
+        "url": "https://www.cbsnews.com/chicago/news/build-coffee-books-woodlawn-obama-presidential-center/",
+        "date": "2026-06-10",
+        "official": false,
+        "what": "CBS Chicago profile (updated June 10, 2026) of the cafe as a Woodlawn community hub, with menu and hours"
+      }
+    ],
+    "sources": [
+      "https://www.buildcoffeeandbooks.com/",
+      "https://www.instagram.com/buildcoffeeandbooks/",
+      "https://blockclubchicago.org/2026/11/16/shop-local-2026-a-hyde-park-woodlawn-south-shore-and-south-chicago-gift-guide/",
+      "https://www.cbsnews.com/chicago/news/build-coffee-books-woodlawn-obama-presidential-center/"
+    ],
+    "researchAgent": "G"
+  },
+  {
+    "name": "Astra Coffee Roasters",
+    "slug": "astra-coffee-roasters",
+    "address": "477 Roger Williams Ave, Highland Park, IL 60035",
+    "neighborhood": "Highland Park (Ravinia District)",
+    "region": "NORTH",
+    "latitude": 42.165679,
+    "longitude": -87.78224759999999,
+    "website": "https://astraroasters.com/",
+    "instagram": "https://instagram.com/astracoffeeroasters",
+    "description": "Woman-owned coffeehouse and roastery in Highland Park's Ravinia District, roasting in-house with beans from Cafe Femenino producers in northern Peru and serving Bennison's pastries.",
+    "ownerReview": "Astra roasts its own coffee in the Ravinia District and has been on Roger Williams Avenue since April 2022. The beans come from Cafe Femenino, a group of women producers in northern Peru, and pastries come from Bennison's in Evanston. The menu runs from espresso drinks and filter coffee to matcha and a pup cup for dogs.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "14:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.instagram.com/astracoffeeroasters/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "outdoor_seating"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "outdoor_seating",
+        "source": "https://www.enjoyhighlandpark.com/dining-1/astra-coffee-roasters"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/astracoffeeroasters/",
+        "date": "2026-07-17",
+        "official": true,
+        "what": "Own Instagram posts dated July 8, July 14 and July 17, 2026; bio says Open Daily 7 am - 2 pm"
+      },
+      {
+        "url": "https://therafigroup.com/blog/roger-williams-avenue-is-being-rebuilt-for-the-months-ravinia-goes-quiet",
+        "date": "2026-10-22",
+        "official": false,
+        "what": "Oct 22, 2026 article on the Roger Williams Ave rebuild lists Astra Coffee Roasters at 477 under 'What's open on the avenue', citing the City's Ravinia District directory"
+      }
+    ],
+    "sources": [
+      "https://www.instagram.com/astracoffeeroasters/",
+      "https://astraroasters.com/",
+      "https://www.enjoyhighlandpark.com/dining-1/astra-coffee-roasters",
+      "https://toast.app/r/astra-coffee-roasters-477-roger-williams-avenue/order",
+      "https://therafigroup.com/blog/roger-williams-avenue-is-being-rebuilt-for-the-months-ravinia-goes-quiet"
+    ],
+    "researchAgent": "G"
+  },
+  {
+    "name": "Euforia Cafe",
+    "slug": "euforia-cafe",
+    "address": "2202 Grand Ave, Waukegan, IL 60085",
+    "neighborhood": "Waukegan",
+    "region": "NORTH",
+    "latitude": 42.3705692,
+    "longitude": -87.8598834,
+    "website": "https://www.euforiacafe.com/en/",
+    "instagram": "https://instagram.com/euforiacafe_",
+    "description": "Women-owned neighborhood cafe on Grand Ave in Waukegan serving specialty coffee, Hispanic-inspired breakfast like chilaquiles, smoothie bowls, juices and seasonal themed drinks.",
+    "ownerReview": "Euforia is a women-owned Waukegan cafe rooted in one family's move from Mexico, and the menu reflects it. Alongside espresso and lattes there are chilaquiles, waffles, avocado toast, smoothie bowls and cold-pressed juices. It leans hard into seasonal menus, most recently a Grinch-themed holiday lineup with a gingerbread latte.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "15:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.euforiacafe.com/en/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "full_menu"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://www.visitlakecounty.org/EuforiaCafe"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/euforiacafe_/",
+        "date": "2026-11-20",
+        "official": true,
+        "what": "Own Instagram posts dated Nov 15, 16, 18 and 20, 2026 and Oct 29/31, 2026"
+      },
+      {
+        "url": "https://www.findglocal.com/US/Waukegan/122105306834002438/Euforia-Caf%C3%A9",
+        "date": "2026-11-15",
+        "official": true,
+        "what": "Mirror of the cafe's own Facebook page (facebook.com/euforiacafeus): 11/15/2026 post announcing the Grinch holiday lineup available that day; 11/20/2026 holiday hours post; 10/31/2026 Halloween post"
+      }
+    ],
+    "sources": [
+      "https://www.euforiacafe.com/en/",
+      "https://www.visitlakecounty.org/EuforiaCafe",
+      "https://www.instagram.com/euforiacafe_/",
+      "https://www.findglocal.com/US/Waukegan/122105306834002438/Euforia-Caf%C3%A9",
+      "https://www.facebook.com/euforiacafeus/"
+    ],
+    "researchAgent": "G"
+  },
+  {
+    "name": "Curt's Cafe",
+    "slug": "curts-cafe",
+    "address": "2922 Central St, Evanston, IL 60201",
+    "neighborhood": "Evanston",
+    "region": "NORTH",
+    "latitude": 42.06426099999999,
+    "longitude": -87.71567209999999,
+    "website": "https://curtscafe.org/",
+    "instagram": "https://instagram.com/curtscafe",
+    "description": "Nonprofit cafe on Evanston's Central Street that trains young adults in at-risk situations, serving coffee, espresso, smoothies, all-day breakfast, sandwiches and baked goods.",
+    "ownerReview": "Curt's is a nonprofit cafe where every order funds work and life skills training for young adults, and it has been doing it for 14 years. The menu goes well past coffee, with all-day breakfast like the breakfast burrito and avocado toast, plus wraps, bowls and house-made scones and cookies. It is a good pick when the goal is a real meal on Central Street with a cause behind it.",
+    "hours": {
+      "mon": [],
+      "tue": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "15:00"
+        }
+      ],
+      "sun": []
+    },
+    "hoursSourceUrl": "https://curtscafe.org/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "full_menu"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://curtscafe.org/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/curtscafe/",
+        "date": "2026-11-20",
+        "official": true,
+        "what": "Own Instagram posts dated Nov 5 through Nov 20, 2026"
+      },
+      {
+        "url": "https://curtscafe.org/",
+        "date": "2026-07-06",
+        "official": true,
+        "what": "Own website news posts dated July 6, 2026 (annual benefit), June 12, 2026 (2026 Evanston Wine Walk nonprofit partner) and June 1, 2026"
+      },
+      {
+        "url": "https://www.findglocal.com/US/Evanston/292545890824749/Curt's-Cafe",
+        "date": "2026-11-20",
+        "official": true,
+        "what": "Mirror of the cafe's own Facebook page: 11/20/2026 posts on a program graduate and the Holiday High Tea"
+      }
+    ],
+    "sources": [
+      "https://curtscafe.org/",
+      "https://www.instagram.com/curtscafe/",
+      "https://www.findglocal.com/US/Evanston/292545890824749/Curt's-Cafe"
+    ],
+    "researchAgent": "G"
+  },
+  {
+    "name": "Braeside Market",
+    "slug": "braeside-market",
+    "address": "55 St Johns Ave, Highland Park, IL 60035",
+    "neighborhood": "Highland Park (Braeside)",
+    "region": "NORTH",
+    "latitude": 42.1535195,
+    "longitude": -87.77224939999999,
+    "website": "https://www.braesidemarket.com/",
+    "instagram": "https://instagram.com/braesidemarkethp",
+    "description": "All-day cafe and neighborhood market across from Ravinia in Highland Park, pouring Passion House coffee and serving breakfast, sandwiches, smoothies and local market goods.",
+    "ownerReview": "Braeside Market is part cafe, part neighborhood grocery, sitting right across from Ravinia. Lattes are built on Passion House's Chicago Noise blend, and the food runs from avocado toast with pickled radishes to sandwiches and grab-and-go trays. It also hosts things like the indoor winter farmers market and live music.",
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "17:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.braesidemarket.com/",
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "full_menu"
+    ],
+    "vibes": [],
+    "tagSources": [
+      {
+        "tag": "full_menu",
+        "source": "https://www.braesidemarket.com/"
+      }
+    ],
+    "openEvidence": [
+      {
+        "url": "https://www.instagram.com/braesidemarkethp/",
+        "date": "2026-11-22",
+        "official": true,
+        "what": "Own Instagram posts dated Nov 13 through Nov 22, 2026"
+      },
+      {
+        "url": "https://www.enjoyhighlandpark.com/calendar/gabriel-datcu-live-at-braeside-market",
+        "date": "2026-02-14",
+        "official": false,
+        "what": "Enjoy Highland Park event listing: Gabriel Datcu live at Braeside Market, 55 Saint Johns Ave, Saturday Feb 14, 2026"
+      }
+    ],
+    "sources": [
+      "https://www.braesidemarket.com/",
+      "https://www.instagram.com/braesidemarkethp/",
+      "https://www.ravinianeighbors.org/businesses/braeside-market-kt53b",
+      "https://www.enjoyhighlandpark.com/calendar/gabriel-datcu-live-at-braeside-market"
+    ],
+    "researchAgent": "G"
+  }
+]

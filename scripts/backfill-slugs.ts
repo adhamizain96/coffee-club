@@ -4,7 +4,7 @@
 //   npx tsx scripts/backfill-slugs.ts --apply    # writes, in one transaction
 //
 // Target: DATABASE_URL (use the direct/unpooled URL for production).
-// Slugs come from prisma/seed.ts when a cafe's name matches a seed entry, so
+// Slugs come from prisma/seed.ts when a cafe's name (or address) matches a seed entry, so
 // production and local slugs agree. Otherwise slugify(name), made unique.
 // Idempotent: only rows with slug IS NULL are touched.
 
@@ -28,20 +28,23 @@ console.log(`Target: ${target.hostname}:${target.port || "5432"}${target.pathnam
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const seedSrc = fs.readFileSync(path.join(__dirname, "..", "prisma", "seed.ts"), "utf8");
 const seedSlugByName = new Map<string, string>();
-for (const m of seedSrc.matchAll(/\n\s+name:\s*"([^"]+)",\s*\n\s+slug:\s*"([^"]+)",/g)) {
+const seedSlugByAddress = new Map<string, string>();
+for (const m of seedSrc.matchAll(/\n\s+name:\s*"([^"]+)",\s*\n\s+slug:\s*"([^"]+)",[\s\S]*?address:\s*"([^"]+)",/g)) {
   seedSlugByName.set(m[1], m[2]);
+  seedSlugByAddress.set(m[3], m[2]);
 }
 
 const prisma = new PrismaClient({ adapter: new PrismaPg({ connectionString }) });
 
 async function main() {
-  const all = await prisma.cafe.findMany({ select: { id: true, name: true, slug: true }, orderBy: { createdAt: "asc" } });
+  const all = await prisma.cafe.findMany({ select: { id: true, name: true, address: true, slug: true }, orderBy: { createdAt: "asc" } });
   const taken = new Set(all.map((c) => c.slug).filter((s): s is string => !!s));
   const pending = all.filter((c) => !c.slug);
   const plan: { id: string; name: string; slug: string; source: string }[] = [];
 
   for (const cafe of pending) {
-    const fromSeed = seedSlugByName.get(cafe.name);
+    // Match by name, or by address when a seed entry was renamed after it shipped.
+    const fromSeed = seedSlugByName.get(cafe.name) ?? seedSlugByAddress.get(cafe.address);
     const base = fromSeed && isValidSlug(fromSeed) ? fromSeed : slugify(cafe.name);
     const slug = await uniqueSlug(base, (s) => taken.has(s));
     taken.add(slug);

@@ -1,6 +1,7 @@
 import "dotenv/config";
 import { PrismaClient, TagType } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
+import { regionForAddress } from "../src/lib/regions";
 
 // Prisma Dev uses a proxy URL (prisma+postgres://...) for migrations/push,
 // but PrismaPg adapter needs the raw PostgreSQL connection string.
@@ -171,11 +172,11 @@ const cafes: CafeSeed[] = [
     name: "Osmium Coffee Bar",
     slug: "osmium-coffee-bar",
     description:
-      "A tiny, immaculate coffee bar in Wicker Park with a serious dedication to precision brewing and seasonal menus.",
-    address: "1117 N Damen Ave, Chicago, IL 60622",
-    neighborhood: "Wicker Park",
-    latitude: 41.9019121,
-    longitude: -87.6768962,
+      "A tiny, immaculate coffee bar in Lakeview with a serious dedication to precision brewing and seasonal menus.",
+    address: "1117 W Belmont Ave, Chicago, IL 60657",
+    neighborhood: "Lakeview",
+    latitude: 41.9396745,
+    longitude: -87.65732200000001,
     ownerReview:
       "Osmium is for people who take coffee seriously without being pretentious about it. The baristas are meticulous, the seasonal menu rotates thoughtfully, and the space — though small — is beautifully curated. My favorite pour-over in the city.",
     amenities: ["wifi", "outlets", "bar_seating", "laptop_friendly", "pastries_only", "whisper_quiet"],
@@ -229,10 +230,10 @@ const cafes: CafeSeed[] = [
     slug: "dark-matter-coffee-star-lounge",
     description:
       "The flagship cafe of Chicago's beloved punk-rock roaster, with bold blends and an unapologetically loud aesthetic.",
-    address: "738 N Western Ave, Chicago, IL 60612",
+    address: "2521 W Chicago Ave, Chicago, IL 60622",
     neighborhood: "Ukrainian Village",
-    latitude: 41.8950599,
-    longitude: -87.6871762,
+    latitude: 41.8955127,
+    longitude: -87.69017989999999,
     ownerReview:
       "Dark Matter doesn't play it safe, and that's exactly why I love it. The UniverSoul blend is my daily driver. Star Lounge has that perfectly chaotic energy — art everywhere, loud music sometimes, but the coffee is always dialed in.",
     amenities: ["wifi", "outdoor_seating", "pet_friendly", "communal_tables", "full_menu", "bustling"],
@@ -260,10 +261,10 @@ const cafes: CafeSeed[] = [
     slug: "colectivo-coffee-evanston",
     description:
       "A warm, welcoming cafe in downtown Evanston popular with Northwestern students for its generous space and reliable coffee.",
-    address: "1631 Sherman Ave, Evanston, IL 60201",
+    address: "716 Church St, Evanston, IL 60201",
     neighborhood: "Evanston",
-    latitude: 42.04818,
-    longitude: -87.6816001,
+    latitude: 42.0483102,
+    longitude: -87.6815847,
     ownerReview:
       "Colectivo Evanston is the quintessential college-town cafe. Plenty of tables, fast wifi, and a menu that goes beyond just coffee — their bakery items are baked in-house and genuinely good. Perfect for a long study session or catching up with friends.",
     amenities: ["wifi", "outlets", "outdoor_seating", "parking", "communal_tables", "laptop_friendly", "full_menu", "moderate_noise", "weekend_brunch"],
@@ -313,12 +314,12 @@ const cafes: CafeSeed[] = [
     ],
   },
   {
-    name: "Groundswell Coffee — Oak Park",
+    name: "Groundswell Coffee — Forest Park",
     slug: "groundswell-coffee",
     description:
-      "A bright, airy suburban cafe in Oak Park with a focus on direct-trade coffee and community gathering.",
+      "A bright, airy suburban cafe in Forest Park with a focus on direct-trade coffee and community gathering.",
     address: "7228 Madison St, Forest Park, IL 60130",
-    neighborhood: "Oak Park",
+    neighborhood: "Forest Park",
     latitude: 41.8795223,
     longitude: -87.80612769999999,
     ownerReview:
@@ -908,6 +909,7 @@ async function main() {
       longitude: cafe.longitude,
       imageUrl: CAFE_IMAGES[i % CAFE_IMAGES.length],
       ownerReview: cafe.ownerReview,
+      region: regionForAddress(cafe.address),
     };
     const desiredTagIds = [...cafe.amenities, ...cafe.vibes].map((tagName) => tagIds.get(tagName)!);
     const existing = await prisma.cafe.findUnique({ where: { slug: cafe.slug }, select: { id: true } });

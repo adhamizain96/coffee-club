@@ -65,7 +65,16 @@ npm run db:migrate:deploy
 npm run db:seed
 ```
 
-For a database that was set up with `db push` before migrations existed, mark the baseline once: `npx prisma migrate resolve --applied 0_init`.
+For a database that was set up with `db push` before migrations existed, mark the baseline once: `npx prisma migrate resolve --applied 0_init`, then run `npx tsx scripts/backfill-slugs.ts --apply`.
+
+To load hours, regions, and the researched cafes:
+
+```bash
+npx tsx scripts/backfill-overhaul.ts --apply
+npx tsx scripts/import-cafes.ts --apply
+```
+
+All three scripts are dry runs unless you pass `--apply`.
 
 Upserts the curated cafes (by `slug`), tags, and sample notes. It never deletes notes, submissions, or cafes that aren't in `seed.ts` (e.g. cafes approved through the admin queue), so it's safe to re-run. Sample notes are only created the first time a cafe is created.
 
