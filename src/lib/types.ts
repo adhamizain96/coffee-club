@@ -1,3 +1,5 @@
+import type { CafeStatusValue } from "./freshness";
+
 export type TagType = "AMENITY" | "VIBE";
 
 export interface TagDTO {
@@ -16,6 +18,9 @@ export interface CafeListItem {
   latitude: number;
   longitude: number;
   tags: TagDTO[];
+  status: CafeStatusValue;
+  /** Computed server-side so server and client render the same badge. */
+  isNew: boolean;
 }
 
 export interface CafeDetail extends CafeListItem {

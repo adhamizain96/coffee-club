@@ -105,3 +105,44 @@ export async function allTagsExist(prisma: Pick<PrismaClient, "tag">, tagIds: st
   const found = await prisma.tag.count({ where: { id: { in: tagIds } } });
   return found === tagIds.length;
 }
+
+// ---------------------------------------------------------------------------
+// Admin-only fields (status, curator visit). Kept separate so the submission
+// approve route doesn't need them.
+// ---------------------------------------------------------------------------
+
+export const CAFE_STATUSES = ["OPEN", "TEMPORARILY_CLOSED", "CLOSED"] as const;
+export type CafeStatusInput = (typeof CAFE_STATUSES)[number];
+
+export interface CafeAdminFields {
+  status: CafeStatusInput;
+  curatorVisitedAt: Date | null;
+}
+
+const DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
+
+/** Parses "YYYY-MM-DD" into a Date at noon UTC so it lands on the same calendar day in Chicago. */
+export function parseDateOnly(value: string): Date | null {
+  if (!DATE_ONLY.test(value)) return null;
+  const d = new Date(`${value}T12:00:00Z`);
+  return Number.isNaN(d.getTime()) || d.toISOString().slice(0, 10) !== value ? null : d;
+}
+
+export function validateCafeAdminFields(
+  body: Partial<Record<keyof CafeAdminFields, unknown>>
+): { ok: true; data: CafeAdminFields } | { ok: false; errors: Partial<Record<keyof CafeAdminFields, string>> } {
+  const errors: Partial<Record<keyof CafeAdminFields, string>> = {};
+  const status = body.status === undefined || body.status === null || body.status === "" ? "OPEN" : body.status;
+  if (typeof status !== "string" || !(CAFE_STATUSES as readonly string[]).includes(status)) {
+    errors.status = "Status must be OPEN, TEMPORARILY_CLOSED, or CLOSED.";
+  }
+  let curatorVisitedAt: Date | null = null;
+  const rawVisit = typeof body.curatorVisitedAt === "string" ? body.curatorVisitedAt.trim() : "";
+  if (rawVisit) {
+    curatorVisitedAt = parseDateOnly(rawVisit);
+    if (!curatorVisitedAt) errors.curatorVisitedAt = "Visit date must be YYYY-MM-DD.";
+    else if (curatorVisitedAt.getTime() > Date.now() + 24 * 60 * 60 * 1000) errors.curatorVisitedAt = "Visit date cannot be in the future.";
+  }
+  if (Object.keys(errors).length > 0) return { ok: false, errors };
+  return { ok: true, data: { status: status as CafeStatusInput, curatorVisitedAt } };
+}

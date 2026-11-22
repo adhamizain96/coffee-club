@@ -10,6 +10,8 @@ import {
 import type { CafeListItem } from "@/lib/types";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import CafeImage from "./CafeImage";
+import FreshnessBadges from "./FreshnessBadges";
+import { getTagLabel } from "@/lib/tag-display";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -115,7 +117,9 @@ function MapController({
 }
 
 /** Custom coffee-coloured pin SVG */
-function CafePin({ highlighted }: { highlighted?: boolean }) {
+function CafePin({ highlighted, muted }: { highlighted?: boolean; muted?: boolean }) {
+  // Non-open cafes keep their pin but in stone instead of amber.
+  const fill = highlighted ? (muted ? "#44403c" : "#92400e") : muted ? "#a8a29e" : "#d97706";
   const size = highlighted ? 40 : 30;
 
   return (
@@ -133,13 +137,13 @@ function CafePin({ highlighted }: { highlighted?: boolean }) {
       >
         <path
           d="M12 0C5.4 0 0 5.4 0 12c0 9 12 22 12 22s12-13 12-22C24 5.4 18.6 0 12 0z"
-          fill={highlighted ? "#92400e" : "#d97706"}
+          fill={fill}
         />
         <circle cx="12" cy="11" r="5.5" fill="white" />
         {/* Coffee cup icon */}
         <path
           d="M8.5 9.5h5v3.5c0 1.1-.9 2-2 2h-1c-1.1 0-2-.9-2-2v-3.5zm5 1h1c.55 0 1 .45 1 1s-.45 1-1 1h-1v-2z"
-          fill={highlighted ? "#92400e" : "#d97706"}
+          fill={fill}
         />
       </svg>
     </div>
@@ -186,7 +190,7 @@ function ClusteredCafeMarker({
       onClick={() => onMarkerClick(cafe)}
       zIndex={selected ? 100 : 1}
     >
-      <CafePin highlighted={selected} />
+      <CafePin highlighted={selected} muted={cafe.status !== "OPEN"} />
     </AdvancedMarker>
   );
 }
@@ -290,6 +294,7 @@ function ClusteredMarkers({
                 <h3 className="text-sm font-semibold text-stone-900 line-clamp-1 leading-tight">
                   {infoCafe.name}
                 </h3>
+                <FreshnessBadges status={infoCafe.status} isNew={infoCafe.isNew} />
               </div>
 
               <p className="text-xs text-stone-400 mt-0.5">{infoCafe.neighborhood}</p>
@@ -300,7 +305,7 @@ function ClusteredMarkers({
                   <div className="flex flex-wrap gap-1 mt-2">
                     {vibes.map((v) => (
                       <span key={v.id} className="rounded-full bg-amber-100 text-amber-800 px-2 py-0.5 text-[10px] font-medium">
-                        {v.name.replace("-", " ").replace(/\b\w/g, (c) => c.toUpperCase())}
+                        {getTagLabel(v.name)}
                       </span>
                     ))}
                   </div>

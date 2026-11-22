@@ -5,6 +5,8 @@ import type { TagDTO, NoteDTO } from "@/lib/types";
 import Link from "next/link";
 import TagBadge from "@/components/TagBadge";
 import CafeImage from "@/components/CafeImage";
+import FreshnessBadges from "@/components/FreshnessBadges";
+import { formatVisited, isNewCafe, normalizeStatus, STATUS_LABELS } from "@/lib/freshness";
 import CafeDetailNotes from "./CafeDetailNotes";
 
 export const dynamic = "force-dynamic";
@@ -48,6 +50,8 @@ export default async function CafeDetailPage({
   if (!cafe) {
     notFound();
   }
+
+  const status = normalizeStatus(cafe.status);
 
   const tags: TagDTO[] = cafe.tags.map((ct) => ({
     id: ct.tag.id,
@@ -114,14 +118,28 @@ export default async function CafeDetailPage({
       </div>
 
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-8">
+        {status !== "OPEN" && (
+          <div role="status" className="mb-5 rounded-xl border border-stone-300 bg-stone-100 px-4 py-3 text-sm text-stone-700">
+            <strong className="font-semibold">{STATUS_LABELS[status]}.</strong>{" "}
+            {status === "CLOSED"
+              ? "This cafe has closed. It stays listed so the history (and your passport stamps) are kept."
+              : "This cafe is temporarily closed. Check its own channels before you go."}
+          </div>
+        )}
+
         {/* Cafe info */}
         <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">
           {cafe.name}
         </h1>
-        <div className="mt-1 flex items-center gap-3">
+        <div className="mt-1 flex flex-wrap items-center gap-2">
           <p className="text-gray-500">{cafe.neighborhood}</p>
+          <FreshnessBadges status={status} isNew={isNewCafe(cafe.createdAt)} size="md" />
         </div>
         <p className="mt-0.5 text-sm text-gray-400">{cafe.address}</p>
+
+        {cafe.curatorVisitedAt && (
+          <p className="mt-1 text-xs text-gray-500">Curator visited {formatVisited(cafe.curatorVisitedAt)}</p>
+        )}
 
         {(cafe.submitterName || cafe.addedAt) && (
           <p className="mt-1 text-xs text-gray-400">

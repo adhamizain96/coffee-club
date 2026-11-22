@@ -16,6 +16,9 @@ export interface CafeFormValues {
   imageUrl: string;
   ownerReview: string;
   tagIds: string[];
+  status: "OPEN" | "TEMPORARILY_CLOSED" | "CLOSED";
+  /** YYYY-MM-DD or "". */
+  curatorVisitedAt: string;
 }
 
 interface CafeFormProps {
@@ -44,6 +47,8 @@ export default function CafeForm({ cafeId, slug, initial, tagsByName }: CafeForm
   const [imageUrl, setImageUrl] = useState(initial.imageUrl);
   const [ownerReview, setOwnerReview] = useState(initial.ownerReview);
   const [selectedTagIds, setSelectedTagIds] = useState<Set<string>>(new Set(initial.tagIds));
+  const [status, setStatus] = useState(initial.status);
+  const [curatorVisitedAt, setCuratorVisitedAt] = useState(initial.curatorVisitedAt);
 
   const [geocoding, setGeocoding] = useState(false);
   const [geocodeNote, setGeocodeNote] = useState<string | null>(null);
@@ -111,6 +116,8 @@ export default function CafeForm({ cafeId, slug, initial, tagsByName }: CafeForm
           imageUrl,
           ownerReview,
           tagIds: Array.from(selectedTagIds),
+          status,
+          curatorVisitedAt,
         }),
       });
       const data = await res.json().catch(() => null);
@@ -201,6 +208,32 @@ export default function CafeForm({ cafeId, slug, initial, tagsByName }: CafeForm
       >
         <input id="imageUrl" type="url" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} placeholder="https://…" className={adminInputClass} disabled={disabled} />
       </Field>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field id="status" label="Status" helper="Closed cafes stay listed with a label." error={errors.status}>
+          <select
+            id="status"
+            value={status}
+            onChange={(e) => setStatus(e.target.value as CafeFormValues["status"])}
+            className={adminInputClass}
+            disabled={disabled}
+          >
+            <option value="OPEN">Open</option>
+            <option value="TEMPORARILY_CLOSED">Temporarily closed</option>
+            <option value="CLOSED">Closed</option>
+          </select>
+        </Field>
+        <Field id="curatorVisitedAt" label="Curator last visited" helper="Leave empty if you haven't visited." error={errors.curatorVisitedAt}>
+          <input
+            id="curatorVisitedAt"
+            type="date"
+            value={curatorVisitedAt}
+            onChange={(e) => setCuratorVisitedAt(e.target.value)}
+            className={adminInputClass}
+            disabled={disabled}
+          />
+        </Field>
+      </div>
 
       <Field id="ownerReview" label="Curator's note" error={errors.ownerReview}>
         <textarea id="ownerReview" rows={4} value={ownerReview} onChange={(e) => setOwnerReview(e.target.value)} className={`${adminInputClass} resize-y`} disabled={disabled} />

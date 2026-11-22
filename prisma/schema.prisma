@@ -12,6 +12,12 @@ enum TagType {
   VIBE
 }
 
+enum CafeStatus {
+  OPEN
+  TEMPORARILY_CLOSED
+  CLOSED
+}
+
 enum SubmissionStatus {
   PENDING
   APPROVED
@@ -34,6 +40,10 @@ model Cafe {
   createdAt     DateTime  @default(now()) @map("created_at")
   submitterName String?   @map("submitter_name")
   addedAt       DateTime? @map("added_at")
+  /// Null means OPEN (rows created before the column existed). Closed cafes stay listed with a label.
+  status        CafeStatus? @default(OPEN)
+  /// When the curator last visited. Null for cafes added from research only.
+  curatorVisitedAt DateTime? @map("curator_visited_at")
 
   tags        CafeTag[]
   notes       Note[]

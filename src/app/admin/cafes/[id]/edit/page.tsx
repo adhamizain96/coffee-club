@@ -43,6 +43,8 @@ export default async function EditCafePage({ params }: { params: Promise<{ id: s
             imageUrl: cafe.imageUrl ?? "",
             ownerReview: cafe.ownerReview,
             tagIds: cafe.tags.map((t) => t.tagId),
+            status: cafe.status ?? "OPEN",
+            curatorVisitedAt: cafe.curatorVisitedAt ? cafe.curatorVisitedAt.toISOString().slice(0, 10) : "",
           }}
         />
       </main>

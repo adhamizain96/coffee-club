@@ -1,7 +1,13 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { slugify, uniqueSlug } from "@/lib/slug";
-import { validateCafeFields, allTagsExist, type CafeFields } from "@/lib/cafe-validation";
+import {
+  validateCafeFields,
+  validateCafeAdminFields,
+  allTagsExist,
+  type CafeFields,
+  type CafeAdminFields,
+} from "@/lib/cafe-validation";
 
 export const dynamic = "force-dynamic";
 
@@ -9,13 +15,20 @@ export const dynamic = "force-dynamic";
 
 /** POST — create a cafe directly (no submission). Returns { cafeId, slug }. */
 export async function POST(request: NextRequest) {
-  const body = (await request.json().catch(() => null)) as Partial<Record<keyof CafeFields, unknown>> | null;
+  const body = (await request.json().catch(() => null)) as Partial<Record<keyof CafeFields | keyof CafeAdminFields, unknown>> | null;
   if (!body || typeof body !== "object") {
     return Response.json({ error: "Invalid JSON body" }, { status: 400 });
   }
   const validated = validateCafeFields(body);
-  if (!validated.ok) return Response.json({ errors: validated.errors }, { status: 400 });
-  const { tagIds, ...fields } = validated.data;
+  const adminValidated = validateCafeAdminFields(body);
+  if (!validated.ok || !adminValidated.ok) {
+    return Response.json(
+      { errors: { ...(validated.ok ? {} : validated.errors), ...(adminValidated.ok ? {} : adminValidated.errors) } },
+      { status: 400 }
+    );
+  }
+  const { tagIds, ...coreFields } = validated.data;
+  const fields = { ...coreFields, ...adminValidated.data };
   if (!(await allTagsExist(prisma, tagIds))) {
     return Response.json({ errors: { tagIds: "One or more tags are invalid." } }, { status: 400 });
   }

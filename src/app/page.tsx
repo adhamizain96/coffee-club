@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import type { CafeListItem } from "@/lib/types";
 import HomeContent from "./HomeContent";
+import { isNewCafe, normalizeStatus } from "@/lib/freshness";
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +15,10 @@ export default async function HomePage() {
     orderBy: { name: "asc" },
   });
 
+  const now = new Date();
   const cafeList: CafeListItem[] = cafes.map((cafe) => ({
+    status: normalizeStatus(cafe.status),
+    isNew: isNewCafe(cafe.createdAt, now),
     id: cafe.id,
     slug: cafe.slug,
     name: cafe.name,

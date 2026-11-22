@@ -42,6 +42,8 @@ export default function CafeList({
           name={cafe.name}
           neighborhood={cafe.neighborhood}
           imageUrl={cafe.imageUrl}
+          status={cafe.status}
+          isNew={cafe.isNew}
           description={cafe.description}
           tags={cafe.tags}
           isHighlighted={cafe.id === selectedCafeId}

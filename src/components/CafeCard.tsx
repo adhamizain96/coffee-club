@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import TagBadge from "./TagBadge";
 import CafeImage from "./CafeImage";
+import FreshnessBadges from "./FreshnessBadges";
+import type { CafeStatusValue } from "@/lib/freshness";
 import type { TagDTO } from "@/lib/types";
 
 interface CafeCardProps {
@@ -11,6 +13,8 @@ interface CafeCardProps {
   name: string;
   neighborhood: string;
   imageUrl: string | null;
+  status: CafeStatusValue;
+  isNew: boolean;
   description: string;
   tags: TagDTO[];
   isHighlighted?: boolean;
@@ -30,6 +34,8 @@ export default function CafeCard({
   name,
   neighborhood,
   imageUrl,
+  status,
+  isNew,
   description,
   tags,
   isHighlighted,
@@ -72,7 +78,7 @@ export default function CafeCard({
             name={name}
             neighborhood={neighborhood}
             loading="lazy"
-            className="transition-transform duration-300 group-hover:scale-105"
+            className={`transition-transform duration-300 group-hover:scale-105 ${status === "CLOSED" ? "grayscale opacity-70" : ""}`}
           />
         </div>
 
@@ -81,6 +87,7 @@ export default function CafeCard({
             <h3 className="text-sm font-semibold text-stone-900 group-hover:text-amber-800 transition-colors line-clamp-1 leading-tight">
               {name}
             </h3>
+            <FreshnessBadges status={status} isNew={isNew} />
           </div>
 
           <p className="text-xs text-stone-400 mt-0.5">{neighborhood}</p>

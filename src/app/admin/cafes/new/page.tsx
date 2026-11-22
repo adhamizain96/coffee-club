@@ -36,6 +36,8 @@ export default async function NewCafePage() {
             imageUrl: "",
             ownerReview: "",
             tagIds: [],
+            status: "OPEN",
+            curatorVisitedAt: "",
           }}
         />
       </main>
