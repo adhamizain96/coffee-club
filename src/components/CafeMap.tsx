@@ -350,6 +350,8 @@ export interface CafeMapProps {
    * the sheet's top edge at every snap.
    */
   mobileSheetSnap?: number | string | null;
+  /** Fired when "Near me" resolves, so the list can sort by distance. */
+  onUserLocation?: (location: google.maps.LatLngLiteral) => void;
 }
 
 export default function CafeMapInner({
@@ -360,6 +362,7 @@ export default function CafeMapInner({
   controlBarSlot,
   onMapClick,
   mobileSheetSnap,
+  onUserLocation,
 }: CafeMapProps) {
   const [infoCafe, setInfoCafe] = useState<CafeListItem | null>(null);
   const [userLocation, setUserLocation] = useState<google.maps.LatLngLiteral | null>(null);
@@ -388,7 +391,9 @@ export default function CafeMapInner({
     setGeoError(null);
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        setUserLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+        const location = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        setUserLocation(location);
+        onUserLocation?.(location);
         setLocating(false);
       },
       (err) => {
@@ -401,7 +406,7 @@ export default function CafeMapInner({
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
-  }, []);
+  }, [onUserLocation]);
 
   const [userPanTarget, setUserPanTarget] = useState<{
     lat: number;

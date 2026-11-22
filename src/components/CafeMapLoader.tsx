@@ -20,6 +20,7 @@ interface CafeMapLoaderProps {
   controlBarSlot?: React.ReactNode;
   onMapClick?: () => void;
   mobileSheetSnap?: number | string | null;
+  onUserLocation?: (location: google.maps.LatLngLiteral) => void;
 }
 
 export default function CafeMapLoader({
@@ -30,6 +31,7 @@ export default function CafeMapLoader({
   controlBarSlot,
   onMapClick,
   mobileSheetSnap,
+  onUserLocation,
 }: CafeMapLoaderProps) {
   return (
     <CafeMapInner
@@ -40,6 +42,7 @@ export default function CafeMapLoader({
       controlBarSlot={controlBarSlot}
       onMapClick={onMapClick}
       mobileSheetSnap={mobileSheetSnap}
+      onUserLocation={onUserLocation}
     />
   );
 }

@@ -19,6 +19,8 @@ interface CafeCardProps {
   status: CafeStatusValue;
   isNew: boolean;
   hours: WeeklyHours | null;
+  /** e.g. "1.2 mi", shown after "Near me". */
+  distanceLabel?: string;
   description: string;
   tags: TagDTO[];
   isHighlighted?: boolean;
@@ -41,6 +43,7 @@ export default function CafeCard({
   status,
   isNew,
   hours,
+  distanceLabel,
   description,
   tags,
   isHighlighted,
@@ -95,7 +98,10 @@ export default function CafeCard({
             <FreshnessBadges status={status} isNew={isNew} />
           </div>
 
-          <p className="text-xs text-stone-400 mt-0.5">{neighborhood}</p>
+          <p className="text-xs text-stone-400 mt-0.5">
+            {neighborhood}
+            {distanceLabel && <span className="text-stone-500"> · {distanceLabel}</span>}
+          </p>
           <HoursStatusLine hours={hours} className="mt-0.5" />
 
           <p className="text-xs text-stone-500 line-clamp-2 mt-1.5 leading-relaxed">

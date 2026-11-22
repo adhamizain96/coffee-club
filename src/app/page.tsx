@@ -4,10 +4,16 @@ import HomeContent from "./HomeContent";
 import { isNewCafe, normalizeStatus } from "@/lib/freshness";
 import { parseWeeklyHours } from "@/lib/hours";
 import { RETIRED_TAG_NAMES } from "@/lib/tag-display";
+import { parseHomeView } from "@/lib/home-filters";
 
 export const dynamic = "force-dynamic";
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
+  const initialView = parseHomeView(await searchParams);
   const cafes = await prisma.cafe.findMany({
     include: {
       tags: {
@@ -38,5 +44,5 @@ export default async function HomePage() {
     })),
   }));
 
-  return <HomeContent cafes={cafeList} />;
+  return <HomeContent cafes={cafeList} initialView={initialView} />;
 }

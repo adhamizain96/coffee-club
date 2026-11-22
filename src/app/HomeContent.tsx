@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { Drawer } from "vaul";
 import type { CafeListItem } from "@/lib/types";
@@ -10,25 +10,33 @@ import type { RegionValue } from "@/lib/regions";
 import FilterPanel from "@/components/FilterPanel";
 import CafeList from "@/components/CafeList";
 import CafeMapLoader from "@/components/CafeMapLoader";
+import SearchBox from "@/components/SearchBox";
+import { serializeHomeView, type HomeViewState } from "@/lib/home-filters";
+import { distanceMiles, formatMiles, type LatLng } from "@/lib/geo";
 
 interface HomeContentProps {
   cafes: CafeListItem[];
+  /** Parsed from the URL on the server so a shared link opens the same view. */
+  initialView: HomeViewState;
 }
 
 const SNAP_POINTS: (number | string)[] = [0.15, 0.5, 0.92];
 
-export default function HomeContent({ cafes }: HomeContentProps) {
-  const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
-  const [selectedVibes, setSelectedVibes] = useState<string[]>([]);
-  const [selectedHours, setSelectedHours] = useState<HoursFilter[]>([]);
-  const [selectedRegions, setSelectedRegions] = useState<RegionValue[]>([]);
+export default function HomeContent({ cafes, initialView }: HomeContentProps) {
+  const initialCafe = initialView.cafe ? cafes.find((c) => c.slug === initialView.cafe) ?? null : null;
+  const [selectedAmenities, setSelectedAmenities] = useState<string[]>(initialView.amenities);
+  const [selectedVibes, setSelectedVibes] = useState<string[]>(initialView.vibes);
+  const [selectedHours, setSelectedHours] = useState<HoursFilter[]>(initialView.hours);
+  const [selectedRegions, setSelectedRegions] = useState<RegionValue[]>(initialView.regions);
+  const [query, setQuery] = useState(initialView.query);
+  const [userLocation, setUserLocation] = useState<LatLng | null>(null);
   const now = useClientNow();
-  const [selectedCafeId, setSelectedCafeId] = useState<string | null>(null);
+  const [selectedCafeId, setSelectedCafeId] = useState<string | null>(initialCafe?.id ?? null);
   const [panTarget, setPanTarget] = useState<{
     lat: number;
     lng: number;
     zoom: number;
-  } | null>(null);
+  } | null>(initialCafe ? { lat: initialCafe.latitude, lng: initialCafe.longitude, zoom: 15 } : null);
   const [snap, setSnap] = useState<number | string | null>(SNAP_POINTS[1]);
 
   const filteredCafes = useCafes({
@@ -37,8 +45,43 @@ export default function HomeContent({ cafes }: HomeContentProps) {
     selectedVibes,
     selectedHours,
     selectedRegions,
+    query,
+    origin: userLocation,
     now,
   });
+
+  // Keep the URL in sync so the current view can be shared. replaceState (not
+  // push) so filter toggles don't flood the back button.
+  const selectedSlug = cafes.find((c) => c.id === selectedCafeId)?.slug ?? null;
+  useEffect(() => {
+    const qs = serializeHomeView({
+      amenities: selectedAmenities,
+      vibes: selectedVibes,
+      hours: selectedHours,
+      regions: selectedRegions,
+      query,
+      cafe: selectedSlug,
+    });
+    const next = window.location.pathname + qs;
+    if (next !== window.location.pathname + window.location.search) {
+      window.history.replaceState(null, "", next);
+    }
+  }, [selectedAmenities, selectedVibes, selectedHours, selectedRegions, query, selectedSlug]);
+
+  const distanceLabels = useMemo(() => {
+    if (!userLocation) return undefined;
+    return Object.fromEntries(
+      filteredCafes.map((c) => [c.id, formatMiles(distanceMiles(userLocation, { lat: c.latitude, lng: c.longitude }))])
+    );
+  }, [filteredCafes, userLocation]);
+
+  const clearAll = useCallback(() => {
+    setSelectedAmenities([]);
+    setSelectedVibes([]);
+    setSelectedHours([]);
+    setSelectedRegions([]);
+    setQuery("");
+  }, []);
 
   const handleMarkerClick = useCallback((cafeId: string) => {
     const isDesktop =
@@ -96,7 +139,7 @@ export default function HomeContent({ cafes }: HomeContentProps) {
   );
 
   const filteredCount = filteredCafes.length;
-  const filterActive = selectedAmenities.length > 0 || selectedVibes.length > 0 || selectedHours.length > 0 || selectedRegions.length > 0;
+  const filterActive = selectedAmenities.length > 0 || selectedVibes.length > 0 || selectedHours.length > 0 || selectedRegions.length > 0 || query.trim().length > 0;
   const hoursUnknownCount =
     selectedHours.length > 0 ? cafes.filter((c) => c.status === "OPEN" && !c.hours).length : 0;
   const hoursNote =
@@ -116,6 +159,7 @@ export default function HomeContent({ cafes }: HomeContentProps) {
           controlBarSlot={desktopFilterPanel}
           onMapClick={handleMapClick}
           mobileSheetSnap={snap}
+          onUserLocation={setUserLocation}
         />
       </div>
 
@@ -186,6 +230,10 @@ export default function HomeContent({ cafes }: HomeContentProps) {
                   </span>
                 )}
               </div>
+              <div className="px-4 pb-3 shrink-0">
+                <SearchBox id="search-mobile" value={query} onChange={setQuery} />
+                {userLocation && <p className="mt-2 text-[11px] text-stone-500">Sorted by distance from you</p>}
+              </div>
               <Drawer.Description className="sr-only">
                 List of {filteredCount} curated cafes. Drag the handle to expand or collapse.
               </Drawer.Description>
@@ -196,6 +244,8 @@ export default function HomeContent({ cafes }: HomeContentProps) {
                   selectedCafeId={selectedCafeId}
                   mode="navigate"
                   onPinClick={handlePinClick}
+                  distanceLabels={distanceLabels}
+                  onClearFilters={filterActive ? clearAll : undefined}
                 />
               </div>
             </Drawer.Content>
@@ -238,7 +288,7 @@ export default function HomeContent({ cafes }: HomeContentProps) {
               </div>
             </div>
             <div className="flex items-center justify-between mt-3 pt-3 border-t border-stone-100">
-              <span className="text-xs font-medium text-stone-500 uppercase tracking-wide">
+              <span data-cafe-count aria-live="polite" className="text-xs font-medium text-stone-500 uppercase tracking-wide">
                 {filteredCount} {filteredCount === 1 ? "cafe" : "cafes"}
               </span>
               {filterActive && (
@@ -249,6 +299,11 @@ export default function HomeContent({ cafes }: HomeContentProps) {
             </div>
           </div>
 
+          <div className="px-5 pb-3 shrink-0">
+            <SearchBox id="search-desktop" value={query} onChange={setQuery} />
+            {userLocation && <p className="mt-2 text-[11px] text-stone-500">Sorted by distance from you</p>}
+          </div>
+
           {/* Scrollable cafe list */}
           <div className="flex-1 overflow-y-auto p-4">
             {hoursNote && <p className="mb-3 text-xs text-stone-500">{hoursNote}</p>}
@@ -257,6 +312,8 @@ export default function HomeContent({ cafes }: HomeContentProps) {
               selectedCafeId={selectedCafeId}
               mode="pan"
               onCardClick={handleCardClick}
+              distanceLabels={distanceLabels}
+              onClearFilters={filterActive ? clearAll : undefined}
             />
           </div>
         </div>
