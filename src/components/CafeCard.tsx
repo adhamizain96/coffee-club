@@ -3,6 +3,7 @@ import Link from "next/link";
 import TagBadge from "./TagBadge";
 import CafeImage from "./CafeImage";
 import FreshnessBadges from "./FreshnessBadges";
+import PassportToggle from "./PassportToggle";
 import { HoursBadges, HoursStatusLine } from "./HoursStatus";
 import type { WeeklyHours } from "@/lib/hours";
 import type { CafeStatusValue } from "@/lib/freshness";
@@ -111,6 +112,8 @@ export default function CafeCard({
           )}
         </div>
       </Link>
+
+      <PassportToggle slug={slug} name={name} />
 
       {onPinClick && (
         <button

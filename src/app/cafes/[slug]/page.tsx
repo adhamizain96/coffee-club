@@ -6,6 +6,7 @@ import Link from "next/link";
 import TagBadge from "@/components/TagBadge";
 import CafeImage from "@/components/CafeImage";
 import FreshnessBadges from "@/components/FreshnessBadges";
+import PassportToggle from "@/components/PassportToggle";
 import { formatVisited, isNewCafe, normalizeStatus, STATUS_LABELS } from "@/lib/freshness";
 import CafeHours from "@/components/CafeHours";
 import { parseWeeklyHours } from "@/lib/hours";
@@ -145,6 +146,10 @@ export default async function CafeDetailPage({
           {cafe.region && <span className="text-gray-300"> · </span>}
           {cafe.region && <span>{REGION_LABELS[cafe.region]}</span>}
         </p>
+
+        <div className="mt-4">
+          <PassportToggle slug={cafe.slug} name={cafe.name} variant="inline" />
+        </div>
 
         {cafe.curatorVisitedAt && (
           <p className="mt-1 text-xs text-gray-500">Curator visited {formatVisited(cafe.curatorVisitedAt)}</p>
