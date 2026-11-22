@@ -51,6 +51,14 @@ export default function HomeContent({ cafes, initialView }: HomeContentProps) {
     now,
   });
 
+  const matchingWithoutHoursFilters = useCafes({
+    cafes,
+    selectedAmenities,
+    selectedVibes,
+    selectedRegions,
+    query,
+  });
+
   // Keep the URL in sync so the current view can be shared. replaceState (not
   // push) so filter toggles don't flood the back button.
   const selectedSlug = cafes.find((c) => c.id === selectedCafeId)?.slug ?? null;
@@ -145,8 +153,10 @@ export default function HomeContent({ cafes, initialView }: HomeContentProps) {
   const coverage =
     cityCount + suburbCount > 0 ? `${cityCount} in Chicago, ${suburbCount} in the suburbs` : `${cafes.length} cafes`;
   const filterActive = selectedAmenities.length > 0 || selectedVibes.length > 0 || selectedHours.length > 0 || selectedRegions.length > 0 || query.trim().length > 0;
+  // Cafes that match every other filter but have no listed hours, so the
+  // hours filters had to leave them out.
   const hoursUnknownCount =
-    selectedHours.length > 0 ? cafes.filter((c) => c.status === "OPEN" && !c.hours).length : 0;
+    selectedHours.length > 0 ? matchingWithoutHoursFilters.filter((c) => c.status === "OPEN" && !c.hours).length : 0;
   const hoursNote =
     hoursUnknownCount > 0
       ? `${hoursUnknownCount} ${hoursUnknownCount === 1 ? "cafe has" : "cafes have"} no listed hours and ${hoursUnknownCount === 1 ? "isn't" : "aren't"} included.`
