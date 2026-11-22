@@ -874,15 +874,6 @@ const cafes: CafeSeed[] = [
 async function main() {
   console.log("Seeding (upsert by slug; never deletes notes, submissions, or cafes missing from this file)...");
 
-  // A database created before slugs existed must be backfilled first, or the
-  // upsert below would create duplicates of its existing cafes.
-  const missingSlugs = await prisma.cafe.count({ where: { slug: null } });
-  if (missingSlugs > 0) {
-    console.error(
-      `${missingSlugs} cafe(s) have no slug. Run "npx tsx scripts/backfill-slugs.ts --apply" first.`
-    );
-    process.exit(1);
-  }
 
   const tagIds = new Map<string, string>();
   for (const name of amenityTags) {

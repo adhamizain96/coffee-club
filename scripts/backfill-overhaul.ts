@@ -6,8 +6,8 @@
 //   npx tsx scripts/backfill-overhaul.ts            # dry run (default)
 //   npx tsx scripts/backfill-overhaul.ts --apply    # writes, in one transaction
 //
-// Target: DATABASE_URL (direct/unpooled URL for production). Run after
-// scripts/backfill-slugs.ts. Never deletes anything; idempotent.
+// Target: DATABASE_URL (direct/unpooled URL for production). Never deletes
+// anything; idempotent.
 
 import "dotenv/config";
 import * as fs from "node:fs";
