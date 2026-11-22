@@ -311,7 +311,7 @@ function ClusteredMarkers({
               })()}
 
               <a
-                href={`/cafes/${infoCafe.id}`}
+                href={`/cafes/${infoCafe.slug ?? infoCafe.id}`}
                 className="inline-flex items-center gap-1 text-xs text-amber-700 hover:text-amber-900 font-semibold transition-colors mt-2.5"
               >
                 View details

@@ -78,6 +78,7 @@ export default async function AdminSubmissionsPage({
   const submissions = await prisma.cafeSubmission.findMany({
     where,
     orderBy: { createdAt: "asc" },
+    include: { approvedCafe: { select: { slug: true } } },
   });
 
   // Resolve all referenced suggested-tag IDs in one query
@@ -209,7 +210,7 @@ export default async function AdminSubmissionsPage({
                       {s.status === SubmissionStatus.APPROVED &&
                         s.approvedCafeId && (
                           <Link
-                            href={`/cafes/${s.approvedCafeId}`}
+                            href={`/cafes/${s.approvedCafe?.slug ?? s.approvedCafeId}`}
                             className="text-[10px] font-semibold text-amber-700 hover:text-amber-800 underline-offset-2 hover:underline"
                           >
                             View cafe →

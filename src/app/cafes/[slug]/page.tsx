@@ -11,11 +11,11 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { id } = await params;
+  const { slug } = await params;
   const cafe = await prisma.cafe.findUnique({
-    where: { id },
+    where: { slug },
     select: { name: true, neighborhood: true, description: true },
   });
 
@@ -32,12 +32,12 @@ export async function generateMetadata({
 export default async function CafeDetailPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { id } = await params;
+  const { slug } = await params;
 
   const cafe = await prisma.cafe.findUnique({
-    where: { id },
+    where: { slug },
     include: {
       tags: { include: { tag: true } },
       notes: { orderBy: { createdAt: "desc" } },

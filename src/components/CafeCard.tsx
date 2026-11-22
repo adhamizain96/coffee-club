@@ -5,6 +5,8 @@ import type { TagDTO } from "@/lib/types";
 
 interface CafeCardProps {
   id: string;
+  /** Public URL key; falls back to id for rows not yet backfilled. */
+  slug: string | null;
   name: string;
   neighborhood: string;
   imageUrl: string;
@@ -23,6 +25,7 @@ interface CafeCardProps {
 
 export default function CafeCard({
   id,
+  slug,
   name,
   neighborhood,
   imageUrl,
@@ -53,7 +56,7 @@ export default function CafeCard({
       }`}
     >
       <Link
-        href={`/cafes/${id}`}
+        href={`/cafes/${slug ?? id}`}
         onClick={(e) => {
           if (mode === "pan" && onCardClick) {
             e.preventDefault();

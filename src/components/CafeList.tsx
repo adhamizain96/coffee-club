@@ -38,6 +38,7 @@ export default function CafeList({
         <CafeCard
           key={cafe.id}
           id={cafe.id}
+          slug={cafe.slug}
           name={cafe.name}
           neighborhood={cafe.neighborhood}
           imageUrl={cafe.imageUrl}

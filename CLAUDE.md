@@ -78,14 +78,15 @@ Priorities, in order:
   - Bypass list (`PROXY_BYPASS_PATHS`): `/admin/login`, `/api/admin/login`, `/api/admin/logout`. Login bypasses so the admin can't lock themselves out; logout bypasses so it stays idempotent — clicking it with an expired/missing cookie still clears the cookie and redirects to `/admin/login` instead of returning 401.
 - **Submission → cafe approval** — `POST /api/admin/submissions/[id]/approve` runs one atomic transaction:
   - Latches the submission `PENDING → APPROVED` via `updateMany` (race-safe against double-approval).
-  - Creates the `Cafe` with `submitterName` and `addedAt` backfilled from the submission.
+  - Creates the `Cafe` with a unique `slug` and with `submitterName` and `addedAt` backfilled from the submission.
   - Inserts `CafeTag` rows for the chosen tags.
   - Backlinks `submission.approvedCafeId → cafe.id`.
   - The edit page (`/admin/submissions/[id]/edit`) pre-fills from the submission plus a server-side Google geocode (`src/lib/geocode.ts`). New cafes appear on the public site immediately — no rebuild required.
 
 ## Known Behaviors
 
-- **`/cafes/<bad-id>` returns HTTP 200 + the not-found UI, not 404.** Reproduces in production builds. The `notFound()` call in `src/app/cafes/[id]/page.tsx` renders `src/app/not-found.tsx` and Next.js injects `<meta name="robots" content="noindex">`, but the response status stays 200. This is documented Next.js 16 behavior for streamed responses (see `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/not-found.md`). Search engines respect the noindex; only programmatic clients keying off the status code are affected. Don't "fix" without checking whether a refactor away from streamed rendering is justified.
+- **Cafe URLs are `/cafes/<slug>`.** Old `/cafes/<cuid>` links get a real 308 to the slug from `src/proxy.ts` (only cuid-shaped segments trigger a DB lookup). It's done in the proxy because the detail route streams, and a redirect from a streamed page would be a client-side meta refresh with a 200. The approval route generates a unique slug inside its transaction. `/api/cafes/[id]` stays id-based.
+- **`/cafes/<bad-slug>` returns HTTP 200 + the not-found UI, not 404.** Reproduces in production builds. The `notFound()` call in `src/app/cafes/[slug]/page.tsx` renders `src/app/not-found.tsx` and Next.js injects `<meta name="robots" content="noindex">`, but the response status stays 200. This is documented Next.js 16 behavior for streamed responses (see `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/not-found.md`). Search engines respect the noindex; only programmatic clients keying off the status code are affected. Don't "fix" without checking whether a refactor away from streamed rendering is justified.
 - **Rate limiter is per-process** (`src/lib/rate-limit.ts`). Per Vercel function instance, so budgets reset across cold starts. Acceptable for current traffic; swap in Redis if scale demands it.
 - **No Google ratings or reviews.** Removed in the overhaul (no Places API calls anywhere). The Maps key is used only for the map, `src/lib/geocode.ts`, and `scripts/geocode-cafes.ts`.
 - **Honeypot path still increments the rate-limit counter.** `POST /api/submissions` runs `rateLimit()` *before* the honeypot check, so bots tripping the honeypot also burn into their per-IP budget. Intentional — bots should not get unlimited free attempts.

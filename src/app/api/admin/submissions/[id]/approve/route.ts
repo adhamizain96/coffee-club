@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { SubmissionStatus } from "@/generated/prisma/client";
+import { slugify, uniqueSlug } from "@/lib/slug";
 
 export const dynamic = "force-dynamic";
 
@@ -160,6 +161,7 @@ export async function POST(
     // sees count=0 (because the winner already flipped status), then throws
     // and rolls back its half-built cafe.
     let cafeId: string;
+    let slug: string;
     try {
       const result = await prisma.$transaction(async (tx) => {
         const current = await tx.cafeSubmission.findUnique({
@@ -182,9 +184,14 @@ export async function POST(
           throw new ApproveError("NOT_PENDING");
         }
 
+        const cafeSlug = await uniqueSlug(slugify(name), async (candidate) =>
+          Boolean(await tx.cafe.findUnique({ where: { slug: candidate }, select: { id: true } }))
+        );
+
         const cafe = await tx.cafe.create({
           data: {
             name,
+            slug: cafeSlug,
             description,
             address,
             neighborhood,
@@ -195,7 +202,7 @@ export async function POST(
             submitterName: current.submitterName,
             addedAt: new Date(),
           },
-          select: { id: true },
+          select: { id: true, slug: true },
         });
 
         if (tagIds.length > 0) {
@@ -209,9 +216,10 @@ export async function POST(
           data: { approvedCafeId: cafe.id },
         });
 
-        return { cafeId: cafe.id };
+        return { cafeId: cafe.id, slug: cafe.slug! };
       });
       cafeId = result.cafeId;
+      slug = result.slug;
     } catch (err) {
       if (err instanceof ApproveError) {
         if (err.code === "NOT_FOUND") {
@@ -231,7 +239,7 @@ export async function POST(
       throw err;
     }
 
-    return Response.json({ cafeId }, { status: 200 });
+    return Response.json({ cafeId, slug }, { status: 200 });
   } catch (error) {
     console.error("POST /api/admin/submissions/[id]/approve error:", error);
     return Response.json(

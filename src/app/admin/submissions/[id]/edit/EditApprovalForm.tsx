@@ -172,7 +172,7 @@ export default function EditApprovalForm({
       const data = await res.json().catch(() => null);
 
       if (res.status === 200 && data?.cafeId) {
-        router.push(`/cafes/${data.cafeId}`);
+        router.push(`/cafes/${data.slug ?? data.cafeId}`);
         return;
       }
 

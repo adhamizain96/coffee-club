@@ -166,7 +166,7 @@ coffee-club/
 │   │   ├── page.tsx             # Homepage (server)
 │   │   ├── HomeContent.tsx      # Homepage client (filter state)
 │   │   ├── loading.tsx · error.tsx · not-found.tsx
-│   │   ├── cafes/[id]/          # Detail page + notes form
+│   │   ├── cafes/[slug]/        # Detail page + notes form
 │   │   ├── submit/              # /submit + /submit/thanks (public submission)
 │   │   ├── admin/
 │   │   │   ├── login/           # Password form
@@ -310,7 +310,7 @@ The production database was baselined at `0_init` on 2026-11-22. Never run `db:s
 
 ### Known limitations
 
-- **`/cafes/<bad-id>` returns HTTP 200, not 404.** The not-found UI from `src/app/not-found.tsx` renders correctly and Next.js injects `<meta name="robots" content="noindex">`, but the response status stays 200. This is documented Next.js 16 behavior for streamed responses (see `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/not-found.md`: *"Next.js will return a `200` HTTP status code for streamed responses, and `404` for non-streamed responses"*). Search engines respect the `noindex` meta, so SEO is unaffected; only programmatic clients that key off the status code are.
+- **`/cafes/<bad-slug>` returns HTTP 200, not 404.** (Old `/cafes/<id>` links 308 to the slug URL.) The not-found UI from `src/app/not-found.tsx` renders correctly and Next.js injects `<meta name="robots" content="noindex">`, but the response status stays 200. This is documented Next.js 16 behavior for streamed responses (see `node_modules/next/dist/docs/01-app/03-api-reference/03-file-conventions/not-found.md`: *"Next.js will return a `200` HTTP status code for streamed responses, and `404` for non-streamed responses"*). Search engines respect the `noindex` meta, so SEO is unaffected; only programmatic clients that key off the status code are.
 - **In-memory rate limiter** (`src/lib/rate-limit.ts`) is per-process. Each Vercel function invocation may land in a fresh process, so rate-limit budgets reset between cold starts. For higher traffic, swap in a Redis-backed limiter.
 - **Submission rate-limit keys on `x-forwarded-for`** with a fallback bucket of `"unknown"`. Behind Vercel the header is set, so this is fine in production. Direct (no-proxy) traffic all collapses into the `unknown` bucket and a single bad actor can starve everyone.
 
