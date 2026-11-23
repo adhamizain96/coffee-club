@@ -430,8 +430,8 @@
     "longitude": -87.7433085,
     "website": "https://www.towneandoak.com/",
     "instagram": "https://www.instagram.com/towneandoak",
-    "description": "Counter-service cafe in Winnetka's Hubbard Woods district, open since 2020, serving coffee, pastries, breakfast and lunch, with tea service, catering and private events.",
-    "ownerReview": "Towne & Oak has been a Hubbard Woods fixture since 2020. You order at the counter, and the menu is meant to stay casual and easy. Coffee and pastries start at 7 a.m., lunch comes on later, and there is a tea service if you want to stay a while.",
+    "description": "Cafe in Winnetka's Hubbard Woods district, open since 2020, serving coffee, pastries, breakfast and lunch, with grab-and-go, tea service, catering and private events.",
+    "ownerReview": "Towne & Oak has been a Hubbard Woods fixture since 2020, and the menu is meant to stay casual and easy. Coffee and pastries start at 7 a.m., lunch is available from 8, and there is a tea service if you want to stay a while.",
     "hours": {
       "mon": [
         {
@@ -499,12 +499,6 @@
         "date": "2026-11-20",
         "official": true,
         "what": "Own Instagram (bio: Cafe + Private Event Venue in Winnetka, Open Daily 7am) with posts dated Oct 29 to Nov 20, 2026"
-      },
-      {
-        "url": "https://www.spynergystudios.com/towne-oak-schedule",
-        "date": "2026-11-22",
-        "official": false,
-        "what": "Spynergy Studios page (shows a 'Black Friday 2026' offer) says its Winnetka studio is at 921 Green Bay Rd, entered via the Towne & Oak event space entrance"
       },
       {
         "url": "https://www.towneandoak.com/",
@@ -4475,54 +4469,11 @@
     "longitude": -87.8576168,
     "website": "https://dripandculture.com/",
     "instagram": "https://instagram.com/dripandculture",
-    "description": "Black- and Brown-owned, socially minded coffee shop inside Supermercado Gonzalez on Grand Ave in Waukegan, serving espresso, cold brew, matcha and house-baked kolaches.",
-    "ownerReview": "Drip & Culture is a socially minded coffee bar tucked inside a Waukegan grocery store, and it runs like a community hub as much as a cafe. The menu covers espresso, cold brew, matcha and single-origin coffee, and the kolaches (ham and gouda, carnitas with jalapeno) have become a staple. It also hosts flu shot clinics and full moon hikes, and as of October 2026 sells a curated shelf of books through Commonplace Books.",
-    "hours": {
-      "mon": [
-        {
-          "open": "07:00",
-          "close": "18:00"
-        }
-      ],
-      "tue": [
-        {
-          "open": "07:00",
-          "close": "18:00"
-        }
-      ],
-      "wed": [
-        {
-          "open": "07:00",
-          "close": "18:00"
-        }
-      ],
-      "thu": [
-        {
-          "open": "07:00",
-          "close": "18:00"
-        }
-      ],
-      "fri": [
-        {
-          "open": "07:00",
-          "close": "18:00"
-        }
-      ],
-      "sat": [
-        {
-          "open": "07:00",
-          "close": "17:00"
-        }
-      ],
-      "sun": [
-        {
-          "open": "07:00",
-          "close": "17:00"
-        }
-      ]
-    },
-    "hoursSourceUrl": "https://www.findglocal.com/US/Waukegan/101779881740039/Drip-%26-Culture---Socially-Minded-Coffee",
-    "hoursCheckedAt": "2026-11-22",
+    "description": "Black- and Brown-owned, socially minded coffee shop inside La Gonzalez Market on Grand Ave in Waukegan, serving espresso, cold brew, matcha and single-origin coffee.",
+    "ownerReview": "Drip & Culture is a socially minded coffee bar tucked inside La Gonzalez Market in Waukegan, and it runs like a community hub as much as a cafe. Espresso, cold brew, matcha and single-origin coffee cover the menu, and since October 2026 there's a shelf of books from Commonplace Books.",
+    "hours": null,
+    "hoursSourceUrl": null,
+    "hoursCheckedAt": null,
     "amenities": [],
     "vibes": [],
     "tagSources": [],
@@ -4534,10 +4485,16 @@
         "what": "Own Instagram (@dripandculture, bio: inside La Gonzalez Market) with posts dated Nov 20, Nov 13, Oct 28, Oct 23 and Oct 8, 2026"
       },
       {
-        "url": "https://www.findglocal.com/US/Waukegan/101779881740039/Drip-%26-Culture---Socially-Minded-Coffee",
         "date": "2026-10-08",
         "official": true,
-        "what": "Mirror of the cafe's own Facebook page (facebook.com/DripandCulture): 10/08/2026 post announcing book sales at the shop via Commonplace Books; further posts 11/21/2026 (vaccination clinic), 10/28/2026 (fall menu), 9/26/2026 (kolaches)"
+        "url": "https://www.instagram.com/dripandculture/p/DeP4Oc1GxeC/",
+        "what": "Own Instagram post (Oct 8, 2026) announcing book sales at the shop through Commonplace Books"
+      },
+      {
+        "date": "2026-10-27",
+        "official": false,
+        "url": "https://www.instagram.com/4waukeganpod/reel/DfAKNRmRCXj/",
+        "what": "#4Waukegan Podcast feature on Drip & Culture in Waukegan (Oct 27, 2026)"
       }
     ],
     "sources": [
@@ -4650,8 +4607,8 @@
     "longitude": -87.78224759999999,
     "website": "https://astraroasters.com/",
     "instagram": "https://instagram.com/astracoffeeroasters",
-    "description": "Woman-owned coffeehouse and roastery in Highland Park's Ravinia District, roasting in-house with beans from Cafe Femenino producers in northern Peru and serving Bennison's pastries.",
-    "ownerReview": "Astra roasts its own coffee in the Ravinia District and has been on Roger Williams Avenue since April 2022. The beans come from Cafe Femenino, a group of women producers in northern Peru, and pastries come from Bennison's in Evanston. The menu runs from espresso drinks and filter coffee to matcha and a pup cup for dogs.",
+    "description": "Small-batch coffeehouse and roastery on Roger Williams Avenue in Highland Park's Ravinia District, roasting in-house and open mornings every day.",
+    "ownerReview": "Astra roasts its own coffee right in the Ravinia District, so the beans in the cup are the beans on the shelf. Sign up in the shop for its bean subscription, and plan on mornings: it's open 7 a.m. to 2 p.m. every day.",
     "hours": {
       "mon": [
         {
@@ -4720,6 +4677,12 @@
         "date": "2026-10-22",
         "official": false,
         "what": "Oct 22, 2026 article on the Roger Williams Ave rebuild lists Astra Coffee Roasters at 477 under 'What's open on the avenue', citing the City's Ravinia District directory"
+      },
+      {
+        "date": "2026-07-17",
+        "official": true,
+        "url": "https://www.instagram.com/astracoffeeroasters/p/Da53qSDxbFZ/",
+        "what": "Own Instagram post (July 17, 2026) announcing a bean subscription with in-store signup"
       }
     ],
     "sources": [
@@ -4728,97 +4691,6 @@
       "https://www.enjoyhighlandpark.com/dining-1/astra-coffee-roasters",
       "https://toast.app/r/astra-coffee-roasters-477-roger-williams-avenue/order",
       "https://therafigroup.com/blog/roger-williams-avenue-is-being-rebuilt-for-the-months-ravinia-goes-quiet"
-    ],
-    "researchAgent": "G"
-  },
-  {
-    "name": "Euforia Cafe",
-    "slug": "euforia-cafe",
-    "address": "2202 Grand Ave, Waukegan, IL 60085",
-    "neighborhood": "Waukegan",
-    "region": "NORTH",
-    "latitude": 42.3705692,
-    "longitude": -87.8598834,
-    "website": "https://www.euforiacafe.com/en/",
-    "instagram": "https://instagram.com/euforiacafe_",
-    "description": "Women-owned neighborhood cafe on Grand Ave in Waukegan serving specialty coffee, Hispanic-inspired breakfast like chilaquiles, smoothie bowls, juices and seasonal themed drinks.",
-    "ownerReview": "Euforia is a women-owned Waukegan cafe rooted in one family's move from Mexico, and the menu reflects it. Alongside espresso and lattes there are chilaquiles, waffles, avocado toast, smoothie bowls and cold-pressed juices. It leans hard into seasonal menus, most recently a Grinch-themed holiday lineup with a gingerbread latte.",
-    "hours": {
-      "mon": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ],
-      "tue": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ],
-      "wed": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ],
-      "thu": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ],
-      "fri": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ],
-      "sat": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ],
-      "sun": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ]
-    },
-    "hoursSourceUrl": "https://www.euforiacafe.com/en/",
-    "hoursCheckedAt": "2026-11-22",
-    "amenities": [
-      "full_menu"
-    ],
-    "vibes": [],
-    "tagSources": [
-      {
-        "tag": "full_menu",
-        "source": "https://www.visitlakecounty.org/EuforiaCafe"
-      }
-    ],
-    "openEvidence": [
-      {
-        "url": "https://www.instagram.com/euforiacafe_/",
-        "date": "2026-11-20",
-        "official": true,
-        "what": "Own Instagram posts dated Nov 15, 16, 18 and 20, 2026 and Oct 29/31, 2026"
-      },
-      {
-        "url": "https://www.findglocal.com/US/Waukegan/122105306834002438/Euforia-Caf%C3%A9",
-        "date": "2026-11-15",
-        "official": true,
-        "what": "Mirror of the cafe's own Facebook page (facebook.com/euforiacafeus): 11/15/2026 post announcing the Grinch holiday lineup available that day; 11/20/2026 holiday hours post; 10/31/2026 Halloween post"
-      }
-    ],
-    "sources": [
-      "https://www.euforiacafe.com/en/",
-      "https://www.visitlakecounty.org/EuforiaCafe",
-      "https://www.instagram.com/euforiacafe_/",
-      "https://www.findglocal.com/US/Waukegan/122105306834002438/Euforia-Caf%C3%A9",
-      "https://www.facebook.com/euforiacafeus/"
     ],
     "researchAgent": "G"
   },
@@ -4832,8 +4704,8 @@
     "longitude": -87.71567209999999,
     "website": "https://curtscafe.org/",
     "instagram": "https://instagram.com/curtscafe",
-    "description": "Nonprofit cafe on Evanston's Central Street that trains young adults in at-risk situations, serving coffee, espresso, smoothies, all-day breakfast, sandwiches and baked goods.",
-    "ownerReview": "Curt's is a nonprofit cafe where every order funds work and life skills training for young adults, and it has been doing it for 14 years. The menu goes well past coffee, with all-day breakfast like the breakfast burrito and avocado toast, plus wraps, bowls and house-made scones and cookies. It is a good pick when the goal is a real meal on Central Street with a cause behind it.",
+    "description": "Nonprofit cafe on Evanston's Central Street that trains young adults in at-risk situations, serving coffee, espresso, all-day breakfast, wraps, bowls and house-made scones.",
+    "ownerReview": "Curt's is a nonprofit cafe where every order funds work and life skills training for young adults, and it has done that since 2012, now in Evanston and Highland Park. The breakfast burrito, chipotle chicken wrap and smoked salmon bowl make it a real meal stop with a cause.",
     "hours": {
       "mon": [],
       "tue": [
@@ -4894,10 +4766,16 @@
         "what": "Own website news posts dated July 6, 2026 (annual benefit), June 12, 2026 (2026 Evanston Wine Walk nonprofit partner) and June 1, 2026"
       },
       {
-        "url": "https://www.findglocal.com/US/Evanston/292545890824749/Curt's-Cafe",
-        "date": "2026-11-20",
-        "official": true,
-        "what": "Mirror of the cafe's own Facebook page: 11/20/2026 posts on a program graduate and the Holiday High Tea"
+        "date": "2026-05-20",
+        "official": false,
+        "url": "https://happeningnext.com/event/out-with-curts-eid1ef0kx1jwn6r",
+        "what": "Out North event held at Curt's Cafe, 2922 Central St, on May 20, 2026"
+      },
+      {
+        "date": "2026-11-05",
+        "official": false,
+        "url": "https://www.instagram.com/evanstonchamber/reel/DfXRAITRFpv/",
+        "what": "Evanston Chamber post (Nov 5, 2026) on breakfasts hosted at Curt's"
       }
     ],
     "sources": [

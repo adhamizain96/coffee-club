@@ -1,5 +1,12 @@
 {
   "note": "Post-overhaul cleanup, applied with scripts/apply-removals.ts. Each entry carries the values the script checks before touching the row; any mismatch aborts the whole run.",
+  "deleteCafes": [
+    {
+      "slug": "euforia-cafe",
+      "name": "Euforia Cafe",
+      "reason": "Failed re-verification on 2026-11-22: its own Instagram is the only official source that could be read directly (the Facebook posts were seen only through a mirror), and the independent listings are undated or from 2025 (docs/research/cafes-new.md)."
+    }
+  ],
   "deleteTags": [
     {
       "name": "early_bird",
