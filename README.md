@@ -74,7 +74,7 @@ npx tsx scripts/backfill-overhaul.ts --apply
 npx tsx scripts/import-cafes.ts --apply
 ```
 
-All three scripts are dry runs unless you pass `--apply`.
+All three scripts are dry runs unless you pass `--apply`. Production cleanups that delete rows go through `npx tsx scripts/apply-removals.ts` and the reviewed list in `data/removals-2026-11-22.json` (also a dry run by default).
 
 Upserts the curated cafes (by `slug`), tags, and sample notes. It never deletes notes, submissions, or cafes that aren't in `seed.ts` (e.g. cafes approved through the admin queue), so it's safe to re-run. Sample notes are only created the first time a cafe is created.
 

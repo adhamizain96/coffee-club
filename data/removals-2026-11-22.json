@@ -1,0 +1,11 @@
+{
+  "note": "Post-overhaul cleanup, applied with scripts/apply-removals.ts. Each entry carries the values the script checks before touching the row; any mismatch aborts the whole run.",
+  "deleteNotes": [
+    {
+      "id": "cmwsdo4n1000008jy23jfo3pj",
+      "authorName": "Coffee Club deploy check",
+      "content": "Automated deploy check. Hidden by the site owner.",
+      "reason": "Created by the 2026-11-22 overhaul's production deploy check; not a community note."
+    }
+  ]
+}

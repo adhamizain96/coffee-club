@@ -115,7 +115,8 @@ Priorities, in order:
 
 - `data/cafes-new.json` — researched cafes (source of `scripts/import-cafes.ts`): address, coordinates (one Geocoding call each), region, hours with source and checked date, sourced tags, and the 2026 open evidence. `docs/research/cafes-new.md` is the human-readable log, including exclusions and why.
 - `data/cafes-existing-updates.json` — hours, website, closures, and verified corrections for the original 32 cafes (source of `scripts/backfill-overhaul.ts`).
-- All three data scripts print the target `host:port/db`, default to a dry run, write in one transaction with `--apply`, never delete, and are idempotent. For a fresh local DB: `db:migrate:deploy`, `db:seed`, then `backfill-overhaul.ts --apply` and `import-cafes.ts --apply`.
+- `data/removals-2026-11-22.json` — reviewed post-overhaul removals (source of `scripts/apply-removals.ts`). Each entry carries the values the row must still have (cafe name, note content); any mismatch aborts the run before writing, and rows already gone are skipped. This is the only script that deletes rows, and only the ones listed.
+- All the data scripts print the target `host:port/db`, default to a dry run, write in one transaction with `--apply`, and are idempotent. Only `apply-removals.ts` deletes rows. For a fresh local DB: `db:migrate:deploy`, `db:seed`, then `backfill-overhaul.ts --apply` and `import-cafes.ts --apply`.
 
 ## Local Dev Workflow
 
@@ -151,6 +152,7 @@ npm run lint                         # Run ESLint
 npx tsx scripts/geocode-cafes.ts --only "<name>"  # Re-geocode changed addresses; rewrites lat/lng in seed.ts (--all for every cafe)
 npx tsx scripts/backfill-overhaul.ts # Hours/status/corrections from data/cafes-existing-updates.json + regions (dry run; --apply)
 npx tsx scripts/import-cafes.ts      # Upsert researched cafes from data/cafes-new.json by slug (dry run; --apply)
+npx tsx scripts/apply-removals.ts    # Apply the reviewed removals in data/removals-2026-11-22.json (dry run; --apply)
 npx tsx scripts/check-hours.ts       # Assertions for src/lib/hours.ts
 .\scripts\dev-reset.ps1              # (Windows) recover from prisma dev EBUSY
 ```
