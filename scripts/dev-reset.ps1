@@ -65,5 +65,9 @@ if (Test-Path $prismaDataDir) {
 Write-Host ""
 Write-Host "[3/3] Reset complete. Restart in three terminals:" -ForegroundColor Green
 Write-Host "  Terminal 1:  npx prisma dev"
-Write-Host "  Terminal 2:  npx prisma db push  ;  npm run db:seed"
+Write-Host "  Terminal 2:  npm run db:migrate:deploy  ;  npm run db:seed"
 Write-Host "  Terminal 3:  npm run dev"
+Write-Host ""
+Write-Host "  Schema changes go through migrations (prisma/migrations), not db push."
+Write-Host "  For the full cafe list on a fresh database, also run in Terminal 2:"
+Write-Host "    npx tsx scripts/backfill-overhaul.ts --apply  ;  npx tsx scripts/import-cafes.ts --apply"
