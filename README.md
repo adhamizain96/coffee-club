@@ -299,7 +299,7 @@ Defined as `as const` in `prisma/seed.ts`.
 
 `wifi`, `outlets`, `outdoor_seating`, `pet_friendly`, `parking`, `bar_seating`, `communal_tables`, `couch_seating`, `laptop_friendly`, `meeting_space`, `no_laptops`, `full_menu`, `pastries_only`, `vegan_options`, `whisper_quiet`, `moderate_noise`, `bustling`, `weekend_brunch`
 
-`early_bird` and `late_night` are retired; Early Bird / Late Night are derived from structured hours instead.
+The old `early_bird` and `late_night` tags have been deleted; Early Bird / Late Night are derived from structured hours instead.
 
 **Vibes** — filter logic is **OR** (cafe must have at least one selected):
 

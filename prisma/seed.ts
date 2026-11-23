@@ -90,7 +90,7 @@ const amenityTags = [
   "full_menu", "pastries_only", "vegan_options",
   // Noise Level
   "whisper_quiet", "moderate_noise", "bustling",
-  // Hours (early_bird / late_night retired in favor of hours-derived badges)
+  // Weekend brunch (Early Bird / Late Night come from structured hours, src/lib/hours.ts)
   "weekend_brunch",
 ] as const;
 const vibeTags = ["cozy", "study-friendly", "quiet", "lively", "bright", "date-spot"] as const;
