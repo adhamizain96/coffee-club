@@ -117,6 +117,75 @@ function MapController({
   return null;
 }
 
+/** Bottom padding that keeps fitted pins above the mobile sheet. */
+function sheetPaddingPx(snap: number | string | null | undefined, mapHeight: number): number {
+  if (typeof snap === "number") return mapHeight * snap;
+  if (typeof snap === "string" && snap.endsWith("px")) return parseFloat(snap) || 0;
+  return mapHeight * 0.15;
+}
+
+/** Padding for fitBounds: clear of the desktop list panel (right, 380px + gutter)
+ *  and the control bar, or of the mobile header and bottom sheet. */
+function fitPadding(mapDiv: HTMLElement, snap: number | string | null | undefined): google.maps.Padding {
+  const width = mapDiv.clientWidth;
+  const height = mapDiv.clientHeight;
+  const desktop = window.matchMedia("(min-width: 1024px)").matches;
+  const padding = desktop
+    ? { top: 72, right: 416, bottom: 72, left: 32 }
+    : { top: 72, right: 32, bottom: sheetPaddingPx(snap, height) + 32, left: 32 };
+  // Never let the padding swallow the map (small windows, sheet pulled high).
+  if (padding.left + padding.right > width - 80) padding.left = padding.right = 24;
+  if (padding.top + padding.bottom > height - 80) padding.top = padding.bottom = 24;
+  return padding;
+}
+
+/**
+ * Fits the map to the visible cafes whenever the filters, area, or search
+ * change (`fitKey`). One result zooms to it like a card selection; zero results
+ * leave the map where it is. Debounced so typing in search doesn't jitter.
+ */
+function FitToCafes({
+  cafes,
+  fitKey,
+  fitOnMount,
+  mobileSheetSnap,
+}: {
+  cafes: CafeListItem[];
+  fitKey: string;
+  fitOnMount: boolean;
+  mobileSheetSnap?: number | string | null;
+}) {
+  const map = useMap();
+  // The key the map was last fitted to. Starting at the current key skips the
+  // first render (keeps the default Chicago view) unless the page loaded with
+  // filters in the URL.
+  const fittedKey = useRef<string | null>(fitOnMount ? null : fitKey);
+  const latest = useRef({ cafes, mobileSheetSnap });
+  useEffect(() => {
+    latest.current = { cafes, mobileSheetSnap };
+  });
+
+  useEffect(() => {
+    if (!map || fittedKey.current === fitKey) return;
+    const timer = setTimeout(() => {
+      fittedKey.current = fitKey;
+      const { cafes: visible, mobileSheetSnap: snap } = latest.current;
+      if (visible.length === 0) return;
+      if (visible.length === 1) {
+        map.panTo({ lat: visible[0].latitude, lng: visible[0].longitude });
+        map.setZoom(15);
+        return;
+      }
+      const bounds = new google.maps.LatLngBounds();
+      for (const c of visible) bounds.extend({ lat: c.latitude, lng: c.longitude });
+      map.fitBounds(bounds, fitPadding(map.getDiv(), snap));
+    }, 250);
+    return () => clearTimeout(timer);
+  }, [map, fitKey]);
+
+  return null;
+}
+
 /** Custom coffee-coloured pin SVG */
 function CafePin({ highlighted, muted }: { highlighted?: boolean; muted?: boolean }) {
   // Non-open cafes keep their pin but in stone instead of amber.
@@ -352,6 +421,10 @@ export interface CafeMapProps {
   mobileSheetSnap?: number | string | null;
   /** Fired when "Near me" resolves, so the list can sort by distance. */
   onUserLocation?: (location: google.maps.LatLngLiteral) => void;
+  /** Changes whenever filters, area, or search change; the map then fits the visible cafes. */
+  fitKey: string;
+  /** Fit on first load too (the page opened with filters in the URL and no cafe selected). */
+  fitOnMount: boolean;
 }
 
 export default function CafeMapInner({
@@ -363,6 +436,8 @@ export default function CafeMapInner({
   onMapClick,
   mobileSheetSnap,
   onUserLocation,
+  fitKey,
+  fitOnMount,
 }: CafeMapProps) {
   const [infoCafe, setInfoCafe] = useState<CafeListItem | null>(null);
   const [userLocation, setUserLocation] = useState<google.maps.LatLngLiteral | null>(null);
@@ -454,6 +529,7 @@ export default function CafeMapInner({
           onClick={onMapClick}
         >
           <MapController target={effectivePanTarget} />
+          <FitToCafes cafes={cafes} fitKey={fitKey} fitOnMount={fitOnMount} mobileSheetSnap={mobileSheetSnap} />
           <MapTypeSync isSatellite={isSatellite} />
           <ClusteredMarkers
             cafes={cafes}
