@@ -51,7 +51,7 @@ const CAFE_IMAGES = [
   "https://www.darkmattercoffee.com/cdn/shop/files/Star_Lounge-Exterior-Drone_Photo-1x1.jpg?v=1739553051&width=2160", // Dark Matter
   "https://colectivo.com/cdn/shop/files/cafe-header-evanston.webp?v=1706127098", // Colectivo
   "https://bridgeportcoffee.net/wp-content/uploads/2022/04/FarmersWeKnow.jpg", // Bridgeport
-  "https://groundswellcoffeeroasters.com/cdn/shop/files/iStock-864181792_1400x.jpg?v=1645114069", // Groundswell
+  null, // Groundswell — no photo (the old one was a stock image)
   "https://www.dollopcoffee.com/wp-content/uploads/2025/12/Dollop-coffee-coffee-cup.png", // Dollop
   "https://images.squarespace-cdn.com/content/v1/5af1dd693917ee9e7860760b/1651855133030-YSMYVQ4WP6V12D5ABMSB/Sip+Latte+Art+BK.jpg", // Sip of Hope
   // 10–31: suburban additions (matched per cafe by position)
@@ -314,30 +314,19 @@ const cafes: CafeSeed[] = [
     ],
   },
   {
-    name: "Groundswell Coffee — Forest Park",
+    name: "Groundswell Coffee Roasters — Fine Arts Building",
     slug: "groundswell-coffee",
     description:
-      "A bright, airy suburban cafe in Forest Park with a focus on direct-trade coffee and community gathering.",
-    address: "7228 Madison St, Forest Park, IL 60130",
-    neighborhood: "Forest Park",
-    latitude: 41.8795223,
-    longitude: -87.80612769999999,
+      "Chicago micro-roaster Groundswell's third cafe, opened in July 2026 inside the historic Fine Arts Building on Michigan Avenue, serving its own roasts, breakfast burritos, sandwiches and Good Ambler pastries.",
+    address: "410 S Michigan Ave, Chicago, IL 60605",
+    neighborhood: "Loop",
+    latitude: 41.8764412,
+    longitude: -87.62469039999999,
     ownerReview:
-      "Groundswell is what every suburb deserves — a thoughtful, quality-focused cafe that also functions as a community hub. Their direct-trade sourcing is legit, the space is beautiful, and the staff remembers your name after two visits.",
-    amenities: ["wifi", "outlets", "parking", "outdoor_seating", "communal_tables", "laptop_friendly", "vegan_options", "moderate_noise"],
-    vibes: ["bright", "quiet", "study-friendly"],
-    notes: [
-      {
-        content:
-          "Best coffee in the western suburbs, hands down. The cold brew concentrate is addictive.",
-        authorName: "Ryan",
-      },
-      {
-        content:
-          "Love that they have real parking. The space is gorgeous — tons of natural light.",
-        authorName: null,
-      },
-    ],
+      "Groundswell brought coffee back to the Fine Arts Building, which had gone without a cafe since 2019. The house roasts are the reason to stop, and breakfast burritos, all-day sandwiches and Good Ambler pastries make it an easy Loop breakfast or lunch.",
+    amenities: ["full_menu"],
+    vibes: [],
+    notes: [],
   },
   {
     name: "Dollop Coffee — Streeterville",

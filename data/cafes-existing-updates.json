@@ -312,13 +312,66 @@
   },
   "groundswell-coffee": {
     "website": "https://www.groundswellcoffeeroasters.com",
-    "hours": null,
-    "hoursSourceUrl": null,
-    "hoursCheckedAt": null,
-    "status": "CLOSED",
-    "name": "Groundswell Coffee — Forest Park",
-    "neighborhood": "Forest Park",
-    "description": "A bright, airy suburban cafe in Forest Park with a focus on direct-trade coffee and community gathering."
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.fineartsbuilding.com/groundswell-coffee/",
+    "hoursCheckedAt": "2026-11-22",
+    "status": "OPEN",
+    "name": "Groundswell Coffee Roasters — Fine Arts Building",
+    "neighborhood": "Loop",
+    "description": "Chicago micro-roaster Groundswell's third cafe, opened in July 2026 inside the historic Fine Arts Building on Michigan Avenue, serving its own roasts, breakfast burritos, sandwiches and Good Ambler pastries.",
+    "address": "410 S Michigan Ave, Chicago, IL 60605",
+    "region": "CITY",
+    "imageUrl": null,
+    "ownerReview": "Groundswell brought coffee back to the Fine Arts Building, which had gone without a cafe since 2019. The house roasts are the reason to stop, and breakfast burritos, all-day sandwiches and Good Ambler pastries make it an easy Loop breakfast or lunch.",
+    "amenities": [
+      "full_menu"
+    ],
+    "vibes": [],
+    "latitude": 41.8764412,
+    "longitude": -87.62469039999999
   },
   "dollop-coffee-streeterville": {
     "website": "https://www.dollopcoffee.com/locations/streeter/",

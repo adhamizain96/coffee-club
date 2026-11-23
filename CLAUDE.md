@@ -114,7 +114,7 @@ Priorities, in order:
 ## Data files
 
 - `data/cafes-new.json` — researched cafes (source of `scripts/import-cafes.ts`): address, coordinates (one Geocoding call each), region, hours with source and checked date, sourced tags, and the 2026 open evidence. `docs/research/cafes-new.md` is the human-readable log, including exclusions and why.
-- `data/cafes-existing-updates.json` — hours, website, closures, and verified corrections for the original 32 cafes (source of `scripts/backfill-overhaul.ts`).
+- `data/cafes-existing-updates.json` — hours, website, closures, and verified corrections for the original 32 cafes and the approved Qamaria cafe (source of `scripts/backfill-overhaul.ts`). Besides hours it can set name, address, coordinates, neighborhood, region, description, `ownerReview`, `imageUrl`, and tags (`amenities` + `vibes` together replace the cafe's tag links). Keep it in step with `prisma/seed.ts`, which holds the same curated copy for local databases.
 - `data/removals-2026-11-22.json` — reviewed post-overhaul removals (source of `scripts/apply-removals.ts`). Each entry carries the values the row must still have (cafe name, note content); any mismatch aborts the run before writing, and rows already gone are skipped. This is the only script that deletes rows, and only the ones listed.
 - All the data scripts print the target `host:port/db`, default to a dry run, write in one transaction with `--apply`, and are idempotent. Only `apply-removals.ts` deletes rows. For a fresh local DB: `db:migrate:deploy`, `db:seed`, then `backfill-overhaul.ts --apply` and `import-cafes.ts --apply`.
 

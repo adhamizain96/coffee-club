@@ -17,5 +17,17 @@
       "content": "Automated deploy check. Hidden by the site owner.",
       "reason": "Created by the 2026-11-22 overhaul's production deploy check; not a community note."
     }
+  ],
+  "hideNotes": [
+    {
+      "id": "cmoknd81m003mvskflh5h3uu7",
+      "content": "Best coffee in the western suburbs, hands down. The cold brew concentrate is addictive.",
+      "reason": "Seed sample note written for a Groundswell cafe in Forest Park that never existed; the record now points at the real Loop cafe."
+    },
+    {
+      "id": "cmoknd81n003nvskfdvqtx1zz",
+      "content": "Love that they have real parking. The space is gorgeous — tons of natural light.",
+      "reason": "Seed sample note written for a Groundswell cafe in Forest Park that never existed; the record now points at the real Loop cafe."
+    }
   ]
 }
