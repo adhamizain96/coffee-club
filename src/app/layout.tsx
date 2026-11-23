@@ -61,7 +61,8 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <main className="flex-1">{children}</main>
         <IosInstallHint />
-        <Analytics />
+        {/* /_vercel/insights/script.js only exists on Vercel; elsewhere (next start) it 404s on every page. */}
+        {process.env.VERCEL && <Analytics />}
       </body>
     </html>
   );
