@@ -23,6 +23,12 @@
       "authorName": "Coffee Club deploy check",
       "content": "Automated deploy check. Hidden by the site owner.",
       "reason": "Created by the 2026-11-22 overhaul's production deploy check; not a community note."
+    },
+    {
+      "id": "cmoknyv1w000004jsdpnbb5ee",
+      "authorName": "deploy-bot",
+      "content": "Deployment smoke test note � feel free to delete.",
+      "reason": "Smoke-test note from the original April 2026 deploy, on Backlot Coffee; not a community note. Deletion requested by the site owner."
     }
   ],
   "hideNotes": [
