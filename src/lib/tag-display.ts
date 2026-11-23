@@ -94,13 +94,6 @@ export const TAG_CATEGORIES: ReadonlyArray<TagCategory> = [
 ];
 
 /**
- * Tags retired in favor of hours-derived badges (src/lib/hours.ts). Rows may
- * still exist in the database; they're hidden everywhere and never offered in
- * pickers or filters.
- */
-export const RETIRED_TAG_NAMES: ReadonlySet<string> = new Set(["early_bird", "late_night"]);
-
-/**
  * Look up the display label for a Tag.name. Falls back to the raw name when no
  * mapping exists, so callers always have something printable.
  */

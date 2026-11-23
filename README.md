@@ -74,7 +74,7 @@ npx tsx scripts/backfill-overhaul.ts --apply
 npx tsx scripts/import-cafes.ts --apply
 ```
 
-All three scripts are dry runs unless you pass `--apply`.
+All three scripts are dry runs unless you pass `--apply`. Production cleanups that delete rows go through `npx tsx scripts/apply-removals.ts` and the reviewed list in `data/removals-2026-11-22.json` (also a dry run by default).
 
 Upserts the curated cafes (by `slug`), tags, and sample notes. It never deletes notes, submissions, or cafes that aren't in `seed.ts` (e.g. cafes approved through the admin queue), so it's safe to re-run. Sample notes are only created the first time a cafe is created.
 
@@ -154,7 +154,7 @@ Production-specific notes are in [Deployment](#deployment-vercel).
 | `npm run db:migrate:deploy` | Apply pending Prisma migrations. |
 | `npm run db:migrate:status` | Show applied and pending migrations. |
 | `npm run db:seed` | Upsert the curated cafes (by slug), tags, and sample notes. Local only; never deletes notes, submissions, or admin-added cafes. |
-| `npx tsx scripts/geocode-cafes.ts` | Re-geocode every cafe address against the Google Maps Geocoding API and rewrite `latitude`/`longitude` in `prisma/seed.ts` in place. Prints a delta table; flags any cafe that moves >200 m. |
+| `npx tsx scripts/geocode-cafes.ts --only "<seed name>"` | Re-geocode the named cafes (names separated by `|`, or `--all` for every cafe) against the Google Maps Geocoding API and rewrite `latitude`/`longitude` in `prisma/seed.ts` in place. Prints a delta table; flags any cafe that moves >200 m. |
 | `.\scripts\dev-reset.ps1` *(Windows)* | Recover from `EBUSY` on `npx prisma dev`. See [Recovering from `EBUSY`](#recovering-from-ebusy-windows). |
 
 ## Project Structure
@@ -289,7 +289,7 @@ Use the seed for the initial set or large batched additions:
 - Append a corresponding image URL to `CAFE_IMAGES` at the **same index**. Cafes match images by array position.
 - Use a real photo of the actual cafe — official site, official Instagram, or a reputable publication. **No** stock photos, **no** Yelp/Google user uploads, **no** AI-generated images.
 - Use only real, currently operating cafes — verify before adding.
-- After adding or changing an address, run `npx tsx scripts/geocode-cafes.ts` to lock in accurate coordinates. Edits that don't touch an address don't need it.
+- After adding or changing an address, run `npx tsx scripts/geocode-cafes.ts --only "<seed name>"` to lock in accurate coordinates. Edits that don't touch an address don't need it.
 
 ### Tag reference
 
@@ -299,7 +299,7 @@ Defined as `as const` in `prisma/seed.ts`.
 
 `wifi`, `outlets`, `outdoor_seating`, `pet_friendly`, `parking`, `bar_seating`, `communal_tables`, `couch_seating`, `laptop_friendly`, `meeting_space`, `no_laptops`, `full_menu`, `pastries_only`, `vegan_options`, `whisper_quiet`, `moderate_noise`, `bustling`, `weekend_brunch`
 
-`early_bird` and `late_night` are retired; Early Bird / Late Night are derived from structured hours instead.
+The old `early_bird` and `late_night` tags have been deleted; Early Bird / Late Night are derived from structured hours instead.
 
 **Vibes** — filter logic is **OR** (cafe must have at least one selected):
 

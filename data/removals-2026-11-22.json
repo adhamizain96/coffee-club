@@ -1,0 +1,40 @@
+{
+  "note": "Post-overhaul cleanup, applied with scripts/apply-removals.ts. Each entry carries the values the script checks before touching the row; any mismatch aborts the whole run.",
+  "deleteCafes": [
+    {
+      "slug": "euforia-cafe",
+      "name": "Euforia Cafe",
+      "reason": "Failed re-verification on 2026-11-22: its own Instagram is the only official source that could be read directly (the Facebook posts were seen only through a mirror), and the independent listings are undated or from 2025 (docs/research/cafes-new.md)."
+    }
+  ],
+  "deleteTags": [
+    {
+      "name": "early_bird",
+      "reason": "Retired: Early Bird is derived from structured hours (src/lib/hours.ts)."
+    },
+    {
+      "name": "late_night",
+      "reason": "Retired: Late Night is derived from structured hours (src/lib/hours.ts)."
+    }
+  ],
+  "deleteNotes": [
+    {
+      "id": "cmwsdo4n1000008jy23jfo3pj",
+      "authorName": "Coffee Club deploy check",
+      "content": "Automated deploy check. Hidden by the site owner.",
+      "reason": "Created by the 2026-11-22 overhaul's production deploy check; not a community note."
+    }
+  ],
+  "hideNotes": [
+    {
+      "id": "cmoknd81m003mvskflh5h3uu7",
+      "content": "Best coffee in the western suburbs, hands down. The cold brew concentrate is addictive.",
+      "reason": "Seed sample note written for a Groundswell cafe in Forest Park that never existed; the record now points at the real Loop cafe."
+    },
+    {
+      "id": "cmoknd81n003nvskfdvqtx1zz",
+      "content": "Love that they have real parking. The space is gorgeous — tons of natural light.",
+      "reason": "Seed sample note written for a Groundswell cafe in Forest Park that never existed; the record now points at the real Loop cafe."
+    }
+  ]
+}

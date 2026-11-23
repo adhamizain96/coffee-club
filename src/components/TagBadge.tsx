@@ -23,7 +23,7 @@ const TAG_LABELS: Record<string, string> = {
   whisper_quiet: "Whisper Quiet",
   moderate_noise: "Moderate",
   bustling: "Bustling",
-  // Hours (early_bird / late_night retired in favor of hours-derived badges)
+  // Weekend brunch (Early Bird / Late Night come from structured hours, src/lib/hours.ts)
   weekend_brunch: "Weekend Brunch",
   // Vibes
   cozy: "Cozy",

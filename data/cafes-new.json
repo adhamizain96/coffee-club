@@ -10,7 +10,7 @@
     "website": "https://www.hansacoffee.com/",
     "instagram": "https://www.instagram.com/hansacoffee",
     "description": "Hansa's remaining cafe, inside Lake Bluff's Historic Village Market, pouring the Libertyville roaster's own coffee with espresso, scones and a seasonal wine program.",
-    "ownerReview": "Hansa has roasted for Lake County since 2010, and since the Libertyville flagship closed in September 2026, the Lake Bluff cafe is where to drink it. It sits in the Historic Village Market on Scranton Avenue and serves the house roast as espresso and brewed coffee, with scones and a seasonal wine list.",
+    "ownerReview": "Hansa has roasted for Lake County since 2010, and since the Libertyville flagship closed in September 2026, the Lake Bluff cafe is where to drink it. Find it in the Historic Village Market on Scranton Avenue, with the house roast, scones and a seasonal wine list.",
     "hours": {
       "mon": [
         {
@@ -191,7 +191,7 @@
     "website": "https://www.frunchroomcollective.com/",
     "instagram": "https://www.instagram.com/frunchroomcollective/",
     "description": "Sibling-owned coffee house and community space in Libertyville's Greentree Plaza that opened in February 2026, serving Tala coffee with couches, event rooms and a wellness studio.",
-    "ownerReview": "Frunchroom is built to be a third space, named for the Chicago word for a front room. It pours Tala coffee and specialty lattes, and the pastries come from local bakers, with vegan options in the mix. The room is furnished like a living room, with leather couches and armchairs, and has separate rooms you can book for groups.",
+    "ownerReview": "Frunchroom is built to be a third space, named for the Chicago word for a front room. The leather couches and armchairs make it feel like one, the coffee is Tala, and there are vegan pastries from local bakers and rooms you can book for groups.",
     "hours": {
       "mon": [
         {
@@ -328,7 +328,7 @@
     "website": "https://www.pelagocafe.com/",
     "instagram": "https://www.instagram.com/pelagocafe/",
     "description": "Family-run Northern Italian cafe in Highwood, opened in 2026 by two cousins, serving espresso and imported Italian coffee alongside croissants, panini, antipasti and wine.",
-    "ownerReview": "Two cousins opened Pelago in 2026, cooking from family recipes from Emilia-Romagna in a small counter-service room near the Highwood Metra station. Espresso and Italian coffee come with filled croissants, panini on mortadella or Italian sausage, and tiramisu or cannoli. Wine is on the menu too, and Italian coffee beans are for sale to take home.",
+    "ownerReview": "Two cousins opened Pelago in 2026, cooking family recipes from Emilia-Romagna near the Highwood Metra station. Pair an espresso with a filled croissant or a mortadella panino, finish with tiramisu, and take home a bag of Italian beans. Wine is on the menu too.",
     "hours": {
       "mon": [],
       "tue": [],
@@ -430,8 +430,8 @@
     "longitude": -87.7433085,
     "website": "https://www.towneandoak.com/",
     "instagram": "https://www.instagram.com/towneandoak",
-    "description": "Counter-service cafe in Winnetka's Hubbard Woods district, open since 2020, serving coffee, pastries, breakfast and lunch, with tea service, catering and private events.",
-    "ownerReview": "Towne & Oak has been a Hubbard Woods fixture since 2020. You order at the counter, and the menu is meant to stay casual and easy. Coffee and pastries start at 7 a.m., lunch comes on later, and there is a tea service if you want to stay a while.",
+    "description": "Cafe in Winnetka's Hubbard Woods district, open since 2020, serving coffee, pastries, breakfast and lunch, with grab-and-go, tea service, catering and private events.",
+    "ownerReview": "Towne & Oak has been a Hubbard Woods fixture since 2020, and the menu is meant to stay casual and easy. Coffee and pastries start at 7 a.m., lunch is available from 8, and there is a tea service if you want to stay a while.",
     "hours": {
       "mon": [
         {
@@ -501,12 +501,6 @@
         "what": "Own Instagram (bio: Cafe + Private Event Venue in Winnetka, Open Daily 7am) with posts dated Oct 29 to Nov 20, 2026"
       },
       {
-        "url": "https://www.spynergystudios.com/towne-oak-schedule",
-        "date": "2026-11-22",
-        "official": false,
-        "what": "Spynergy Studios page (shows a 'Black Friday 2026' offer) says its Winnetka studio is at 921 Green Bay Rd, entered via the Towne & Oak event space entrance"
-      },
-      {
         "url": "https://www.towneandoak.com/",
         "date": "2026-11-22",
         "official": true,
@@ -538,7 +532,7 @@
     "website": "https://www.brewpointcoffee.com",
     "instagram": "https://instagram.com/brewpointcoffee",
     "description": "Woman-owned Elmhurst roaster's cafe and roastery in a converted loading dock on York St, pairing house-roasted coffee with cocktails, charcuterie and pastries.",
-    "ownerReview": "Brewpoint Craft is where the Elmhurst roaster shows off its range: coffee roasted on site in a converted truck dock, then cocktails and charcuterie once the afternoon turns into evening. The Acrobat espresso blend is their best seller, and the open-late hours make it one of the few suburban cafes that works for both morning laptop sessions and after-work drinks.",
+    "ownerReview": "Brewpoint Craft shows off the Elmhurst roaster's range: coffee roasted on site in a converted truck dock, then cocktails and charcuterie as the day turns to evening. The Acrobat espresso blend is the best seller, and it stays open until 9 p.m. Thursday through Saturday.",
     "hours": {
       "mon": [
         {
@@ -634,7 +628,7 @@
     "website": "https://www.mapleleafcafe.com",
     "instagram": "https://instagram.com/mapleleafcoffeehousestc",
     "description": "Riverfront cafe in downtown St. Charles run by Roselle roaster Maple Leaf Coffee Roasters, serving its small-batch coffee with an organic breakfast and lunch menu.",
-    "ownerReview": "Maple Leaf took over the old Kava Diem spot on the Fox River and turned it into the cafe for their own small-batch roasts. The Toronto Blend and Hartford Espresso are the house staples, the kitchen does breakfast and lunch with plenty of vegan and gluten-free options, and the room is known for being quiet with a view of the river.",
+    "ownerReview": "Maple Leaf took over the old Kava Diem spot on the Fox River to pour its own small-batch roasts. The Toronto Blend and Hartford Espresso are the staples, the kitchen does breakfast and lunch with plenty of vegan and gluten-free options, and the room is quiet with a river view.",
     "hours": {
       "mon": [
         {
@@ -748,7 +742,7 @@
     "website": "https://limestonebatavia.com",
     "instagram": "https://instagram.com/limestonecoffeeandtea",
     "description": "Women-owned coffee, tea and bakery shop in downtown Batavia near the Fox River, known for signature lattes, loose-leaf teas and vegan baked goods.",
-    "ownerReview": "Limestone keeps winning Kane County reader polls, and the menu explains why: signature lattes like the Limestone (white mocha and almond) and The Fox (mocha and peanut butter), a deep loose-leaf tea list, and house-made muffins with vegan options every day. The space is bright and community-minded, with free wifi, a book swap and a reservable room for meetings or study groups.",
+    "ownerReview": "Limestone keeps winning Kane County reader polls, and the menu explains why: signature lattes like the Limestone (white mocha and almond), a deep loose-leaf tea list, and house-made muffins with vegan options daily. Free wifi, a book swap and a reservable room round it out.",
     "hours": {
       "mon": [
         {
@@ -946,7 +940,7 @@
     "website": "https://viatorcoffeeco.com",
     "instagram": "https://instagram.com/viatorcoffee",
     "description": "Specialty coffee shop and roaster inside Dream Hall food hall in downtown Elgin, also running a mobile espresso bar for events.",
-    "ownerReview": "Viator roasts its own beans and pours them in a cafe tucked inside Dream Hall, Elgin's downtown food incubator. The menu is built around tiers of coffee from approachable to rare, so it suits both casual drinkers and people chasing complex single origins, and the two-floor food hall means there is usually somewhere to sit.",
+    "ownerReview": "Viator roasts its own beans and pours them inside Dream Hall, Elgin's downtown food incubator. The menu is tiered from approachable to rare, so casual drinkers and single-origin chasers both find something, and the two-floor food hall means there's usually a seat.",
     "hours": {
       "mon": [
         {
@@ -1262,7 +1256,7 @@
     "website": "https://whirlwindcoffee.com/",
     "instagram": "https://instagram.com/whirlwindcoffee",
     "description": "Family-owned small-batch roastery and cafe in a 1920 former hardware store on Oak Park's Madison Street, donating 100% of net profits to charity.",
-    "ownerReview": "Whirlwind roasts in small batches right behind the counter, so you can watch the roaster while you order. Every dollar of net profit goes to charity, and the shop sits in a restored 1920 hardware building. Order the Espresso 513 or one of the rotating single origins, and take home a bag of beans.",
+    "ownerReview": "Whirlwind roasts in small batches right behind the counter, inside a restored 1920 hardware building, and every dollar of net profit goes to charity. Order the Espresso 513 or a rotating single origin, then take home a bag of beans.",
     "hours": {
       "mon": [
         {
@@ -1436,7 +1430,7 @@
     "website": "https://www.mulatakitchen.com/",
     "instagram": "https://instagram.com/mulatakitchen",
     "description": "Brazilian cafe at Oak Park Ave and Lake St known for handmade empanadas, pão de queijo, and custom coffee blends from Brazilian growing regions.",
-    "ownerReview": "Mulata is a Brazilian kitchen first and a coffee bar second, and that's the draw. The house blends come from Brazilian growing regions, and the handmade empanadas and gluten-free pão de queijo are what most people order with them. Feijoada carried over from the founder's earlier spot, Taste of Brasil, is there if you want a full meal.",
+    "ownerReview": "Mulata is a Brazilian kitchen first and a coffee bar second, and that's the draw. The house blends come from Brazilian growing regions, and handmade empanadas and gluten-free pão de queijo are the natural pairing. Feijoada is there if you want a full meal.",
     "hours": {
       "mon": [
         {
@@ -1520,7 +1514,7 @@
     "website": "https://pinkowlcafe.com",
     "instagram": "https://instagram.com/pinkowlcafe",
     "description": "Latino-owned coffee and brunch cafe on Berwyn's Ridgeland Avenue, known for its pink flower wall, cafe de olla, and chilaquiles.",
-    "ownerReview": "Pink Owl is the brightest room on Ridgeland Avenue, with chandeliers, gold mirrors, exposed brick and a pink flower wall. The kitchen does brunch most of the week, and chilaquiles and specialty waffles are what get mentioned most. Cafe de olla or a Mexican hot chocolate goes best with them.",
+    "ownerReview": "Pink Owl is the brightest room on Ridgeland Avenue, with chandeliers, gold mirrors, exposed brick and a pink flower wall. Brunch runs most of the week, chilaquiles and specialty waffles are the signatures, and cafe de olla or a Mexican hot chocolate goes best with them.",
     "hours": {
       "mon": [
         {
@@ -1705,7 +1699,7 @@
     "website": "https://cocoandmaple.com",
     "instagram": "https://instagram.com/cocoandmaplecafe",
     "description": "Coffee and cocktail cafe in downtown Mount Prospect from the family behind Arlington Heights' CoCo & Blu, with regular trivia, bingo and live music nights.",
-    "ownerReview": "CoCo & Maple brings the coffee-and-cocktails formula from the family behind CoCo & Blu to downtown Mount Prospect. The room has high ceilings and plenty of natural light, the caramel pecan latte gets the mentions, and the calendar stays full with trivia, bingo, and live music. It can get busy, so espresso orders may take a while at peak times.",
+    "ownerReview": "CoCo & Maple brings the coffee-and-cocktails formula from the family behind CoCo & Blu to downtown Mount Prospect. High ceilings, plenty of natural light, a caramel pecan latte worth ordering, and a calendar full of trivia, bingo and live music. Expect a wait at peak times.",
     "hours": {
       "mon": [
         {
@@ -1809,7 +1803,7 @@
     "website": "https://blackberry.cafe",
     "instagram": "https://instagram.com/bberrymarket",
     "description": "Fast-casual cafe, bakery and market in downtown Glen Ellyn, the original 2012 Blackberry Market location, pulling espresso on Intelligentsia coffee alongside breakfast and lunch.",
-    "ownerReview": "Blackberry Market started here in Glen Ellyn and has since grown into a small local group, and the shop still pairs a real coffee program with a full kitchen. Espresso drinks are pulled on Intelligentsia coffee, and the bakery, cafe menu, and grab-and-go market case make it as much a breakfast-and-lunch stop as a coffee one.",
+    "ownerReview": "Blackberry Market started here in Glen Ellyn in 2012 and still pairs a real coffee program with a full kitchen. Espresso is pulled on Intelligentsia, and the bakery, cafe menu and grab-and-go market case make it as much a breakfast-and-lunch stop as a coffee one.",
     "hours": {
       "mon": [
         {
@@ -1899,7 +1893,7 @@
     "website": "https://theguildwheaton.com",
     "instagram": "https://instagram.com/theguildwheaton",
     "description": "Cafe, bookstore, listening bar and event space above Subourbon in downtown Wheaton, pouring Onyx Coffee Lab coffee with six rotating origins each season.",
-    "ownerReview": "The Guild sets itself up as a modern third place, with a cafe, a bookstore, and a hi-fi listening bar sharing one upstairs space on Front Street. Coffee comes from Onyx Coffee Lab with origins that rotate each season, and breakfast includes lemon-ricotta pancakes. There is Wi-Fi and a communal table, though the cafe asks guests to be mindful of seating when it is busy.",
+    "ownerReview": "The Guild is built as a modern third place, with a cafe, bookstore and hi-fi listening bar sharing one upstairs room on Front Street. Coffee is Onyx, with origins rotating each season, and the lemon-ricotta pancakes are the breakfast move. Wi-Fi and a communal table, too.",
     "hours": {
       "mon": [],
       "tue": [
@@ -1984,7 +1978,7 @@
     "website": "https://myhalfofthesky.org",
     "instagram": "https://instagram.com/myhalfoftheskycoffee",
     "description": "Social-enterprise coffee house in downtown Wheaton whose proceeds support women affected by poverty and trafficking, with coworking and meeting rooms at The Kilns two doors east.",
-    "ownerReview": "My Half of the Sky runs as a business with a mission, and purchases go toward work and support for women affected by trafficking, poverty, and addiction. The coffee is organic, fair trade, and direct trade, and the bookable rooms and day passes at The Kilns next door make it easy to turn a coffee into a meeting. There is parking behind the building.",
+    "ownerReview": "My Half of the Sky is a business with a mission: purchases support women affected by trafficking, poverty and addiction. The coffee is organic, fair trade and direct trade, and bookable rooms at The Kilns next door make it easy to turn coffee into a meeting.",
     "hours": {
       "mon": [
         {
@@ -2076,7 +2070,7 @@
     "website": "https://refeel.cafe",
     "instagram": "https://instagram.com/refeel_cafe",
     "description": "Cozy Palatine cafe with an all-day menu, house-made syrups, specialty lattes like cardamom sticky bun and pistachio, plus matcha, fruit teas and in-house pastries.",
-    "ownerReview": "Refeel leans into drinks with personality, using house-made syrups for specialty lattes like the cardamom sticky bun and roasted pistachio, and its matcha and fruit-tea list runs just as long. The small room is decorated with anime, flowers, and artwork, board games and manga are on hand, and the pastries are made in-house.",
+    "ownerReview": "Refeel leans into drinks with personality, with house-made syrups behind specialty lattes like cardamom sticky bun and roasted pistachio, plus a long matcha and fruit-tea list. The small room is full of anime, flowers and artwork, with board games, manga and in-house pastries.",
     "hours": {
       "mon": [
         {
@@ -2166,7 +2160,7 @@
     "website": "https://www.electricdripcoffee.com",
     "instagram": "https://www.instagram.com/electricdripcoffee/",
     "description": "Retro, self-styled 'raddest' coffee shop on Oak Park Avenue in downtown Tinley Park, with signature lattes, afternoon tea service and regular community events.",
-    "ownerReview": "Electric Drip leans all the way into its look: dark, rich colors, retro stools and a Grim Reaper mural by a local artist. The drink list goes beyond the basics with a Toasted Coconut Affogato and a Banana Bread Latte, and the 'Ode to Pekoe' afternoon tea keeps a nod to the tea room that used to occupy the space. There is also a steady calendar of board game socials, yoga and private themed rooms for parties and meetings.",
+    "ownerReview": "Electric Drip leans all the way into its look: dark colors, retro stools and a Grim Reaper mural by a local artist. Try the Toasted Coconut Affogato or the Banana Bread Latte, and the 'Ode to Pekoe' afternoon tea nods to the tea room that used to be here.",
     "hours": {
       "mon": [
         {
@@ -2255,7 +2249,7 @@
     "website": "https://kremacoffeeroasters.com",
     "instagram": null,
     "description": "The original Krema, an independent coffee house in downtown Plainfield since late 2017 that sells its own Krema-branded coffee and has grown to Lockport, Tinley Park and North Aurora.",
-    "ownerReview": "Krema is the original shop of a small local coffee company that started in downtown Plainfield in 2017 and now sells its own single-origin bags and city blends. The shop pitches itself as a place to relax, meet friends, work on a school project or settle in with a book. There is also an event room for about 20 people for showers and meetings.",
+    "ownerReview": "Krema is the original shop of a local coffee company that started in downtown Plainfield in 2017 and sells its own single-origin bags and city blends. It's an easy place to meet friends, work on a project or settle in with a book, and there's an event room for 20.",
     "hours": {
       "mon": [
         {
@@ -2358,7 +2352,7 @@
     "website": "https://folklorecoffeeshop.com",
     "instagram": "https://www.instagram.com/folklorecoffee.lemont/",
     "description": "Cryptid-themed coffee shop in an 1800s general store building on Main Street in downtown Lemont, known for a new themed drink menu every month.",
-    "ownerReview": "Folklore turns a love of Bigfoot and jackalopes into a genuinely charming neighborhood shop inside an 1800s general store. The menu changes theme every month, the house beans are roasted by Whirlwind Coffee in Oak Park, and the pastries come from Honeyfluff Donuts in Countryside. It also hosts its own Bigfoot Day market, and State Rep. Nicole La Ha named it her August 2026 Business of the Month.",
+    "ownerReview": "Folklore turns a love of Bigfoot and jackalopes into a charming shop inside an 1800s general store. The menu changes theme every month, the house beans come from Whirlwind in Oak Park, and the pastries are from Honeyfluff Donuts. Watch for its Bigfoot Day market.",
     "hours": {
       "mon": [
         {
@@ -2467,7 +2461,7 @@
     "website": "https://www.thelivingroomlemont.life",
     "instagram": "https://www.instagram.com/thelivingroomlemont/",
     "description": "Small coffee and events space on Stephen Street in downtown Lemont serving espresso drinks, chai and matcha, with cold brew from Pollyanna Coffee Roasting.",
-    "ownerReview": "The Living Room keeps things simple: drip, lattes, mochas, cappuccinos, chai and matcha, plus a cold brew made with Pollyanna Coffee Roasting. Lemont Downtown points to its cozy atmosphere as the reason to make it your second coffee stop of the day. The space can also be rented for events.",
+    "ownerReview": "The Living Room keeps things simple: drip, lattes, mochas, cappuccinos, chai and matcha, plus a cold brew made with Pollyanna Coffee Roasting. It's a cozy second stop on a Lemont coffee walk, and the space can be rented for events.",
     "hours": {
       "mon": [],
       "tue": [
@@ -2564,7 +2558,7 @@
     "website": "https://grovecoffeeshop.com",
     "instagram": "https://www.instagram.com/grovecoffeeshop",
     "description": "People-first neighborhood coffee shop on 103rd Street in Oak Lawn, opened in 2025, known for its Oak Latte, a kids' play corner and a private meeting room.",
-    "ownerReview": "Grove is built around community: it skips gaming, alcohol and a drive-thru, and puts its profits toward staff development and a local teen mentoring program. The signature Oak Latte with cinnamon and maple is the order, with a cinnamon roll croissant or the breakfast bagel sandwich on the side, and lattes use a Brazilian single-origin from Modest. The room is designed to feel calm and uncluttered, with a private meeting room and a kids' corner with a mini wooden coffee station.",
+    "ownerReview": "Grove is built around community: no gaming, alcohol or drive-thru, and profits go to staff development and a teen mentoring program. The Oak Latte with cinnamon and maple is the order, lattes use a Brazilian single origin from Modest, and there's a kids' corner and a private meeting room.",
     "hours": {
       "mon": [
         {
@@ -2661,7 +2655,7 @@
     "website": "https://brewbucketcoffee.com",
     "instagram": "https://www.instagram.com/brewbucketcoffee/",
     "description": "Family-run cafe in downtown Oak Lawn, opened May 2026, serving lattes, matcha and fruit refreshers, many of them in actual buckets.",
-    "ownerReview": "Brew Bucket is a husband-and-wife shop where every drink on the menu started as one of the co-owner's home recipes. The Spanish Latte, made with espresso, steamed milk and sweetened condensed milk, is the early favorite, alongside mango and strawberry matcha and a long list of colorful refreshers. Many drinks come served in a bucket, which is exactly as photogenic as it sounds.",
+    "ownerReview": "Brew Bucket is a husband-and-wife shop where every drink started as one of the co-owner's home recipes. The Spanish Latte with sweetened condensed milk is the early favorite, the matcha and refresher lists run long, and many drinks arrive in an actual bucket.",
     "hours": {
       "mon": [
         {
@@ -2754,7 +2748,7 @@
     "website": "https://watershedcafe.com",
     "instagram": "https://www.instagram.com/watershed777/",
     "description": "Coffeehouse, Christian bookstore and local-artist gift shop under one roof on LaGrange Road in Mokena, serving organic handcrafted coffee and hosting frequent events.",
-    "ownerReview": "Watershed combines a coffee bar, a Christian bookstore and a gift shop stocked by local artists. The drinks are organic and seasonal, and the calendar stays busy with Bible studies, workshops, music and movie nights and seasonal maker markets. It describes itself as a cozy place to relax, read and catch up with friends.",
+    "ownerReview": "Watershed combines a coffee bar, a Christian bookstore and a gift shop stocked by local artists. The drinks are organic and seasonal, and the calendar stays busy with Bible studies, workshops, music and movie nights and maker markets. A cozy spot to read and catch up with friends.",
     "hours": null,
     "hoursSourceUrl": null,
     "hoursCheckedAt": null,
@@ -2809,7 +2803,7 @@
     "website": "https://www.thegroundedcoffeebars.com",
     "instagram": "https://www.instagram.com/thegroundedcoffeebar/",
     "description": "Local coffee bar in New Lenox pouring Intelligentsia coffee, with an attached indie bookshop, Grounded Books, and a regular lineup of family movie nights and book clubs.",
-    "ownerReview": "Grounded's New Lenox shop doubles as a third place: the coffee bar expanded next door into Grounded Books, an indie bookshop with comfortable nooks, extra seating and an event space. Drinks are built on Intelligentsia coffee and Kilogram tea, with a rotating monthly specials menu like the Cinnamon Bun Cold Brew. Book clubs, craft nights and family movie nights keep the room busy.",
+    "ownerReview": "Grounded's New Lenox shop doubles as a third place, having expanded next door into Grounded Books, an indie bookshop with comfortable nooks and an event space. Drinks are built on Intelligentsia coffee and Kilogram tea, with monthly specials like the Cinnamon Bun Cold Brew.",
     "hours": {
       "mon": [
         {
@@ -2917,7 +2911,7 @@
     "website": "https://beyondborderscafe.com",
     "instagram": "https://www.instagram.com/beyondborderscafe/",
     "description": "Neighborhood cafe in downtown Flossmoor, founded in 2025, serving globally sourced coffee from Ethiopia, Costa Rica and Brazil, with seasonal drinks and occasional live music.",
-    "ownerReview": "Beyond Borders is built around a 'world of coffee' idea, with beans from Ethiopia, Costa Rica and Brazil and a menu of seasonal favorites, like its Easter drink specials. Founded in 2025 by Jen and Chris Zarozny, it describes its downtown Flossmoor space as warm and eclectic, a spot to linger over a quiet moment or catch a local artist. Live jazz nights have shown up on its feed.",
+    "ownerReview": "Beyond Borders is built around a world-of-coffee idea, with beans from Ethiopia, Costa Rica and Brazil and a rotating list of seasonal drinks. Jen and Chris Zarozny opened it in downtown Flossmoor in 2025, and live jazz nights turn up on the calendar.",
     "hours": null,
     "hoursSourceUrl": null,
     "hoursCheckedAt": null,
@@ -3856,7 +3850,7 @@
     "website": "https://www.soulgoodcoffee.com",
     "instagram": "https://instagram.com/soulgoodcoffee",
     "description": "Latina-owned neighborhood coffee shop on Main Street in Skokie that grew out of a mobile coffee business and is known for its signature Soul Good Latte.",
-    "ownerReview": "Soul Good started as a mobile coffee operation before settling into a Main Street storefront, and it still runs like a community hub, hosting local meetups and the village's winter market. The Soul Good Latte is the signature order, and the matcha drinks get regular praise.",
+    "ownerReview": "Soul Good started as a mobile coffee operation before settling into a Main Street storefront, and it still runs like a community hub, hosting local meetups and the village's winter market. The Soul Good Latte is the signature order, and the matcha drinks are worth a look.",
     "hours": {
       "mon": [
         {
@@ -3940,7 +3934,7 @@
     "website": "https://www.thatlittlefrenchguy.com",
     "instagram": "https://instagram.com/thatlittlefrenchguy",
     "description": "French bakery and cafe in downtown Highland Park serving La Colombe coffee, French pastries, and breakfast and lunch.",
-    "ownerReview": "That Little French Guy is a pastry stop first, with a case of eclairs, macarons and other French classics, and La Colombe coffee to go with them. The kitchen also turns out breakfast and lunch, and the croque madame is the dish reviewers mention most.",
+    "ownerReview": "That Little French Guy is a pastry stop first, with a case of eclairs, macarons and other French classics and La Colombe coffee to go with them. The kitchen also does breakfast and lunch, and the croque madame is the dish to order.",
     "hours": {
       "mon": [
         {
@@ -4121,7 +4115,7 @@
     "website": "https://www.gostcoffee.com",
     "instagram": "https://instagram.com/gostcoffeeroasters",
     "description": "Small-batch roaster and coffee bar on Schoolhouse Road in New Lenox, where the owner roasts single-origin beans in-house and sells bags at the shop.",
-    "ownerReview": "Gost is a true roaster-cafe: the owner roasts small batches of single-origin coffee on site and sells the bags right at the counter. It has been a New Lenox fixture since 2018, and evening hours on Thursdays and Fridays make it one of the later-open specialty options in the area.",
+    "ownerReview": "Gost is a true roaster-cafe: the owner roasts small batches of single-origin coffee on site and sells the bags right at the counter. It has been a New Lenox fixture since 2018 and stays open until 8 p.m. on Thursdays and Fridays.",
     "hours": {
       "mon": [
         {
@@ -4284,7 +4278,7 @@
     "website": "https://socialbutterflycoffee.com",
     "instagram": "https://instagram.com/socialbutterflycoffee",
     "description": "Women-owned coffee shop in downtown Joliet's 3TEN Building, known for cold brews with cold foam, homemade organic syrups and sourdough sandwiches.",
-    "ownerReview": "Social Butterfly pairs a big drink menu with real food. The cold brews and cold foam combinations are the most popular orders, the syrups are made in-house with organic cane sugar, and sourdough sandwiches like the Golden Hour hold their own. The room seats around 75, with sofas, tables and chairs for lounging or working, and weekends are the busiest days.",
+    "ownerReview": "Social Butterfly pairs a big drink menu with real food. Cold brew with cold foam is the most popular order, the syrups are made in-house with organic cane sugar, and sourdough sandwiches like the Golden Hour hold their own. Sofas and about 75 seats make it easy to settle in.",
     "hours": {
       "mon": [
         {
@@ -4379,7 +4373,7 @@
     "website": "https://www.dimescoffee.com",
     "instagram": "https://instagram.com/dimescoffee",
     "description": "Woman-owned neighborhood coffee shop in Frankfort's Patriot Center on Laraway Road, with a private event Lounge next door that opened in July 2026.",
-    "ownerReview": "Dimes calls itself a friendly neighborhood coffee shop and backs that up with locally sourced products and a steady calendar of trivia nights and pop-up vendor markets. In July 2026 it opened the Lounge next door, a private space for customizable events, and it also runs a mobile coffee cart.",
+    "ownerReview": "Dimes is a friendly neighborhood coffee shop with locally sourced products and a steady calendar of trivia nights and pop-up vendor markets. In July 2026 it opened the Lounge next door, a private space for events, and it also runs a mobile coffee cart.",
     "hours": {
       "mon": [
         {
@@ -4475,54 +4469,11 @@
     "longitude": -87.8576168,
     "website": "https://dripandculture.com/",
     "instagram": "https://instagram.com/dripandculture",
-    "description": "Black- and Brown-owned, socially minded coffee shop inside Supermercado Gonzalez on Grand Ave in Waukegan, serving espresso, cold brew, matcha and house-baked kolaches.",
-    "ownerReview": "Drip & Culture is a socially minded coffee bar tucked inside a Waukegan grocery store, and it runs like a community hub as much as a cafe. The menu covers espresso, cold brew, matcha and single-origin coffee, and the kolaches (ham and gouda, carnitas with jalapeno) have become a staple. It also hosts flu shot clinics and full moon hikes, and as of October 2026 sells a curated shelf of books through Commonplace Books.",
-    "hours": {
-      "mon": [
-        {
-          "open": "07:00",
-          "close": "18:00"
-        }
-      ],
-      "tue": [
-        {
-          "open": "07:00",
-          "close": "18:00"
-        }
-      ],
-      "wed": [
-        {
-          "open": "07:00",
-          "close": "18:00"
-        }
-      ],
-      "thu": [
-        {
-          "open": "07:00",
-          "close": "18:00"
-        }
-      ],
-      "fri": [
-        {
-          "open": "07:00",
-          "close": "18:00"
-        }
-      ],
-      "sat": [
-        {
-          "open": "07:00",
-          "close": "17:00"
-        }
-      ],
-      "sun": [
-        {
-          "open": "07:00",
-          "close": "17:00"
-        }
-      ]
-    },
-    "hoursSourceUrl": "https://www.findglocal.com/US/Waukegan/101779881740039/Drip-%26-Culture---Socially-Minded-Coffee",
-    "hoursCheckedAt": "2026-11-22",
+    "description": "Black- and Brown-owned, socially minded coffee shop inside La Gonzalez Market on Grand Ave in Waukegan, serving espresso, cold brew, matcha and single-origin coffee.",
+    "ownerReview": "Drip & Culture is a socially minded coffee bar tucked inside La Gonzalez Market in Waukegan, and it runs like a community hub as much as a cafe. Espresso, cold brew, matcha and single-origin coffee cover the menu, and since October 2026 there's a shelf of books from Commonplace Books.",
+    "hours": null,
+    "hoursSourceUrl": null,
+    "hoursCheckedAt": null,
     "amenities": [],
     "vibes": [],
     "tagSources": [],
@@ -4534,10 +4485,16 @@
         "what": "Own Instagram (@dripandculture, bio: inside La Gonzalez Market) with posts dated Nov 20, Nov 13, Oct 28, Oct 23 and Oct 8, 2026"
       },
       {
-        "url": "https://www.findglocal.com/US/Waukegan/101779881740039/Drip-%26-Culture---Socially-Minded-Coffee",
         "date": "2026-10-08",
         "official": true,
-        "what": "Mirror of the cafe's own Facebook page (facebook.com/DripandCulture): 10/08/2026 post announcing book sales at the shop via Commonplace Books; further posts 11/21/2026 (vaccination clinic), 10/28/2026 (fall menu), 9/26/2026 (kolaches)"
+        "url": "https://www.instagram.com/dripandculture/p/DeP4Oc1GxeC/",
+        "what": "Own Instagram post (Oct 8, 2026) announcing book sales at the shop through Commonplace Books"
+      },
+      {
+        "date": "2026-10-27",
+        "official": false,
+        "url": "https://www.instagram.com/4waukeganpod/reel/DfAKNRmRCXj/",
+        "what": "#4Waukegan Podcast feature on Drip & Culture in Waukegan (Oct 27, 2026)"
       }
     ],
     "sources": [
@@ -4560,7 +4517,7 @@
     "website": "https://www.buildcoffeeandbooks.com/",
     "instagram": "https://instagram.com/buildcoffeeandbooks",
     "description": "Cafe, bookstore and community hub inside Woodlawn's Experimental Station, steps from the Obama Presidential Center, serving Counter Culture coffee, sandwiches and salads.",
-    "ownerReview": "Build is a small Woodlawn cafe and bookstore that doubles as a gathering place for the neighborhood. Coffee comes from Counter Culture, the sandwiches use Publican Quality Bread, and there are vegetarian and vegan options. The shelves lean toward local and independently published books and zines, and local authors regularly host events there.",
+    "ownerReview": "Build is a small Woodlawn cafe and bookstore that doubles as a neighborhood gathering place. Coffee comes from Counter Culture, sandwiches are on Publican Quality Bread with vegetarian and vegan options, and the shelves lean toward local and independent books and zines.",
     "hours": {
       "mon": [],
       "tue": [
@@ -4650,8 +4607,8 @@
     "longitude": -87.78224759999999,
     "website": "https://astraroasters.com/",
     "instagram": "https://instagram.com/astracoffeeroasters",
-    "description": "Woman-owned coffeehouse and roastery in Highland Park's Ravinia District, roasting in-house with beans from Cafe Femenino producers in northern Peru and serving Bennison's pastries.",
-    "ownerReview": "Astra roasts its own coffee in the Ravinia District and has been on Roger Williams Avenue since April 2022. The beans come from Cafe Femenino, a group of women producers in northern Peru, and pastries come from Bennison's in Evanston. The menu runs from espresso drinks and filter coffee to matcha and a pup cup for dogs.",
+    "description": "Small-batch coffeehouse and roastery on Roger Williams Avenue in Highland Park's Ravinia District, roasting in-house and open mornings every day.",
+    "ownerReview": "Astra roasts its own coffee right in the Ravinia District, so the beans in the cup are the beans on the shelf. Sign up in the shop for its bean subscription, and plan on mornings: it's open 7 a.m. to 2 p.m. every day.",
     "hours": {
       "mon": [
         {
@@ -4720,6 +4677,12 @@
         "date": "2026-10-22",
         "official": false,
         "what": "Oct 22, 2026 article on the Roger Williams Ave rebuild lists Astra Coffee Roasters at 477 under 'What's open on the avenue', citing the City's Ravinia District directory"
+      },
+      {
+        "date": "2026-07-17",
+        "official": true,
+        "url": "https://www.instagram.com/astracoffeeroasters/p/Da53qSDxbFZ/",
+        "what": "Own Instagram post (July 17, 2026) announcing a bean subscription with in-store signup"
       }
     ],
     "sources": [
@@ -4728,97 +4691,6 @@
       "https://www.enjoyhighlandpark.com/dining-1/astra-coffee-roasters",
       "https://toast.app/r/astra-coffee-roasters-477-roger-williams-avenue/order",
       "https://therafigroup.com/blog/roger-williams-avenue-is-being-rebuilt-for-the-months-ravinia-goes-quiet"
-    ],
-    "researchAgent": "G"
-  },
-  {
-    "name": "Euforia Cafe",
-    "slug": "euforia-cafe",
-    "address": "2202 Grand Ave, Waukegan, IL 60085",
-    "neighborhood": "Waukegan",
-    "region": "NORTH",
-    "latitude": 42.3705692,
-    "longitude": -87.8598834,
-    "website": "https://www.euforiacafe.com/en/",
-    "instagram": "https://instagram.com/euforiacafe_",
-    "description": "Women-owned neighborhood cafe on Grand Ave in Waukegan serving specialty coffee, Hispanic-inspired breakfast like chilaquiles, smoothie bowls, juices and seasonal themed drinks.",
-    "ownerReview": "Euforia is a women-owned Waukegan cafe rooted in one family's move from Mexico, and the menu reflects it. Alongside espresso and lattes there are chilaquiles, waffles, avocado toast, smoothie bowls and cold-pressed juices. It leans hard into seasonal menus, most recently a Grinch-themed holiday lineup with a gingerbread latte.",
-    "hours": {
-      "mon": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ],
-      "tue": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ],
-      "wed": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ],
-      "thu": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ],
-      "fri": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ],
-      "sat": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ],
-      "sun": [
-        {
-          "open": "07:00",
-          "close": "15:00"
-        }
-      ]
-    },
-    "hoursSourceUrl": "https://www.euforiacafe.com/en/",
-    "hoursCheckedAt": "2026-11-22",
-    "amenities": [
-      "full_menu"
-    ],
-    "vibes": [],
-    "tagSources": [
-      {
-        "tag": "full_menu",
-        "source": "https://www.visitlakecounty.org/EuforiaCafe"
-      }
-    ],
-    "openEvidence": [
-      {
-        "url": "https://www.instagram.com/euforiacafe_/",
-        "date": "2026-11-20",
-        "official": true,
-        "what": "Own Instagram posts dated Nov 15, 16, 18 and 20, 2026 and Oct 29/31, 2026"
-      },
-      {
-        "url": "https://www.findglocal.com/US/Waukegan/122105306834002438/Euforia-Caf%C3%A9",
-        "date": "2026-11-15",
-        "official": true,
-        "what": "Mirror of the cafe's own Facebook page (facebook.com/euforiacafeus): 11/15/2026 post announcing the Grinch holiday lineup available that day; 11/20/2026 holiday hours post; 10/31/2026 Halloween post"
-      }
-    ],
-    "sources": [
-      "https://www.euforiacafe.com/en/",
-      "https://www.visitlakecounty.org/EuforiaCafe",
-      "https://www.instagram.com/euforiacafe_/",
-      "https://www.findglocal.com/US/Waukegan/122105306834002438/Euforia-Caf%C3%A9",
-      "https://www.facebook.com/euforiacafeus/"
     ],
     "researchAgent": "G"
   },
@@ -4832,8 +4704,8 @@
     "longitude": -87.71567209999999,
     "website": "https://curtscafe.org/",
     "instagram": "https://instagram.com/curtscafe",
-    "description": "Nonprofit cafe on Evanston's Central Street that trains young adults in at-risk situations, serving coffee, espresso, smoothies, all-day breakfast, sandwiches and baked goods.",
-    "ownerReview": "Curt's is a nonprofit cafe where every order funds work and life skills training for young adults, and it has been doing it for 14 years. The menu goes well past coffee, with all-day breakfast like the breakfast burrito and avocado toast, plus wraps, bowls and house-made scones and cookies. It is a good pick when the goal is a real meal on Central Street with a cause behind it.",
+    "description": "Nonprofit cafe on Evanston's Central Street that trains young adults in at-risk situations, serving coffee, espresso, all-day breakfast, wraps, bowls and house-made scones.",
+    "ownerReview": "Curt's is a nonprofit cafe where every order funds work and life skills training for young adults, and it has done that since 2012, now in Evanston and Highland Park. The breakfast burrito, chipotle chicken wrap and smoked salmon bowl make it a real meal stop with a cause.",
     "hours": {
       "mon": [],
       "tue": [
@@ -4894,10 +4766,16 @@
         "what": "Own website news posts dated July 6, 2026 (annual benefit), June 12, 2026 (2026 Evanston Wine Walk nonprofit partner) and June 1, 2026"
       },
       {
-        "url": "https://www.findglocal.com/US/Evanston/292545890824749/Curt's-Cafe",
-        "date": "2026-11-20",
-        "official": true,
-        "what": "Mirror of the cafe's own Facebook page: 11/20/2026 posts on a program graduate and the Holiday High Tea"
+        "date": "2026-05-20",
+        "official": false,
+        "url": "https://happeningnext.com/event/out-with-curts-eid1ef0kx1jwn6r",
+        "what": "Out North event held at Curt's Cafe, 2922 Central St, on May 20, 2026"
+      },
+      {
+        "date": "2026-11-05",
+        "official": false,
+        "url": "https://www.instagram.com/evanstonchamber/reel/DfXRAITRFpv/",
+        "what": "Evanston Chamber post (Nov 5, 2026) on breakfasts hosted at Curt's"
       }
     ],
     "sources": [

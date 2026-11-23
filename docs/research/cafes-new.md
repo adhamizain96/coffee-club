@@ -6,15 +6,19 @@ Generated 2026-11-22 from `data/cafes-new.json` (the import source for `scripts/
 
 **Evidence-quality notes (read before trusting an entry):**
 
-- Weakest passes: **Astra Coffee Roasters** (own Instagram posts stop in July 2026; second source is an Oct 2026 real-estate blog listing it as open) and **Towne & Oak** (own posts dated Nov 2026; the only independent 2026 page is a neighboring studio that names its event space).
-- **Drip & Culture**, **Euforia Cafe**, and **Curt's Cafe**: their own Facebook posts were read through findglocal.com mirrors of the official pages because facebook.com would not load. Counted as official.
+- **Re-verified 2026-11-22** (the five weakest passes, sources read directly; mirrors of social pages no longer count):
+  - **Astra Coffee Roasters:** passes, weakly (own Instagram post dated July 17, 2026; Oct 22, 2026 real-estate blog listing it open). Unconfirmed claims (ownership, Cafe Femenino sourcing, pastry supplier, opening date, matcha) were removed from its copy.
+  - **Towne & Oak:** passes on two distinct official sources (own Instagram posts dated Nov 1-22, 2026, and its own homepage's Thanksgiving 2026 ordering banner). The Spynergy Studios page no longer counts: it only names the entrance.
+  - **Drip & Culture:** passes (own Instagram post dated Oct 8, 2026; #4Waukegan Podcast feature dated Oct 27, 2026). Its hours came only from a findglocal mirror, so they are now not listed; unconfirmed menu and event claims were removed.
+  - **Curt's Cafe:** passes (own website posts dated June-July 2026, own Instagram through Nov 20, 2026; Out North event at the cafe May 20, 2026; Evanston Chamber post Nov 5, 2026).
+  - **Euforia Cafe:** dropped. Its own Instagram is the only official source read directly (the Facebook posts were seen only through a mirror), and its independent listings are undated or from 2025.
 - **Grounded Coffee Bar**, **Pink Owl Cafe**, **Metropolis — Edgewater**, **Ipsento 606**, and **Gost Coffee Roasters** pass on two distinct official sources (allowed by the bar) with no independent 2026 source.
 - Zip codes for **Allez Café**, **Four Letter Word Coffee**, and **Side Practice Coffee** come from the geocoder, because no source page showed one.
 - Hours from third-party listings rather than official pages are named in each entry's hours source.
 
-**Included:** 55 cafes. North Shore & North 13, West Suburbs 13, Northwest Suburbs 5, South & Southwest 13, Chicago 11.
+**Included:** 54 cafes. North Shore & North 12, West Suburbs 13, Northwest Suburbs 5, South & Southwest 13, Chicago 11.
 
-## North Shore & North (13)
+## North Shore & North (12)
 
 ### Astra Coffee Roasters
 
@@ -44,7 +48,8 @@ Generated 2026-11-22 from `data/cafes-new.json` (the import source for `scripts/
 - **Open evidence (2026):**
   - 2026-11-20 (official) https://www.instagram.com/curtscafe/ — Own Instagram posts dated Nov 5 through Nov 20, 2026
   - 2026-07-06 (official) https://curtscafe.org/ — Own website news posts dated July 6, 2026 (annual benefit), June 12, 2026 (2026 Evanston Wine Walk nonprofit partner) and June 1, 2026
-  - 2026-11-20 (official) https://www.findglocal.com/US/Evanston/292545890824749/Curt's-Cafe — Mirror of the cafe's own Facebook page: 11/20/2026 posts on a program graduate and the Holiday High Tea
+  - 2026-05-20 (independent) https://happeningnext.com/event/out-with-curts-eid1ef0kx1jwn6r — Out North event held at the cafe, 2922 Central St, on May 20, 2026
+  - 2026-11-05 (independent) https://www.instagram.com/evanstonchamber/reel/DfXRAITRFpv/ — Evanston Chamber post on breakfasts hosted at Curt's (Nov 5, 2026)
 - **Tags:** full_menu
 
 ### Di Marko All Day Coffee Lounge
@@ -61,21 +66,12 @@ Generated 2026-11-22 from `data/cafes-new.json` (the import source for `scripts/
 
 - **Address:** 2015 Grand Ave, Waukegan, IL 60085 (Waukegan) · slug `drip-culture`
 - **Website:** https://dripandculture.com/
-- **Hours:** listed, checked 2026-11-22, source https://www.findglocal.com/US/Waukegan/101779881740039/Drip-%26-Culture---Socially-Minded-Coffee
+- **Hours:** not listed (the only source was a findglocal mirror; removed 2026-11-22)
 - **Open evidence (2026):**
   - 2026-11-20 (official) https://www.instagram.com/dripandculture/ — Own Instagram (@dripandculture, bio: inside La Gonzalez Market) with posts dated Nov 20, Nov 13, Oct 28, Oct 23 and Oct 8, 2026
-  - 2026-10-08 (official) https://www.findglocal.com/US/Waukegan/101779881740039/Drip-%26-Culture---Socially-Minded-Coffee — Mirror of the cafe's own Facebook page (facebook.com/DripandCulture): 10/08/2026 post announcing book sales at the shop via Commonplace Books; further posts 11/
+  - 2026-10-08 (official) https://www.instagram.com/dripandculture/p/DeP4Oc1GxeC/ — Own Instagram post announcing book sales at the shop through Commonplace Books
+  - 2026-10-27 (independent) https://www.instagram.com/4waukeganpod/reel/DfAKNRmRCXj/ — #4Waukegan Podcast feature on Drip & Culture in Waukegan
 - **Tags:** none sourced
-
-### Euforia Cafe
-
-- **Address:** 2202 Grand Ave, Waukegan, IL 60085 (Waukegan) · slug `euforia-cafe`
-- **Website:** https://www.euforiacafe.com/en/
-- **Hours:** listed, checked 2026-11-22, source https://www.euforiacafe.com/en/
-- **Open evidence (2026):**
-  - 2026-11-20 (official) https://www.instagram.com/euforiacafe_/ — Own Instagram posts dated Nov 15, 16, 18 and 20, 2026 and Oct 29/31, 2026
-  - 2026-11-15 (official) https://www.findglocal.com/US/Waukegan/122105306834002438/Euforia-Caf%C3%A9 — Mirror of the cafe's own Facebook page (facebook.com/euforiacafeus): 11/15/2026 post announcing the Grinch holiday lineup available that day; 11/20/2026 holiday
-- **Tags:** full_menu
 
 ### Frunchroom Collective
 
@@ -150,7 +146,6 @@ Generated 2026-11-22 from `data/cafes-new.json` (the import source for `scripts/
 - **Hours:** listed, checked 2026-11-22, source https://www.towneandoak.com/
 - **Open evidence (2026):**
   - 2026-11-20 (official) https://www.instagram.com/towneandoak/ — Own Instagram (bio: Cafe + Private Event Venue in Winnetka, Open Daily 7am) with posts dated Oct 29 to Nov 20, 2026
-  - 2026-11-22 (independent) https://www.spynergystudios.com/towne-oak-schedule — Spynergy Studios page (shows a 'Black Friday 2026' offer) says its Winnetka studio is at 921 Green Bay Rd, entered via the Towne & Oak event space entrance
   - 2026-11-22 (official) https://www.towneandoak.com/ — Official homepage, (c) 2026, with a Thanksgiving catering banner: order by Sunday Nov 22, pick up Wednesday Nov 25.
   - 2026-11-01 (official) https://www.towneandoak.com/s/TO_Menu_85x14_Nov_2026_PRINT_v12.pdf — Official cafe menu PDF labeled Nov 2026 (date taken from the filename).
 - **Tags:** full_menu, meeting_space
@@ -600,6 +595,7 @@ Generated 2026-11-22 from `data/cafes-new.json` (the import source for `scripts/
 
 ### Failed the bar after audit
 
+- **Euforia Cafe (2202 Grand Ave, Waukegan)** — dropped on re-verification 2026-11-22 after being imported: its own Instagram is the only official source read directly, and no other dated 2026 source was found. Deleted from production (`data/removals-2026-11-22.json`).
 - **Dayglow Coffee** — re-verify FAIL: dayglow.coffee shows the Kimball address but only a (c) 2026 footer date. Offici
 - **Intelligentsia Coffee - Broadway Coffeebar** — re-verify FAIL: The only 2026 date on the official location page is the (c) 2026 footer. No loca
 - **Big Shoulders Coffee - West Town** — re-verify FAIL: Official locations page lists 1105 W. Chicago Ave with hours, but its only date 

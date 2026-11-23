@@ -10,7 +10,6 @@ import PassportToggle from "@/components/PassportToggle";
 import { formatVisited, isNewCafe, normalizeStatus, STATUS_LABELS } from "@/lib/freshness";
 import CafeHours from "@/components/CafeHours";
 import { parseWeeklyHours } from "@/lib/hours";
-import { RETIRED_TAG_NAMES } from "@/lib/tag-display";
 import { REGION_LABELS } from "@/lib/regions";
 import { HoursBadges } from "@/components/HoursStatus";
 import CafeDetailNotes from "./CafeDetailNotes";
@@ -62,7 +61,7 @@ export default async function CafeDetailPage({
 
   const status = normalizeStatus(cafe.status);
 
-  const tags: TagDTO[] = cafe.tags.filter((ct) => !RETIRED_TAG_NAMES.has(ct.tag.name)).map((ct) => ({
+  const tags: TagDTO[] = cafe.tags.map((ct) => ({
     id: ct.tag.id,
     name: ct.tag.name,
     type: ct.tag.type,

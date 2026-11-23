@@ -46,38 +46,51 @@
       ]
     },
     "hoursSourceUrl": "https://metriccoffee.com/pages/cafe",
-    "hoursCheckedAt": "2026-11-22"
+    "hoursCheckedAt": "2026-11-22",
+    "neighborhood": "West Town",
+    "description": "Metric's walk-up cafe in West Town's Kinzie Corridor, a 400-square-foot counter beside the roaster's training center, pouring rotating single-origins as espresso and pour-over.",
+    "ownerReview": "Metric is the real deal for coffee nerds. The Fulton Street cafe is a small walk-up counter, not a place to camp out, but the rotating single-origins are always interesting and the baristas know their stuff. Grab a cup and go.",
+    "amenities": [
+      "moderate_noise",
+      "outdoor_seating",
+      "pastries_only",
+      "wifi"
+    ],
+    "vibes": [
+      "bright",
+      "lively"
+    ]
   },
   "sawada-coffee": {
     "website": "https://www.sawadacoffee.com",
     "hours": {
       "mon": [
         {
-          "open": "07:00",
+          "open": "08:00",
           "close": "16:00"
         }
       ],
       "tue": [
         {
-          "open": "07:00",
+          "open": "08:00",
           "close": "16:00"
         }
       ],
       "wed": [
         {
-          "open": "07:00",
+          "open": "08:00",
           "close": "16:00"
         }
       ],
       "thu": [
         {
-          "open": "07:00",
+          "open": "08:00",
           "close": "16:00"
         }
       ],
       "fri": [
         {
-          "open": "07:00",
+          "open": "08:00",
           "close": "16:00"
         }
       ],
@@ -94,7 +107,7 @@
         }
       ]
     },
-    "hoursSourceUrl": "https://www.timeout.com/chicago/restaurants/sawada-coffee",
+    "hoursSourceUrl": "https://littlechicagoguide.com/best-coffee-shops-chicago/",
     "hoursCheckedAt": "2026-11-22"
   },
   "osmium-coffee-bar": {
@@ -149,13 +162,83 @@
     "neighborhood": "Lakeview",
     "latitude": 41.9396745,
     "longitude": -87.65732200000001,
-    "description": "A tiny, immaculate coffee bar in Lakeview with a serious dedication to precision brewing and seasonal menus."
+    "description": "A Dark Matter coffee bar on Belmont in Lakeview with cyberpunk decor, a back patio, and a menu that goes past pastries to empanadas and breakfast tacos.",
+    "ownerReview": "Osmium is for people who take coffee seriously without being pretentious about it. The decor leans fully into Dark Matter's weird side, the baristas are meticulous, and the back patio makes it one of the roomier shops in the lineup. A strong pick for a pour-over.",
+    "amenities": [
+      "bar_seating",
+      "laptop_friendly",
+      "outdoor_seating",
+      "outlets",
+      "whisper_quiet",
+      "wifi"
+    ],
+    "vibes": [
+      "cozy",
+      "quiet"
+    ]
   },
   "the-wormhole-coffee": {
     "website": "https://www.thewormhole.us/",
-    "hours": null,
-    "hoursSourceUrl": null,
-    "hoursCheckedAt": null
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "08:00",
+          "close": "19:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "08:00",
+          "close": "19:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.instagram.com/thewormholecoffee/",
+    "hoursCheckedAt": "2026-11-22",
+    "ownerReview": "Wormhole nails the balance between novelty and quality. Yes, there's a DeLorean inside. Yes, the walls are covered in 80s nostalgia. But the coffee is legitimately good, with Halfwit beans and well-pulled shots. It's fun without being gimmicky.",
+    "amenities": [
+      "couch_seating",
+      "laptop_friendly",
+      "moderate_noise",
+      "outlets",
+      "pet_friendly",
+      "vegan_options",
+      "wifi"
+    ],
+    "vibes": [
+      "cozy",
+      "lively"
+    ]
   },
   "dark-matter-coffee-star-lounge": {
     "website": "https://www.darkmattercoffee.com/pages/star-lounge",
@@ -207,7 +290,9 @@
     "hoursCheckedAt": "2026-11-22",
     "address": "2521 W Chicago Ave, Chicago, IL 60622",
     "latitude": 41.8955127,
-    "longitude": -87.69017989999999
+    "longitude": -87.69017989999999,
+    "description": "Dark Matter's Star Lounge on Chicago Avenue, a cafe from Chicago's punk-rock roaster with bold blends and an unapologetically loud aesthetic.",
+    "ownerReview": "Dark Matter doesn't play it safe, and that's the appeal. Star Lounge has that perfectly chaotic energy, with art everywhere and loud music some days, and the blends are as bold as the branding. Come for the coffee, stay for the spectacle."
   },
   "colectivo-coffee-evanston": {
     "website": "https://colectivo.com/pages/evanston",
@@ -259,7 +344,24 @@
     "hoursCheckedAt": "2026-11-22",
     "address": "716 Church St, Evanston, IL 60201",
     "latitude": 42.0483102,
-    "longitude": -87.6815847
+    "longitude": -87.6815847,
+    "description": "A warm, welcoming cafe at Church and Sherman in downtown Evanston, popular with Northwestern students for its people-watching and reliable coffee.",
+    "ownerReview": "Colectivo Evanston is the quintessential college-town cafe. It sits right at Church and Sherman, the menu runs to all-day breakfast and cafe eats, and the window seats are a Northwestern favorite for people-watching. Good for a long study session or catching up with friends.",
+    "amenities": [
+      "communal_tables",
+      "full_menu",
+      "laptop_friendly",
+      "moderate_noise",
+      "outdoor_seating",
+      "outlets",
+      "parking",
+      "wifi"
+    ],
+    "vibes": [
+      "bright",
+      "lively",
+      "study-friendly"
+    ]
   },
   "bridgeport-coffeehouse": {
     "website": "https://bridgeportcoffee.net",
@@ -312,13 +414,66 @@
   },
   "groundswell-coffee": {
     "website": "https://www.groundswellcoffeeroasters.com",
-    "hours": null,
-    "hoursSourceUrl": null,
-    "hoursCheckedAt": null,
-    "status": "CLOSED",
-    "name": "Groundswell Coffee — Forest Park",
-    "neighborhood": "Forest Park",
-    "description": "A bright, airy suburban cafe in Forest Park with a focus on direct-trade coffee and community gathering."
+    "hours": {
+      "mon": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "tue": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "wed": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "thu": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "fri": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "sat": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ],
+      "sun": [
+        {
+          "open": "07:00",
+          "close": "19:00"
+        }
+      ]
+    },
+    "hoursSourceUrl": "https://www.fineartsbuilding.com/groundswell-coffee/",
+    "hoursCheckedAt": "2026-11-22",
+    "status": "OPEN",
+    "name": "Groundswell Coffee Roasters — Fine Arts Building",
+    "neighborhood": "Loop",
+    "description": "Chicago micro-roaster Groundswell's third cafe, opened in July 2026 inside the historic Fine Arts Building on Michigan Avenue, serving its own roasts, breakfast burritos, sandwiches and Good Ambler pastries.",
+    "address": "410 S Michigan Ave, Chicago, IL 60605",
+    "region": "CITY",
+    "imageUrl": null,
+    "ownerReview": "Groundswell brought coffee back to the Fine Arts Building, which had gone without a cafe since 2019. The house roasts are the reason to stop, and breakfast burritos, all-day sandwiches and Good Ambler pastries make it an easy Loop breakfast or lunch.",
+    "amenities": [
+      "full_menu"
+    ],
+    "vibes": [],
+    "latitude": 41.8764412,
+    "longitude": -87.62469039999999
   },
   "dollop-coffee-streeterville": {
     "website": "https://www.dollopcoffee.com/locations/streeter/",
@@ -367,7 +522,20 @@
       ]
     },
     "hoursSourceUrl": "https://www.dollopcoffee.com/locations/streeter/",
-    "hoursCheckedAt": "2026-11-22"
+    "hoursCheckedAt": "2026-11-22",
+    "ownerReview": "Dollop Streeterville is the most polished cafe on this list. Clean lines, good light, and espresso drinks that are consistently excellent. It works for a quick meeting near the Mag Mile. Not cheap, but the quality justifies it.",
+    "amenities": [
+      "bar_seating",
+      "meeting_space",
+      "moderate_noise",
+      "outlets",
+      "pastries_only",
+      "wifi"
+    ],
+    "vibes": [
+      "bright",
+      "date-spot"
+    ]
   },
   "sip-of-hope": {
     "website": "https://sipofhope.com",
@@ -465,56 +633,31 @@
       ]
     },
     "hoursSourceUrl": "https://www.backlotcoffee.com/pages/locations",
-    "hoursCheckedAt": "2026-11-22"
+    "hoursCheckedAt": "2026-11-22",
+    "description": "An independent neighborhood coffeehouse on Central Street in north Evanston, serving coffee, pastries, breakfast, and lunch.",
+    "ownerReview": "Backlot is the model for what a neighborhood coffeehouse should be. The Central Street strip around it has a small-town feel, the breakfast and lunch menu is tight, and the pour-overs are solid. An easy pick in north Evanston."
   },
   "brothers-k-coffeehouse": {
     "website": "https://brotherskcoffee.com",
-    "hours": {
-      "mon": [
-        {
-          "open": "06:30",
-          "close": "17:00"
-        }
-      ],
-      "tue": [
-        {
-          "open": "06:30",
-          "close": "17:00"
-        }
-      ],
-      "wed": [
-        {
-          "open": "06:30",
-          "close": "17:00"
-        }
-      ],
-      "thu": [
-        {
-          "open": "06:30",
-          "close": "17:00"
-        }
-      ],
-      "fri": [
-        {
-          "open": "06:30",
-          "close": "17:00"
-        }
-      ],
-      "sat": [
-        {
-          "open": "07:00",
-          "close": "17:00"
-        }
-      ],
-      "sun": [
-        {
-          "open": "07:00",
-          "close": "17:00"
-        }
-      ]
-    },
-    "hoursSourceUrl": "https://joe.coffee/locations/il/evanston/brothers-k-coffeehouse-evanston-7b310199-11ef-4208-81c4-74f49747adeb",
-    "hoursCheckedAt": "2026-11-22"
+    "hours": null,
+    "hoursSourceUrl": null,
+    "hoursCheckedAt": null,
+    "description": "A south Evanston staple on Main Street with a deep-rooted community feel, run by brothers John and Brian Kim and named partly for the Dostoevsky novel.",
+    "ownerReview": "Brothers K has the lived-in soul of a true neighborhood coffeehouse. Students hammer on laptops alongside retirees reading the paper, and the counter goes past donuts and coffee cake to mini quiches and breakfast sandwiches. Coffee is reliable, atmosphere is the draw.",
+    "amenities": [
+      "communal_tables",
+      "couch_seating",
+      "laptop_friendly",
+      "moderate_noise",
+      "outlets",
+      "weekend_brunch",
+      "wifi"
+    ],
+    "vibes": [
+      "cozy",
+      "lively",
+      "study-friendly"
+    ]
   },
   "newport-coffee-house": {
     "website": "https://www.newport-coffee.com",
@@ -558,12 +701,26 @@
       "sun": [
         {
           "open": "08:00",
-          "close": "16:00"
+          "close": "13:00"
         }
       ]
     },
-    "hoursSourceUrl": "https://joe.coffee/locations/il/evanston/newport-coffee-house-evanston",
-    "hoursCheckedAt": "2026-11-22"
+    "hoursSourceUrl": "https://www.newport-coffee.com/visit",
+    "hoursCheckedAt": "2026-11-22",
+    "description": "A Davis Street coffee house in downtown Evanston from a roaster that has served Chicago's North Shore since 1992, with single-origin coffees from around the world and Swedish pastries.",
+    "ownerReview": "Newport has roasted for the North Shore since 1992, and the Davis Street shop, open since 2019, shows it off well. The bean selection runs deep, the Swedish-minimalist room is calm, and there are salads and sandwiches beyond the pastry case. An easy walk from the Davis stop.",
+    "amenities": [
+      "bar_seating",
+      "communal_tables",
+      "laptop_friendly",
+      "outlets",
+      "wifi"
+    ],
+    "vibes": [
+      "bright",
+      "cozy",
+      "quiet"
+    ]
   },
   "reprise-coffee-roasters": {
     "website": "https://repriseroasters.com/locations/evanston",
@@ -612,7 +769,20 @@
       ]
     },
     "hoursSourceUrl": "https://repriseroasters.com/locations/evanston",
-    "hoursCheckedAt": "2026-11-22"
+    "hoursCheckedAt": "2026-11-22",
+    "description": "A specialty roaster's cafe on Main Street in south Evanston, with carefully sourced single-origins and a clean, modern aesthetic.",
+    "amenities": [
+      "bar_seating",
+      "laptop_friendly",
+      "outlets",
+      "whisper_quiet",
+      "wifi"
+    ],
+    "vibes": [
+      "bright",
+      "quiet",
+      "study-friendly"
+    ]
   },
   "central-station-coffee-tea": {
     "website": "http://www.centralstationcoffee.com/",
@@ -661,7 +831,9 @@
       ]
     },
     "hoursSourceUrl": "http://www.centralstationcoffee.com/",
-    "hoursCheckedAt": "2026-11-22"
+    "hoursCheckedAt": "2026-11-22",
+    "description": "A downtown Wilmette cafe on Central Avenue near the Metra station, offering espresso, tea, and a real food menu with avocado toast, salads, and pastries.",
+    "ownerReview": "Central Station is the village square cafe Wilmette deserves. Coffee, tea, and food that goes beyond the usual pastry case, from avocado toast to salads. It's steps from the Metra, so it doubles as a commuter pit stop."
   },
   "glenview-grind": {
     "website": "https://glenviewgrind.com",
@@ -763,52 +935,21 @@
   },
   "complimentary-cafe-co": {
     "website": "https://complimentaryc.com",
-    "hours": {
-      "mon": [
-        {
-          "open": "07:30",
-          "close": "18:00"
-        }
-      ],
-      "tue": [
-        {
-          "open": "07:30",
-          "close": "18:00"
-        }
-      ],
-      "wed": [
-        {
-          "open": "07:30",
-          "close": "18:00"
-        }
-      ],
-      "thu": [
-        {
-          "open": "07:30",
-          "close": "18:00"
-        }
-      ],
-      "fri": [
-        {
-          "open": "07:30",
-          "close": "19:00"
-        }
-      ],
-      "sat": [
-        {
-          "open": "07:30",
-          "close": "19:00"
-        }
-      ],
-      "sun": [
-        {
-          "open": "07:30",
-          "close": "18:00"
-        }
-      ]
-    },
-    "hoursSourceUrl": "https://joe.coffee/locations/il/highland-park/complimentary-cafe-and-co-highland-park-ed8e6a08-bc75-4e0d-8e1d-a61ce1b4cf4a",
-    "hoursCheckedAt": "2026-11-22"
+    "hours": null,
+    "hoursSourceUrl": null,
+    "hoursCheckedAt": null,
+    "name": "Complimentary Cafe",
+    "description": "A coffee counter inside the Highland Park Metra station on St Johns Avenue, serving lattes, mocktails, bagels, muffins, cookies, and empanadas to commuters.",
+    "ownerReview": "Complimentary turns the Highland Park Metra station into a real coffee stop. It's a counter built for the commuter rush, so think quick lattes and grab-and-go bites, with the empanadas as the move. The city has renewed its station lease through 2028.",
+    "amenities": [
+      "moderate_noise",
+      "parking",
+      "vegan_options",
+      "wifi"
+    ],
+    "vibes": [
+      "bright"
+    ]
   },
   "harmony-coffee-bar": {
     "website": "https://www.harmonycoffeebar.com/",
@@ -1087,14 +1228,41 @@
       ]
     },
     "hoursSourceUrl": "https://www.consciouscup.com/pages/stores/barrington",
-    "hoursCheckedAt": "2026-11-22"
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "communal_tables",
+      "laptop_friendly",
+      "moderate_noise",
+      "outdoor_seating",
+      "outlets",
+      "parking",
+      "pastries_only",
+      "wifi"
+    ],
+    "vibes": [
+      "bright",
+      "cozy"
+    ]
   },
   "kribi-coffee": {
     "website": "https://kribicoffee.com",
     "hours": null,
     "hoursSourceUrl": null,
     "hoursCheckedAt": null,
-    "status": "CLOSED"
+    "status": "CLOSED",
+    "amenities": [
+      "bar_seating",
+      "laptop_friendly",
+      "moderate_noise",
+      "outlets",
+      "parking",
+      "pastries_only",
+      "wifi"
+    ],
+    "vibes": [
+      "bright",
+      "study-friendly"
+    ]
   },
   "five-hoek-coffee": {
     "website": "https://fiveandhoek.com",
@@ -1143,7 +1311,16 @@
       ]
     },
     "hoursSourceUrl": "https://fiveandhoek.com/pages/wheaton-coffee-shop",
-    "hoursCheckedAt": "2026-11-22"
+    "hoursCheckedAt": "2026-11-22",
+    "description": "A coffee bar and roaster on Wheaton's Main Street (formerly River City Roasters), serving carefully prepared espresso and brewed coffee with house-made syrups and caramels.",
+    "ownerReview": "Five & Hoek (the rebranded River City Roasters) keeps the menu clean and the drinks very dialed in. It roasts its own coffee, the house-made caramels and syrups make the specialty drinks worth trying, and it suits a quick order-and-go as well as a short sit.",
+    "amenities": [
+      "parking",
+      "pastries_only"
+    ],
+    "vibes": [
+      "bright"
+    ]
   },
   "sparrow-coffee": {
     "website": "https://sparrowcoffee.com/naperville",
@@ -1192,7 +1369,24 @@
       ]
     },
     "hoursSourceUrl": "https://sparrowcoffee.com/naperville",
-    "hoursCheckedAt": "2026-11-22"
+    "hoursCheckedAt": "2026-11-22",
+    "description": "Sparrow's Naperville cafe on the Riverwalk, from the Chicago roaster, with seasonal menus, pastries made in-house, and a downtown-Naperville magnetism.",
+    "ownerReview": "Sparrow is the cafe that put Naperville on the specialty coffee map. Riverwalk location, a design-forward room with walnut tables, and coffee from a roasting program that holds up against anything in the city. Nearly everything in the pastry case is made in-house, so add one.",
+    "amenities": [
+      "bar_seating",
+      "communal_tables",
+      "laptop_friendly",
+      "moderate_noise",
+      "outdoor_seating",
+      "parking",
+      "pastries_only",
+      "wifi"
+    ],
+    "vibes": [
+      "bright",
+      "date-spot",
+      "lively"
+    ]
   },
   "cafe-la-fortuna": {
     "website": "http://www.cafelafortuna.com",
@@ -1241,7 +1435,21 @@
       ]
     },
     "hoursSourceUrl": "https://wanderlog.com/place/details/3326438/cafe-la-fortuna",
-    "hoursCheckedAt": "2026-11-22"
+    "hoursCheckedAt": "2026-11-22",
+    "amenities": [
+      "couch_seating",
+      "laptop_friendly",
+      "moderate_noise",
+      "outdoor_seating",
+      "outlets",
+      "parking",
+      "wifi"
+    ],
+    "vibes": [
+      "bright",
+      "cozy",
+      "study-friendly"
+    ]
   },
   "owl-lark": {
     "website": "https://www.owlandlark.com/",
@@ -1290,14 +1498,28 @@
       ]
     },
     "hoursSourceUrl": "https://www.owlandlark.com/",
-    "hoursCheckedAt": "2026-11-22"
+    "hoursCheckedAt": "2026-11-22",
+    "description": "A La Grange juice and coffee bar with specialty espresso, pressed juices, smoothie bowls, and toast and bagels in a cozy downtown setting."
   },
   "pekoe-bean": {
     "website": null,
     "hours": null,
     "hoursSourceUrl": null,
     "hoursCheckedAt": null,
-    "status": "CLOSED"
+    "status": "CLOSED",
+    "amenities": [
+      "communal_tables",
+      "laptop_friendly",
+      "moderate_noise",
+      "outlets",
+      "parking",
+      "pastries_only",
+      "wifi"
+    ],
+    "vibes": [
+      "cozy",
+      "study-friendly"
+    ]
   },
   "two-mile-coffee-bar": {
     "website": "https://twomilecoffee.com",
@@ -1341,7 +1563,22 @@
       "sun": []
     },
     "hoursSourceUrl": "https://twomilecoffee.com",
-    "hoursCheckedAt": "2026-11-22"
+    "hoursCheckedAt": "2026-11-22",
+    "description": "A Beverly community coffee shop on Walden Parkway with Latin-inspired French pastries, breakfast tacos on homemade tortillas, and sourdough sandwiches, anchoring the south side coffee scene.",
+    "ownerReview": "Two Mile is the south-side coffee bar Beverly deserves. The espresso is sharp and the breakfast tacos are a real reason to come, but the soul of the place is the regulars: kids on the way to school and neighbors meeting up before work.",
+    "amenities": [
+      "communal_tables",
+      "laptop_friendly",
+      "moderate_noise",
+      "outdoor_seating",
+      "parking",
+      "wifi"
+    ],
+    "vibes": [
+      "bright",
+      "cozy",
+      "lively"
+    ]
   },
   "beverly-bakery-cafe": {
     "website": "https://www.beverlycoffeeroasters.com",
@@ -1385,6 +1622,38 @@
       ]
     },
     "hoursSourceUrl": "https://www.beverlycoffeeroasters.com",
-    "hoursCheckedAt": "2026-11-22"
+    "hoursCheckedAt": "2026-11-22",
+    "description": "A family-owned Beverly bakery and roaster on Western Avenue, in business since 2005, selling house-roasted coffee by the cup or pound alongside a from-scratch bakery.",
+    "ownerReview": "Beverly Bakery is two south-side institutions in one: a from-scratch bakery and a small roaster that fills a real gap on the map. The bag selection runs deep, there's a patio for warm days, and it's worth leaving with a bag of beans.",
+    "amenities": [
+      "communal_tables",
+      "full_menu",
+      "moderate_noise",
+      "outdoor_seating",
+      "parking"
+    ],
+    "vibes": [
+      "cozy",
+      "lively"
+    ]
+  },
+  "qamaria-yemeni-coffee-shop": {
+    "website": "https://www.qamariacoffee.com/",
+    "description": "Yemeni coffee house in Aurora pouring cardamom-and-honey Qamaria lattes and Adeni chai, with pastries, baklava and chicken pie. Worth the trip from the city if you've never had Yemeni coffee, a different lineage of the bean entirely.",
+    "ownerReview": "Qamaria is the easiest introduction to Yemeni coffee in the suburbs. The house latte with honey, cardamom and cinnamon is the order, Adeni chai is the pick for tea drinkers, and baklava or date cake rounds it out. Plan on lingering.",
+    "amenities": [
+      "laptop_friendly",
+      "meeting_space",
+      "moderate_noise",
+      "outdoor_seating",
+      "outlets",
+      "pastries_only",
+      "wifi"
+    ],
+    "vibes": [
+      "cozy",
+      "lively",
+      "study-friendly"
+    ]
   }
 }

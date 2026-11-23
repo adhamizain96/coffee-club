@@ -21,6 +21,8 @@ interface CafeMapLoaderProps {
   onMapClick?: () => void;
   mobileSheetSnap?: number | string | null;
   onUserLocation?: (location: google.maps.LatLngLiteral) => void;
+  fitKey: string;
+  fitOnMount: boolean;
 }
 
 export default function CafeMapLoader({
@@ -32,6 +34,8 @@ export default function CafeMapLoader({
   onMapClick,
   mobileSheetSnap,
   onUserLocation,
+  fitKey,
+  fitOnMount,
 }: CafeMapLoaderProps) {
   return (
     <CafeMapInner
@@ -43,6 +47,8 @@ export default function CafeMapLoader({
       onMapClick={onMapClick}
       mobileSheetSnap={mobileSheetSnap}
       onUserLocation={onUserLocation}
+      fitKey={fitKey}
+      fitOnMount={fitOnMount}
     />
   );
 }

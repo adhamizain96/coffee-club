@@ -1,13 +1,16 @@
 // Backfill the overhaul fields on existing cafes:
 //   - data/cafes-existing-updates.json (by slug): hours, website, status
-//     (closures), and verified address/name/description corrections.
+//     (closures), and verified corrections to name, address, region,
+//     description, ownerReview, imageUrl, and tags (`amenities` + `vibes`
+//     together replace the cafe's tags).
 //   - region for every cafe whose region is null, derived from its address.
 //
 //   npx tsx scripts/backfill-overhaul.ts            # dry run (default)
 //   npx tsx scripts/backfill-overhaul.ts --apply    # writes, in one transaction
 //
 // Target: DATABASE_URL (direct/unpooled URL for production). Never deletes
-// anything; idempotent.
+// cafes, notes, submissions, or tags (only the CafeTag links a tag list
+// replaces); idempotent.
 
 import "dotenv/config";
 import * as fs from "node:fs";
@@ -16,7 +19,7 @@ import { fileURLToPath } from "node:url";
 import { PrismaClient, Prisma } from "../src/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { parseWeeklyHours } from "../src/lib/hours";
-import { regionForAddress } from "../src/lib/regions";
+import { isRegion, regionForAddress, type RegionValue as Region } from "../src/lib/regions";
 
 type Update = {
   status?: "OPEN" | "TEMPORARILY_CLOSED" | "CLOSED";
@@ -24,6 +27,11 @@ type Update = {
   address?: string;
   neighborhood?: string;
   description?: string;
+  ownerReview?: string;
+  imageUrl?: string | null;
+  region?: Region;
+  amenities?: string[];
+  vibes?: string[];
   latitude?: number;
   longitude?: number;
   website?: string | null;
@@ -56,13 +64,27 @@ async function main() {
   const missing = Object.keys(updates).filter((s) => !bySlug.has(s));
   if (missing.length) console.log(`Slugs in the updates file but not in the DB (skipped): ${missing.join(", ")}`);
 
-  const ops: { id: string; label: string; data: Prisma.CafeUpdateInput }[] = [];
+  const tags = await prisma.tag.findMany({ select: { id: true, name: true } });
+  const tagIdByName = new Map(tags.map((t) => [t.name, t.id]));
+
+  const ops: { id: string; label: string; data: Prisma.CafeUpdateInput; tagIds?: string[] }[] = [];
   for (const [slug, u] of Object.entries(updates)) {
     const cafe = bySlug.get(slug);
     if (!cafe) continue;
     const data: Prisma.CafeUpdateInput = {};
-    for (const key of ["status", "name", "address", "neighborhood", "description", "latitude", "longitude", "website", "hoursSourceUrl"] as const) {
+    for (const key of ["status", "name", "address", "neighborhood", "description", "ownerReview", "imageUrl", "latitude", "longitude", "website", "hoursSourceUrl"] as const) {
       if (u[key] !== undefined) (data as Record<string, unknown>)[key] = u[key];
+    }
+    if (u.region !== undefined) {
+      if (!isRegion(u.region)) throw new Error(`Bad region for ${slug}: ${u.region}`);
+      data.region = u.region;
+    }
+    let tagIds: string[] | undefined;
+    if (u.amenities !== undefined || u.vibes !== undefined) {
+      const names = [...(u.amenities ?? []), ...(u.vibes ?? [])];
+      const unknown = names.filter((n) => !tagIdByName.has(n));
+      if (unknown.length) throw new Error(`Unknown tags for ${slug}: ${unknown.join(", ")}`);
+      tagIds = names.map((n) => tagIdByName.get(n)!);
     }
     if (u.hours !== undefined) {
       const hours = u.hours === null ? null : parseWeeklyHours(u.hours);
@@ -75,8 +97,8 @@ async function main() {
       const region = regionForAddress(address);
       if (region) data.region = region;
     }
-    const changes = Object.keys(data);
-    if (changes.length) ops.push({ id: cafe.id, label: `${slug}: ${changes.join(", ")}${u.status && u.status !== "OPEN" ? ` (${u.status})` : ""}`, data });
+    const changes = [...Object.keys(data), ...(tagIds ? ["tags"] : [])];
+    if (changes.length) ops.push({ id: cafe.id, label: `${slug}: ${changes.join(", ")}${u.status && u.status !== "OPEN" ? ` (${u.status})` : ""}`, data, tagIds });
   }
   // Region for cafes not in the updates file (e.g. admin-approved cafes).
   for (const cafe of cafes) {
@@ -89,14 +111,24 @@ async function main() {
     );
   }
 
-  console.log(`${cafes.length} cafes in DB; ${ops.filter((o) => Object.keys(o.data).length).length} to update.`);
+  const writes = ops.filter((o) => Object.keys(o.data).length || o.tagIds);
+  console.log(`${cafes.length} cafes in DB; ${writes.length} to update.`);
   for (const o of ops) console.log(`  ${o.label}`);
   if (!apply) {
     console.log("\nDry run: nothing written. Re-run with --apply to write.");
     return;
   }
   await prisma.$transaction(
-    ops.filter((o) => Object.keys(o.data).length).map((o) => prisma.cafe.update({ where: { id: o.id }, data: o.data }))
+    async (tx) => {
+      for (const o of writes) {
+        if (Object.keys(o.data).length) await tx.cafe.update({ where: { id: o.id }, data: o.data });
+        if (o.tagIds) {
+          await tx.cafeTag.deleteMany({ where: { cafeId: o.id, tagId: { notIn: o.tagIds } } });
+          await tx.cafeTag.createMany({ data: o.tagIds.map((tagId) => ({ cafeId: o.id, tagId })), skipDuplicates: true });
+        }
+      }
+    },
+    { timeout: 120_000 }
   );
   const noRegion = await prisma.cafe.count({ where: { region: null } });
   const withHours = await prisma.cafe.count({ where: { NOT: { hours: { equals: Prisma.DbNull } } } });

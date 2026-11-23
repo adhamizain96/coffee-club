@@ -153,6 +153,8 @@ export default function HomeContent({ cafes, initialView }: HomeContentProps) {
   const coverage =
     cityCount + suburbCount > 0 ? `${cityCount} in Chicago, ${suburbCount} in the suburbs` : `${cafes.length} cafes`;
   const filterActive = selectedAmenities.length > 0 || selectedVibes.length > 0 || selectedHours.length > 0 || selectedRegions.length > 0 || query.trim().length > 0;
+  // The map refits to the visible cafes whenever this changes.
+  const fitKey = JSON.stringify([selectedAmenities, selectedVibes, selectedHours, selectedRegions, query.trim().toLowerCase()]);
   // Cafes that match every other filter but have no listed hours, so the
   // hours filters had to leave them out.
   const hoursUnknownCount =
@@ -175,6 +177,8 @@ export default function HomeContent({ cafes, initialView }: HomeContentProps) {
           onMapClick={handleMapClick}
           mobileSheetSnap={snap}
           onUserLocation={setUserLocation}
+          fitKey={fitKey}
+          fitOnMount={filterActive && !initialCafe}
         />
       </div>
 

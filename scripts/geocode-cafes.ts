@@ -4,9 +4,15 @@
 // Google Maps Geocoding API, prints a delta table (in meters), and rewrites
 // the latitude/longitude lines in place.
 //
+// Geocode only cafes whose address changed: every geocoded cafe is one paid
+// Geocoding API call (--check included), so a target is required.
+//
 // Run from the project root:
-//   npx tsx scripts/geocode-cafes.ts            # geocode + write
-//   npx tsx scripts/geocode-cafes.ts --check    # geocode + report only (no write)
+//   npx tsx scripts/geocode-cafes.ts --only "Osmium Coffee Bar"          # geocode + write
+//   npx tsx scripts/geocode-cafes.ts --only "Osmium Coffee Bar" --check  # report only
+//   npx tsx scripts/geocode-cafes.ts --all                               # every seed cafe
+//
+// --only takes exact seed names separated by "|".
 //
 // Requires NEXT_PUBLIC_GOOGLE_MAPS_API_KEY in .env (must be unrestricted or
 // allow server IPs — referrer-only browser keys will fail with REQUEST_DENIED).
@@ -26,6 +32,17 @@ if (!process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY) {
 }
 
 const checkOnly = process.argv.includes("--check");
+const geocodeAll = process.argv.includes("--all");
+const onlyIndex = process.argv.indexOf("--only");
+const onlyNames =
+  onlyIndex >= 0 && process.argv[onlyIndex + 1]
+    ? new Set(process.argv[onlyIndex + 1].split("|").map((n) => n.trim()).filter(Boolean))
+    : null;
+
+if (geocodeAll === Boolean(onlyNames)) {
+  console.error('Pass exactly one of --only "<seed name>|<seed name>" or --all.');
+  process.exit(1);
+}
 const seedPath = path.join(__dirname, "..", "prisma", "seed.ts");
 
 interface ParsedCafe {
@@ -96,8 +113,18 @@ function patchSeed(src: string, results: GeocodeResult[]): string {
 
 async function main() {
   const src = await fs.readFile(seedPath, "utf8");
-  const cafes = parseCafes(src);
-  console.log(`Parsed ${cafes.length} cafes from ${path.relative(process.cwd(), seedPath)}\n`);
+  const parsed = parseCafes(src);
+  if (onlyNames) {
+    const unknown = [...onlyNames].filter((n) => !parsed.some((c) => c.name === n));
+    if (unknown.length) {
+      console.error(`No seed cafe named: ${unknown.join(", ")}`);
+      process.exit(1);
+    }
+  }
+  const cafes = onlyNames ? parsed.filter((c) => onlyNames.has(c.name)) : parsed;
+  console.log(
+    `Parsed ${parsed.length} cafes from ${path.relative(process.cwd(), seedPath)}; geocoding ${cafes.length}\n`
+  );
 
   const results: GeocodeResult[] = [];
   for (const cafe of cafes) {
