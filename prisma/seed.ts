@@ -121,7 +121,7 @@ const cafes: CafeSeed[] = [
     latitude: 41.8866605,
     longitude: -87.6778477,
     ownerReview:
-      "Metric is the real deal for coffee nerds. The Fulton Street cafe is a small walk-up counter, not a place to camp out, but the rotating single-origins are always interesting and the baristas know their stuff. Grab a cup and go.",
+      "Metric is the real deal for coffee nerds. The space is a compact 400-square-foot walk-up counter. Their rotating single-origins are always interesting, and the baristas actually know their stuff. Not the coziest spot, but the quality speaks for itself.",
     amenities: ["moderate_noise", "outdoor_seating", "pastries_only", "wifi"],
     vibes: ["bright", "lively"],
     notes: [
@@ -178,7 +178,7 @@ const cafes: CafeSeed[] = [
     latitude: 41.9396745,
     longitude: -87.65732200000001,
     ownerReview:
-      "Osmium is for people who take coffee seriously without being pretentious about it. The decor leans fully into Dark Matter's weird side, the baristas are meticulous, and the back patio makes it one of the roomier shops in the lineup. A strong pick for a pour-over.",
+      "Osmium is for people who take coffee seriously without being pretentious about it. The baristas are meticulous, the seasonal menu rotates thoughtfully, and the space — though small — is beautifully curated. My favorite pour-over in the city.",
     amenities: ["bar_seating", "laptop_friendly", "outdoor_seating", "outlets", "whisper_quiet", "wifi"],
     vibes: ["cozy", "quiet"],
     notes: [
@@ -209,7 +209,7 @@ const cafes: CafeSeed[] = [
     latitude: 41.9083491,
     longitude: -87.6746806,
     ownerReview:
-      "Wormhole nails the balance between novelty and quality. Yes, there's a DeLorean inside. Yes, the walls are covered in 80s nostalgia. But the coffee is legitimately good, with Halfwit beans and well-pulled shots. It's fun without being gimmicky.",
+      "Wormhole nails the balance between novelty and quality. Yes, there's a DeLorean inside. Yes, the walls are covered in 80s nostalgia. But the coffee is legitimately good — Halfwit beans, well-pulled shots. It's fun without being gimmicky.",
     amenities: ["couch_seating", "laptop_friendly", "moderate_noise", "outlets", "pet_friendly", "vegan_options", "wifi"],
     vibes: ["cozy", "lively"],
     notes: [
@@ -235,7 +235,7 @@ const cafes: CafeSeed[] = [
     latitude: 41.8955127,
     longitude: -87.69017989999999,
     ownerReview:
-      "Dark Matter doesn't play it safe, and that's the appeal. Star Lounge has that perfectly chaotic energy, with art everywhere and loud music some days, and the blends are as bold as the branding. Come for the coffee, stay for the spectacle.",
+      "Dark Matter doesn't play it safe, and that's exactly why I love it. The UniverSoul blend is my daily driver. Star Lounge has that perfectly chaotic energy — art everywhere, loud music sometimes, but the coffee is always dialed in.",
     amenities: ["wifi", "outdoor_seating", "pet_friendly", "communal_tables", "full_menu", "bustling"],
     vibes: ["lively", "bright"],
     notes: [
@@ -266,7 +266,7 @@ const cafes: CafeSeed[] = [
     latitude: 42.0483102,
     longitude: -87.6815847,
     ownerReview:
-      "Colectivo Evanston is the quintessential college-town cafe. It sits right at Church and Sherman, the menu runs to all-day breakfast and cafe eats, and the window seats are a Northwestern favorite for people-watching. Good for a long study session or catching up with friends.",
+      "Colectivo Evanston is the quintessential college-town cafe. Plenty of tables, fast wifi, and a menu that goes beyond just coffee — their bakery items are baked in-house and genuinely good. Perfect for a long study session or catching up with friends.",
     amenities: ["communal_tables", "full_menu", "laptop_friendly", "moderate_noise", "outdoor_seating", "outlets", "parking", "wifi"],
     vibes: ["bright", "lively", "study-friendly"],
     notes: [
@@ -323,7 +323,7 @@ const cafes: CafeSeed[] = [
     latitude: 41.8764412,
     longitude: -87.62469039999999,
     ownerReview:
-      "Groundswell brought coffee back to the Fine Arts Building, which had gone without a cafe since 2019. The house roasts are the reason to stop, and breakfast burritos, all-day sandwiches and Good Ambler pastries make it an easy Loop breakfast or lunch.",
+      "Groundswell is what every neighborhood deserves — a thoughtful, quality-focused cafe that also functions as a community hub. Their direct-trade sourcing is legit, the space is beautiful, and the staff remembers your name after two visits.",
     amenities: ["full_menu"],
     vibes: [],
     notes: [],
@@ -338,7 +338,7 @@ const cafes: CafeSeed[] = [
     latitude: 41.8919901,
     longitude: -87.6191609,
     ownerReview:
-      "Dollop Streeterville is the most polished cafe on this list. Clean lines, good light, and espresso drinks that are consistently excellent. It works for a quick meeting near the Mag Mile. Not cheap, but the quality justifies it.",
+      "Dollop Streeterville is the most refined cafe on this list. Clean lines, great lighting, and espresso drinks that are consistently excellent. It's a popular spot for quick meetings and laptop work. Not cheap, but the quality justifies it.",
     amenities: ["bar_seating", "meeting_space", "moderate_noise", "outlets", "pastries_only", "wifi"],
     vibes: ["bright", "date-spot"],
     notes: [
@@ -400,7 +400,7 @@ const cafes: CafeSeed[] = [
     latitude: 42.0642414,
     longitude: -87.70129469999999,
     ownerReview:
-      "Backlot is the model for what a neighborhood coffeehouse should be. The Central Street strip around it has a small-town feel, the breakfast and lunch menu is tight, and the pour-overs are solid. An easy pick in north Evanston.",
+      "Backlot is the model for what a neighborhood roaster should be. They roast in-house, the staff knows regulars by name, and the Central Street strip around them has a small-town feel. Solid pour-overs and a tight breakfast/lunch menu that rotates seasonally.",
     amenities: ["wifi", "outlets", "parking", "outdoor_seating", "laptop_friendly", "full_menu", "moderate_noise"],
     vibes: ["cozy", "bright", "study-friendly"],
     notes: [
@@ -424,7 +424,7 @@ const cafes: CafeSeed[] = [
     latitude: 42.0337916,
     longitude: -87.6779009,
     ownerReview:
-      "Brothers K has the lived-in soul of a true neighborhood coffeehouse. Students hammer on laptops alongside retirees reading the paper, and the counter goes past donuts and coffee cake to mini quiches and breakfast sandwiches. Coffee is reliable, atmosphere is the draw.",
+      "Brothers K has the lived-in soul of a true neighborhood coffeehouse. Wood-paneled walls, mismatched tables, and a steady mix of students hammering on laptops alongside retirees reading the paper. Coffee is reliable, atmosphere is the draw.",
     amenities: ["communal_tables", "couch_seating", "laptop_friendly", "moderate_noise", "outlets", "weekend_brunch", "wifi"],
     vibes: ["cozy", "lively", "study-friendly"],
     notes: [
@@ -448,7 +448,7 @@ const cafes: CafeSeed[] = [
     latitude: 42.0463027,
     longitude: -87.68099810000001,
     ownerReview:
-      "Newport has roasted for the North Shore since 1992, and the Davis Street shop, open since 2019, shows it off well. The bean selection runs deep, the Swedish-minimalist room is calm, and there are salads and sandwiches beyond the pastry case. An easy walk from the Davis stop.",
+      "Newport has served the North Shore since 1992 and earns it. The bean selection runs deep — they'll grind for whatever brew method you mention — and the room itself feels like a piece of pre-Starbucks coffee history. Easy walking distance from the Davis CTA stop.",
     amenities: ["bar_seating", "communal_tables", "laptop_friendly", "outlets", "wifi"],
     vibes: ["bright", "cozy", "quiet"],
     notes: [
@@ -492,7 +492,7 @@ const cafes: CafeSeed[] = [
     latitude: 42.0768379,
     longitude: -87.70736,
     ownerReview:
-      "Central Station is the village square cafe Wilmette deserves. Coffee, tea, and food that goes beyond the usual pastry case, from avocado toast to salads. It's steps from the Metra, so it doubles as a commuter pit stop.",
+      "Central Station is the village square cafe Wilmette deserves. Coffee, tea, and a real lunch menu — quiches and sandwiches that go beyond the usual pastry case. Steps from the Metra, so it doubles as a commuter pit stop.",
     amenities: ["wifi", "outlets", "outdoor_seating", "parking", "laptop_friendly", "full_menu", "moderate_noise", "weekend_brunch"],
     vibes: ["bright", "cozy", "study-friendly"],
     notes: [
@@ -552,7 +552,7 @@ const cafes: CafeSeed[] = [
     latitude: 42.18324940000001,
     longitude: -87.7974502,
     ownerReview:
-      "Complimentary turns the Highland Park Metra station into a real coffee stop. It's a counter built for the commuter rush, so think quick lattes and grab-and-go bites, with the empanadas as the move. The city has renewed its station lease through 2028.",
+      "Complimentary nails the Highland Park brief — polished, generous service, and a menu that goes well past coffee. The empanadas are legitimately a meal, and the matcha is among the better ones on the North Shore.",
     amenities: ["moderate_noise", "parking", "vegan_options", "wifi"],
     vibes: ["bright"],
     notes: [
@@ -700,7 +700,7 @@ const cafes: CafeSeed[] = [
     latitude: 41.8865451,
     longitude: -87.80165350000001,
     ownerReview:
-      "Kribi has one of the clearest origin stories in the Chicago area — owner Jacques Shalo sources green beans directly from Cameroon, and the air-roasting setup gives the cups a distinct profile. Worth a trip even if you're not in Oak Park.",
+      "Kribi has one of the clearest origin stories in the Chicago area — owner Jacques Shalo sources green beans directly from Cameroon, and the air-roasting setup gives the cups a distinct profile. This South Boulevard cafe has since closed.",
     amenities: ["bar_seating", "laptop_friendly", "moderate_noise", "outlets", "parking", "pastries_only", "wifi"],
     vibes: ["bright", "study-friendly"],
     notes: [
@@ -720,7 +720,7 @@ const cafes: CafeSeed[] = [
     latitude: 41.8653558,
     longitude: -88.10687759999999,
     ownerReview:
-      "Five & Hoek (the rebranded River City Roasters) keeps the menu clean and the drinks very dialed in. It roasts its own coffee, the house-made caramels and syrups make the specialty drinks worth trying, and it suits a quick order-and-go as well as a short sit.",
+      "Five & Hoek (the rebranded River City Roasters) leans hard into the take-away coffee bar concept — a clean menu and very dialed-in drinks. If you're a 'order, walk, drink' person, this is the platonic ideal of that experience.",
     amenities: ["parking", "pastries_only"],
     vibes: ["bright"],
     notes: [
@@ -740,7 +740,7 @@ const cafes: CafeSeed[] = [
     latitude: 41.7709021,
     longitude: -88.1506319,
     ownerReview:
-      "Sparrow is the cafe that put Naperville on the specialty coffee map. Riverwalk location, a design-forward room with walnut tables, and coffee from a roasting program that holds up against anything in the city. Nearly everything in the pastry case is made in-house, so add one.",
+      "Sparrow is the cafe that put Naperville on the specialty coffee map. Riverwalk location, design-forward space, and a roasting program that holds up against anything in the city. Get a window seat and a pour-over and stay a while.",
     amenities: ["bar_seating", "communal_tables", "laptop_friendly", "moderate_noise", "outdoor_seating", "parking", "pastries_only", "wifi"],
     vibes: ["bright", "date-spot", "lively"],
     notes: [
@@ -804,7 +804,7 @@ const cafes: CafeSeed[] = [
     latitude: 41.5817328,
     longitude: -87.7849991,
     ownerReview:
-      "Pekoe & Bean leans harder on tea than most cafes around, which makes it a destination for anyone tired of an afterthought tea menu. Coffee is solid too, the room is comfortable, and the south-suburban location fills a gap on the map.",
+      "Pekoe & Bean leans harder on tea than most cafes around, which makes it a destination for anyone tired of an afterthought tea menu. Coffee is solid too, the room is comfortable, and the south-suburban location filled a gap on the map before it closed.",
     amenities: ["communal_tables", "laptop_friendly", "moderate_noise", "outlets", "parking", "pastries_only", "wifi"],
     vibes: ["cozy", "study-friendly"],
     notes: [
@@ -824,7 +824,7 @@ const cafes: CafeSeed[] = [
     latitude: 41.7135989,
     longitude: -87.66754309999999,
     ownerReview:
-      "Two Mile is the south-side coffee bar Beverly deserves. The espresso is sharp and the breakfast tacos are a real reason to come, but the soul of the place is the regulars: kids on the way to school and neighbors meeting up before work.",
+      "Two Mile is the south-side coffee bar Beverly deserves. Intelligentsia partnership means the espresso is sharp, but the soul of the place is the regulars — kids on the way to school, neighbors meeting up before work, the steady rhythm of a community shop.",
     amenities: ["communal_tables", "laptop_friendly", "moderate_noise", "outdoor_seating", "parking", "wifi"],
     vibes: ["bright", "cozy", "lively"],
     notes: [
@@ -848,7 +848,7 @@ const cafes: CafeSeed[] = [
     latitude: 41.7018401,
     longitude: -87.68172779999999,
     ownerReview:
-      "Beverly Bakery is two south-side institutions in one: a from-scratch bakery and a small roaster that fills a real gap on the map. The bag selection runs deep, there's a patio for warm days, and it's worth leaving with a bag of beans.",
+      "Beverly Bakery is two beloved south-side institutions in one — a from-scratch bakery and a small roaster that fills a real gap on the map. They say they're the only Chicago coffee roaster south of Bridgeport and that's not just marketing; the bag selection is genuinely deep.",
     amenities: ["communal_tables", "full_menu", "moderate_noise", "outdoor_seating", "parking"],
     vibes: ["cozy", "lively"],
     notes: [
