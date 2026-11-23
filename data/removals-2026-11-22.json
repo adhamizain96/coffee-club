@@ -1,5 +1,15 @@
 {
   "note": "Post-overhaul cleanup, applied with scripts/apply-removals.ts. Each entry carries the values the script checks before touching the row; any mismatch aborts the whole run.",
+  "deleteTags": [
+    {
+      "name": "early_bird",
+      "reason": "Retired: Early Bird is derived from structured hours (src/lib/hours.ts)."
+    },
+    {
+      "name": "late_night",
+      "reason": "Retired: Late Night is derived from structured hours (src/lib/hours.ts)."
+    }
+  ],
   "deleteNotes": [
     {
       "id": "cmwsdo4n1000008jy23jfo3pj",
