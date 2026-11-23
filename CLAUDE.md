@@ -109,7 +109,7 @@ Priorities, in order:
 - `imageUrl` is optional. Cafes without a photo (or with a broken hotlink) render a designed placeholder via `src/components/CafeImage.tsx`. Don't download or self-host third-party photos.
 - Photos must be real images of the actual cafe — official site, official Instagram, or a reputable publication. Verify HTTP 200 + image content-type before commit. No stock images, no Yelp/Google user uploads, no AI-generated images.
 - Cafes must be real, currently operating businesses. Verify before adding. Do not fabricate names, addresses, or coordinates.
-- Coordinates: do not estimate by eye. Re-geocode only when an address is added or changed (each run makes one paid Geocoding call per cafe, `--check` included). `npx tsx scripts/geocode-cafes.ts` overwrites lat/lng in place and prints a delta table. Edits that don't touch an address (tags, reviews, hours, slugs) don't need a re-geocode.
+- Coordinates: do not estimate by eye. Re-geocode only when an address is added or changed (each run makes one paid Geocoding call per cafe, `--check` included). `npx tsx scripts/geocode-cafes.ts --only "<seed name>"` (names separated by `|`; `--all` for every cafe) overwrites lat/lng in place and prints a delta table. It refuses to run without a target. Edits that don't touch an address (tags, reviews, hours, slugs) don't need a re-geocode.
 
 ## Data files
 
@@ -148,7 +148,7 @@ npm run db:seed                      # Upsert seed cafes by slug (local only; ne
 npx prisma generate                  # Regenerate Prisma client
 npm run build                        # Production build
 npm run lint                         # Run ESLint
-npx tsx scripts/geocode-cafes.ts     # Re-geocode all cafes; rewrites lat/lng in seed.ts in place (address changes only)
+npx tsx scripts/geocode-cafes.ts --only "<name>"  # Re-geocode changed addresses; rewrites lat/lng in seed.ts (--all for every cafe)
 npx tsx scripts/backfill-overhaul.ts # Hours/status/corrections from data/cafes-existing-updates.json + regions (dry run; --apply)
 npx tsx scripts/import-cafes.ts      # Upsert researched cafes from data/cafes-new.json by slug (dry run; --apply)
 npx tsx scripts/check-hours.ts       # Assertions for src/lib/hours.ts

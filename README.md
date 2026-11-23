@@ -154,7 +154,7 @@ Production-specific notes are in [Deployment](#deployment-vercel).
 | `npm run db:migrate:deploy` | Apply pending Prisma migrations. |
 | `npm run db:migrate:status` | Show applied and pending migrations. |
 | `npm run db:seed` | Upsert the curated cafes (by slug), tags, and sample notes. Local only; never deletes notes, submissions, or admin-added cafes. |
-| `npx tsx scripts/geocode-cafes.ts` | Re-geocode every cafe address against the Google Maps Geocoding API and rewrite `latitude`/`longitude` in `prisma/seed.ts` in place. Prints a delta table; flags any cafe that moves >200 m. |
+| `npx tsx scripts/geocode-cafes.ts --only "<seed name>"` | Re-geocode the named cafes (names separated by `|`, or `--all` for every cafe) against the Google Maps Geocoding API and rewrite `latitude`/`longitude` in `prisma/seed.ts` in place. Prints a delta table; flags any cafe that moves >200 m. |
 | `.\scripts\dev-reset.ps1` *(Windows)* | Recover from `EBUSY` on `npx prisma dev`. See [Recovering from `EBUSY`](#recovering-from-ebusy-windows). |
 
 ## Project Structure
@@ -289,7 +289,7 @@ Use the seed for the initial set or large batched additions:
 - Append a corresponding image URL to `CAFE_IMAGES` at the **same index**. Cafes match images by array position.
 - Use a real photo of the actual cafe — official site, official Instagram, or a reputable publication. **No** stock photos, **no** Yelp/Google user uploads, **no** AI-generated images.
 - Use only real, currently operating cafes — verify before adding.
-- After adding or changing an address, run `npx tsx scripts/geocode-cafes.ts` to lock in accurate coordinates. Edits that don't touch an address don't need it.
+- After adding or changing an address, run `npx tsx scripts/geocode-cafes.ts --only "<seed name>"` to lock in accurate coordinates. Edits that don't touch an address don't need it.
 
 ### Tag reference
 
